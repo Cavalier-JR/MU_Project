@@ -1,0 +1,23 @@
+{
+  "name": "back_management1",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^0.27.2",
+    "echarts": "^5.5.0",
+    "element-plus": "^2.2.0",
+    "vue": "^3.2.25",
+    "vue-echarts": "^6.7.1",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.9"
+  }
+}

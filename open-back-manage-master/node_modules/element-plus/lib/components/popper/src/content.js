@@ -1,0 +1,11 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var content = require('./content3.js');
+
+
+
+exports.usePopperContentProps = content.usePopperContentProps;
+exports.usePopperCoreConfigProps = content.usePopperCoreConfigProps;
+//# sourceMappingURL=content.js.map
