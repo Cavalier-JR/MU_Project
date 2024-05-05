@@ -15,10 +15,11 @@
         <template #default="scope">{{ scope.row.forget_flag }}</template>
       </el-table-column>
       <el-table-column property="id" label="ID" width="80" header-align="center" align="center" />
-      <el-table-column property="address" label="Address" width="300" header-align="center" align="center" />
+      <el-table-column property="forget_content" label="遗忘内容" width="300" header-align="center" align="center" />
       <el-table-column label="时间" header-align="center" align="center" show-overflow-tooltip>
         <template #default="scope">{{ scope.row.date }}</template>
       </el-table-column>
+      <el-table-column property="operate" label="操作" width="120" header-align="center" align="center" />
     </el-table>
     <div style="margin-top: 20px">
       <el-button @click="toggleSelection([tableData[0], tableData[2]])">
@@ -35,9 +36,10 @@
   interface User {
     date: string
     id: string
-    address: string
+    forget_content: string
     forget_flag: string
     inf_type: string
+    operate: string
   }
   
   const multipleTableRef = ref<InstanceType<typeof ElTable>>()
@@ -65,7 +67,8 @@
       forget_flag: '已遗忘',
       date: '2024-05-05 11:45:14',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'No. 189, Grove St, Los Angeles',
+      operate: '查看  删除'
     },
     {
       id: 114513,
@@ -73,7 +76,8 @@
       forget_flag: '已遗忘',
       date: '2024-05-05 11:27:23',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'NCEPU',
+      operate: '查看  删除'
     },
     {
       id: 114512,
@@ -81,7 +85,8 @@
       forget_flag: '已遗忘',
       date: '2024-05-05 11:27:15',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'Cai Yunze',
+      operate: '查看  删除'
     },
     {
       id: 114511,
@@ -89,7 +94,8 @@
       forget_flag: '已遗忘',
       date: '2024-05-05 11:25:59',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'No. 2, Beinong Road',
+      operate: '查看  删除'
     },
     {
       id: 114510,
@@ -97,7 +103,8 @@
       forget_flag: '已遗忘',
       date: '2024-05-05 10:45:18',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'Mobile phone number is 114514',
+      operate: '查看  删除'
     },
     {
       id: 114509,
@@ -105,7 +112,8 @@
       forget_flag: '已遗忘',
       date: '2024-05-05 10:32:13',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'Meet at seven tonight',
+      operate: '查看  删除'
     },
     {
       id: 114508,
@@ -113,7 +121,8 @@
       forget_flag: '正在遗忘',
       date: '2024-05-05 09:16:51',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'Meeting on May 2nd',
+      operate: '查看  删除'
     },
     {
       id: 114507,
@@ -121,7 +130,8 @@
       forget_flag: '正在遗忘',
       date: '2024-05-04 23:13:51',
       name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
+      forget_content: 'Her name is Xiao Heizi!!!',
+      operate: '查看  删除'
     },
   ]
   </script>    
