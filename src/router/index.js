@@ -40,6 +40,11 @@ const routes = [
             }
         ],
     },
+    {
+        path: '/InitialPage',
+        name: "InitialPage",
+        component: () => import("../page/Company/InitialPage.vue")
+    },
 ];
 
 const router = createRouter({

@@ -133,6 +133,15 @@ export default {
           ],
         },
         {
+          title: "图片遗忘",
+          subs: [
+            {
+              title: "哈基米",
+              index: "articleList",
+            },
+          ],
+        },
+        {
           title: "文本遗忘",
           index: "test",
         },
