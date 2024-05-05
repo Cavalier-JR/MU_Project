@@ -40,10 +40,47 @@ const routes = [
             }
         ],
     },
+
+
+    // 公司界面
     {
-        path: '/InitialPage',
-        name: "InitialPage",
-        component: () => import("../page/Company/InitialPage.vue")
+        path: '/CompanyLayout',
+        name: "CompanyLayout",
+        component: () => import("../page/Company/CompanyLayout.vue"),
+        children: [
+            {
+                path: '/InitialPage', // 公司初始信息 各种图表
+                name: "InitialPage",
+                component: () => import("../page/Company/InitialPage.vue")
+            },
+            {
+                path: '/History', // 遗忘记录
+                name: "History",
+                component: () => import("../page/Company/History.vue")
+            },
+            {
+                path: '/Poison', // 投毒遗忘
+                name: "Poison",
+                component: () => import("../page/Company/Poison.vue")
+            },
+            {
+                path: '/AdvicePart', // 优化建议-部分遗忘
+                name: "AdvicePart",
+                component: () => import("../page/Company/AdvicePart.vue")
+            },
+            {
+                path: '/AdviceClass', // 优化建议-类别遗忘
+                name: "AdviceClass",
+                component: () => import("../page/Company/AdviceClass.vue")
+            },
+            {
+                path: '/AdviceText', // 优化建议-文本遗忘
+                name: "AdviceText",
+                component: () => import("../page/Company/AdviceText.vue")
+            },
+
+
+        ]
     },
 ];
 

@@ -59,7 +59,9 @@
           >
             <el-menu-item index="1" class="fr">xxxx公司</el-menu-item>
             <el-sub-menu index="2" class="fr">
-              <template #title class="fr">我的工作台</template>
+              <template #title >
+                <span class="fr">我的工作台</span>
+              </template>
               <el-menu-item index="2-1">我的消息</el-menu-item>
               <el-menu-item index="2-2">设置</el-menu-item>
               <el-menu-item index="2-3" @click="exitLogin"
