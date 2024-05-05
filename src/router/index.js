@@ -37,6 +37,11 @@ const routes = [
                 path: "test",
                 name: "test",
                 component: () => import("../page/Test.vue"),
+            },
+            {
+                path: "forgotten_record",
+                name: "forgotten_record",
+                component: () => import("../page/Forgotten_record.vue"),
             }
         ],
     },

@@ -145,6 +145,10 @@ export default {
           title: "文本遗忘",
           index: "test",
         },
+        {
+          title: "遗忘记录",
+          index: "Forgotten_record",
+        },
       ],
     };
   },
