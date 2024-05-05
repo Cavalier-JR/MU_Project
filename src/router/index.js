@@ -34,6 +34,11 @@ const routes = [
                 component: () => import("../page/article/ArticleList.vue"),
             },
             {
+                path: "pic_partially",
+                name: "pic_partially",
+                component: () => import("../page/Pic_partially.vue"),
+            },
+            {
                 path: "test",
                 name: "test",
                 component: () => import("../page/Test.vue"),

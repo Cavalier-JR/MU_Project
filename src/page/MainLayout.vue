@@ -124,20 +124,15 @@ export default {
           index: "user",
         },
         {
-          title: "曼波",
-          subs: [
-            {
-              title: "哈基米",
-              index: "articleList",
-            },
-          ],
-        },
-        {
           title: "图片遗忘",
           subs: [
             {
-              title: "哈基米",
+              title: "类别遗忘",
               index: "articleList",
+            },
+            {
+              title: "部分遗忘",
+              index: "pic_partially",
             },
           ],
         },

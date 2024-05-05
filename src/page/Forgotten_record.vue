@@ -1,22 +1,32 @@
 <template>
-  <el-row :gutter="20">
-    <el-col :span="6">
-      <el-input
-        v-model="textarea1"
-        style="width: 260px"
-        autosize
-        type="textarea"
-        placeholder="搜索历史记录"
+  <div class="flex flex-wrap gap-4 items-center">
+    <font size="4">筛选 ：</font>
+    <el-select v-model="value" placeholder="信息类型" style="width: 200px">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
       />
-    </el-col> 
-    <el-col :span="2" > 
-      <el-button type="primary" :icon="Search" align="right">搜索</el-button>
-    </el-col> 
-    <el-col :span="2">
-      <el-button type="primary" :icon="Share" align="right" />
-    </el-col> 
-  </el-row>
-  <br>
+    </el-select>
+    <el-select v-model="value" placeholder="是否遗忘" style="width: 200px">
+      <el-option
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      />
+    </el-select>
+    <el-time-select
+      v-model="value"
+      style="width: 200px"
+      start="08:30"
+      step="00:15"
+      end="18:30"
+      placeholder="时间"
+    /> 
+    <!--这里时间筛选和其他的没对齐，之后再调-->
+  </div>
   <br>
   <el-table
     ref="multipleTableRef"
@@ -57,22 +67,16 @@
     </el-table-column>
   </el-table>
   <div style="margin-top: 20px">
-    <el-button @click="toggleSelection([tableData[0], tableData[2]])">
-      Toggle selection status of second and third rows
-    </el-button>
     <el-button @click="toggleSelection()">Clear selection</el-button>
   </div>
   <br>
   <br>
-  <div class="example-pagination-block">
-    <el-pagination layout="prev, pager, next" :total="50"/>
-  </div>
+  <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
 </template>
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { ElTable } from 'element-plus'
-import { Search, Share } from '@element-plus/icons-vue'
 
 interface User {
   date: string
@@ -81,6 +85,31 @@ interface User {
   forget_flag: string
   inf_type: string
 }
+
+const value = ref('')
+
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+]
 
 const search = ref('')
 const filterTableData = computed(() =>
@@ -181,3 +210,9 @@ const tableData: User[] = [
   },
 ]
 </script>   
+
+<style scoped>
+  .el-pagination {
+    justify-content: center;
+  }
+</style>

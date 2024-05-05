@@ -49,7 +49,7 @@
         </el-col>
         <el-col :span="12">
             <h2> 在原始文本中的信息 </h2>
-          <el-scrollbar style="height: 400px; margin-left: -45px;margin-right: -45px;">
+          <el-scrollbar style="height: 400px; margin-left: -45px; margin-right: -45px;">
             <el-card
               class="text-card"
               v-for="(item, index) in textPanel"

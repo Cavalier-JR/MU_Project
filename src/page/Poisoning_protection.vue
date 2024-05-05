@@ -1,4 +1,23 @@
 <template>
+  <el-row :gutter="20">
+    <el-col :span="6">
+      <el-input
+        v-model="textarea1"
+        style="width: 260px"
+        autosize
+        type="textarea"
+        placeholder="搜索历史记录"
+      />
+    </el-col> 
+    <el-col :span="2" > 
+      <el-button type="primary" :icon="Search" align="right">搜索</el-button>
+    </el-col> 
+    <el-col :span="2">
+      <el-button type="primary" :icon="Share" align="right" />
+    </el-col> 
+  </el-row>
+  <br>
+  <br>
   <el-table
     ref="multipleTableRef"
     :data="tableData"
@@ -19,19 +38,15 @@
     </el-table-column>
   </el-table>
   <div style="margin-top: 20px">
-    <el-button @click="toggleSelection([tableData[0], tableData[2]])">
-      Toggle selection status of second and third rows
-    </el-button>
     <el-button @click="toggleSelection()">Clear selection</el-button>
   </div>
-  <div class="example-pagination-block">
-    <el-pagination layout="prev, pager, next" :total="50"/>
-  </div>
+  <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ElTable } from 'element-plus'
+import { Search, Share } from '@element-plus/icons-vue'
 
 interface User {
   model: string
@@ -154,3 +169,9 @@ const tableData: User[] = [
   },
 ]
 </script>    
+  
+<style scoped>
+  .el-pagination {
+    justify-content: center;
+  }
+</style>
