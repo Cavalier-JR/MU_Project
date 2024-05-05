@@ -37,6 +37,11 @@ const routes = [
                 path: "test",
                 name: "test",
                 component: () => import("../page/Test.vue"),
+            },
+            {
+                path: "ClassUnlearn",
+                name: "ClassUnlearn",
+                component: () => import("../page/Personal/ClassUnlearn.vue"),
             }
         ],
     },
