@@ -42,6 +42,11 @@ const routes = [
                 path: "forgotten_record",
                 name: "forgotten_record",
                 component: () => import("../page/Forgotten_record.vue"),
+            },
+            {
+                path: "poisoning_protection",
+                name: "poisoning_protection",
+                component: () => import("../page/Poisoning_protection.vue"),
             }
         ],
     },

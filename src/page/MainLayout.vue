@@ -149,6 +149,10 @@ export default {
           title: "遗忘记录",
           index: "Forgotten_record",
         },
+        {
+          title: "投毒防护",
+          index: "Poisoning_protection",
+        },
       ],
     };
   },

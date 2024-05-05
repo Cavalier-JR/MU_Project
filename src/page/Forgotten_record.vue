@@ -35,7 +35,7 @@
   
   interface User {
     date: string
-    id: string
+    id: data
     forget_content: string
     forget_flag: string
     inf_type: string
