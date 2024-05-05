@@ -24,6 +24,9 @@
     </el-button>
     <el-button @click="toggleSelection()">Clear selection</el-button>
   </div>
+  <div class="example-pagination-block">
+    <el-pagination layout="prev, pager, next" :total="50"/>
+  </div>
 </template>
 
 <script lang="ts" setup>

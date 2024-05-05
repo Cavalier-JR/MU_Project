@@ -57,7 +57,7 @@
             text-color="#fff"
             active-text-color="#5C3317"
           >
-            <el-menu-item index="1" class="fr">xxxx公司</el-menu-item>
+            <el-menu-item index="1" class="fr">小黑子公司</el-menu-item>
             <el-sub-menu index="2" class="fr">
               <template #title class="fr">我的工作台</template>
               <el-menu-item index="2-1">我的消息</el-menu-item>
