@@ -1,6 +1,6 @@
 <template>
   <div id="user">
-    <h2>用户中心</h2>
+    <h2>这里是用户中心</h2>
   </div>
 </template>
  
