@@ -57,7 +57,7 @@
             text-color="#fff"
             active-text-color="#5C3317"
           >
-            <el-menu-item index="1" class="fr">xxxx公司</el-menu-item>
+            <el-menu-item index="1" class="fr">小黑子公司</el-menu-item>
             <el-sub-menu index="2" class="fr">
               <template #title class="fr">我的工作台</template>
               <el-menu-item index="2-1">我的消息</el-menu-item>
@@ -124,26 +124,29 @@ export default {
           index: "user",
         },
         {
-          title: "曼波",
-          subs: [
-            {
-              title: "哈基米",
-              index: "articleList",
-            },
-          ],
-        },
-        {
           title: "图片遗忘",
           subs: [
             {
-              title: "哈基米",
+              title: "类别遗忘",
               index: "articleList",
+            },
+            {
+              title: "部分遗忘",
+              index: "pic_partially",
             },
           ],
         },
         {
           title: "文本遗忘",
           index: "test",
+        },
+        {
+          title: "遗忘记录",
+          index: "Forgotten_record",
+        },
+        {
+          title: "投毒防护",
+          index: "Poisoning_protection",
         },
       ],
     };

@@ -34,9 +34,24 @@ const routes = [
                 component: () => import("../page/article/ArticleList.vue"),
             },
             {
+                path: "pic_partially",
+                name: "pic_partially",
+                component: () => import("../page/Pic_partially.vue"),
+            },
+            {
                 path: "test",
                 name: "test",
                 component: () => import("../page/Test.vue"),
+            },
+            {
+                path: "forgotten_record",
+                name: "forgotten_record",
+                component: () => import("../page/Forgotten_record.vue"),
+            },
+            {
+                path: "poisoning_protection",
+                name: "poisoning_protection",
+                component: () => import("../page/Poisoning_protection.vue"),
             }
         ],
     },
