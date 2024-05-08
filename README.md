@@ -79,5 +79,21 @@ git 查看本地分支
 git branch
 ```
 
+更改master分支到main
+```
+git checkout -b main
+```
+将master分支合并到main
+```
+git merge master
+```
 
+重新拉取
+```
+git pull origin main --allow-unrelated-histories
+```
+
+```
+git push origin main
+```
 
