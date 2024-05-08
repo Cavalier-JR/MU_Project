@@ -29,36 +29,51 @@ const routes = [
                 component: () => import("../page/User.vue"),
             },
             {
-                path: "articleList",
-                name: "articleList",
-                component: () => import("../page/article/ArticleList.vue"),
+                path: "class_unlearn",
+                name: "class_unlearn",
+                component: () => import("../page/Personal/class_unlearn.vue"),
             },
             {
                 path: "pic_partially",
                 name: "pic_partially",
-                component: () => import("../page/Pic_partially.vue"),
+                component: () => import("../page/Personal/Pic_partially.vue"),
             },
             {
-                path: "test",
-                name: "test",
-                component: () => import("../page/Test.vue"),
+                path: "text_unlearn",
+                name: "text_unlearn",
+                component: () => import("../page/Personal/Text_unlearn.vue"),
             },
             {
-                path: "forgotten_record",
+                path: 'InitialPage', // 公司初始信息 各种图表
+                name: "InitialPage",
+                component: () => import("../page/Company/InitialPage.vue")
+            },
+            {
+                path: 'Forgotten_record', // 遗忘记录
                 name: "forgotten_record",
-                component: () => import("../page/Forgotten_record.vue"),
+                component: () => import("../page/Company/Forgotten_record.vue")
             },
             {
-                path: "poisoning_protection",
+                path: "Poisoning_protection", //投毒保护
                 name: "poisoning_protection",
-                component: () => import("../page/Poisoning_protection.vue"),
-            }
+                component: () => import("../page/Company/Poisoning_protection.vue")
+            },
+            {
+                path: 'AdvicePart', // 优化建议-部分遗忘
+                name: "AdvicePart",
+                component: () => import("../page/Company/AdvicePart.vue")
+            },
+            {
+                path: 'AdviceClass', // 优化建议-类别遗忘
+                name: "AdviceClass",
+                component: () => import("../page/Company/AdviceClass.vue")
+            },
+            {
+                path: 'AdviceText', // 优化建议-文本遗忘
+                name: "AdviceText",
+                component: () => import("../page/Company/AdviceText.vue")
+            },
         ],
-    },
-    {
-        path: '/InitialPage',
-        name: "InitialPage",
-        component: () => import("../page/Company/InitialPage.vue")
     },
 ];
 

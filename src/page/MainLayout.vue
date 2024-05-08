@@ -59,7 +59,9 @@
           >
             <el-menu-item index="1" class="fr">小黑子公司</el-menu-item>
             <el-sub-menu index="2" class="fr">
-              <template #title class="fr">我的工作台</template>
+              <template #title >
+                <span class="fr">我的工作台</span>
+              </template>
               <el-menu-item index="2-1">我的消息</el-menu-item>
               <el-menu-item index="2-2">设置</el-menu-item>
               <el-menu-item index="2-3" @click="exitLogin"
@@ -124,29 +126,46 @@ export default {
           index: "user",
         },
         {
-          title: "图片遗忘",
+          title: "用户端",
           subs: [
             {
-              title: "类别遗忘",
-              index: "articleList",
+              title: "图片类别遗忘",
+              index: "class_unlearn",
             },
             {
-              title: "部分遗忘",
+              title: "图片部分遗忘",
               index: "pic_partially",
+            },
+            {
+              title: "文本遗忘",
+              index: "text_unlearn",
             },
           ],
         },
         {
-          title: "文本遗忘",
-          index: "test",
-        },
-        {
-          title: "遗忘记录",
-          index: "Forgotten_record",
-        },
-        {
-          title: "投毒防护",
-          index: "Poisoning_protection",
+          title: "公司端",
+          subs: [
+            {
+              title: "遗忘记录",
+              index: "Forgotten_record",
+            },
+            {
+              title: "投毒防护",
+              index: "Poisoning_protection",
+            },
+            {
+              title: "优化建议-部分遗忘",
+              index: "AdvicePart",
+            },
+            {
+              title: "优化建议-类别遗忘",
+              index: "AdviceClass",
+            },
+            {
+              title: "优化建议-文本遗忘",
+              index: "AdviceText",
+            },
+          ],
         },
       ],
     };

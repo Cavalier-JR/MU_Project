@@ -22,9 +22,8 @@ use([
   LegendComponent
 ]);
 
-provide(THEME_KEY, "dark");
+provide(THEME_KEY, "white");
 
-// 扇形图
 const option = ref({
   title: {
     text: "Traffic Sources",
@@ -63,10 +62,18 @@ const option = ref({
   ]
 });
 </script>
- 
+
+<style scoped>
+.chart {
+  height: 400px;
+}
+</style>
+
+
+
 <script>
 export default {
-  name: 'main',
+  name: 'InitialPage',
   data(){
       return {}
   },
@@ -74,10 +81,3 @@ export default {
   }
 }
 </script>
-
-
-<style scoped>
-.chart {
-  height: 400px;
-}
-</style>
