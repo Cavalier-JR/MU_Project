@@ -44,11 +44,6 @@ const routes = [
                 component: () => import("../page/Personal/Text_unlearn.vue"),
             },
             {
-                path: 'InitialPage', // 公司初始信息 各种图表
-                name: "InitialPage",
-                component: () => import("../page/Company/InitialPage.vue")
-            },
-            {
                 path: 'Forgotten_record', // 遗忘记录
                 name: "forgotten_record",
                 component: () => import("../page/Company/Forgotten_record.vue")

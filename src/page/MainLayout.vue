@@ -209,7 +209,7 @@ export default {
       if (tabPaneName == 0) {
         tabPaneName = "";
       }
-      this.$router.push("/" + tabPaneName);
+      this.$router.push("/" + tabPaneName); // TODO 这行console 报错 有bug
     },
 
     //(1)移除标签，（2）返回前一个路由
