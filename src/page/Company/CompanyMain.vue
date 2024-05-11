@@ -9,12 +9,12 @@
         <ul>
           <li><i class="fas fa-image"></i> 图片类别遗忘：忘记特定类别的图片，例如将猫类别的图片视为其他动物。</li>
           <div class="image-container">
-            <img src="../assets/Tom.png" alt="示例图片" />
-            <img src="../assets/dog.png" alt="示例图片" />
+            <img src="../../assets/Tom.png" alt="示例图片" />
+            <img src="../../assets/dog.png" alt="示例图片" />
           </div>
           <li><i class="fas fa-cut"></i> 图片部分遗忘：忘记图片中的特定内容。</li>
           <li><i class="fas fa-file-alt"></i> 文本遗忘：忘记文本中的特定信息，例如电话号码。</li>
-          <img src="../assets/textshow.png" alt="示例图片" style="max-width: 500px; height: auto;" />
+          <img src="../../assets/textshow.png" alt="示例图片" style="max-width: 500px; height: auto;" />
         </ul>
       </div>
       <div class="feature-section">

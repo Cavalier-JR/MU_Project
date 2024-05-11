@@ -37,15 +37,18 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" header-align="center" align="center"/>
-    <el-table-column type="inf_type" label="信息类型" width="150" header-align="center" align="center">
+    <el-table-column type="inf_type" label="信息类型" width="120" header-align="center" align="center">
       <template #default="scope">{{ scope.row.inf_type }}</template>
     </el-table-column>
-    <el-table-column type="forget_flag" label="是否遗忘" width="150" header-align="center" align="center">
+    <el-table-column type="forget_flag" label="是否遗忘" width="120" header-align="center" align="center">
       <template #default="scope">{{ scope.row.forget_flag }}</template>
     </el-table-column>
     <el-table-column property="forget_content" label="遗忘内容" width="300" header-align="center" align="center" />
     <el-table-column label="时间" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">{{ scope.row.date }}</template>
+    </el-table-column>
+    <el-table-column label="用户名" header-align="center" align="center" show-overflow-tooltip>
+      <template #default="scope">{{ scope.row.name }}</template>
     </el-table-column>
     <el-table-column width="170" align="center">
       <template #header>
@@ -82,6 +85,7 @@ interface User {
   forget_content: string
   forget_flag: string
   inf_type: string
+  name: string
 }
 
 const value = ref('')

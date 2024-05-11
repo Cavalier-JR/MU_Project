@@ -57,7 +57,7 @@
             text-color="#fff"
             active-text-color="#5C3317"
           >
-            <el-menu-item index="1" class="fr">小黑子公司</el-menu-item>
+            <el-menu-item index="1" class="fr">小明</el-menu-item>
             <el-sub-menu index="2" class="fr">
               <template #title >
                 <span class="fr">我的工作台</span>
@@ -111,65 +111,40 @@ export default {
   data() {
     return {
       //当前选项卡
-      activeTabName: "home",
+      activeTabName: "UserHome",
       //需要显示的标签数组
       editableTabs: [
         {
           title: "首页",
-          index: "home",
+          index: "UserHome",
         },
       ],
       //左侧菜单选项配置
       asideMenu: [
         {
-          title: "用户",
-          index: "user",
+          title: "首页",
+          index: "UserHome",
         },
         {
-          title: "用户端",
+          title: "图片遗忘",
           subs: [
             {
-              title: "图片类别遗忘",
-              index: "class_unlearn",
+              title: "类别遗忘",
+              index: "Class_unlearn",
             },
             {
-              title: "图片部分遗忘",
-              index: "pic_partially",
-            },
-            {
-              title: "文本遗忘",
-              index: "text_unlearn",
-            },
-            {
-              title: "遗忘记录",
-              index: "forget_record",
+              title: "部分遗忘",
+              index: "Pic_partially",
             },
           ],
         },
         {
-          title: "公司端",
-          subs: [
-            {
-              title: "遗忘记录",
-              index: "Forgotten_record",
-            },
-            {
-              title: "投毒防护",
-              index: "Poisoning_protection",
-            },
-            {
-              title: "优化建议-部分遗忘",
-              index: "AdvicePart",
-            },
-            {
-              title: "优化建议-类别遗忘",
-              index: "AdviceClass",
-            },
-            {
-              title: "优化建议-文本遗忘",
-              index: "AdviceText",
-            },
-          ],
+          title: "文本遗忘",
+          index: "Text_unlearn",
+        },
+        {
+          title: "遗忘记录",
+          index: "Forget_record",
         },
       ],
     };

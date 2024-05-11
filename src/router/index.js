@@ -8,44 +8,59 @@ const routes = [
     {
         path: '/login',
         name: "login",
-        component: () => import("../page/login/Login.vue")
+        component: () => import("../page/Login.vue")
     },
     {
         path: "/user",
-        name: 'Layout',
-        component: () => import("../page/MainLayout.vue"),
+        name: 'UserLayout',
+        component: () => import("../page/Personal/UserLayout.vue"),
         // 嵌套路由
         children: [
             {
-                // 这里不设置值，是把main作为默认页面
-                path: "home",
-                name: "Main",
-                component: () => import("../page/Main.vue"),
+                path: '', 
+                redirect: '/user/UserHome',
             },
             {
-                path: "user",
-                name: "User",
-                component: () => import("../page/User.vue"),
+                path: 'UserHome', 
+                name: "userhome",
+                component: () => import("../page/Personal/UserMain.vue")
             },
             {
-                path: "class_unlearn",
+                path: "Class_unlearn",
                 name: "class_unlearn",
                 component: () => import("../page/Personal/class_unlearn.vue"),
             },
             {
-                path: "pic_partially",
+                path: "Pic_partially",
                 name: "pic_partially",
                 component: () => import("../page/Personal/Pic_partially.vue"),
             },
             {
-                path: "text_unlearn",
+                path: "Text_unlearn",
                 name: "text_unlearn",
                 component: () => import("../page/Personal/Text_unlearn.vue"),
             },
             {
-                path: "forget_record",
+                path: "Forget_record", // 用户端-遗忘记录
                 name: "forget_record",
                 component: () => import("../page/Personal/Forget_record.vue"),
+            },
+        ],
+    },
+    {
+        path: "/company",
+        name: 'CompanyLayout',
+        component: () => import("../page/Company/CompanyLayout.vue"),
+        // 嵌套路由
+        children: [
+            {
+                path: '', 
+                redirect: '/company/CompanyHome',
+            },
+            {
+                path: 'CompanyHome', 
+                name: "companyhome",
+                component: () => import("../page/Company/CompanyMain.vue")
             },
             {
                 path: 'Forgotten_record', // 公司端-遗忘记录
@@ -59,17 +74,17 @@ const routes = [
             },
             {
                 path: 'AdvicePart', // 优化建议-部分遗忘
-                name: "AdvicePart",
+                name: "advicePart",
                 component: () => import("../page/Company/AdvicePart.vue")
             },
             {
                 path: 'AdviceClass', // 优化建议-类别遗忘
-                name: "AdviceClass",
+                name: "adviceClass",
                 component: () => import("../page/Company/AdviceClass.vue")
             },
             {
                 path: 'AdviceText', // 优化建议-文本遗忘
-                name: "AdviceText",
+                name: "adviceText",
                 component: () => import("../page/Company/AdviceText.vue")
             },
         ],

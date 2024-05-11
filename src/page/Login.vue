@@ -1,43 +1,71 @@
 <template>
   <div class="login">
-   
-
     <div class="loginBox">
-      <h3>用户登录</h3>
-      <span class="deadline"></span>
-      <div class="form">
-        <div class="input">
-          <img src="../../assets/login/username.png" alt="" />
-          <input type="text" placeholder="请输入用户名" v-model="username" />
-        </div>
-        <div class="input">
-          <img src="../../assets/login/password.png" alt="" />
-          <input type="password" placeholder="请输入密码" v-model="password" />
-        </div>
+      <el-tabs stretch="true" class="tags">
+        <el-tab-pane label="用户端" class="UserTag">
+          <h3>用户端登录</h3>
+          <div class="form">
+            <div class="input">
+              <img src="../assets/login/username.png" alt="" />
+              <input type="text" placeholder="请输入用户名" v-model="username" />
+            </div>
+            <div class="input">
+              <img src="../assets/login/password.png" alt="" />
+              <input type="password" placeholder="请输入密码" v-model="password" />
+            </div>
+            <div class="btn" @click="UserSet"> 登录 </div>
+          </div>
+        </el-tab-pane>
+        <el-tab-pane label="公司端">
+          <h3>公司端登录</h3>
+          <div class="form">
+            <div class="input">
+              <img src="../assets/login/username.png" alt="" />
+              <input type="text" placeholder="请输入公司账号" v-model="username" />
+            </div>
+            <div class="input">
+              <img src="../assets/login/password.png" alt="" />
+              <input type="password" placeholder="请输入密码" v-model="password" />
+            </div>
+            <div class="btn" @click="CompanySet"> 登录 </div>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
       
-        <div class="btn" @click="setFlag">登录</div>
-      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 
-import Header from "./Header.vue";
+
 import { useRouter, useRoute } from "vue-router";
 const $router = useRouter();
-let username = "1111";
-let password = "2222";
+let username = "Lihua";
+let password = "1234";
 
-const setFlag = () => {
+const UserSet = () => {
   localStorage.setItem("isLogin", 1);
-  $router.replace("/user");
+  $router.push("/user");
 };
+
+const CompanySet = () => {
+  localStorage.setItem("isLogin", 1);
+  $router.push("/company");
+};
+
 </script>
 
 <style>
+.UserTag {
+  font-size: 3rem;
+}
+.tags{
+  font-size: 3rem;
+  margin-top: 50px; /* 可选：设置顶部边距 */
+}
 .login {
-  background-image: url(../../assets/login/bg.png);
+  background-image: url(../assets/login/bg.png);
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
@@ -69,7 +97,7 @@ const setFlag = () => {
 .loginBox {
   width: 62rem;
   height: 50rem;
-  background-image: url(../../assets/login/loginbox.png);
+  background-image: url(../assets/login/loginbox.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 
@@ -88,7 +116,7 @@ const setFlag = () => {
   font-size: 3rem;
   font-weight: 600;
   color: rgb(62, 197, 231);
-  margin-top: 7rem;
+  margin-top: 20px;
   text-align: center;
 }
 .deadline {
@@ -100,8 +128,8 @@ const setFlag = () => {
   margin-top: 1rem;
 }
 .form {
-  width: 44.5rem;
-  height: 44.5rem;
+  width: 44rem;
+  height: 44rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,7 +140,7 @@ const setFlag = () => {
   width: 28rem;
   height: 5rem;
   line-height: 5rem;
-  background-image: url(../../assets/login/input.png);
+  background-image: url(../assets/login/input.png);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -150,6 +178,5 @@ const setFlag = () => {
   color: rgb(250, 250, 250);
   background-image: url(/src/assets/login/login.png);
   cursor: pointer;
-  margin-bottom: 5rem;
 }
 </style>
