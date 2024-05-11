@@ -140,6 +140,10 @@ export default {
               title: "文本遗忘",
               index: "text_unlearn",
             },
+            {
+              title: "遗忘记录",
+              index: "forget_record",
+            },
           ],
         },
         {
@@ -200,6 +204,7 @@ export default {
         return;
       }
       this.editableTabs.push(obj);
+      this.$router.push("/user/" + obj.index);
     },
 
     //点击切换tab标签，切换组件
@@ -209,7 +214,7 @@ export default {
       if (tabPaneName == 0) {
         tabPaneName = "";
       }
-      this.$router.push("/" + tabPaneName); // TODO 这行console 报错 有bug
+      this.$router.push("/user/" + tabPaneName); // TODO 这行console 报错 有bug
     },
 
     //(1)移除标签，（2）返回前一个路由
@@ -228,7 +233,7 @@ export default {
       }
       //高亮和退到前一个路由
       this.activeTabName = routeIndex;
-      this.$router.push("/" + routeIndex);
+      this.$router.push("/user/" + routeIndex);
       //删除当前关闭的路由标签
       this.editableTabs.splice(eleIndex, 1);
     },

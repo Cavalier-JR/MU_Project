@@ -2,21 +2,20 @@ import {createWebHistory, createRouter} from "vue-router"
 
 const routes = [
     {
+        path: '/',
+        redirect: '/login'
+    },
+    {
         path: '/login',
         name: "login",
         component: () => import("../page/login/Login.vue")
     },
     {
-        path: "/",
+        path: "/user",
         name: 'Layout',
         component: () => import("../page/MainLayout.vue"),
         // 嵌套路由
         children: [
-            {
-                // 这里不设置值，是把main作为默认页面
-                path: "",
-                redirect: '/home'
-            },
             {
                 // 这里不设置值，是把main作为默认页面
                 path: "home",
@@ -44,12 +43,17 @@ const routes = [
                 component: () => import("../page/Personal/Text_unlearn.vue"),
             },
             {
-                path: 'Forgotten_record', // 遗忘记录
+                path: "forget_record",
+                name: "forget_record",
+                component: () => import("../page/Personal/Forget_record.vue"),
+            },
+            {
+                path: 'Forgotten_record', // 公司端-遗忘记录
                 name: "forgotten_record",
                 component: () => import("../page/Company/Forgotten_record.vue")
             },
             {
-                path: "Poisoning_protection", //投毒保护
+                path: "Poisoning_protection", // 投毒保护
                 name: "poisoning_protection",
                 component: () => import("../page/Company/Poisoning_protection.vue")
             },

@@ -31,7 +31,7 @@ let password = "2222";
 
 const setFlag = () => {
   localStorage.setItem("isLogin", 1);
-   $router.replace("/");
+  $router.replace("/user");
 };
 </script>
 

@@ -142,9 +142,9 @@ setup() {
         let processedText = formData.value.text;
 
         if (formData.value.sensitiveInfo && selectedOptions.value.length) {
-        selectedOptions.value.forEach(option => {
-            processedText = processedText.replace(formData.value.sensitiveInfo, option);
-        });
+          selectedOptions.value.forEach(option => {
+              processedText = processedText.replace(formData.value.sensitiveInfo, option);
+          });
         }
         
         textPanel.value.push(processedText);
@@ -157,11 +157,11 @@ setup() {
     };
 
     const selectText = (index) => {
-        formData.value.text = textPanel.value[index];
+      formData.value.text = textPanel.value[index];
     };
 
     const showReplacementOptions = () => {
-    showOptions.value = true;
+      showOptions.value = true;
     };
 
     const showTheRest = () => {

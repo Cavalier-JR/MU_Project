@@ -1,7 +1,6 @@
 <template>
   <el-card class="el-card" shadow="always">
     <div class="centered-text">上传图片遗忘</div>
-    <div class="centered-plus">+</div>
     <el-upload
       align="center"
       ref="upload"
@@ -43,7 +42,6 @@
     <el-progress :text-inside="true" :stroke-width="26" :percentage="70" />
   </div>
   <p class="text-bottom"> 用时：1.2s </p>
-  <p class="text-bottom"> 遗忘前模型精确度：0.93&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遗忘后模型精确度：0.92</p>
 </template>
 
 
@@ -74,18 +72,14 @@ function Forget_Button_Click() {
 <style scoped>
   .el-card {
     width: 400px;
-    height: 290px;
+    height: 150px;
     margin: auto;
   }
   .centered-text {
     text-align: center; /* 让文本居中 */
     font-size: 25px; /* 设置字体大小 */
     margin-top: 3px; /* 可选：设置顶部边距 */
-  }
-  .centered-plus {
-    text-align: center; /* 让文本居中 */
-    font-size: 150px; /* 设置字体大小 */
-    margin-bottom: 10px; /* 可选：设置底部边距 */
+    margin-bottom: 30px; /* 可选：设置底部边距 */
   }
   .function_select{
     text-align: center;

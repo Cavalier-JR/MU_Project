@@ -38,7 +38,7 @@
     </el-table-column>
   </el-table>
   <div style="margin-top: 20px">
-    <el-button @click="toggleSelection()">Clear selection</el-button>
+    <el-button @click="toggleSelection()">重置选择</el-button>
   </div>
   <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
 </template>

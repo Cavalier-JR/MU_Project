@@ -37,13 +37,12 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" header-align="center" align="center"/>
-    <el-table-column type="inf_type" label="信息类型" width="120" header-align="center" align="center">
+    <el-table-column type="inf_type" label="信息类型" width="150" header-align="center" align="center">
       <template #default="scope">{{ scope.row.inf_type }}</template>
     </el-table-column>
-    <el-table-column type="forget_flag" label="是否遗忘" width="120" header-align="center" align="center">
+    <el-table-column type="forget_flag" label="是否遗忘" width="150" header-align="center" align="center">
       <template #default="scope">{{ scope.row.forget_flag }}</template>
     </el-table-column>
-    <el-table-column property="id" label="ID" width="120" header-align="center" align="center" />
     <el-table-column property="forget_content" label="遗忘内容" width="300" header-align="center" align="center" />
     <el-table-column label="时间" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">{{ scope.row.date }}</template>
@@ -80,7 +79,6 @@ import { ElTable } from 'element-plus'
 
 interface User {
   date: string
-  id: data
   forget_content: string
   forget_flag: string
   inf_type: string
@@ -145,7 +143,6 @@ const handleSelectionChange = (val: User[]) => {
 
 const tableData: User[] = [
   {
-    id: 114514,
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-05-05 11:45:14',
@@ -153,7 +150,6 @@ const tableData: User[] = [
     forget_content: 'No. 189, Grove St, Los Angeles',
   },
   {
-    id: 114513,
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-05-05 11:27:23',
@@ -161,7 +157,6 @@ const tableData: User[] = [
     forget_content: 'NCEPU',
   },
   {
-    id: 114512,
     inf_type: '文本',
     forget_flag: '已遗忘',
     date: '2024-05-05 11:27:15',
@@ -169,7 +164,6 @@ const tableData: User[] = [
     forget_content: 'Cai Yunze',
   },
   {
-    id: 114511,
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-05-05 11:25:59',
@@ -177,7 +171,6 @@ const tableData: User[] = [
     forget_content: 'No. 2, Beinong Road',
   },
   {
-    id: 114510,
     inf_type: '文本',
     forget_flag: '已遗忘',
     date: '2024-05-05 10:45:18',
@@ -185,7 +178,6 @@ const tableData: User[] = [
     forget_content: 'Mobile phone number is 114514',
   },
   {
-    id: 114509,
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-05-05 10:32:13',
@@ -193,7 +185,6 @@ const tableData: User[] = [
     forget_content: 'Meet at seven tonight',
   },
   {
-    id: 114508,
     inf_type: '文本',
     forget_flag: '正在遗忘',
     date: '2024-05-05 09:16:51',
@@ -201,7 +192,6 @@ const tableData: User[] = [
     forget_content: 'Meeting on May 2nd',
   },
   {
-    id: 114507,
     inf_type: '文本',
     forget_flag: '正在遗忘',
     date: '2024-05-04 23:13:51',
