@@ -10,3 +10,11 @@
     font-family:'斗鱼体';
     src: url('./douyuFont.otf') format('truetype'); 
 }
+@font-face{
+    font-family:'泼墨体';
+    src: url('./三极泼墨体.ttf') format('truetype'); 
+}
+@font-face{
+    font-family:'大楷体';
+    src: url('./阿里妈妈东方大楷体.ttf') format('truetype'); 
+}
