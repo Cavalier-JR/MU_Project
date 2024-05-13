@@ -8,38 +8,26 @@
     <el-main>
       <el-row>
         <el-col :span="11">
-          <el-form :model="formData">
-            <el-form-item>
-              <el-button class="custom-button">猫🐱</el-button>
-              <el-button class="custom-button">狗🐕</el-button>
-              <el-button class="custom-button" >旋旋🐕</el-button>
-              <el-button class="custom-button">鸡🐓</el-button>
-              <el-button class="custom-button" >只因🐓</el-button>
-              <el-button class="custom-button">只因🐓</el-button>
-              <el-button class="custom-button">猪🐖</el-button>
-            </el-form-item>
-          </el-form>
-
-          <div class="function_select">
-            <p style="margin-bottom: 20px;"> 请选择你的遗忘方法: </p>
-            <el-radio-group v-model="radio">
-              <el-radio :label="3" size="large" border>GA</el-radio>
-              <el-radio :label="6" size="large" border>FT</el-radio>
-              <el-radio :label="9" size="large" border>RL</el-radio>
-            </el-radio-group>
-          </div>
-          <div class="button">
-            <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
-          </div>
+          <div class="select_title">
+            <p> 请选择你想遗忘的类别 </p>
+          </div> 
+          <el-col :span="11">
+            <div class="select_body"> 
+              <el-cascader v-model="value" :options="options" @change="handleChange" clearable :show-all-levels="false" collapse-tags/>
+            </div> 
+          </el-col>
+          <el-col>
+            <div class="button">
+              <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
+            </div>
+          </el-col>    
           <div class="demo-progress" style="margin-top: 20px">
             <el-progress :text-inside="true" :stroke-width="26" :percentage="70" />
           </div>
-
+          <p class="text-bottom"> 当前遗忘方法是:GT </p>
           <p class="text-bottom"> 用时：1.2s </p>
-
-
         </el-col>
-
+       
         <el-col :span="13">
           <el-table :data="tableData" style="width: 100%; height: 100vh;" border stripe>
             <el-table-column label="图像" prop="image" width="180"></el-table-column>
@@ -52,24 +40,12 @@
               <el-table-column prop="afterConfidence" label="权" width="80"></el-table-column>
             </el-table-column>
           </el-table>
-        </el-col>          
-
-
+        </el-col>         
       </el-row>
 
-  </el-main>
-</el-container>
-
-
-
-
-
-
-
+    </el-main>
+  </el-container>
 </template>
-
-
-
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
@@ -103,6 +79,58 @@ const tableData = reactive([
 { image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 }
 ]);
 
+const value = ref([])
+
+const handleChange = (value) => {
+  console.log(value)
+}
+
+const options = [
+  {
+    value: 'animal',
+    label: '动物',
+    children: [
+      {
+        value: 'cat',
+        label: '猫🐱',
+      },
+      {
+        value: 'dog',
+        label: '狗🐕',
+      },
+      {
+        value: 'chicken',
+        label: '鸡🐓',
+      },
+      {
+        value: 'pig',
+        label: '猪🐖',
+      },
+    ],
+  },
+  {
+    value: 'vehicle',
+    label: '车辆',
+    children: [
+      {
+        value: 'bike',
+        label: '自行车',
+      },
+      {
+        value: 'moto',
+        label: '摩托车',
+      },
+      {
+        value: 'car',
+        label: '轿车',
+      },
+      {
+        value: 'bus',
+        label: '公交车',
+      },
+    ],
+  },
+]
 </script>
 
 
@@ -212,4 +240,17 @@ margin: 1px;
   text-align: center;
   font-size: 20px; /* 设置字体大小 */
 }
+.select_title {
+  margin-top: 10px; /* 可选：设置顶部边距 */
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px; /* 设置字体大小 */
+}
+.select_body{
+  margin-top: 30px; /* 可选：设置顶部边距 */
+  margin-bottom: 100px;
+  margin: auto;
+  font-size: 30px; /* 设置字体大小 */
+}
+
 </style>
