@@ -26,25 +26,63 @@
     border  
     @selection-change="handleSelectionChange"
   >
-    <el-table-column type="selection" width="50" header-align="center" align="center" />
+    <el-table-column type="selection" width="55" header-align="center" align="center" />
     <el-table-column property="model" label="模型名称" width="120" header-align="center" align="center" />
     <el-table-column property="progress" label="进度" width="180" header-align="center" align="center" />
-    <el-table-column property="expected_acc" label="预计acc" width="100" header-align="center" align="center" />
-    <el-table-column property="actual_acc" label="实际acc" width="100" header-align="center" align="center" />
-    <el-table-column property="recovered_acc" label="恢复后acc" width="110" header-align="center" align="center" />
+    <el-table-column property="expected_acc" label="预计acc" width="120" header-align="center" align="center" />
+    <el-table-column property="actual_acc" label="实际acc" width="120" header-align="center" align="center" />
+    <el-table-column property="recovered_acc" label="恢复后acc" width="120" header-align="center" align="center" />
     <el-table-column property="cost_time" label="用时" width="100" header-align="center" align="center" />
-    <el-table-column property="state" label="状态" width="90" header-align="center" align="center" />
+    <el-table-column property="state" label="状态" width="100" header-align="center" align="center" />
     <el-table-column width="170" align="center">
       <template #header>
         <el-input v-model="search" size="small" placeholder="搜索历史记录" />
       </template>
       <template #default="scope">
-        <el-button ref="btnRef" type="primary" @click="open = true">
+        <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
           查看详情
         </el-button>
+
+        <el-drawer
+          v-model="drawer"
+          title="投毒遗忘效果图"
+          :direction="rtl"
+          :before-close="handleClose"
+        >
+          <div class="text-container">
+            <p> 投毒防护前 </p>
+          </div>
+          <div class="image-container">
+            <img src="../../assets/before_UL.png" alt="示例图片" />
+          </div>
+          <div class="text-container">
+            <p> 投毒防护后 </p>
+          </div>
+          <div class="image-container">
+            <img src="../../assets/after_UL.png" alt="示例图片" />
+          </div>
+        </el-drawer>
       </template>
     </el-table-column>
   </el-table>
+  <el-tour v-model="open">
+    <el-tour-step
+      title="Center"
+      description="Displayed in the center of screen."
+    />
+    <el-tour-step
+      title="Right"
+      description="On the right of target."
+      placement="right"
+      :target="btnRef?.$el"
+    />
+    <el-tour-step
+      title="Top"
+      description="On the top of target."
+      placement="top"
+      :target="btnRef?.$el"
+    />
+  </el-tour>
   <div style="margin-top: 20px">
     <el-button @click="toggleSelection()">重置选择</el-button>
   </div>
@@ -55,11 +93,9 @@
 import { ref } from 'vue'
 import { ElTable } from 'element-plus'
 import { Search, Share } from '@element-plus/icons-vue'
-import type { ButtonInstance } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
 
-const btnRef = ref<ButtonInstance>()
-
-const open = ref(false)
+const drawer = ref(false)
 
 interface User {
   model: string
@@ -76,9 +112,6 @@ const multipleSelection = ref<User[]>([])
 const toggleSelection = (rows?: User[]) => {
   if (rows) {
     rows.forEach((row) => {
-      // TODO: improvement typing when refactor table
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       multipleTableRef.value!.toggleRowSelection(row, undefined)
     })
   } else {
@@ -87,6 +120,16 @@ const toggleSelection = (rows?: User[]) => {
 }
 const handleSelectionChange = (val: User[]) => {
   multipleSelection.value = val
+}
+
+const handleClose = (done: () => void) => {
+  ElMessageBox.confirm('你确定要关闭吗?')
+    .then(() => {
+      done()
+    })
+    .catch(() => {
+      // catch error
+    })
 }
 
 const tableData: User[] = [
@@ -186,5 +229,17 @@ const tableData: User[] = [
 <style scoped>
   .el-pagination {
     justify-content: center;
+  }
+  .image-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+  }
+  .text-container
+  {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 </style>
