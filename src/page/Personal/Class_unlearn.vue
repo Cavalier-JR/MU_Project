@@ -6,29 +6,27 @@
       <h1>类别遗忘</h1>
     </el-header>
     <el-main>
-      <el-row>
-        <el-col :span="11">
+      <el-row justify="center">
+        <el-col :span="10">
           <div class="select_title">
             <p> 请选择你想遗忘的类别 </p>
           </div> 
-          <el-col :span="11">
-            <div class="select_body"> 
+          <div class="select"> 
+            <span>
               <el-cascader v-model="value" :options="options" @change="handleChange" clearable :show-all-levels="false" collapse-tags/>
-            </div> 
-          </el-col>
-          <el-col>
-            <div class="button">
+            </span>
+            <span class="button">
               <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
-            </div>
-          </el-col>    
+            </span> 
+          </div> 
           <div class="demo-progress" style="margin-top: 20px">
             <el-progress :text-inside="true" :stroke-width="26" :percentage="70" />
           </div>
-          <p class="text-bottom"> 当前遗忘方法是:GT </p>
+          <p class="text-bottom"> 当前遗忘方法是:aaaGT </p>
           <p class="text-bottom"> 用时：1.2s </p>
         </el-col>
        
-        <el-col :span="13">
+        <el-col :span="14">
           <el-table :data="tableData" style="width: 100%; height: 100vh;" border stripe>
             <el-table-column label="图像" prop="image" width="180"></el-table-column>
             <el-table-column label="遗忘前">
@@ -226,6 +224,7 @@ margin: 1px;
   margin-bottom: 15px; /* 可选：设置底部边距 */
 }
 .button {
+  margin-left: 30px;
   text-align: center;
 }
 .demo-progress {
@@ -246,11 +245,7 @@ margin: 1px;
   text-align: center;
   font-size: 30px; /* 设置字体大小 */
 }
-.select_body{
-  margin-top: 30px; /* 可选：设置顶部边距 */
-  margin-bottom: 100px;
-  margin: auto;
-  font-size: 30px; /* 设置字体大小 */
+.select{
+  margin-left: 20px;
 }
-
 </style>
