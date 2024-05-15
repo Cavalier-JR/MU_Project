@@ -6,70 +6,35 @@
       <h1>类别遗忘</h1>
     </el-header>
     <el-main>
-      <el-row>
-        <el-col :span="11">
-          <el-form :model="formData">
-            <el-form-item>
-              <el-button class="custom-button">猫🐱</el-button>
-              <el-button class="custom-button">狗🐕</el-button>
-              <el-button class="custom-button" >旋旋🐕</el-button>
-              <el-button class="custom-button">鸡🐓</el-button>
-              <el-button class="custom-button" >只因🐓</el-button>
-              <el-button class="custom-button">只因🐓</el-button>
-              <el-button class="custom-button">猪🐖</el-button>
-            </el-form-item>
-          </el-form>
-
-          <div class="function_select">
-            <p style="margin-bottom: 20px;"> 请选择你的遗忘方法: </p>
-            <el-radio-group v-model="radio">
-              <el-radio :label="3" size="large" border>GA</el-radio>
-              <el-radio :label="6" size="large" border>FT</el-radio>
-              <el-radio :label="9" size="large" border>RL</el-radio>
-            </el-radio-group>
-          </div>
-          <div class="button">
-            <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
-          </div>
-          <div class="demo-progress" style="margin-top: 20px">
-            <el-progress :text-inside="true" :stroke-width="26" :percentage="70" />
-          </div>
-
+      <el-row justify="center">
+        <el-col :span="12">
+          <div class="select_title">
+            <p> 请选择你想遗忘的类别 </p>
+          </div> 
+          <div class="select"> 
+            <span>
+              <el-cascader v-model="value" :options="options" @change="handleChange" clearable :show-all-levels="false" collapse-tags/>
+            </span>
+            <span class="button">
+              <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
+            </span> 
+          </div> 
+          <p class="text-bottom"> 当前遗忘方法是:aaaGT </p>
           <p class="text-bottom"> 用时：1.2s </p>
-
-
         </el-col>
-
-        <el-col :span="13">
-          <el-table :data="tableData" style="width: 100%; height: 100vh;" border stripe>
-            <el-table-column label="图像" prop="image" width="180"></el-table-column>
-            <el-table-column label="遗忘前">
-              <el-table-column prop="beforeCategory" label="分类结果" width="120"></el-table-column>
-              <el-table-column prop="beforeConfidence" label="权" width="80"></el-table-column>
-            </el-table-column>
-            <el-table-column label="遗忘后">
-              <el-table-column prop="afterCategory" label="分类结果" width="120"></el-table-column>
-              <el-table-column prop="afterConfidence" label="权" width="80"></el-table-column>
-            </el-table-column>
+       
+        <el-col :span="12">
+          <el-table :data="tableData" style="width: 100%" border stripe>
+            <el-table-column label="图像" prop="image" width="100" header-align="center" align="center"></el-table-column>
+            <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
+            <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center"></el-table-column>
           </el-table>
-        </el-col>          
-
-
+        </el-col>         
       </el-row>
 
-  </el-main>
-</el-container>
-
-
-
-
-
-
-
+    </el-main>
+  </el-container>
 </template>
-
-
-
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
@@ -90,19 +55,71 @@ ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的�
 };
 
 const tableData = reactive([
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '狗', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '只因', beforeConfidence: 0.99, afterCategory: '蔡徐坤', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '鸡', beforeConfidence: 0.99, afterCategory: '小黑子', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 },
-{ image: 'cat1.jpg', beforeCategory: '猫', beforeConfidence: 0.99, afterCategory: '狗', afterConfidence: 0.8 }
+{ image: 'cat1.jpg', beforeCategory: '猫', afterCategory: '狗'},
+{ image: 'cat2.jpg', beforeCategory: '狗', afterCategory: '狗'},
+{ image: 'cat3.jpg', beforeCategory: '猫', afterCategory: '羊'},
+{ image: 'cat4.jpg', beforeCategory: '猫', afterCategory: '狗'},
+{ image: 'cat5.jpg', beforeCategory: '鸡', afterCategory: '猪'},
+{ image: 'cat6.jpg', beforeCategory: '猫',  afterCategory: '狗'},
+{ image: 'cat7.jpg', beforeCategory: '猫', afterCategory: '狗'},
+{ image: 'cat8.jpg', beforeCategory: '鸡', afterCategory: '猴'},
+{ image: 'cat9.jpg', beforeCategory: '猫', afterCategory: '狗'},
+{ image: 'cat10.jpg', beforeCategory: '猫', afterCategory: '狗'},
+{ image: 'cat11.jpg', beforeCategory: '猫', afterCategory: '蛇'}
 ]);
 
+const value = ref([])
+
+const handleChange = (value) => {
+  console.log(value)
+}
+
+const options = [
+  {
+    value: 'animal',
+    label: '动物',
+    children: [
+      {
+        value: 'cat',
+        label: '猫🐱',
+      },
+      {
+        value: 'dog',
+        label: '狗🐕',
+      },
+      {
+        value: 'chicken',
+        label: '鸡🐓',
+      },
+      {
+        value: 'pig',
+        label: '猪🐖',
+      },
+    ],
+  },
+  {
+    value: 'vehicle',
+    label: '车辆',
+    children: [
+      {
+        value: 'bike',
+        label: '自行车',
+      },
+      {
+        value: 'moto',
+        label: '摩托车',
+      },
+      {
+        value: 'car',
+        label: '轿车',
+      },
+      {
+        value: 'bus',
+        label: '公交车',
+      },
+    ],
+  },
+]
 </script>
 
 
@@ -198,6 +215,7 @@ margin: 1px;
   margin-bottom: 15px; /* 可选：设置底部边距 */
 }
 .button {
+  margin-left: 50px;
   text-align: center;
 }
 .demo-progress {
@@ -211,5 +229,16 @@ margin: 1px;
   margin-bottom: 15px;
   text-align: center;
   font-size: 20px; /* 设置字体大小 */
+}
+.select_title {
+  margin-top: 10px; /* 可选：设置顶部边距 */
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px; /* 设置字体大小 */
+}
+.select{
+  margin-top: 40px; /* 可选：设置顶部边距 */
+  margin-bottom: 40px;
+  margin-left: 35px;
 }
 </style>

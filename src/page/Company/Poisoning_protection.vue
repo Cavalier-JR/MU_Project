@@ -27,16 +27,62 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" header-align="center" align="center" />
-    <el-table-column property="model" label="模型名称" width="150" header-align="center" align="center" />
-    <el-table-column property="progress" label="进度" width="200" header-align="center" align="center" />
+    <el-table-column property="model" label="模型名称" width="120" header-align="center" align="center" />
+    <el-table-column property="progress" label="进度" width="180" header-align="center" align="center" />
     <el-table-column property="expected_acc" label="预计acc" width="120" header-align="center" align="center" />
     <el-table-column property="actual_acc" label="实际acc" width="120" header-align="center" align="center" />
-    <el-table-column property="cost_time" label="用时" width="120" header-align="center" align="center" />
-    <el-table-column property="state" label="状态" width="120" header-align="center" align="center" />
-    <el-table-column label="时间" header-align="center" align="center" show-overflow-tooltip>
-      <template #default="scope">{{ scope.row.submission_time }}</template>
+    <el-table-column property="recovered_acc" label="恢复后acc" width="120" header-align="center" align="center" />
+    <el-table-column property="cost_time" label="用时" width="100" header-align="center" align="center" />
+    <el-table-column property="state" label="状态" width="100" header-align="center" align="center" />
+    <el-table-column width="170" align="center">
+      <template #header>
+        <el-input v-model="search" size="small" placeholder="搜索历史记录" />
+      </template>
+      <template #default="scope">
+        <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
+          查看详情
+        </el-button>
+
+        <el-drawer
+          v-model="drawer"
+          title="投毒遗忘效果图"
+          :direction="rtl"
+          :before-close="handleClose"
+        >
+          <div class="text-container">
+            <p> 投毒防护前 </p>
+          </div>
+          <div class="image-container">
+            <img src="../../assets/before_UL.png" alt="示例图片" />
+          </div>
+          <div class="text-container">
+            <p> 投毒防护后 </p>
+          </div>
+          <div class="image-container">
+            <img src="../../assets/after_UL.png" alt="示例图片" />
+          </div>
+        </el-drawer>
+      </template>
     </el-table-column>
   </el-table>
+  <el-tour v-model="open">
+    <el-tour-step
+      title="Center"
+      description="Displayed in the center of screen."
+    />
+    <el-tour-step
+      title="Right"
+      description="On the right of target."
+      placement="right"
+      :target="btnRef?.$el"
+    />
+    <el-tour-step
+      title="Top"
+      description="On the top of target."
+      placement="top"
+      :target="btnRef?.$el"
+    />
+  </el-tour>
   <div style="margin-top: 20px">
     <el-button @click="toggleSelection()">重置选择</el-button>
   </div>
@@ -47,14 +93,17 @@
 import { ref } from 'vue'
 import { ElTable } from 'element-plus'
 import { Search, Share } from '@element-plus/icons-vue'
+import { ElMessageBox } from 'element-plus'
+
+const drawer = ref(false)
 
 interface User {
   model: string
   state: string
-  expected_acc: data
-  actual_acc: data
+  expected_acc: string
+  actual_acc: string
+  recovered_acc: string
   cost_time: string
-  submission_time: string
   progress: string
 }
 
@@ -63,9 +112,6 @@ const multipleSelection = ref<User[]>([])
 const toggleSelection = (rows?: User[]) => {
   if (rows) {
     rows.forEach((row) => {
-      // TODO: improvement typing when refactor table
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       multipleTableRef.value!.toggleRowSelection(row, undefined)
     })
   } else {
@@ -76,6 +122,16 @@ const handleSelectionChange = (val: User[]) => {
   multipleSelection.value = val
 }
 
+const handleClose = (done: () => void) => {
+  ElMessageBox.confirm('你确定要关闭吗?')
+    .then(() => {
+      done()
+    })
+    .catch(() => {
+      // catch error
+    })
+}
+
 const tableData: User[] = [
   {
     model: 'aaa',
@@ -83,8 +139,8 @@ const tableData: User[] = [
     expected_acc: '0.96',
     actual_acc: '\\',
     cost_time: '\\',
-    submission_time: '2024-05-05 11:45:14',
-    progress: '检测'
+    recovered_acc: '\\',
+    progress: '检测',
   },
   {
     model: 'aaa',
@@ -92,8 +148,8 @@ const tableData: User[] = [
     expected_acc: '0.87',
     actual_acc: '\\',
     cost_time: '\\',
-    submission_time: '2024-05-05 11:43:06',
-    progress: '检测'
+    recovered_acc: '\\',
+    progress: '检测',
   },
   {
     model: 'aaa',
@@ -101,8 +157,8 @@ const tableData: User[] = [
     expected_acc: '0.93',
     actual_acc: '\\',
     cost_time: '\\',
-    submission_time: '2024-05-05 11:03:13',
-    progress: '检测'
+    recovered_acc: '\\',
+    progress: '检测',
   },
   {
     model: 'aaa',
@@ -110,8 +166,8 @@ const tableData: User[] = [
     expected_acc: '0.92',
     actual_acc: '\\',
     cost_time: '\\',
-    submission_time: '2024-05-05 10:45:38',
-    progress: '检测 -> 恢复'
+    recovered_acc: '\\',
+    progress: '检测 -> 恢复',
   },
   {
     model: 'aaa',
@@ -119,8 +175,8 @@ const tableData: User[] = [
     expected_acc: '0.85',
     actual_acc: '0.84',
     cost_time: '4.13s',
-    submission_time: '2024-05-05 10:13:14',
-    progress: '检测 -> 恢复 -> 验证'
+    recovered_acc: '0.89',
+    progress: '检测 -> 恢复 -> 验证',
   },
   {
     model: 'aaa',
@@ -128,8 +184,8 @@ const tableData: User[] = [
     expected_acc: '0.89',
     actual_acc: '0.87',
     cost_time: '6.12s',
-    submission_time: '2024-05-05 09:51:53',
-    progress: '检测 -> 恢复 -> 验证'
+    recovered_acc: '0.93',
+    progress: '检测 -> 恢复 -> 验证',
   },
   {
     model: 'aaa',
@@ -137,8 +193,8 @@ const tableData: User[] = [
     expected_acc: '0.93',
     actual_acc: '0.88',
     cost_time: '4.51s',
-    submission_time: '2024-05-05 09:44:12',
-    progress: '检测 -> 恢复 -> 验证'
+    recovered_acc: '0.94',
+    progress: '检测 -> 恢复 -> 验证',
   },
   {
     model: 'aaa',
@@ -146,16 +202,16 @@ const tableData: User[] = [
     expected_acc: '0.91',
     actual_acc: '0.93',
     cost_time: '5.12s',
-    submission_time: '2024-05-05 08:23:52',
+    recovered_acc: '0.96',
     progress: '检测 -> 恢复 -> 验证'
   },
   {
     model: 'aaa',
     state: '已交付',
     expected_acc: '0.97',
-    actual_acc: '0.99',
+    actual_acc: '0.93',
     cost_time: '1.62s',
-    submission_time: '2024-05-04 23:54:41',
+    recovered_acc: '0.98',
     progress: '检测 -> 恢复 -> 验证'
   },
   {
@@ -164,7 +220,7 @@ const tableData: User[] = [
     expected_acc: '0.91',
     actual_acc: '0.89',
     cost_time: '1.52s',
-    submission_time: '2024-05-04 21:21:13',
+    recovered_acc: '0.94',
     progress: '检测 -> 恢复 -> 验证'
   },
 ]
@@ -173,5 +229,17 @@ const tableData: User[] = [
 <style scoped>
   .el-pagination {
     justify-content: center;
+  }
+  .image-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+  }
+  .text-container
+  {
+    font-size: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 </style>
