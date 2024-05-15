@@ -23,7 +23,7 @@
           <p class="text-bottom"> 用时：1.2s </p>
         </el-col>
        
-        <el-col :span="12">
+        <el-col :span="12" v-show="isRightPanelVisible">
           <el-table :data="tableData" style="width: 100%" border stripe>
             <el-table-column label="图像" prop="image" width="100" header-align="center" align="center"></el-table-column>
             <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
@@ -39,7 +39,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { ElMessageBox } from "element-plus"
-
+const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 function Forget_Button_Click() {
 ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
   confirmButtonText: "我已知晓",
@@ -48,6 +48,7 @@ ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的�
 })
   .then(() => {
     console.log("用户已知晓图片遗忘的功能");
+    isRightPanelVisible.value = true;
   })
   .catch(() => {
     //取消：就不做任何提示了

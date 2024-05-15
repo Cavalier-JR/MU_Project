@@ -254,12 +254,7 @@ setup() {
     duration: 5000,
   });
 };
-// 选择面板上的文本进行编辑
-  const selectText = (index) => {
-    formData1.value.text = textPanel.value[index];
-    // 当选择编辑文本时，应该显示模型输出区域
-    showModelOutput1.value = true;
-  };
+
   const resetToInitial = () => {
   // 重置formData1使界面回到初始状态，清空已输入的文本
   formData1.value.text = '';
@@ -282,10 +277,6 @@ setup() {
    };
 
    const handleRightPanelSubmit = () => {
-  // 显示右侧面板的模型输出
-  
-  // 在这里处理右侧面板的模型输出逻辑
-
   showModelOutput2.value = true; // 现在使用 showModelOutput2 来控制右侧模型输出
 
 };
@@ -297,7 +288,7 @@ setup() {
       textPanel,
       showReplacementOptions,
       addTextToPanel,
-      selectText,
+
       isSubmitted,
       showPanel,
       showModelOutput1,

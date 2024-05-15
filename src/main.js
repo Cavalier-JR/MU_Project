@@ -14,38 +14,12 @@ import './assets/font/TheFont.css'
 import 'echarts'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-
-
-
 // Vue.prototype.$echarts = echarts  // 这句话加上就白屏
 const app = createApp(App);
 app.use(router);
 app.use(ElementPlus);
 app.component('v-chart', VueECharts) // register globally (or you can do it locally)
 app.mount('#app')
-<<<<<<< HEAD
-
-
-//放在const app = createApp(App)这行的下面
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
-
-
-
-
-
-  
-
-
-
-
-
-//放在const app = createApp(App)这行的下面
-
-=======
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
->>>>>>> origin/main
