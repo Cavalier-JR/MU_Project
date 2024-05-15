@@ -1,47 +1,80 @@
 <template>
-  <el-card class="el-card" shadow="always">
-    <div class="centered-text">上传图片遗忘</div>
-    <el-upload
-      align="center"
-      ref="upload"
-      action="uploadImg"
-      accept=".txt, .txts, .pdf, .docx,.xlsx, .xls, .jpg, .jpeg, .png"
-      :on-remove="handleRemove"
-      :on-change="handleImgChange"
-      :file-list="imgList"
-      :on-preview="handlePreview"
-      :http-request="handUploadFile"
-      :before-upload="handleBefore"
-      :limit="6"
-      multiple
-      :on-exceed="handleExceed"
-      :auto-upload="false"
-    >
-      <el-button size="large" type="primary">点击上传需要遗忘的图片</el-button>
-      <div slot="tip" class="el-upload__tip">
-        <!-- 上传附件,大小不超过4M。 -->
+  <el-container>
+  <el-header>
+    <h1>上传图片遗忘</h1>
+  </el-header>
+  <el-main>
+  <el-row :gutter="30">
+    <el-col :span="7">
+      <div>
+        <el-upload
+          align="center"
+          ref="upload"
+          action="uploadImg"
+          accept=".txt, .txts, .pdf, .docx,.xlsx, .xls, .jpg, .jpeg, .png"
+          :on-remove="handleRemove"
+          :on-change="handleImgChange"
+          :file-list="imgList"
+          :on-preview="handlePreview"
+          :http-request="handUploadFile"
+          :before-upload="handleBefore"
+          :limit="6"
+          multiple
+          :on-exceed="handleExceed"
+          :auto-upload="false"
+        >
+          <div class="load_button">
+            <el-button size="large" type="primary">点击上传需要遗忘的图片</el-button>
+          </div>
+          
+          <div slot="tip" style="text-align:center;">
+            <!-- 上传附件,大小不超过4M。 -->
+          </div>
+        </el-upload>
       </div>
-    </el-upload>
-  </el-card>
-
-  <br>
-  <br>
-
-  <div class="function_select">
-    <p style="margin-bottom: 20px;"> 请选择你的遗忘方法: </p>
-    <el-radio-group v-model="radio">
-      <el-radio :label="3" size="large" border>GA</el-radio>
-      <el-radio :label="6" size="large" border>FT</el-radio>
-      <el-radio :label="9" size="large" border>RL</el-radio>
-    </el-radio-group>
-  </div>
-  <div class="button">
-    <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
-  </div>
-  <div class="demo-progress" style="margin-top: 20px">
-    <el-progress :text-inside="true" :stroke-width="26" :percentage="70" />
-  </div>
-  <p class="text-bottom"> 用时：1.2s </p>
+      <div class="image-container">
+        <img src="../../assets/cat.png" alt="示例图片" />
+      </div>
+      <br>
+      <br>
+      <div class="function_select">
+        <div class="select_body"> 
+          <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 240px">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+              :disabled="item.disabled"
+            />
+          </el-select>
+        </div> 
+      </div>
+      <div class="button">
+          <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
+      </div>
+      <p class="text-bottom"> 用时：1.2s </p>
+    </el-col>
+    <el-col :span="8">
+      <el-card class="box-card">
+        <div style="font-size: 20px;text-align:center;">
+          <p>检测到与您有关的图片数</p>
+          <el-icon style="color: red;margin-top:20px;margin-right:10px;"><Picture /></el-icon>145
+        </div>
+      </el-card>
+    </el-col>
+    <el-col :span="8">
+      <el-card class="box-card">
+			  <div style="font-size: 20px;text-align:center;">
+          <p>已遗忘与您有关的图片数</p>
+          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>145
+        </div>
+      </el-card>
+    </el-col>
+  </el-row>
+  </el-main>
+</el-container>
+  
 </template>
 
 
@@ -66,6 +99,30 @@ function Forget_Button_Click() {
     });
 }
 
+const value = ref([])
+
+const handleChange = (value) => {
+  console.log(value)
+}
+
+const options = [
+  {
+    value: 'ConMU',
+    label: 'ConMU（推荐）',
+  },
+  {
+    value: 'GA',
+    label: 'GA',
+  },
+  {
+    value: 'FT',
+    label: 'FT',
+  },
+  {
+    value: 'RL',
+    label: 'RL',
+  },
+]
 </script>
 
 
@@ -100,5 +157,19 @@ function Forget_Button_Click() {
     margin-bottom: 15px;
     text-align: center;
     font-size: 20px; /* 设置字体大小 */
+  }
+  .image-container {
+    width: 290px;
+    height: 290px;
+    display: flex;
+    justify-content: center;
+  }
+  .load_button{
+    margin-top: 0px; /* 可选：设置顶部边距 */
+    margin-bottom: 15px;
+  }
+  .box-card {
+    width: 90%;
+    height: 100px;
   }
 </style>
