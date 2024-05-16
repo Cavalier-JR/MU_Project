@@ -2,16 +2,16 @@
 	<div style="background:rgb(255, 255, 255);height: 615px;width: 1290px;">
 		<el-row>
 			<el-col :span="4" class="one">
-				<span style="width: 450px;">
-					<span id="drawOne1" ref="lineChartDom" style="height: 160px;width: 200px;"></span>
+				<span style="width: 600px;">
+					<span id="drawOne1" ref="lineChartDom" style="height: 400px;width: 800px;"></span>
 				</span>
 			</el-col>
 
-			<el-col :span="4" class="one">
+			<!-- <el-col :span="4" class="one">
 				<span style="width: 450px;">
 					<span id="drawOne2" ref="drawOne2" style="height: 160px;width: 200px;"></span>
 				</span>
-			</el-col>
+			</el-col> -->
 			<el-col :span="4" class="two">
 				<div style="height: 150px;align-content: center;margin-top: 50px;">
 					<el-statistic group-separator="," value=1000 title="已检测漏洞" style="border: 2px solid;">
@@ -121,133 +121,112 @@ onMounted(() => {
   if(drawChart.value){
     const myChart = echarts.init(drawChart.value);
     var option = {
-				title: {
-					text: '近期修复情况'
-				},
-				tooltip: {
-					trigger: 'axis'
-				},
-				legend: {
-					data: ['已修复的漏洞', '检测出的漏洞',]
-				},
-				grid: {
-					left: '1%',
-					right: '2%',
-					bottom: '1%',
-					containLabel: true
-				},
-				toolbox: {
-					feature: {
-						saveAsImage: {}
-					}
-				},
-				xAxis: {
-					type: 'category',
-					boundaryGap: false,
-					data: ['5.6', '5.13', '5.20', '5.27.', '6.3', '6.10', '6.17']
-				},
-				yAxis: {
-					type: 'value',
-					scale: true
-				},
-				series: [
-					{
-						name: '检测出的漏洞',
-						type: 'line',
-						data: [120, 132, 101, 134, 90, 230, 210]
-					},
-					{
-						name: '已修复的漏洞',
-						type: 'line',
-						data: [100, 122, 100, 130, 60, 200, 200]
-					},
-
-				]
-			};
-			myChart.setOption(option);
+		legend: {},
+		tooltip: {},
+		dataset: {
+			dimensions: ['product', '2015', '2016', '2017'],
+			source: [
+			{ product: 'Matcha Latte', 2015: 43.3, 2016: 85.8, 2017: 93.7 },
+			{ product: 'Milk Tea', 2015: 83.1, 2016: 73.4, 2017: 55.1 },
+			{ product: 'Cheese Cocoa', 2015: 86.4, 2016: 65.2, 2017: 82.5 },
+			{ product: 'Walnut Brownie', 2015: 72.4, 2016: 53.9, 2017: 39.1 }
+			]
+		},
+		xAxis: { type: 'category' },
+		yAxis: {},
+		// Declare several bar series, each will be mapped
+		// to a column of dataset.source by default.
+		series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+		};
+		myChart.setOption(option);
   }
 
   if (lineChartDom.value) {
     const myChart = echarts.init(lineChartDom.value);
-    const gaugeData = [
-				{
-					value: 80,
-					name: '设备在线状态',
-					title: {
-						offsetCenter: ['0%', '-30%']
-					},
-					detail: {
-						valueAnimation: true,
-						offsetCenter: ['0%', '20%']
-					}
-				},
-			];
-			var option = {
-				series: [
-					{
-						type: 'gauge',
-						startAngle: 90,
-						endAngle: -270,
-						pointer: {
-							show: false
-						},
-						progress: {
-							show: true,
-							overlap: false,
-							roundCap: true,
-							clip: false,
-							itemStyle: {
-								color: '#＃00FFFF',
-								borderWidth: 1,
-								borderColor: '#464646'
-							}
-						},
-						axisLine: {
-							lineStyle: {
-								width: 15
-							}
-						},
-						splitLine: {
-							show: false,
-							distance: 10,
-							length: 5
-						},
-						axisTick: {
-							show: false
-						},
-						axisLabel: {
-							show: false,
-							distance: 15
-						},
-						data: gaugeData,
-						title: {
-							fontSize: 13
-						},
-						detail: {
-							width: 60,
-							height: 20,
-							fontSize: 15,
-							color: 'inherit',
-							borderColor: 'inherit',
-							borderRadius: 10,
-							borderWidth: 1,
-							formatter: '40/50'
-						}
-					}
-				]
-			};
-			setInterval(function () {
-				myChart.setOption({
-					series: [
-						{
-							data: gaugeData,
-							pointer: {
-								show: false
-							}
-						}
-					]
-				});
-			}, 2000);
+    const option = {
+	title: {
+		text: 'Nightingale Chart',
+		subtext: 'Fake Data',
+		left: 'center'
+	},
+	tooltip: {
+		trigger: 'item',
+		formatter: '{a} <br/>{b} : {c} ({d}%)'
+	},
+	legend: {
+		left: 'center',
+		top: 'bottom',
+		data: [
+		'rose1',
+		'rose2',
+		'rose3',
+		'rose4',
+		'rose5',
+		'rose6',
+		'rose7',
+		'rose8'
+		]
+	},
+	toolbox: {
+		show: true,
+		feature: {
+		mark: { show: true },
+		dataView: { show: true, readOnly: false },
+		restore: { show: true },
+		saveAsImage: { show: true }
+		}
+	},
+	series: [
+		{
+		name: 'Radius Mode',
+		type: 'pie',
+		radius: [20, 140],
+		center: ['25%', '50%'],
+		roseType: 'radius',
+		itemStyle: {
+			borderRadius: 5
+		},
+		label: {
+			show: false
+		},
+		emphasis: {
+			label: {
+			show: true
+			}
+		},
+		data: [
+			{ value: 40, name: 'rose 1' },
+			{ value: 33, name: 'rose 2' },
+			{ value: 28, name: 'rose 3' },
+			{ value: 22, name: 'rose 4' },
+			{ value: 20, name: 'rose 5' },
+			{ value: 15, name: 'rose 6' },
+			{ value: 12, name: 'rose 7' },
+			{ value: 10, name: 'rose 8' }
+		]
+		},
+		{
+		name: 'Area Mode',
+		type: 'pie',
+		radius: [20, 140],
+		center: ['75%', '50%'],
+		roseType: 'area',
+		itemStyle: {
+			borderRadius: 5
+		},
+		data: [
+			{ value: 30, name: 'rose 1' },
+			{ value: 28, name: 'rose 2' },
+			{ value: 26, name: 'rose 3' },
+			{ value: 24, name: 'rose 4' },
+			{ value: 22, name: 'rose 5' },
+			{ value: 20, name: 'rose 6' },
+			{ value: 18, name: 'rose 7' },
+			{ value: 16, name: 'rose 8' }
+		]
+		}
+	]
+	};
 
 			myChart.setOption(option);
   }

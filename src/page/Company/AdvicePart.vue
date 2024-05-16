@@ -60,9 +60,9 @@
 						</el-table-column>
 						<el-table-column prop="name" label="设备名" width="180">
 						</el-table-column>
-						<el-table-column prop="address" label="容器名">
+						<el-table-column prop="address" label="类别名称">
 						</el-table-column>
-						<el-table-column prop="detect" label="检测数">
+						<el-table-column prop="detect" label="测试数">
 						</el-table-column>
 						<el-table-column prop="modify" label="修复数">
 						</el-table-column>
@@ -78,12 +78,12 @@
 
 				<div class="six">
 					<el-collapse v-model="activeName" accordion>
-						<div style="font-size: large;">风险指数(降序)</div>
-						<el-collapse-item title="Terminal_QRT-con_cnt" name="2">
+						<div style="font-size: large;">正在执行的任务</div>
+						<el-collapse-item title="任务1" name="2">
 							<div style="text-align: left;color: rgb(61, 225, 141);">&nbsp; 启用时间：2023-05-09</div>
 							<div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：68</div>
 						</el-collapse-item>
-						<el-collapse-item title="Terminal_WYN-container_support" name="3">
+						<el-collapse-item title="任务2" name="3">
 							<div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-05-30</div>
 							<div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：50</div>
 						</el-collapse-item>
@@ -122,13 +122,13 @@ onMounted(() => {
     const myChart = echarts.init(drawChart.value);
     var option = {
 				title: {
-					text: '近期修复情况'
+					text: '准确率变化情况'
 				},
 				tooltip: {
 					trigger: 'axis'
 				},
 				legend: {
-					data: ['已修复的漏洞', '检测出的漏洞',]
+					data: ['已遗忘', '未遗忘',]
 				},
 				grid: {
 					left: '1%',
@@ -172,7 +172,7 @@ onMounted(() => {
     const gaugeData = [
 				{
 					value: 80,
-					name: '设备在线状态',
+					name: '进度',
 					title: {
 						offsetCenter: ['0%', '-30%']
 					},
@@ -308,7 +308,7 @@ onMounted(() => {
     const gaugeData = [
 				{
 					value: 80,
-					name: '容器在线状态',
+					name: '正在遗忘:{xxx}',
 					title: {
 						offsetCenter: ['0%', '-30%']
 					},

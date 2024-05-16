@@ -72,21 +72,26 @@ const routes = [
                 name: "poisoning_protection",
                 component: () => import("../page/Company/Poisoning_protection.vue")
             },
+            // {
+            //     path: 'AdvicePart', // 优化建议-部分遗忘
+            //     name: "advicePart",
+            //     component: () => import("../page/Company/AdvicePart.vue")
+            // },
+            // {
+            //     path: 'AdviceClass', // 优化建议-类别遗忘
+            //     name: "adviceClass",
+            //     component: () => import("../page/Company/AdviceClass.vue")
+            // },
+            // {
+            //     path: 'AdviceText', // 优化建议-文本遗忘
+            //     name: "adviceText",
+            //     component: () => import("../page/Company/AdviceText.vue")
+            // },
             {
-                path: 'AdvicePart', // 优化建议-部分遗忘
-                name: "advicePart",
-                component: () => import("../page/Company/AdvicePart.vue")
-            },
-            {
-                path: 'AdviceClass', // 优化建议-类别遗忘
-                name: "adviceClass",
-                component: () => import("../page/Company/AdviceClass.vue")
-            },
-            {
-                path: 'AdviceText', // 优化建议-文本遗忘
-                name: "adviceText",
-                component: () => import("../page/Company/AdviceText.vue")
-            },
+                path:'advice',
+                name:"advice",
+                component: () => import("../page/Company/Advice.vue")
+            }
         ],
     },
 ];

@@ -1,125 +1,20 @@
 <template>
-  <div>
-      <div class="content">
-          <el-collapse v-model="activeName" accordion>
-              <div style="font-size: large;"></div>
-              <el-collapse-item title="Terminal_QRT" name="2">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp; 启用时间：2023-08-09</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 容器个数：68</div>
-                  <span class="first">
-                      <span id="drawOne" style="width: 400px;height: 300px;"></span>
-                      <span id="drawTwo" style="width: 400px;height: 300px;"></span>
-                  </span>
-              </el-collapse-item>
-              <el-collapse-item title="Terminal_WYN" name="3">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-07-30</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：50</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_LXL" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_QWW" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_XQQ" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_QQT" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_WQL" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_TRL" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_ZWL" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_WWL" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_SXL" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_LP" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_CPL" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-              <el-collapse-item title="Raspberry_QWP" name="4">
-                  <div style="text-align: left;color: rgb(61, 225, 141);">&nbsp;启用时间：2023-08-19</div>
-                  <div style="text-align: left;color: rgb(190, 16, 68);">&nbsp; 漏洞个数：48</div>
-
-
-              </el-collapse-item>
-
-          </el-collapse>
-      </div>
-  </div>
+    <!-- HTML code for the page with three columns -->
+    <div class="page">
+        <div class="column">
+            <p>文本遗忘优化建议，在3小时内，总共遗忘掉<span style="color: red; font-weight: bold;">50</span>条数据，包括<span style="color: red; font-weight: bold;">10</span>个手机号，<span style="color: red; font-weight: bold;">6</span>个个人信息。</p>
+        </div>
+        <div class="column">
+            <div id="pieChart1" ref="pieChart1" style="width: 400px; height: 300px;"></div>
+            <div id="pieChart2" ref="pieChart2" style="width: 400px; height: 300px;"></div>
+        </div>
+        <div class="column">
+            <div id="lineChart" ref="lineChart" style="width: 800px; height: 300px;"></div>
+            <div id="barChart" ref="barChart" style="width: 800px; height: 300px;"></div>
+        </div>
+    </div>
 </template>
 
-<style>
-.content {
-  width: 100%;
-  height: 600px;
-}
-
-.first {
-  width: 300px;
-  height: 300px;
-  display: flex;
-}
-</style>
-
-<script setup>
-import { onMounted, ref } from 'vue';
-import * as echarts from 'echarts';
-
-const drawChart = ref(null);
-const lineChartDom = ref(null);
-const drawFive = ref(null);
-const drawOne2 = ref(null);
-const drawTwo = ref(null);
 
 
 
-
-
-</script>
