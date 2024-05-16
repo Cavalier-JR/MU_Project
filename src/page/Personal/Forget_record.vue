@@ -29,26 +29,24 @@
   </div>
   <br>
   <el-table
+    border
     ref="multipleTableRef"
-    :data="tableData"
     style="width: 100%"
-    stripe
-    border  
+    :data="tableData"
+    :row-class-name="tableRowClassName"
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" header-align="center" align="center"/>
-    <el-table-column type="inf_type" label="信息类型" width="120" header-align="center" align="center">
-      <template #default="scope">{{ scope.row.inf_type }}</template>
+    <el-table-column prop="inf_type" label="信息类型" width="120" header-align="center" align="center"> </el-table-column>
+    <el-table-column label="是否遗忘" prop="forget_flag" align="center" width="120">
+      <template #default="scope">
+        <span :class="[scope.row.forget_flag === '已遗忘' ? 'cell-green' : 'cell-red']">{{ scope.row.forget_flag }}</span>
+      </template>
     </el-table-column>
-    <el-table-column type="forget_flag" label="是否遗忘" width="120" header-align="center" align="center">
-      <template #default="scope">{{ scope.row.forget_flag }}</template>
-    </el-table-column>
-    <el-table-column property="forget_content" label="遗忘内容" width="300" header-align="center" align="center" />
-    <el-table-column label="时间" header-align="center" align="center" show-overflow-tooltip>
+    <el-table-column prop="forget_content" label="遗忘内容" width="300" header-align="center" align="center" />
+    <el-table-column prop="cost_time" label="用时" width="120" header-align="center" align="center"> </el-table-column>
+    <el-table-column label="操作时间" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">{{ scope.row.date }}</template>
-    </el-table-column>
-    <el-table-column label="用户名" header-align="center" align="center" show-overflow-tooltip>
-      <template #default="scope">{{ scope.row.name }}</template>
     </el-table-column>
     <el-table-column width="170" align="center">
       <template #header>
@@ -68,8 +66,12 @@
       </template>
     </el-table-column>
   </el-table>
-  <div style="margin-top: 20px">
-    <el-button @click="toggleSelection()">重置选择</el-button>
+  <div>
+    <el-button 
+      @click="toggleSelection()"
+      class="reset-selector"
+      style="margin-left:40%;margin-top:20px"
+    > 重置选择 </el-button>
   </div>
   <br>
   <br>
@@ -85,7 +87,7 @@ interface User {
   forget_content: string
   forget_flag: string
   inf_type: string
-  name: string
+  cost_time: string
 }
 
 const value = ref('')
@@ -114,13 +116,6 @@ const options = [
 ]
 
 const search = ref('')
-const filterTableData = computed(() =>
-  tableData.filter(
-    (data) =>
-      !search.value ||
-      data.name.toLowerCase().includes(search.value.toLowerCase())
-  )
-)
 const handleEdit = (index: number, row: User) => {
   console.log(index, row)
 }
@@ -134,7 +129,6 @@ const toggleSelection = (rows?: User[]) => {
     rows.forEach((row) => {
       // TODO: improvement typing when refactor table
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
       multipleTableRef.value!.toggleRowSelection(row, undefined)
     })
   } else {
@@ -148,65 +142,112 @@ const handleSelectionChange = (val: User[]) => {
 const tableData: User[] = [
   {
     inf_type: '图片',
-    forget_flag: '已遗忘',
+    forget_flag: '未遗忘',
     date: '2024-05-05 11:45:14',
-    name: 'Tom',
-    forget_content: 'No. 189, Grove St, Los Angeles',
+    forget_content: '飞机类',
+    cost_time: '4.1min',
   },
   {
     inf_type: '图片',
-    forget_flag: '已遗忘',
-    date: '2024-05-05 11:27:23',
-    name: 'Tom',
-    forget_content: 'NCEPU',
+    forget_flag: '未遗忘',
+    date: '2024-05-05 10:27:23',
+    forget_content: '3张已上传图片',
+    cost_time: '5.2min',
   },
   {
     inf_type: '文本',
-    forget_flag: '已遗忘',
-    date: '2024-05-05 11:27:15',
-    name: 'Tom',
+    forget_flag: '未遗忘',
+    date: '2024-05-04 21:27:15',
     forget_content: 'Cai Yunze',
+    cost_time: '2.54s',
   },
   {
     inf_type: '图片',
     forget_flag: '已遗忘',
-    date: '2024-05-05 11:25:59',
-    name: 'Tom',
-    forget_content: 'No. 2, Beinong Road',
+    date: '2024-05-04 10:35:59',
+    forget_content: '卡车类',
+    cost_time: '3.9min',
   },
   {
     inf_type: '文本',
     forget_flag: '已遗忘',
-    date: '2024-05-05 10:45:18',
-    name: 'Tom',
+    date: '2024-05-04 8:45:18',
     forget_content: 'Mobile phone number is 114514',
+    cost_time: '1.34s',
   },
   {
     inf_type: '图片',
     forget_flag: '已遗忘',
-    date: '2024-05-05 10:32:13',
-    name: 'Tom',
-    forget_content: 'Meet at seven tonight',
+    date: '2024-05-03 20:32:13',
+    forget_content: '青蛙类',
+    cost_time: '3.6min',
   },
   {
     inf_type: '文本',
-    forget_flag: '正在遗忘',
-    date: '2024-05-05 09:16:51',
-    name: 'Tom',
+    forget_flag: '已遗忘',
+    date: '2024-05-02 09:16:51',
     forget_content: 'Meeting on May 2nd',
+    cost_time: '2.87s',
   },
   {
     inf_type: '文本',
-    forget_flag: '正在遗忘',
-    date: '2024-05-04 23:13:51',
-    name: 'Tom',
+    forget_flag: '已遗忘',
+    date: '2024-04-30 23:13:51',
     forget_content: 'Her name is Xiao Heizi!!!',
+    cost_time: '1.06s',
   },
 ]
+
+const filterTag = (value: string, row: User) => {
+  return row.forget_flag === value
+}
+
+const tableRowClassName = ({
+  row,
+  rowIndex,
+}: {
+  row: User
+  rowIndex: number
+}) => {
+  if (rowIndex === 0 || rowIndex === 1 || rowIndex === 3 || rowIndex === 5) {
+    return 'pic-row'
+  }
+  return 'text-row'
+}
+
 </script>   
 
-<style scoped>
+<style>
   .el-pagination {
     justify-content: center;
+  }
+  .el-table .text-row {
+    --el-table-tr-bg-color: var(--el-color-success-light-9);
+  }
+  .el-table .pic-row {
+    --el-table-tr-bg-color: var(--el-color-primary-light-9);
+  }
+  .reset-selector {
+    padding: 25px 25px !important;
+    margin-left: 42% !important;
+    font-size: 20px !important;
+    background-color: #A080FF !important;
+    border-radius: 10px !important;
+    font-family: '斗鱼体' !important; 
+    box-shadow: 5px 5px #EEE9E8 !important;
+    border: none !important;
+    cursor: pointer !important;
+    outline: none !important;
+    color: white !important; 
+  }
+  .cell-red {
+    color: #ed2e2e;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .cell-green {
+    color: #44f044;
+    font-size: 15px;
+    font-weight: bold;
   }
 </style>
