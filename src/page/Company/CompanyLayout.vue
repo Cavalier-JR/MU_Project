@@ -6,7 +6,7 @@
         <h1 class="logoBox">遗忘学习系统</h1>
         <el-menu
           active-text-color="#97FFFF"
-          background-color="#5F9F9F"
+          background-color="#27B2BD"
           class="el-menu-vertical-demo"
           default-active="2"
           text-color="#fff"
@@ -53,7 +53,7 @@
           <el-menu
             class="el-menu-demo"
             mode="horizontal"
-            background-color="#5F9F9F"
+            background-color="#27B2BD"
             text-color="#fff"
             active-text-color="#5C3317"
           >
@@ -249,7 +249,7 @@ export default {
 .box {
   width: 100vw;
   height: 100vh;
-  background-color: #5F9F9F;
+  background-color: #27B2BD;
 }
 .header {
   padding: 0;

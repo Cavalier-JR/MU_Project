@@ -1,44 +1,67 @@
 <template>
-  <div class="login">
-    <div class="loginBox">
+  <div class="loginbody">
+    <div class="logindata">
       <el-tabs stretch="true" class="tags">
         <el-tab-pane label="用户端" class="UserTag">
-          <h3>用户端登录</h3>
-          <div class="form">
-            <div class="input">
-              <img src="../assets/login/username.png" alt="" />
-              <input type="text" placeholder="请输入用户名" v-model="username" />
-            </div>
-            <div class="input">
-              <img src="../assets/login/password.png" alt="" />
-              <input type="password" placeholder="请输入密码" v-model="password" />
-            </div>
-            <div class="btn" @click="UserSet"> 登录 </div>
+          <div class="logintext">
+            <h2>欢迎来到遗忘学习系统</h2>
           </div>
+          <div>
+            <el-form>
+              <el-form-item prop="username">
+                <el-input
+                  v-model="username"
+                  clearable
+                  placeholder="请输入账号"
+                ></el-input>
+              </el-form-item>
+              <el-form-item prop="password">
+                <el-input
+                  v-model="password"
+                  clearable
+                  placeholder="请输入密码"
+                  show-password
+                ></el-input>
+              </el-form-item>
+            </el-form>
+          </div>
+          <div class="butt">
+            <el-button @click="UserSet"> 登录 </el-button>
+          </div> 
         </el-tab-pane>
         <el-tab-pane label="公司端">
-          <h3>公司端登录</h3>
-          <div class="form">
-            <div class="input">
-              <img src="../assets/login/username.png" alt="" />
-              <input type="text" placeholder="请输入公司账号" v-model="username" />
-            </div>
-            <div class="input">
-              <img src="../assets/login/password.png" alt="" />
-              <input type="password" placeholder="请输入密码" v-model="password" />
-            </div>
-            <div class="btn" @click="CompanySet"> 登录 </div>
+          <div class="logintext">
+            <h2>欢迎来到遗忘学习系统</h2>
+          </div>
+          <div>
+            <el-form>
+              <el-form-item prop="username">
+                <el-input
+                  v-model="username"
+                  clearable
+                  placeholder="请输入账号"
+                ></el-input>
+              </el-form-item>
+              <el-form-item prop="password">
+                <el-input
+                  v-model="password"
+                  clearable
+                  placeholder="请输入密码"
+                  show-password
+                ></el-input>
+              </el-form-item>
+            </el-form>
+          </div>
+          <div class="butt">
+            <el-button @click="CompanySet"> 登录 </el-button>
           </div>
         </el-tab-pane>
       </el-tabs>
-      
-    </div>
   </div>
+</div>
 </template>
 
 <script setup>
-
-
 import { useRouter, useRoute } from "vue-router";
 const $router = useRouter();
 let username = "Lihua";
@@ -60,123 +83,66 @@ const CompanySet = () => {
 .UserTag {
   font-size: 3rem;
 }
+.CompanyTag {
+  font-size: 3rem;
+}
 .tags{
   font-size: 3rem;
   margin-top: 50px; /* 可选：设置顶部边距 */
 }
-.login {
-  background-image: url(../assets/login/bg.png);
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-}
-/* .loginbg1 {
-  position: absolute;
-  left: 50rem;
-  top: 45rem;
-  width: 30rem;
-  height: 50rem;
-  background-image: url(../../assets/login/decoration1.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 1;
-} */
-
-/* .loginbg2 {
-  position: absolute;
-  right: 35rem;
-  top: 45rem;
-  width: 40rem;
-  height: 40rem;
-  background-image: url(../../assets/login/decoration2.png);
-  background-repeat: no-repeat;
-  z-index: 1;
-} */
-
-.loginBox {
-  width: 62rem;
-  height: 50rem;
-  background-image: url(../assets/login/loginbox.png);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -25rem;
-  margin-left: -31rem;
-  z-index: 2;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.loginBox h3 {
-  font-size: 3rem;
-  font-weight: 600;
-  color: rgb(62, 197, 231);
-  margin-top: 20px;
-  text-align: center;
-}
-.deadline {
-  display: block;
-  width: 10rem;
-  height: 0.5rem;
-  background: #01cfff;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-}
-.form {
-  width: 44rem;
-  height: 44rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.input {
-  width: 28rem;
-  height: 5rem;
-  line-height: 5rem;
-  background-image: url(../assets/login/input.png);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.input img {
-  margin-left: 3rem;
-}
-.form input {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  border: none;
-  color: aliceblue;
-}
 ::-webkit-input-placeholder {
   color: rgb(51, 189, 239);
 }
-.input input {
-  width: 18rem;
-  height: 2.2rem;
-  margin-left: 2rem;
-  font-size: 2.4rem;
+
+.loginbody {
+  width: 100%;
+  height: 100%;
+  /* 主层必须为相对定位,否则伪元素的图片将不符合预期 */
+  position: relative;
 }
-.input .code {
-  width: 23rem;
-  height: 4.3rem;
-  line-height: 1.1rem;
+
+.loginbody:before {
+  /* 下面4行代码确保背景图覆盖主层 */
+  background: url(../assets/login/bg.png);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  /* 插入空内容，必须要的样式 */
+  content: '';
+  /* 绝对定位，确保背景图起点在主层的0,0位置 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*避免遮盖其他元素*/
+  z-index: -1;
+  /* 滤镜效果 */
+  -webkit-filter: opacity(50%);
+  filter: opacity(100%);
 }
-.btn {
-  width: 16rem;
-  height: 5.6rem;
-  line-height: 5.6rem;
+.logintext {
+  margin-bottom: 20px;
+  line-height: 50px;
   text-align: center;
-  font-size: 2.5rem;
-  color: rgb(250, 250, 250);
-  background-image: url(/src/assets/login/login.png);
-  cursor: pointer;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+}
+.logindata {
+  width: 400px;
+  height: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.tool {
+  display: flex;
+  justify-content: space-between;
+  color: #606266;
+}
+.butt {
+  margin-top: 10px;
+  text-align: center;
 }
 </style>
