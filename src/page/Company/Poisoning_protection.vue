@@ -238,7 +238,7 @@ const tableRowClassName = ({
     --el-table-tr-bg-color: #B48EDD;
   }
   .el-table .warning-row {
-    --el-table-tr-bg-color: #48AAF0;
+    --el-table-tr-bg-color: #F8DEBA;
   }
   .el-table .danger-row {
     --el-table-tr-bg-color: #060606;

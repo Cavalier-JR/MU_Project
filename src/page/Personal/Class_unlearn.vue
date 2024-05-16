@@ -13,14 +13,28 @@
           </div> 
           <div class="select"> 
             <span>
-              <el-cascader v-model="value" :options="options" @change="handleChange" clearable :show-all-levels="false" collapse-tags/>
+              <el-cascader v-model="value1" :options="options1" @change="handleChange" clearable :show-all-levels="false" collapse-tags/>
             </span>
             <span class="button">
-              <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
+              <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected"> 选择 </el-button>
             </span> 
           </div> 
-          <p class="text-bottom"> 当前遗忘方法是:aaaGT </p>
-          <p class="text-bottom"> 用时：1.2s </p>
+          <div class="select"> 
+            <span>
+              <el-select v-model="value2" placeholder="请选择你的遗忘方法" style="width: 240px" v-show="isMethodVisible">
+                <el-option
+                  v-for="item in options2"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                />
+              </el-select>
+            </span>
+            <span class="button">
+              <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible"> 进行遗忘 </el-button>
+            </span> 
+          </div> 
         </el-col>
        
         <el-col :span="12" v-show="isRightPanelVisible">
@@ -38,8 +52,11 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import { ElMessageBox } from "element-plus"
+import { ElMessageBox, ElNotification } from "element-plus"
+
 const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
+const isMethodVisible = ref(false); // 初始状态为false，即不显示
+
 function Forget_Button_Click() {
 ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
   confirmButtonText: "我已知晓",
@@ -49,9 +66,19 @@ ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的�
   .then(() => {
     console.log("用户已知晓图片遗忘的功能");
     isRightPanelVisible.value = true;
+    Success_Notify();
   })
   .catch(() => {
     //取消：就不做任何提示了
+  });
+};
+
+const Success_Notify = () => {
+  ElNotification({
+    title: '成功',
+    message: '已成功遗忘该类别',
+    type: 'success',
+    duration: 5000, // 自动关闭延时
   });
 };
 
@@ -69,13 +96,18 @@ const tableData = reactive([
 { image: 'cat11.jpg', beforeCategory: '猫', afterCategory: '蛇'}
 ]);
 
-const value = ref([])
+const value1 = ref([])
+const value2 = ref([])
 
-const handleChange = (value) => {
-  console.log(value)
+const handleChange = (value1) => {
+  console.log(value1)
 }
 
-const options = [
+const ClassSelected = () => {
+  isMethodVisible.value = true
+}
+
+const options1 = [
   {
     value: 'animal',
     label: '动物',
@@ -119,6 +151,24 @@ const options = [
         label: '公交车',
       },
     ],
+  },
+]
+const options2 = [
+  {
+    value: 'ConMU',
+    label: 'ConMU（推荐）',
+  },
+  {
+    value: 'GA',
+    label: 'GA',
+  },
+  {
+    value: 'FT',
+    label: 'FT',
+  },
+  {
+    value: 'RL',
+    label: 'RL',
   },
 ]
 </script>
