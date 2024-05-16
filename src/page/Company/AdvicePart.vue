@@ -164,7 +164,7 @@ onMounted(() => {
 
 				]
 			};
-			myChart.setOption(option);
+	myChart.setOption(option);
   }
 
   if (lineChartDom.value) {
