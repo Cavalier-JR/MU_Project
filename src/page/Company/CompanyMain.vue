@@ -1,24 +1,27 @@
 <template>
-  <el-row :gutter="20" style="background-color: rgba(127, 255, 212, 0.367);">
+  <el-row :gutter="20" style="background-color: rgba(170, 218, 255, 0.542);">
     <el-col :span="14">
       <el-row>
         <el-col class="taskPanel" :span="4" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-          <div style="font-size: 24px;">模型总数量</div>
-          <div style="font-size: 36px; background-color: rgb(160, 160, 255); height: 50px; width: 50px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">6</div>
+          <div style="font-size: 24px; font-family: '扁桃体'">模型总数量</div>
+          <div style="display: flex; align-items: center;">
+            <div style="font-size: 36px; background-color: rgb(160, 160, 255); height: 50px; width: 50px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">6</div>
+            <el-button style="margin-left: 10px; font-size: 16px; font-family: '扁桃体';" type="primary">更改模型</el-button> <!-- Button beside the text -->
+          </div>
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 16px;"> <!-- Increase text size -->
-          <div style="margin-bottom: 20px;">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
+        <el-col class="taskPanel" :span="6" style="font-size: 20px;"> <!-- Increase text size -->
+          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 16px; ">
-          <div style="margin-bottom: 20px;">已完成计划任务数   /    异常任务数</div>
+        <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
+          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已完成计划任务数   /    异常任务数</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 16px; ">
-          <div style="margin-bottom: 20px;">已完成计划任务数   /    异常任务数</div>
+        <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
+          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已完成计划任务数   /    异常任务数</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
@@ -34,7 +37,7 @@
 
       <el-row>
         <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
-          <h3 style="font-size: 20px;">任务执行记录</h3>
+          <h3 style="font-size: 20px; font-family: '扁桃体';">任务执行记录</h3>
         </div>
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="taskName" label="任务名"></el-table-column>
@@ -69,7 +72,7 @@
 
       <el-row>
         <div style="margin-bottom: 10px; margin-top: 10px;"> 
-          <h3 style="font-size: 20px;">备份记录</h3>
+          <h3 style="font-size: 20px; font-family: '扁桃体'">备份记录</h3>
         </div>
         <el-table :data="tableData2" border >
           <el-table-column class="tableHeader" prop="taskName" label="类型"></el-table-column>
@@ -552,127 +555,199 @@ onMounted(() => {
   if (radarChart.value) {
     const myChart = echarts.init(radarChart.value);
     var option = {
-  color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
-  title: {
-    text: '4种方法雷达图'
-  },
-  legend: {},
-  radar: [
-    {
-      indicator: [
-        { text: '模型准确率' },
-        { text: '耗时' },
-        { text: '效果' },
-        { text: '指标4' },
-        { text: '指标5' }
-      ],
-      center: ['25%', '50%'],
-      radius: 120,
-      startAngle: 90,
-      splitNumber: 4,
-      shape: 'circle',
-      axisName: {
-        formatter: '【{value}】',
-        color: '#428BD4'
+      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+      title: {
+        text: '4种方法雷达图'
       },
-      splitArea: {
-        areaStyle: {
-          color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
-          shadowColor: 'rgba(0, 0, 0, 0.2)',
-          shadowBlur: 10
-        }
-      },
-      axisLine: {
-        lineStyle: {
-          color: 'rgba(211, 253, 250, 0.8)'
-        }
-      },
-      splitLine: {
-        lineStyle: {
-          color: 'rgba(211, 253, 250, 0.8)'
-        }
-      }
-    },
-    {
-      indicator: [
-        { text: '正确率', max: 150 },
-        { text: '耗时', max: 150 },
-        { text: '效果', max: 150 },
-        { text: 'Indicator4', max: 120 },
-        { text: 'Indicator5', max: 108 },
-        { text: 'Indicator6', max: 72 }
-      ],
-      center: ['75%', '50%'],
-      radius: 120,
-      axisName: {
-        color: '#fff',
-        backgroundColor: '#666',
-        borderRadius: 3,
-        padding: [3, 5]
-      }
-    }
-  ],
-  series: [
-    {
-      type: 'radar',
-      emphasis: {
-        lineStyle: {
-          width: 4
-        }
-      },
-      data: [
+      legend: {},
+      radar: [
         {
-          value: [100, 8, 0.4, -80, 2000],
-          name: 'ConMU'
+          indicator: [
+            { text: '模型准确率' },
+            { text: '耗时' },
+            { text: '效果' },
+            { text: '指标4' },
+            { text: '指标5' }
+          ],
+          center: ['15%', '50%'],
+          radius: 120,
+          startAngle: 90,
+          splitNumber: 4,
+          shape: 'circle',
+          axisName: {
+            formatter: '【{value}】',
+            color: '#428BD4'
+          },
+          splitArea: {
+            areaStyle: {
+              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+              shadowColor: 'rgba(0, 0, 0, 0.2)',
+              shadowBlur: 10
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
+            }
+          },
         },
         {
-          value: [60, 5, 0.3, -100, 1500],
-          name: 'GA',
-          areaStyle: {
-            color: 'rgba(255, 228, 52, 0.6)'
+          indicator: [
+            { text: '正确率', max: 150 },
+            { text: '耗时', max: 150 },
+            { text: '效果', max: 150 },
+            { text: 'Indicator4', max: 120 },
+            { text: 'Indicator5', max: 108 },
+            { text: 'Indicator6', max: 72 }
+          ],
+          center: ['45%', '50%'],
+          radius: 120,
+          axisName: {
+            color: '#fff',
+            backgroundColor: '#666',
+            borderRadius: 3,
+            padding: [3, 5]
           }
-        }
-      ]
-    },
-    {
-      type: 'radar',
-      radarIndex: 1,
-      data: [
+        },
         {
-          value: [120, 118, 130, 100, 99, 70],
-          name: 'FT',
-          symbol: 'rect',
-          symbolSize: 12,
-          lineStyle: {
-            type: 'dashed'
+          indicator: [
+            { text: 'Indicator1' },
+            { text: 'Indicator2' },
+            { text: 'Indicator3' },
+            { text: 'Indicator4' },
+            { text: 'Indicator5' }
+          ],
+          center: ['80%', '50%'],
+          radius: 120,
+          startAngle: 90,
+          splitNumber: 4,
+          shape: 'circle',
+          axisName: {
+            formatter: '【{value}】',
+            color: '#428BD4'
           },
-          label: {
-            show: true,
-            formatter: function (params) {
-              return params.value;
+          splitArea: {
+            areaStyle: {
+              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+              shadowColor: 'rgba(0, 0, 0, 0.2)',
+              shadowBlur: 10
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
             }
           }
         },
+      ],
+      series: [
         {
-          value: [100, 93, 50, 90, 70, 60],
-          name: 'RL',
-          areaStyle: {
-            color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-              {
-                color: 'rgba(255, 145, 124, 0.1)',
-                offset: 0
-              },
-              {
-                color: 'rgba(255, 145, 124, 0.9)',
-                offset: 1
+          type: 'radar',
+          emphasis: {
+            lineStyle: {
+              width: 4
+            }
+          },
+          data: [
+            {
+              value: [100, 8, 0.4, -80, 2000],
+              name: 'ConMU'
+            },
+            {
+              value: [60, 5, 0.3, -100, 1500],
+              name: 'GA',
+              areaStyle: {
+                color: 'rgba(255, 228, 52, 0.6)'
               }
-            ])
-          }
-        }
+            }
+          ],
+        },
+        {
+          type: 'radar',
+          radarIndex: 1,
+          data: [
+            {
+              value: [120, 118, 130, 100, 99, 70],
+              name: 'FT',
+              symbol: 'rect',
+              symbolSize: 12,
+              lineStyle: {
+                type: 'dashed'
+              },
+              label: {
+                show: true,
+                formatter: function (params) {
+                  return params.value;
+                }
+              }
+            },
+            {
+              value: [100, 93, 50, 90, 70, 60],
+              name: 'RL',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 0.1)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(255, 145, 124, 0.9)',
+                    offset: 1
+                  }
+                ])
+              }
+            }
+          ]
+        },
+        {
+          type: 'radar',
+          radarIndex: 1,
+          data: [
+            {
+              value: [100, 100, 100, 100, 100, 100],
+              name: 'FT',
+              symbol: 'rect',
+              symbolSize: 12,
+              lineStyle: {
+                type: 'dashed'
+              },
+              label: {
+                show: true,
+                formatter: function (params) {
+                  return params.value;
+                }
+              }
+            },
+            {
+              value: [100, 93, 50, 90, 70, 60],
+              name: 'RL',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 0.1)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(255, 145, 124, 0.9)',
+                    offset: 1
+                  }
+                ])
+              }
+            }
+          ]
+        },
       ]
-    }
-  ]
-};
+    };
     myChart.setOption(option);
   }
 
