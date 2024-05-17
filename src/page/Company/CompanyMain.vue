@@ -1,35 +1,32 @@
 <template>
-  <el-container>
+  <el-row :gutter="20">
     <el-col :span="15">
       <el-row>
-        <el-col class="number" :span="6">
-          模型数量 1
+        <el-col class="number" :span="6" style="text-align: center; margin: 20px;">
+          <div style="font-size: 24px;">模型总数量</div>
+          <div style="font-size: 36px;">6</div>
         </el-col>
 
-        <el-col class="taskPanel" :span="6">
-          已更改模型 未更改模型
-          <el-progress :percentage="70"></el-progress>
+        <el-col class="taskPanel" :span="6" style="font-size: 16px; margin: 20px;"> <!-- Increase text size -->
+          <div style="margin-bottom: 10px;">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
+          <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
         </el-col>
 
-        <el-col class="taskPanel" :span="6">
-          已完成计划任务数  异常任务数
-          <el-progress :percentage="70"></el-progress>
-        </el-col>
-
-        <el-col class="taskPanel" :span="6">  <!--不知道为什么这行放不下-->
-          网站启动 网站未启动
-          <el-progress :percentage="70"></el-progress>
+        <el-col class="taskPanel" :span="6" style="font-size: 16px; margin: 20px;">
+          <div style="margin-bottom: 10px;">已完成计划任务数   /    异常任务数</div>
+          <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
       </el-row>
 
-      <el-row>
-        <span style="width: 1000px;">
-          <div ref="linechart"> second row</div>
-        </span>
+      <el-row style="height: 500px; width: 100%; margin-top: 40px;">
+        <div ref="accuracyChart" style="height: 100%; width: 100%"></div>
       </el-row>
 
       <el-row>
+        <div style="margin-bottom: 10px;"> <!-- Add a title above the table -->
+          <h3 style="font-size: 20px;">任务执行记录</h3>
+        </div>
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="taskName" label="任务名"></el-table-column>
           <el-table-column prop="taskType" label="任务类型"></el-table-column>
@@ -47,34 +44,38 @@
 
 
     <el-col :span="9">
-
-      <el-row :span="24"> <!--第一列 第三行-->
-        <div id="thirdChart" ref="thirdChart"></div>
-      </el-row>
-
-      <el-row> <!--第一列 第四行-->
-        <el-col :span="8">
-          <div id="cpuchart" ref="cpuchart" style="width: 100px; height: 100px; position: relative;">
-            <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);">cpu 使用率</div>
+      <el-row> <!--第二列 第一行-->
+        <el-col :span="4"> <!-- Adjust the span to share the space -->
+          <div id="cpuchart" ref="cpuchart" style="width: 200px; height: 200px; position: relative;">
           </div>
         </el-col>
 
-        <el-col :span="8">
-          <div id="memchart" ref="memchart"></div>
-          <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);">内存 使用率</div>
-        </el-col>
-
-        <el-col :span="8">
-          <div id="loadchart" ref="loadchart"></div>
-          <div style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);">平均负载</div>
+        <el-col :span="4"> <!-- New column with the same space -->
+          <div id="memchart" ref="memchart" style="width: 200px; height: 200px; position: relative;">
+          </div>
         </el-col>
       </el-row>
 
+      <el-row > <!--第二列 第二行 监控-->
+        <div id="thirdChart" ref="thirdChart" style="height: 300px; width: 100%; margin-top: 40px;"></div>
+      </el-row>
 
+      <el-row>
+        <div style="margin-bottom: 10px;"> <!-- Add a title above the table -->
+          <h3 style="font-size: 20px;">备份记录</h3>
+        </div>
+        <el-table :data="tableData2" style="width: 100%">
+          <el-table-column prop="taskName" label="类型"></el-table-column>
+          <el-table-column prop="taskType" label="模型名称"></el-table-column>
+          <el-table-column prop="executionPeriod" label="执行时间"></el-table-column>
+          <el-table-column prop="executionStatus" label="备份数量"></el-table-column>
+          <el-table-column prop="executionTime" label="最后备份时间"></el-table-column>
+        </el-table>
+      </el-row>
       
     </el-col>
 
-  </el-container>
+  </el-row>
 </template>
 
 <script setup>
@@ -84,20 +85,33 @@ import * as echarts from 'echarts';
 const cpuchart = ref(null);
 const memchart = ref(null);
 const loadchart = ref(null);
-const linechart = ref(null);
+
+const accuracyChart = ref(null);
 const thirdChart = ref(null);
 
 // 表格内容
 const tableData = ref([
   { taskName: 'Task 1', taskType: 'Type A', executionPeriod: 'Daily', executionStatus: 'Completed', executionTime: '10:00 AM', duration: '1 hour' },
   { taskName: 'Task 2', taskType: 'Type B', executionPeriod: 'Weekly', executionStatus: 'Pending', executionTime: '2:00 PM', duration: '30 minutes' },
-  // Add more data objects as needed
+
+]);
+const tableData2 = ref([
+  { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: 'Daily', executionStatus: '2', executionTime: '9:00 AM', duration: '2 hours' },
+  { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
+  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
+
 ]);
 
 onMounted(() => {
   if(cpuchart.value) {
     const myChart = echarts.init(cpuchart.value);
     var option = {
+      title: {
+        text: 'cpu使用率',
+        bottom: 0, // Position the title at the bottom
+        left: 'center' // Align the title to the center
+      },
+
       series: [
         {
           type: 'gauge',
@@ -258,164 +272,268 @@ onMounted(() => {
     myChart.setOption(option);
   }
 
-  if(linechart.value){
-    const myChart = echarts.init(linechart.value)
-    var option = {
-      title: {
-        text: 'Stacked Line'
-      },
-      tooltip: {
-        trigger: 'axis'
-      },
-      legend: {
-        data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
-      },
-      grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
-        }
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          name: 'Email',
-          type: 'line',
-          stack: 'Total',
-          data: [120, 132, 101, 134, 90, 230, 210]
-        },
-        {
-          name: 'Union Ads',
-          type: 'line',
-          stack: 'Total',
-          data: [220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-          name: 'Video Ads',
-          type: 'line',
-          stack: 'Total',
-          data: [150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-          name: 'Direct',
-          type: 'line',
-          stack: 'Total',
-          data: [320, 332, 301, 334, 390, 330, 320]
-        },
-        {
-          name: 'Search Engine',
-          type: 'line',
-          stack: 'Total',
-          data: [820, 932, 901, 934, 1290, 1330, 1320]
-        }
-      ]
-    };
+  if(accuracyChart.value){
+    const myChart = echarts.init(accuracyChart.value)
+    const posList = [
+            'left',
+            'right',
+            'top',
+            'bottom',
+            'inside',
+            'insideTop',
+            'insideLeft',
+            'insideRight',
+            'insideBottom',
+            'insideTopLeft',
+            'insideTopRight',
+            'insideBottomLeft',
+            'insideBottomRight'
+            ];
+            app.configParameters = {
+            rotate: {
+                min: -90,
+                max: 90
+            },
+            align: {
+                options: {
+                left: 'left',
+                center: 'center',
+                right: 'right'
+                }
+            },
+            verticalAlign: {
+                options: {
+                top: 'top',
+                middle: 'middle',
+                bottom: 'bottom'
+                }
+            },
+            position: {
+                options: posList.reduce(function (map, pos) {
+                map[pos] = pos;
+                return map;
+                }, {})
+            },
+            distance: {
+                min: 0,
+                max: 100
+            }
+            };
+            app.config = {
+            rotate: 90,
+            align: 'left',
+            verticalAlign: 'middle',
+            position: 'insideBottom',
+            distance: 15,
+            onChange: function () {
+                const labelOption = {
+                rotate: app.config.rotate,
+                align: app.config.align,
+                verticalAlign: app.config.verticalAlign,
+                position: app.config.position,
+                distance: app.config.distance
+                };
+                myChart.setOption({
+                series: [
+                    {
+                    label: labelOption
+                    },
+                    {
+                    label: labelOption
+                    },
+                    {
+                    label: labelOption
+                    },
+                    {
+                    label: labelOption
+                    }
+                ]
+                });
+            }
+            };
+            const labelOption = {
+            show: true,
+            position: app.config.position,
+            distance: app.config.distance,
+            align: app.config.align,
+            verticalAlign: app.config.verticalAlign,
+            rotate: app.config.rotate,
+            formatter: '{c}  {name|{a}}',
+            fontSize: 16,
+            rich: {
+                name: {}
+            }
+            };
+            option = {
+                title: {
+                    text: '4种方法的正确率'
+                },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                type: 'shadow'
+                }
+            },
+            legend: {
+                data: ['ConMU', 'GA', 'FT', 'RL']
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                feature: {
+                mark: { show: true },
+                dataView: { show: true, readOnly: false },
+                magicType: { show: true, type: ['line', 'bar', 'stack'] },
+                restore: { show: true },
+                saveAsImage: { show: true }
+                }
+            },
+            xAxis: [
+                {
+                type: 'category',
+                axisTick: { show: false },
+                data: ['部分遗忘', '类别遗忘', '文本遗忘']
+                }
+            ],
+            yAxis: [
+                {
+                type: 'value'
+                }
+            ],
+            series: [
+                {
+                name: 'ConMU',
+                type: 'bar',
+                barGap: 0,
+                label: labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [320, 332, 301]
+                },
+                {
+                name: 'GA',
+                type: 'bar',
+                label: labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [220, 182, 191]
+                },
+                {
+                name: 'FT',
+                type: 'bar',
+                label: labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [150, 232, 201]
+                },
+                {
+                name: 'RL',
+                type: 'bar',
+                label: labelOption,
+                emphasis: {
+                    focus: 'series'
+                },
+                data: [98, 77, 101]
+                }
+            ]
+            };
     myChart.setOption(option);
   }
 
   if(thirdChart.value) {
     const myChart = echarts.init(thirdChart.value)
-    var option = {
-      dataset: [
-        {
-          source: [
-            ['Product', 'Sales', 'Price', 'Year'],
-            ['Cake', 123, 32, 2011],
-            ['Cereal', 231, 14, 2011],
-            ['Tofu', 235, 5, 2011],
-            ['Dumpling', 341, 25, 2011],
-            ['Biscuit', 122, 29, 2011],
-            ['Cake', 143, 30, 2012],
-            ['Cereal', 201, 19, 2012],
-            ['Tofu', 255, 7, 2012],
-            ['Dumpling', 241, 27, 2012],
-            ['Biscuit', 102, 34, 2012],
-            ['Cake', 153, 28, 2013],
-            ['Cereal', 181, 21, 2013],
-            ['Tofu', 395, 4, 2013],
-            ['Dumpling', 281, 31, 2013],
-            ['Biscuit', 92, 39, 2013],
-            ['Cake', 223, 29, 2014],
-            ['Cereal', 211, 17, 2014],
-            ['Tofu', 345, 3, 2014],
-            ['Dumpling', 211, 35, 2014],
-            ['Biscuit', 72, 24, 2014]
-          ]
+    function randomData() {
+      now = new Date(+now + oneDay);
+      value = value + Math.random() * 21 - 10;
+      return {
+        name: now.toString(),
+        value: [
+          [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+          Math.round(value)
+        ]
+      };
+    }
+    let data = [];
+    // let data2 = [];
+    // for (var i = 0; i < 1000; i++) {
+    //   data2.push(randomData());
+    // }  TODO 加了这个 表格就挂了
+
+    let now = new Date(1997, 9, 3);
+    let oneDay = 24 * 3600 * 1000;
+    let value = Math.random() * 1000;
+    for (var i = 0; i < 1000; i++) {
+      data.push(randomData());
+    }
+    option = {
+      title: {
+        text: 'cpu内存监控'
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function (params) {
+          params = params[0];
+          var date = new Date(params.name);
+          return (
+            date.getDate() +
+            '/' +
+            (date.getMonth() + 1) +
+            '/' +
+            date.getFullYear() +
+            ' : ' +
+            params.value[1]
+          );
         },
-        {
-          transform: {
-            type: 'filter',
-            config: { dimension: 'Year', value: 2011 }
-          }
-        },
-        {
-          transform: {
-            type: 'filter',
-            config: { dimension: 'Year', value: 2012 }
-          }
-        },
-        {
-          transform: {
-            type: 'filter',
-            config: { dimension: 'Year', value: 2013 }
-          }
+        axisPointer: {
+          animation: false
         }
-      ],
+      },
+      xAxis: {
+        type: 'time',
+        splitLine: {
+          show: false
+        }
+      },
+      yAxis: {
+        type: 'value',
+        boundaryGap: [0, '100%'],
+        splitLine: {
+          show: false
+        }
+      },
       series: [
         {
-          type: 'pie',
-          radius: 50,
-          center: ['50%', '25%'],
-          datasetIndex: 1
+          name: 'cpu',
+          type: 'line',
+          showSymbol: false,
+          data: data
         },
-        {
-          type: 'pie',
-          radius: 50,
-          center: ['50%', '50%'],
-          datasetIndex: 2
-        },
-        {
-          type: 'pie',
-          radius: 50,
-          center: ['50%', '75%'],
-          datasetIndex: 3
-        }
-      ],
-      // Optional. Only for responsive layout:
-      media: [
-        {
-          query: { minAspectRatio: 1 },
-          option: {
-            series: [
-              { center: ['25%', '50%'] },
-              { center: ['50%', '50%'] },
-              { center: ['75%', '50%'] }
-            ]
-          }
-        },
-        {
-          option: {
-            series: [
-              { center: ['50%', '25%'] },
-              { center: ['50%', '50%'] },
-              { center: ['50%', '75%'] }
-            ]
-          }
-        }
+        // {
+        //   name: 'memory',
+        //   type: 'line',
+        //   showSymbol: false,
+        //   data: data2 // Add the data for the second line
+        // }
       ]
     };
+    setInterval(function () {
+      for (var i = 0; i < 5; i++) {
+        data.shift();
+        data.push(randomData());
+      }
+      myChart.setOption({
+        series: [
+          {
+            data: data
+          }
+        ]
+      });
+    }, 1000);
     myChart.setOption(option);
   }
 
