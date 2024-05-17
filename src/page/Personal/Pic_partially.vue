@@ -55,8 +55,38 @@
       </div>
       <p class="text-bottom"> 用时：1.2s </p>
     </el-col>
-    <el-col :span="8">
-      <el-card class="box-card">
+
+    <el-col :span="17">
+      <el-row :span="6">
+        <el-col :span="12">
+          <el-card class="box-card">
+            <div style="font-size: 20px;text-align:center;">
+              <p>检测到与您有关的图片数</p>
+              <el-icon style="color: red;margin-top:20px;margin-right:10px;"><Picture /></el-icon>145
+            </div>
+          </el-card>
+        </el-col>
+
+        <el-col :span="12">
+          <el-card class="box-card">
+            <div style="font-size: 20px;text-align:center;">
+              <p>已遗忘与您有关的图片数</p>
+              <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>145
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+
+      <el-row :span="18">
+        <el-card>
+          <div id="pieChart" ref="pieChart" style="width: 700px; height: 700px"></div>
+        </el-card>
+      </el-row>
+      
+    </el-col>
+
+    <!-- <el-col :span="8"> -->
+      <!-- <el-card class="box-card">
         <div style="font-size: 20px;text-align:center;">
           <p>检测到与您有关的图片数</p>
           <el-icon style="color: red;margin-top:20px;margin-right:10px;"><Picture /></el-icon>145
@@ -69,8 +99,9 @@
           <p>已遗忘与您有关的图片数</p>
           <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>145
         </div>
-      </el-card>
-    </el-col>
+      </el-card> -->
+
+    <!-- </el-col> -->
   </el-row>
   </el-main>
 </el-container>
@@ -80,10 +111,12 @@
 
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue';
+import * as echarts from 'echarts';
 import { ElMessageBox } from "element-plus"
 
 const radio = ref(0) //默认不选按钮
+const pieChart = ref(null);
 
 function Forget_Button_Click() {
   ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
@@ -105,24 +138,49 @@ const handleChange = (value) => {
   console.log(value)
 }
 
-const options = [
-  {
-    value: 'ConMU',
-    label: 'ConMU（推荐）',
-  },
-  {
-    value: 'GA',
-    label: 'GA',
-  },
-  {
-    value: 'FT',
-    label: 'FT',
-  },
-  {
-    value: 'RL',
-    label: 'RL',
-  },
-]
+onMounted(() => {
+  if (pieChart.value) {
+    const myChart = echarts.init(pieChart.value);
+    const option = {
+      title: {
+        text: '这是标题',
+        subtext: 'Fake Data',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 'left'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: '50%',
+          data: [
+            { value: 1048, name: 'Search Engine' },
+            { value: 735, name: 'Direct' },
+            { value: 580, name: 'Email' },
+            { value: 484, name: 'Union Ads' },
+            { value: 300, name: 'Video Ads' }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+ 
+})
+
 </script>
 
 
@@ -170,6 +228,6 @@ const options = [
   }
   .box-card {
     width: 90%;
-    height: 100px;
+    height: 80%;
   }
 </style>
