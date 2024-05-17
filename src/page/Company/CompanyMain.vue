@@ -1,30 +1,39 @@
 <template>
-  <el-row :gutter="20">
-    <el-col :span="15">
+  <el-row :gutter="20" style="background-color: rgba(127, 255, 212, 0.367);">
+    <el-col :span="14">
       <el-row>
-        <el-col class="number" :span="6" style="text-align: center; margin: 20px;">
+        <el-col class="taskPanel" :span="4" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
           <div style="font-size: 24px;">模型总数量</div>
-          <div style="font-size: 36px;">6</div>
+          <div style="font-size: 36px; background-color: rgb(160, 160, 255); height: 50px; width: 50px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">6</div>
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 16px; margin: 20px;"> <!-- Increase text size -->
-          <div style="margin-bottom: 10px;">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
+        <el-col class="taskPanel" :span="6" style="font-size: 16px;"> <!-- Increase text size -->
+          <div style="margin-bottom: 20px;">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 16px; margin: 20px;">
-          <div style="margin-bottom: 10px;">已完成计划任务数   /    异常任务数</div>
+        <el-col class="taskPanel" :span="6" style="font-size: 16px; ">
+          <div style="margin-bottom: 20px;">已完成计划任务数   /    异常任务数</div>
+          <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
+        </el-col>
+
+        <el-col class="taskPanel" :span="6" style="font-size: 16px; ">
+          <div style="margin-bottom: 20px;">已完成计划任务数   /    异常任务数</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
       </el-row>
 
-      <el-row style="height: 500px; width: 100%; margin-top: 40px;">
-        <div ref="accuracyChart" style="height: 100%; width: 100%"></div>
+      <el-row class="echartPanel" style="height: 300px; width: 100%; margin-top: 10px;">
+        <div ref="accuracyChart" style="height: 100%; width: 100%;"></div>
+      </el-row>
+
+      <el-row class="echartPanel" style="height: 350px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+        <div ref="radarChart" style="height: 100%; width: 100%;"></div>
       </el-row>
 
       <el-row>
-        <div style="margin-bottom: 10px;"> <!-- Add a title above the table -->
+        <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
           <h3 style="font-size: 20px;">任务执行记录</h3>
         </div>
         <el-table :data="tableData" style="width: 100%">
@@ -41,35 +50,33 @@
 
 
 
-
-
-    <el-col :span="9">
+    <el-col :span="10">
       <el-row> <!--第二列 第一行-->
-        <el-col :span="4"> <!-- Adjust the span to share the space -->
-          <div id="cpuchart" ref="cpuchart" style="width: 200px; height: 200px; position: relative;">
+        <el-col :span="12"> 
+          <div class="echartPane2" id="cpuchart" ref="cpuchart">
           </div>
         </el-col>
 
-        <el-col :span="4"> <!-- New column with the same space -->
-          <div id="memchart" ref="memchart" style="width: 200px; height: 200px; position: relative;">
+        <el-col :span="12"> 
+          <div class="echartPane2" id="memchart" ref="memchart">
           </div>
         </el-col>
       </el-row>
 
       <el-row > <!--第二列 第二行 监控-->
-        <div id="thirdChart" ref="thirdChart" style="height: 300px; width: 100%; margin-top: 40px;"></div>
+        <div class="echartPanel" id="thirdChart" ref="thirdChart" style="height: 400px; width: 100%; margin-top: 10px;"></div>
       </el-row>
 
       <el-row>
-        <div style="margin-bottom: 10px;"> <!-- Add a title above the table -->
+        <div style="margin-bottom: 10px; margin-top: 10px;"> 
           <h3 style="font-size: 20px;">备份记录</h3>
         </div>
-        <el-table :data="tableData2" style="width: 100%">
-          <el-table-column prop="taskName" label="类型"></el-table-column>
-          <el-table-column prop="taskType" label="模型名称"></el-table-column>
-          <el-table-column prop="executionPeriod" label="执行时间"></el-table-column>
-          <el-table-column prop="executionStatus" label="备份数量"></el-table-column>
-          <el-table-column prop="executionTime" label="最后备份时间"></el-table-column>
+        <el-table :data="tableData2" border >
+          <el-table-column class="tableHeader" prop="taskName" label="类型"></el-table-column>
+          <el-table-column class="tableHeader" prop="taskType" label="模型名称"></el-table-column>
+          <el-table-column class="tableHeader" prop="executionPeriod" label="执行时间"></el-table-column>
+          <el-table-column class="tableHeader" prop="executionStatus" label="备份数量"></el-table-column>
+          <el-table-column class="tableHeader" prop="executionTime" label="最后备份时间"></el-table-column>
         </el-table>
       </el-row>
       
@@ -84,10 +91,10 @@ import * as echarts from 'echarts';
 
 const cpuchart = ref(null);
 const memchart = ref(null);
-const loadchart = ref(null);
 
 const accuracyChart = ref(null);
 const thirdChart = ref(null);
+const radarChart = ref(null);
 
 // 表格内容
 const tableData = ref([
@@ -185,6 +192,11 @@ onMounted(() => {
   if(memchart.value) {
     const myChart = echarts.init(memchart.value);
     var option = {
+      title: {
+        text: '内存使用率',
+        bottom: 0, // Position the title at the bottom
+        left: 'center' // Align the title to the center
+      },
       series: [
         {
           type: 'gauge',
@@ -537,6 +549,132 @@ onMounted(() => {
     myChart.setOption(option);
   }
 
+  if (radarChart.value) {
+    const myChart = echarts.init(radarChart.value);
+    var option = {
+  color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+  title: {
+    text: '4种方法雷达图'
+  },
+  legend: {},
+  radar: [
+    {
+      indicator: [
+        { text: '模型准确率' },
+        { text: '耗时' },
+        { text: '效果' },
+        { text: '指标4' },
+        { text: '指标5' }
+      ],
+      center: ['25%', '50%'],
+      radius: 120,
+      startAngle: 90,
+      splitNumber: 4,
+      shape: 'circle',
+      axisName: {
+        formatter: '【{value}】',
+        color: '#428BD4'
+      },
+      splitArea: {
+        areaStyle: {
+          color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+          shadowColor: 'rgba(0, 0, 0, 0.2)',
+          shadowBlur: 10
+        }
+      },
+      axisLine: {
+        lineStyle: {
+          color: 'rgba(211, 253, 250, 0.8)'
+        }
+      },
+      splitLine: {
+        lineStyle: {
+          color: 'rgba(211, 253, 250, 0.8)'
+        }
+      }
+    },
+    {
+      indicator: [
+        { text: '正确率', max: 150 },
+        { text: '耗时', max: 150 },
+        { text: '效果', max: 150 },
+        { text: 'Indicator4', max: 120 },
+        { text: 'Indicator5', max: 108 },
+        { text: 'Indicator6', max: 72 }
+      ],
+      center: ['75%', '50%'],
+      radius: 120,
+      axisName: {
+        color: '#fff',
+        backgroundColor: '#666',
+        borderRadius: 3,
+        padding: [3, 5]
+      }
+    }
+  ],
+  series: [
+    {
+      type: 'radar',
+      emphasis: {
+        lineStyle: {
+          width: 4
+        }
+      },
+      data: [
+        {
+          value: [100, 8, 0.4, -80, 2000],
+          name: 'ConMU'
+        },
+        {
+          value: [60, 5, 0.3, -100, 1500],
+          name: 'GA',
+          areaStyle: {
+            color: 'rgba(255, 228, 52, 0.6)'
+          }
+        }
+      ]
+    },
+    {
+      type: 'radar',
+      radarIndex: 1,
+      data: [
+        {
+          value: [120, 118, 130, 100, 99, 70],
+          name: 'FT',
+          symbol: 'rect',
+          symbolSize: 12,
+          lineStyle: {
+            type: 'dashed'
+          },
+          label: {
+            show: true,
+            formatter: function (params) {
+              return params.value;
+            }
+          }
+        },
+        {
+          value: [100, 93, 50, 90, 70, 60],
+          name: 'RL',
+          areaStyle: {
+            color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+              {
+                color: 'rgba(255, 145, 124, 0.1)',
+                offset: 0
+              },
+              {
+                color: 'rgba(255, 145, 124, 0.9)',
+                offset: 1
+              }
+            ])
+          }
+        }
+      ]
+    }
+  ]
+};
+    myChart.setOption(option);
+  }
 
 
 })
@@ -547,5 +685,30 @@ onMounted(() => {
 <style scoped>
  .el-table thead {
   background-color: lightgreen;
+}
+.taskPanel {
+  background-color: #f9fffe;
+  border-radius: 10px; 
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+
+.echartPanel {
+  background-color: #ffffff;
+  border-radius: 10px 10px 10px 10px; 
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1px;
+  position: center;
+  height: 100%;
+}
+.echartPane2 {
+  margin-top: 10px;
+  margin-right: 10px;
+  background: #ffffff;
+  border-radius: 10px 10px 10px 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 300px;
 }
 </style>
