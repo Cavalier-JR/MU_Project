@@ -28,10 +28,28 @@
   >
     <el-table-column type="selection" width="55" header-align="center" align="center" />
     <el-table-column prop="model" label="模型名称" width="120" header-align="center" align="center" />
-    <el-table-column prop="progress" label="进度" width="180" header-align="center" align="center" />
-    <el-table-column prop="expected_acc" label="预计acc" width="120" header-align="center" align="center" />
-    <el-table-column prop="actual_acc" label="实际acc" width="120" header-align="center" align="center" />
-    <el-table-column prop="recovered_acc" label="恢复后acc" width="120" header-align="center" align="center" />
+    <el-table-column prop="progress" label="进度" width="320" header-align="center" align="center">
+      <template #default="scope">
+        <span style="margin-left: -20px;" align="center">
+          <el-button style="margin-left: 15px;" size="mini" :type="scope.row.b1" @click="detect(scope.$index, scope.row)"
+          :loading="scope.row.loading === 'yes'" :disabled="scope.row.b1 !== 'success'">
+            {{ scope.row.operation }}
+          </el-button>
+          ->
+          <el-button style="margin-left: -5px;" size="mini" :type="scope.row.b2" @click="fixes(scope.$index, scope.row)"
+          :loading="scope.row.loading2 === 'yes'" :disabled="scope.row.b2 !== 'success'">
+            {{ scope.row.operation2 }}
+          </el-button>
+          ->
+          <el-button style="margin-left: -5px;" size="mini" :type="scope.row.b3" @click="verify(scope.$index, scope.row)"
+          :loading="scope.row.loading3 === 'yes'" :disabled="scope.row.b3 !== 'success'">
+            {{ scope.row.operation3 }}
+          </el-button>
+        </span>
+      </template>
+    </el-table-column>
+    <el-table-column prop="expected_acc" label="预计acc" width="100" header-align="center" align="center" />
+    <el-table-column prop="recovered_acc" label="恢复后acc" width="100" header-align="center" align="center" />
     <el-table-column prop="cost_time" label="用时" width="100" header-align="center" align="center" />
     <el-table-column label="状态" prop="state" align="center" width="100">
       <template #default="scope">
@@ -101,7 +119,7 @@
 import { ref } from 'vue'
 import { ElTable } from 'element-plus'
 import { Search, Share } from '@element-plus/icons-vue'
-import { ElMessageBox } from 'element-plus'
+import { ElMessageBox, ElMessage } from 'element-plus'
 
 const drawer = ref(false)
 
@@ -112,7 +130,15 @@ interface User {
   actual_acc: string
   recovered_acc: string
   cost_time: string
-  progress: string
+  loading: string
+  loading2: string
+  loading3: string
+  operation: string
+  operation2: string
+  operation3: string
+  b1: string
+  b2: string
+  b3: string
 }
 
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
@@ -148,7 +174,15 @@ const tableData: User[] = [
     actual_acc: '0.84',
     cost_time: '4.13s',
     recovered_acc: '0.89',
-    progress: '检测 -> 恢复 -> 验证',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'success',
+    b3: 'success',
   },
   {
     model: 'aaa',
@@ -157,7 +191,15 @@ const tableData: User[] = [
     actual_acc: '0.87',
     cost_time: '6.12s',
     recovered_acc: '0.93',
-    progress: '检测 -> 恢复 -> 验证',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'success',
+    b3: 'success',
   },
   {
     model: 'aaa',
@@ -166,7 +208,15 @@ const tableData: User[] = [
     actual_acc: '0.88',
     cost_time: '4.51s',
     recovered_acc: '0.94',
-    progress: '检测 -> 恢复 -> 验证',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'success',
+    b3: 'success',
   },
   {
     model: 'aaa',
@@ -175,7 +225,15 @@ const tableData: User[] = [
     actual_acc: '0.93',
     cost_time: '5.12s',
     recovered_acc: '0.96',
-    progress: '检测 -> 恢复 -> 验证'
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'success',
+    b3: 'success',
   },
   {
     model: 'aaa',
@@ -184,7 +242,15 @@ const tableData: User[] = [
     actual_acc: '0.93',
     cost_time: '1.62s',
     recovered_acc: '0.98',
-    progress: '检测 -> 恢复 -> 验证'
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'success',
+    b3: 'success',
   },
   {
     model: 'aaa',
@@ -193,7 +259,15 @@ const tableData: User[] = [
     actual_acc: '\\',
     cost_time: '\\',
     recovered_acc: '\\',
-    progress: '检测',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'success',
+    b3: 'info',
   },
   {
     model: 'aaa',
@@ -202,7 +276,15 @@ const tableData: User[] = [
     actual_acc: '\\',
     cost_time: '\\',
     recovered_acc: '\\',
-    progress: '检测',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'info',
+    b3: 'info',
   },
   {
     model: 'aaa',
@@ -211,7 +293,15 @@ const tableData: User[] = [
     actual_acc: '\\',
     cost_time: '\\',
     recovered_acc: '\\',
-    progress: '检测 -> 恢复',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "修复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'info',
+    b3: 'info',
   },
   
 ]
@@ -228,6 +318,45 @@ const tableRowClassName = ({
   } 
   return ''
 }
+const detect = (index: number, row: User) => {
+  row.loading = 'yes'
+  row.operation = "检测中.."
+  let timer: number | null = setTimeout(() => {
+    row.b2 = "success"
+    row.operation = "检测" 
+    row.loading = 'no'
+    ElMessage({
+      message: '检测完成！可以进行模型恢复了',
+      type: 'success',
+    })
+  }, 5000)
+}
+const fixes = (index: number, row: User) => {
+  row.loading2 = 'yes'
+  row.operation2 = "修复中.."
+  let timer: number | null = setTimeout(() => {
+    row.operation2 = "修复"
+    row.loading2 = 'no'
+    row.b3 = "success"
+    ElMessage({
+      message: '模型恢复完成！请您验证',
+      type: 'success',
+    })
+  }, 5000)
+}
+
+const verify = (index: number, row: User) => {
+  row.loading3 = 'yes'
+  row.operation3 = "验证中.."
+  let timer: number | null = setTimeout(() => {
+    row.operation3 = "验证"
+    row.loading3 = 'no'
+    ElMessage({
+      message: '验证成功！精确度无误',
+      type: 'success',
+    })
+  }, 5000)
+}
 </script>    
   
 <style>
@@ -238,7 +367,7 @@ const tableRowClassName = ({
     --el-table-tr-bg-color: #B48EDD;
   }
   .el-table .warning-row {
-    --el-table-tr-bg-color: #F8DEBA;
+    --el-table-tr-bg-color:  var(--el-color-warning-light-9);
   }
   .el-table .danger-row {
     --el-table-tr-bg-color: #060606;

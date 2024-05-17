@@ -1,11 +1,9 @@
 <template>
   <div class="loginbody">
     <div class="logindata">
+      <h2 class="logintext">欢迎来到遗忘学习系统</h2>
       <el-tabs stretch="true" class="tags">
         <el-tab-pane label="用户端" class="UserTag">
-          <div class="logintext">
-            <h2>欢迎来到遗忘学习系统</h2>
-          </div>
           <div>
             <el-form>
               <el-form-item prop="username">
@@ -30,9 +28,6 @@
           </div> 
         </el-tab-pane>
         <el-tab-pane label="公司端">
-          <div class="logintext">
-            <h2>欢迎来到遗忘学习系统</h2>
-          </div>
           <div>
             <el-form>
               <el-form-item prop="username">
@@ -120,19 +115,21 @@ const CompanySet = () => {
   filter: opacity(100%);
 }
 .logintext {
-  margin-bottom: 20px;
   line-height: 50px;
   text-align: center;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bolder;
   color: white;
   text-shadow: 2px 2px 4px #000000;
+  position: fixed;
+  top: -3%;
+  left: 14%;
 }
 .logindata {
   width: 400px;
   height: 400px;
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
