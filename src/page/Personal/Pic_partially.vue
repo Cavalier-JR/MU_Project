@@ -242,7 +242,6 @@ const options = [
     padding: 10px;
     font-size: 30px;
     font-family:'社会体';
-
     justify-content: center;
     text-align: center;
   }

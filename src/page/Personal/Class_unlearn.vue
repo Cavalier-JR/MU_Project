@@ -7,32 +7,40 @@
       <el-row justify="center">
         <el-col :span="14">
           <el-card style="max-width: 710px">
-            <template #header>
-              <div class="card1_title">
-                <p>您好！欢迎来到图片遗忘系统</p>
-              </div>
-            </template>
             <div class="card-content">
-              <p> 作为你的隐私保护伙伴，您可以上传不同的图片让我遗忘哦！ </p>
+              <p> 作为你的隐私保护伙伴，您可以上传不同类别的图片让我遗忘哦！ </p>
               <br>
-              <p> 想知道我们能干什么？可以看下面!可以在浏览器收藏我们的地址，下次使用更高效哦~ </p>
+              <p> 想知道我们能干什么？可以看下面哦~</p>
             </div> 
             <div class="card-content">
               <el-card style="max-width: 300px;display: inline-block;margin-top:15px;" shadow="always">
                 <el-icon style="color: green"><SetUp /></el-icon>
-                对整个类别的图片进行遗忘
+                首先选择某个类别的图片
               </el-card>
-              <el-card style="max-width: 300px;display: inline-block;margin-left:100px;" shadow="always">
+              <el-card style="max-width: 300px;display: inline-block;margin-left:120px;" shadow="always">
                 <el-icon style="color: blue"><Promotion /></el-icon>
-                对零散的图片进行部分遗忘
+                选择遗忘方法并进行遗忘
               </el-card>
             </div>
           </el-card>
           <br>
+          <div class="demo-collapse">
+            <el-collapse v-model="activeNames" @change="handleChange1" v-show="isCardVisible">
+              <el-collapse-item title="遗忘前安全说明" name="1">
+                <div>
+                  您可以通过申请“遗忘”来移除本系统中存储的您的图像数据。一旦您的图像数据被成功移除，系统将不再保留与您相关的任何特征和内容。
+                  在未来的任何生成、恢复或处理过程中，本系统都不会涉及或引用您的图像数据，这意味着，您的个人信息将完全从系统的记忆中被删除，
+                  确保您的隐私得到彻底保护。我们致力于维护您的数据安全和隐私，任何时候您都可以联系我们以启动这一遗忘程序，
+                  从而享受更加安全和私密的服务体验。
+                </div>
+              </el-collapse-item>
+            </el-collapse>
+          </div>
+          <br>
           <br>
           <div class="select"> 
             <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" 
-            style="width: 225px" clearable :show-all-levels="false" placeholder="请选择需要遗忘的类别" collapse-tags/>
+            style="width: 190px" clearable :show-all-levels="false" placeholder="请选择需要遗忘的类别" collapse-tags/>
             <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" class="button"> 选择 </el-button>
           </div> 
           <div class="select"> 
@@ -50,26 +58,6 @@
               进行遗忘 
             </el-button>
           </div> 
-          <div>
-            <el-card v-show="isCardVisible" class="card-body">
-              <template #header>
-                <div class="card-header">
-                  <span>
-                    <el-icon><InfoFilled /></el-icon>
-                    <span>遗忘前安全说明</span>
-                  </span>
-                </div>
-              </template>
-              <div class="card-content">
-                <p>
-                  您可以通过申请“遗忘”来移除本系统中存储的您的图像数据。一旦您的图像数据被成功移除，系统将不再保留与您相关的任何特征和内容。
-                  在未来的任何生成、恢复或处理过程中，本系统都不会涉及或引用您的图像数据，这意味着，您的个人信息将完全从系统的记忆中被删除，
-                  确保您的隐私得到彻底保护。我们致力于维护您的数据安全和隐私，任何时候您都可以联系我们以启动这一遗忘程序，
-                  从而享受更加安全和私密的服务体验。
-                </p>
-              </div>
-            </el-card>
-          </div>
           <div> 
             <el-result
               icon="success"
@@ -104,6 +92,10 @@ const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 const isMethodVisible = ref(false); // 初始状态为false，即不显示
 const loading_flag = ref(false);
 const isCardVisible = ref(true);
+const activeNames = ref()
+const handleChange1 = (val: string[]) => {
+  console.log(val)
+}
 
 function Forget_Button_Click() {
   ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
@@ -330,7 +322,6 @@ margin: 1px;
 }
 .select{
   margin-top: 20px; /* 可选：设置顶部边距 */
-  margin-bottom: 20px;
   margin-left: 120px;
 }
 .card-header .el-icon {
@@ -349,13 +340,12 @@ margin: 1px;
   min-width: 500px;
 }
 .my_el-header {
-  background-color: #f2f2f3;
-  color: black;
-  padding: 10px;
-  font-size: 30px;
-  font-family:'社会体';
-
-  justify-content: center;
-  text-align: center;
-}
+    background-color: #f2f2f3;
+    color: black;
+    padding: 10px;
+    font-size: 30px;
+    font-family:'社会体';
+    justify-content: center;
+    text-align: center;
+  }
 </style>
