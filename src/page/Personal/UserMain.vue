@@ -1,15 +1,17 @@
 <template>
   <div class="home-container">
-    <div class="home-navbar1"></div>
-    <div class="home-hero2"><app-hero3></app-hero3></div>
-    <div class="home-logos3"></div>
-    <div class="home-gallery4"></div>
+    <!-- <div class="home-navbar1"></div> -->
+    <!-- <div class="home-hero2"><app-hero3></app-hero3></div> -->
+    
+    <!-- <div class="home-gallery4"></div> -->
     <div class="home-features5"><app-features17></app-features17></div>
+    <div class="home-logos3"></div>
     <div class="home-features6"><app-features18></app-features18></div>
+    <div class="home-logos3"></div>
     <div class="home-features7"><app-features171></app-features171></div>
-    <div class="home-cta8"><app-cta1></app-cta1></div>
+    <!-- <div class="home-cta8"><app-cta1></app-cta1></div>
     <div class="home-faq9"><app-faq1></app-faq1></div>
-    <div class="home-contact10"><app-contact4></app-contact4></div>
+    <div class="home-contact10"><app-contact4></app-contact4></div> -->
   </div>
 </template>
 

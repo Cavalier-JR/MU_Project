@@ -60,6 +60,8 @@ export default {
   position: relative;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 .features171-max-width {
   gap: var(--dl-space-space-fiveunits);
