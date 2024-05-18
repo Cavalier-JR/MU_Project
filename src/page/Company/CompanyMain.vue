@@ -163,7 +163,7 @@ onMounted(() => {
           },
           detail: {
             valueAnimation: true,
-            formatter: '{value} km/h',
+            formatter: '{value} %',
             color: 'inherit'
           },
           data: [
@@ -487,7 +487,7 @@ onMounted(() => {
     }
     option = {
       title: {
-        text: 'cpu内存监控'
+        text: '遗忘次数'
       },
       tooltip: {
         trigger: 'axis',
