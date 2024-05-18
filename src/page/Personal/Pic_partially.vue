@@ -56,8 +56,34 @@
   </el-row>
   <el-row>
     <el-col :span="8">
-      <div class="image-container">
-        <img src="../../assets/cat.png" alt="示例图片" />
+      <div>
+        <el-collapse v-model="activeNames" @change="handleChange2">
+          <el-collapse-item title="文件夹" name="1">
+            <div>
+              animal_fold
+            </div>
+            <div>
+              vehicle_fold
+            </div>
+            <div>
+              pic_fold
+            </div>
+          </el-collapse-item>
+          <el-collapse-item title="单个图片" name="2">
+            <div>
+              cat1.png
+            </div>
+            <div>
+              my_dog.jpg
+            </div>
+            <div>
+              cat2.jpg
+            </div>
+            <div>
+              bike.png
+            </div>
+          </el-collapse-item>
+        </el-collapse>
       </div>
       <br>
       <br>
@@ -96,6 +122,10 @@ import { ElMessageBox } from "element-plus"
 
 const radio = ref(0) //默认不选按钮
 const pieChart = ref(null);
+const activeNames = ref(['1', '2'])
+const handleChange2 = (val: string[]) => {
+  console.log(val)
+}
 
 function Forget_Button_Click() {
   ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
@@ -124,8 +154,7 @@ onMounted(() => {
     const myChart = echarts.init(pieChart.value);
     const option = {
       title: {
-        text: '这是标题',
-        subtext: '这是副标题',
+        text: '上传图片中各类别占比',
         left: 'center'
       },
       tooltip: {
@@ -133,19 +162,20 @@ onMounted(() => {
       },
       legend: {
         orient: 'vertical',
-        left: 'left'
+        left: 'left',
+        top: '10%'
       },
       series: [
         {
           name: 'Access From',
           type: 'pie',
-          radius: '50%',
+          radius: '40%',
           data: [
-            { value: 1048, name: 'Search Engine' },
-            { value: 735, name: 'Direct' },
-            { value: 580, name: 'Email' },
-            { value: 484, name: 'Union Ads' },
-            { value: 300, name: 'Video Ads' }
+            { value: 1048, name: 'Animal' },
+            { value: 735, name: 'Vehicle' },
+            { value: 580, name: 'Fruit' },
+            { value: 484, name: 'Plant' },
+            { value: 300, name: 'Vegatable' }
           ],
           emphasis: {
             itemStyle: {

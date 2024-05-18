@@ -8,14 +8,15 @@
             <div class="card-content">
               <p> 您在当前界面可以上传不同类别的图片让我遗忘哦！ </p>
               <br>
+              <br>
               <p> 想知道怎么操作？可以看下面哦~</p>
             </div> 
             <div class="card-content">
-              <el-card style="max-width: 300px;display: inline-block;margin-top:15px;margin-left:20px;" shadow="always">
+              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:30px;" shadow="always">
                 <el-icon style="color: green"><SetUp /></el-icon>
                 首先选择某个类别的图片
               </el-card>
-              <el-card style="max-width: 300px;display: inline-block;margin-left:60px;" shadow="always">
+              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:50px;" shadow="always">
                 <el-icon style="color: blue"><Promotion /></el-icon>
                 选择遗忘方法并进行遗忘
               </el-card>
@@ -40,7 +41,7 @@
             </el-select>
             <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible" 
             :loading="loading_flag" class="button"> 
-              进行遗忘 
+              遗忘 
             </el-button>
           </div> 
           <div> 
@@ -57,8 +58,8 @@
         <el-col :span="1"></el-col>
 
         <el-col :span="9" v-show="isRightPanelVisible">
-          <el-table :data="tableData" style="width: 100%" border stripe>
-            <el-table-column label="图像" prop="image" width="100" header-align="center" align="center"></el-table-column>
+          <el-table :data="tableData" style="width: 100%" border  height="400" stripe>
+            <el-table-column  height="250" prop="image" label="图像" width="100" header-align="center" align="center"></el-table-column>
             <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
             <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center" show-overflow-tooltip></el-table-column>
           </el-table>
@@ -71,8 +72,8 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
-import { ElMessageBox, ElNotification } from "element-plus"
+import { ref } from 'vue';
+import { ElMessageBox, ElNotification, ElMessage } from "element-plus"
 
 const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 const isMethodVisible = ref(false); // 初始状态为false，即不显示
@@ -80,6 +81,12 @@ const loading_flag = ref(false);
 const isCardVisible = ref(true);
 const handleChange1 = (val: string[]) => {
   console.log(val)
+}
+
+interface User {
+  image: string
+  beforeCategory: string
+  afterCategory: string
 }
 
 function Forget_Button_Click() {
@@ -103,28 +110,47 @@ function Forget_Button_Click() {
   });
 };
 
+const tableRowClassName = ({
+  row,
+  rowIndex,
+}: {
+  row: User
+  rowIndex: number
+}) => {
+  if (rowIndex === 0 || rowIndex === 2 || rowIndex === 4 || rowIndex === 6 
+  || rowIndex === 8 || rowIndex === 10 || rowIndex === 12 || rowIndex === 14) {
+    return 'row1'
+  } else {
+    return 'row2'
+  }
+  return ''
+}
+
 const Success_Notify = () => {
-  ElNotification({
-    title: '成功',
+  ElMessage({
+    showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    duration: 5000, // 自动关闭延时
   });
 };
 
-const tableData = reactive([
-{ image: 'cat1.jpg', beforeCategory: '猫', afterCategory: '狗'},
-{ image: 'cat2.jpg', beforeCategory: '狗', afterCategory: '狗'},
-{ image: 'cat3.jpg', beforeCategory: '猫', afterCategory: '羊'},
-{ image: 'cat4.jpg', beforeCategory: '猫', afterCategory: '狗'},
-{ image: 'cat5.jpg', beforeCategory: '鸡', afterCategory: '猪'},
-{ image: 'cat6.jpg', beforeCategory: '猫',  afterCategory: '狗'},
-{ image: 'cat7.jpg', beforeCategory: '猫', afterCategory: '狗'},
-{ image: 'cat8.jpg', beforeCategory: '鸡', afterCategory: '猴'},
-{ image: 'cat9.jpg', beforeCategory: '猫', afterCategory: '狗'},
-{ image: 'cat10.jpg', beforeCategory: '猫', afterCategory: '狗'},
-{ image: 'cat11.jpg', beforeCategory: '猫', afterCategory: '蛇'}
-]);
+const tableData: User[] = [
+  { image: 'cat1.jpg', beforeCategory: '猫', afterCategory: '狗'},
+  { image: 'cat2.jpg', beforeCategory: '猫', afterCategory: '狗'},
+  { image: 'cat3.jpg', beforeCategory: '猫', afterCategory: '羊'},
+  { image: 'cat4.jpg', beforeCategory: '猫', afterCategory: '驴'},
+  { image: 'cat5.jpg', beforeCategory: '猫', afterCategory: '猪'},
+  { image: 'cat6.jpg', beforeCategory: '猫',  afterCategory: '狗'},
+  { image: 'cat7.jpg', beforeCategory: '猫', afterCategory: '牛'},
+  { image: 'cat8.jpg', beforeCategory: '猫', afterCategory: '猴'},
+  { image: 'cat9.jpg', beforeCategory: '狗', afterCategory: '驴'},
+  { image: 'dog1.jpg', beforeCategory: '狗', afterCategory: '猫'},
+  { image: 'dog2.jpg', beforeCategory: '狗', afterCategory: '蛇'},
+  { image: 'dog3.jpg', beforeCategory: '狗', afterCategory: '猴'},
+  { image: 'dog4.jpg', beforeCategory: '狗', afterCategory: '猫'},
+  { image: 'dog5.jpg', beforeCategory: '狗', afterCategory: '马'},
+  { image: 'dog6.jpg', beforeCategory: '狗', afterCategory: '骆驼'},
+];
 
 const value1 = ref([])
 const value2 = ref([])
@@ -325,12 +351,18 @@ margin: 1px;
   min-width: 500px;
 }
 .my_el-header {
-    background-color: #f2f2f3;
-    color: black;
-    padding: 10px;
-    font-size: 30px;
-    font-family:'社会体';
-    justify-content: center;
-    text-align: center;
-  }
+  background-color: #f2f2f3;
+  color: black;
+  padding: 10px;
+  font-size: 30px;
+  font-family:'社会体';
+  justify-content: center;
+  text-align: center;
+}
+.el-table .row1 {
+  --el-table-tr-bg-color: #b9f4ee;
+}
+.el-table .row2 {
+  --el-table-tr-bg-color: #ebe0d6;
+}
 </style>
