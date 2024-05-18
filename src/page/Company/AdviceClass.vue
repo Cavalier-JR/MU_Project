@@ -1,20 +1,35 @@
 <template>
-    <!-- HTML code for the page with three columns -->
-    <div class="page">
-        <div class="column">
-            <p>文本遗忘优化建议，在3小时内，总共遗忘掉<span style="color: red; font-weight: bold;">50</span>条数据，包括<span style="color: red; font-weight: bold;">10</span>个手机号，<span style="color: red; font-weight: bold;">6</span>个个人信息。</p>
-        </div>
-        <div class="column">
-            <div id="pieChart1" ref="pieChart1" style="width: 400px; height: 300px;"></div>
-            <div id="pieChart2" ref="pieChart2" style="width: 400px; height: 300px;"></div>
-        </div>
-        <div class="column">
-            <div id="lineChart" ref="lineChart" style="width: 800px; height: 300px;"></div>
-            <div id="barChart" ref="barChart" style="width: 800px; height: 300px;"></div>
-        </div>
-    </div>
+    <el-row>
+
+
+        <el-row :span="6">
+            <el-col :span="8">
+                <div>Currently model: MODEL A</div>
+            </el-col>
+            <el-col :span="8">
+                <p><a href="#">Import model</a></p>
+            </el-col>
+            <el-col :span="8">
+                <el-cascader placeholder="Switch model"></el-cascader>
+            </el-col>
+        </el-row>
+
+
+        <!-- Second Row -->
+        <el-row :span="9">
+            <div style="text-align: center;">
+                <h2>Class unlearning</h2>
+                <el-cascader placeholder="Switch class"></el-cascader>
+                <p>Version v1.2</p>
+                <el-cascader placeholder="History"></el-cascader>
+            </div>
+        </el-row>
+
+        <el-row :span="9">
+            <el-card>
+                <!-- Radar chart using ECharts -->
+                <!-- Include your ECharts radar chart here -->
+            </el-card>
+        </el-row>
+    </el-row>
 </template>
-
-
-
-

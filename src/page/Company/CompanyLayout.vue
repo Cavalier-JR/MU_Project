@@ -135,20 +135,6 @@ export default {
         },
         {
           title: "优化建议",
-          // subs: [
-          //   {
-          //     title: "部分遗忘",
-          //     index: "AdvicePart",
-          //   },
-          //   {
-          //     title: "类别遗忘",
-          //     index: "AdviceClass",
-          //   },
-          //   {
-          //     title: "文本遗忘",
-          //     index: "AdviceText",
-          //   },
-          // ],
           index: "Advice",
         },
       ],
@@ -249,7 +235,7 @@ export default {
 .box {
   width: 100vw;
   height: 100vh;
-  background-color: #27B2BD;
+  background-color: #bae301;
 }
 .header {
   padding: 0;

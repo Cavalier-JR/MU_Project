@@ -1,16 +1,16 @@
 <template>
   <div class="features171-layout349 thq-section-padding">
     <div class="features171-max-width thq-section-max-width">
-      <div class="features171-image-container">
+      <!-- <div class="features171-image-container">
         <img
           :alt="feature1ImageAlt"
           :src="feature1ImageSrc"
           class="thq-img-ratio-16-9"
         />
-      </div>
+      </div> -->
       <div class="features171-content">
         <div class="features171-section-title">
-          <span class="thq-body-small">{{ feature1Slogan }}</span>
+          <!-- <span class="thq-body-small">{{ feature1Slogan }}</span> -->
           <div class="features171-content1">
             <h2 class="thq-heading-2">{{ feature1Title }}</h2>
             <p class="thq-body-large">{{ feature1Description }}</p>
