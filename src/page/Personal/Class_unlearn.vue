@@ -1,23 +1,26 @@
-<!--  类别遗忘 -->
-
 <template>
   <el-container>
     <el-header class="my_el-header"> 类别遗忘 </el-header>
     <el-main>
       <el-row justify="center">
-        <el-col :span="14">
-          <div class="demo-collapse">
-            <el-collapse v-model="activeNames" @change="handleChange1" v-show="isCardVisible">
-              <el-collapse-item title="遗忘前安全说明" name="1">
-                <div>
-                  您可以通过申请“遗忘”来移除本系统中存储的您的图像数据。一旦您的图像数据被成功移除，系统将不再保留与您相关的任何特征和内容。
-                  在未来的任何生成、恢复或处理过程中，本系统都不会涉及或引用您的图像数据，这意味着，您的个人信息将完全从系统的记忆中被删除，
-                  确保您的隐私得到彻底保护。我们致力于维护您的数据安全和隐私，任何时候您都可以联系我们以启动这一遗忘程序，
-                  从而享受更加安全和私密的服务体验。
-                </div>
-              </el-collapse-item>
-            </el-collapse>
-          </div>
+        <el-col :span="13">
+          <el-card style="max-width: 640px">
+            <div class="card-content">
+              <p> 您在当前界面可以上传不同类别的图片让我遗忘哦！ </p>
+              <br>
+              <p> 想知道怎么操作？可以看下面哦~</p>
+            </div> 
+            <div class="card-content">
+              <el-card style="max-width: 300px;display: inline-block;margin-top:15px;margin-left:20px;" shadow="always">
+                <el-icon style="color: green"><SetUp /></el-icon>
+                首先选择某个类别的图片
+              </el-card>
+              <el-card style="max-width: 300px;display: inline-block;margin-left:60px;" shadow="always">
+                <el-icon style="color: blue"><Promotion /></el-icon>
+                选择遗忘方法并进行遗忘
+              </el-card>
+            </div>
+          </el-card>
           <br>
           <br>
           <div class="select"> 
@@ -50,8 +53,8 @@
             </el-result>
           </div> 
         </el-col>
-       
-        <el-col :span="1"> </el-col>
+
+        <el-col :span="1"></el-col>
 
         <el-col :span="9" v-show="isRightPanelVisible">
           <el-table :data="tableData" style="width: 100%" border stripe>
@@ -59,9 +62,10 @@
             <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
             <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center" show-overflow-tooltip></el-table-column>
           </el-table>
-        </el-col>     
+        </el-col>  
+        
+        <el-col :span="2"></el-col>
       </el-row>
-
     </el-main>
   </el-container>
 </template>
@@ -74,7 +78,6 @@ const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 const isMethodVisible = ref(false); // 初始状态为false，即不显示
 const loading_flag = ref(false);
 const isCardVisible = ref(true);
-const activeNames = ref(['1'])
 const handleChange1 = (val: string[]) => {
   console.log(val)
 }

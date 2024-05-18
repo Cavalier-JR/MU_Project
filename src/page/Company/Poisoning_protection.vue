@@ -61,50 +61,31 @@
         <el-input v-model="search" size="small" placeholder="搜索历史记录" />
       </template>
       <template #default="scope">
-        <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
+        <el-button type="primary" style="margin-left: 16px" @click="drawer_flag = true">
           查看详情
         </el-button>
-
-        <el-drawer
-          v-model="drawer"
-          title="投毒遗忘效果图"
-          :direction="rtl"
-          :before-close="handleClose"
-        >
-          <div class="text-container">
-            <p> 投毒防护前 </p>
-          </div>
-          <div class="image-container">
-            <img src="../../assets/before_UL.png" alt="示例图片" />
-          </div>
-          <div class="text-container">
-            <p> 投毒防护后 </p>
-          </div>
-          <div class="image-container">
-            <img src="../../assets/after_UL.png" alt="示例图片" />
-          </div>
-        </el-drawer>
       </template>
     </el-table-column>
   </el-table>
-  <el-tour v-model="open">
-    <el-tour-step
-      title="Center"
-      description="Displayed in the center of screen."
-    />
-    <el-tour-step
-      title="Right"
-      description="On the right of target."
-      placement="right"
-      :target="btnRef?.$el"
-    />
-    <el-tour-step
-      title="Top"
-      description="On the top of target."
-      placement="top"
-      :target="btnRef?.$el"
-    />
-  </el-tour>
+  <el-drawer
+    v-model="drawer_flag"
+    title="投毒遗忘效果图"
+    direction="rtl"
+    :before-close="handleClose"
+  >
+    <div class="text-container">
+      <p> 投毒防护前 </p>
+    </div>
+    <div>
+      <img src="../../assets/before_UL.png" alt="示例图片" />
+    </div>
+    <div class="text-container">
+      <p> 投毒防护后 </p>
+    </div>
+    <div>
+      <img src="../../assets/after_UL.png" alt="示例图片" />
+    </div>
+  </el-drawer>
   <div>
     <el-button 
       @click="toggleSelection()"
@@ -119,9 +100,10 @@
 import { ref } from 'vue'
 import { ElTable } from 'element-plus'
 import { Search, Share } from '@element-plus/icons-vue'
-import { ElMessageBox, ElMessage } from 'element-plus'
+import { ElButton, ElDrawer, ElMessage } from 'element-plus'
+import { CircleCloseFilled } from '@element-plus/icons-vue'
 
-const drawer = ref(false)
+const drawer_flag = ref(false)
 
 interface User {
   model: string
@@ -143,6 +125,7 @@ interface User {
 
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
 const multipleSelection = ref<User[]>([])
+
 const toggleSelection = (rows?: User[]) => {
   if (rows) {
     rows.forEach((row) => {
@@ -154,16 +137,6 @@ const toggleSelection = (rows?: User[]) => {
 }
 const handleSelectionChange = (val: User[]) => {
   multipleSelection.value = val
-}
-
-const handleClose = (done: () => void) => {
-  ElMessageBox.confirm('你确定要关闭吗?')
-    .then(() => {
-      done()
-    })
-    .catch(() => {
-      // catch error
-    })
 }
 
 const tableData: User[] = [
@@ -413,16 +386,9 @@ const verify = (index: number, row: User) => {
     font-size: 15px;
     font-weight: bold;
   }
-  .image-container {
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-  }
   .text-container
   {
-    font-size: 30px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    font-size: 23px;
+    margin-left: 110px;
   }
 </style>
