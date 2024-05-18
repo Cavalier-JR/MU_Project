@@ -16,6 +16,7 @@
                 <el-input
                   v-model="username"
                   clearable
+                  style="margin-top: 15px;"
                   placeholder="请输入账号"
                 ></el-input>
               </el-form-item>
@@ -23,6 +24,7 @@
                 <el-input
                   v-model="password"
                   clearable
+                  style="margin-top: 15px;margin-bottom: 5px;"
                   placeholder="请输入密码"
                   show-password
                 ></el-input>
@@ -46,6 +48,7 @@
                 <el-input
                   v-model="username"
                   clearable
+                  style="margin-top: 15px;"
                   placeholder="请输入账号"
                 ></el-input>
               </el-form-item>
@@ -53,6 +56,7 @@
                 <el-input
                   v-model="password"
                   clearable
+                  style="margin-top: 15px;margin-bottom: 5px;"
                   placeholder="请输入密码"
                   show-password
                 ></el-input>
