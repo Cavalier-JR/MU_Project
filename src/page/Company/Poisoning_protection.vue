@@ -48,7 +48,7 @@
         </span>
       </template>
     </el-table-column>
-    <el-table-column prop="expected_acc" label="预计acc" width="100" header-align="center" align="center" />
+    <el-table-column prop="expected_acc" label="原acc" width="100" header-align="center" align="center" />
     <el-table-column prop="recovered_acc" label="恢复后acc" width="100" header-align="center" align="center" />
     <el-table-column prop="cost_time" label="用时" width="100" header-align="center" align="center" />
     <el-table-column label="状态" prop="state" align="center" width="100">
@@ -170,10 +170,10 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '已交付',
-    expected_acc: '0.85',
+    expected_acc: '85%',
     actual_acc: '0.84',
     cost_time: '4.13s',
-    recovered_acc: '0.89',
+    recovered_acc: '89%',
     loading: "no",
     loading2: "no",
     loading3: "no",
@@ -187,10 +187,10 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '已交付',
-    expected_acc: '0.89',
+    expected_acc: '89%',
     actual_acc: '0.87',
     cost_time: '6.12s',
-    recovered_acc: '0.93',
+    recovered_acc: '93%',
     loading: "no",
     loading2: "no",
     loading3: "no",
@@ -204,10 +204,10 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '已交付',
-    expected_acc: '0.93',
+    expected_acc: '93%',
     actual_acc: '0.88',
     cost_time: '4.51s',
-    recovered_acc: '0.94',
+    recovered_acc: '94%',
     loading: "no",
     loading2: "no",
     loading3: "no",
@@ -221,10 +221,10 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '已交付',
-    expected_acc: '0.91',
+    expected_acc: '91%',
     actual_acc: '0.93',
     cost_time: '5.12s',
-    recovered_acc: '0.96',
+    recovered_acc: '96%',
     loading: "no",
     loading2: "no",
     loading3: "no",
@@ -238,10 +238,10 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '未交付',
-    expected_acc: '0.97',
+    expected_acc: '97%',
     actual_acc: '0.93',
-    cost_time: '1.62s',
-    recovered_acc: '0.98',
+    cost_time: '7.62s',
+    recovered_acc: '98%',
     loading: "no",
     loading2: "no",
     loading3: "no",
@@ -255,7 +255,7 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '未交付',
-    expected_acc: '0.96',
+    expected_acc: '92%',
     actual_acc: '\\',
     cost_time: '\\',
     recovered_acc: '\\',
@@ -272,7 +272,7 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '未交付',
-    expected_acc: '0.87',
+    expected_acc: '87%',
     actual_acc: '\\',
     cost_time: '\\',
     recovered_acc: '\\',
@@ -289,7 +289,7 @@ const tableData: User[] = [
   {
     model: 'aaa',
     state: '未交付',
-    expected_acc: '0.92',
+    expected_acc: '86%',
     actual_acc: '\\',
     cost_time: '\\',
     recovered_acc: '\\',
@@ -338,10 +338,28 @@ const fixes = (index: number, row: User) => {
     row.operation2 = "修复"
     row.loading2 = 'no'
     row.b3 = "success"
-    ElMessage({
-      message: '模型恢复完成！请您验证',
-      type: 'success',
-    })
+    if(index === 5) {
+      row.recovered_acc = '96%'
+      row.cost_time = '9.54s'
+      ElMessage({
+        message: '模型恢复完成！恢复后精确度提高了 4 %',
+        type: 'success',
+      })
+    } else if(index === 6) {
+      row.recovered_acc = '92%'
+      row.cost_time = '7.48s'
+      ElMessage({
+        message: '模型恢复完成！恢复后精确度提高了 5 %',
+        type: 'success',
+      })
+    } else if(index === 7) {
+      row.recovered_acc = '90%'
+      row.cost_time = '6.17s'
+      ElMessage({
+        message: '模型恢复完成！恢复后精确度提高了 5 %',
+        type: 'success',
+      })
+    }
   }, 5000)
 }
 
