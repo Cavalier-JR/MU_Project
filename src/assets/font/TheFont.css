@@ -18,3 +18,7 @@
     font-family:'大楷体';
     src: url('./阿里妈妈东方大楷体.ttf') format('truetype'); 
 }
+@font-face{
+    font-family:'抖音体';
+    src: url('./DouyinSansBold.otf') format('truetype'); 
+}

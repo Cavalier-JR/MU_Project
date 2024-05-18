@@ -48,8 +48,13 @@
       </el-aside>
 
       <el-container>
-        <!-- header头部菜单 -->
-        <el-header class="header">
+         <!-- header头部菜单 -->
+         <el-header class="header">
+          <!-- 标题和信安公司 -->
+          <div class="header-left">
+            <h2>您的标题</h2>
+          </div>
+          <div class="header-right">
           <el-menu
             class="el-menu-demo"
             mode="horizontal"
@@ -69,6 +74,7 @@
               >
             </el-sub-menu>
           </el-menu>
+          </div>
         </el-header>
 
         <!-- 主体模块：标签页 + 当前路由内容 -->
@@ -297,5 +303,23 @@ export default {
 .demo-tabs > .el-tabs__content {
   background-color: blue;
   padding: 0 !important;
+}
+.header-left {
+  float: left;
+  margin-left: 20px;
+  line-height: 58px;
+}
+.header-left h2 {
+  color: #fff;
+  font-size: 20px;
+}
+
+.header-right {
+  float: right;
+  margin-right: 100px;
+  line-height: 58px;
+}
+.header-right .el-menu-demo {
+  float: right;
 }
 </style>
