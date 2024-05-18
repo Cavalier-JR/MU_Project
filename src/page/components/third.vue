@@ -22,13 +22,15 @@
 </template>
 
 <script>
+import partPic from '../../assets/partPic.png'; // Import the local image
+
 export default {
   name: 'Features18',
   props: {
     feature1ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1469334031218-e382a71b716b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcxNjAxNzQxOXw&ixlib=rb-4.0.3&q=80&w=1080',
+      partPic,
     },
     feature1ImageAlt: {
       type: String,

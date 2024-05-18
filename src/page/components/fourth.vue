@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import textPic from '../../assets/textPic.png';
+
 export default {
   name: 'Features171',
   props: {
@@ -36,7 +38,7 @@ export default {
     feature1ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcxNjAxNzQxOXw&ixlib=rb-4.0.3&q=80&w=1080',
+      textPic,
     },
     feature1ImageAlt: {
       type: String,

@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import classPic from '../../assets/classPic.png'; // Import the local image
+
 export default {
   name: 'Features17',
   props: {
@@ -36,7 +38,7 @@ export default {
     feature1ImageSrc: {
       type: String,
       default:
-        'https://images.unsplash.com/photo-1523274620588-4c03146581a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcxNjAxNzQxOHw&ixlib=rb-4.0.3&q=80&w=1080',
+      classPic,
     },
     feature1ImageAlt: {
       type: String,
