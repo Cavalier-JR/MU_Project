@@ -1,11 +1,9 @@
 <template>
   <el-container>
-  <el-header>
-    <h1>上传图片遗忘</h1>
-  </el-header>
+  <el-header class="my_el-header"> 部分遗忘 </el-header>
   <el-main>
-  <el-row :gutter="30">
-    <el-col :span="7">
+  <el-row :gutter="70" >
+    <el-col :span="8" >
       <div>
         <el-upload
           align="center"
@@ -32,76 +30,57 @@
           </div>
         </el-upload>
       </div>
-      <div class="image-container">
-        <img src="../../assets/cat.png" alt="示例图片" />
+      <div>
+        <span class="tag">
+          <el-icon><Notification /></el-icon> 
+          <span> 注意：请从本地上传 </span>
+      </span>
       </div>
-      <br>
-      <br>
-      <div class="function_select">
-        <div class="select_body"> 
-          <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 240px">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-              :disabled="item.disabled"
-            />
-          </el-select>
-        </div> 
-      </div>
-      <div class="button">
-          <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large">进行遗忘</el-button>
-      </div>
-      <p class="text-bottom"> 用时：1.2s </p>
     </el-col>
-
-    <el-col :span="17">
-      <el-row :span="6">
-        <el-col :span="12">
-          <el-card class="box-card">
-            <div style="font-size: 20px;text-align:center;">
-              <p>检测到与您有关的图片数</p>
-              <el-icon style="color: red;margin-top:20px;margin-right:10px;"><Picture /></el-icon>145
-            </div>
-          </el-card>
-        </el-col>
-
-        <el-col :span="12">
-          <el-card class="box-card">
-            <div style="font-size: 20px;text-align:center;">
-              <p>已遗忘与您有关的图片数</p>
-              <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>145
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-
-      <el-row :span="18">
-        <el-card>
-          <div id="pieChart" ref="pieChart" style="width: 700px; height: 700px"></div>
-        </el-card>
-      </el-row>
-      
-    </el-col>
-
-    <!-- <el-col :span="8"> -->
-      <!-- <el-card class="box-card">
+    <el-col :span="8">
+      <el-card class="box-card">
         <div style="font-size: 20px;text-align:center;">
-          <p>检测到与您有关的图片数</p>
-          <el-icon style="color: red;margin-top:20px;margin-right:10px;"><Picture /></el-icon>145
+          <p> 您上传想要遗忘的图片数 </p>
+          <el-icon style="color: gray;margin-top:20px;margin-right:10px;"><Picture /></el-icon>345
         </div>
       </el-card>
     </el-col>
     <el-col :span="8">
       <el-card class="box-card">
 			  <div style="font-size: 20px;text-align:center;">
-          <p>已遗忘与您有关的图片数</p>
-          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>145
+          <p> 您已完成遗忘图片个数 </p>
+          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>198
         </div>
-      </el-card> -->
-
-    <!-- </el-col> -->
+      </el-card>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="8">
+      <div class="image-container">
+        <img src="../../assets/cat.png" alt="示例图片" />
+      </div>
+      <br>
+      <br>
+      <div> 
+        <el-select class="select_area" v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            :disabled="item.disabled"
+          />
+        </el-select>
+        <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
+        :loading="loading_flag" class="button"> 
+          进行遗忘 
+        </el-button>
+      </div> 
+      <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
+    </el-col>
+    <el-col :span="16">
+      <div id="pieChart" ref="pieChart" style="margin-top: 20px; margin-left: 130px; width: 500px; height: 500px"></div>
+    </el-col>
   </el-row>
   </el-main>
 </el-container>
@@ -126,6 +105,7 @@ function Forget_Button_Click() {
   })
     .then(() => {
       console.log("用户已知晓图片遗忘的功能");
+      isCosttimeVisible.value = true;
     })
     .catch(() => {
       //取消：就不做任何提示了
@@ -133,6 +113,7 @@ function Forget_Button_Click() {
 }
 
 const value = ref([])
+const isCosttimeVisible = ref(false);
 
 const handleChange = (value) => {
   console.log(value)
@@ -144,7 +125,7 @@ onMounted(() => {
     const option = {
       title: {
         text: '这是标题',
-        subtext: 'Fake Data',
+        subtext: '这是副标题',
         left: 'center'
       },
       tooltip: {
@@ -180,7 +161,24 @@ onMounted(() => {
   }
  
 })
-
+const options = [
+  {
+    value: 'ConMU',
+    label: 'ConMU（推荐）',
+  },
+  {
+    value: 'GA',
+    label: 'GA',
+  },
+  {
+    value: 'FT',
+    label: 'FT',
+  },
+  {
+    value: 'RL',
+    label: 'RL',
+  },
+]
 </script>
 
 
@@ -212,7 +210,7 @@ onMounted(() => {
   }
   .text-bottom {
     margin-top: 20px; /* 可选：设置顶部边距 */
-    margin-bottom: 15px;
+    margin-left: 100px;
     text-align: center;
     font-size: 20px; /* 设置字体大小 */
   }
@@ -224,10 +222,28 @@ onMounted(() => {
   }
   .load_button{
     margin-top: 0px; /* 可选：设置顶部边距 */
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   .box-card {
-    width: 90%;
-    height: 80%;
+    max-height: 100px;
+    max-width: 300px;
+    background-color:#b9f4ee;
+  }
+  .tag{
+    font-size: 1.3rem;
+    margin-left: 82px;
+  }
+  .select_area {
+    display: inline-block;
+  }
+  .my_el-header {
+    background-color: #f2f2f3;
+    color: black;
+    padding: 10px;
+    font-size: 30px;
+    font-family:'社会体';
+
+    justify-content: center;
+    text-align: center;
   }
 </style>

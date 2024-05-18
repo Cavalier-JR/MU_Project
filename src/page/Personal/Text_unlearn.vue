@@ -1,7 +1,7 @@
 <template>
   <div v-if="!isSubmitted" class="center-container">
     <el-container>
-      <el-header class="header">
+      <el-header class="my_el-header">
       <div class="header-content">
         <h1>文本遗忘</h1>
         <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
@@ -41,7 +41,7 @@
   </div>
   <div v-else>
   <el-container>
-    <el-header class="header">
+    <el-header class="my_el-header">
       <div class="header-content">
         <h1>文本遗忘</h1>
         <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
@@ -312,7 +312,7 @@ setup() {
   flex-direction: column;
 }
 
-.el-header {
+.my_el-header {
   background-color: #f2f2f3;
   color: black;
   padding: 8px;
