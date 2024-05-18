@@ -6,24 +6,6 @@
     <el-main>
       <el-row justify="center">
         <el-col :span="14">
-          <el-card style="max-width: 710px">
-            <div class="card-content">
-              <p> 作为你的隐私保护伙伴，您可以上传不同类别的图片让我遗忘哦！ </p>
-              <br>
-              <p> 想知道我们能干什么？可以看下面哦~</p>
-            </div> 
-            <div class="card-content">
-              <el-card style="max-width: 300px;display: inline-block;margin-top:15px;" shadow="always">
-                <el-icon style="color: green"><SetUp /></el-icon>
-                首先选择某个类别的图片
-              </el-card>
-              <el-card style="max-width: 300px;display: inline-block;margin-left:120px;" shadow="always">
-                <el-icon style="color: blue"><Promotion /></el-icon>
-                选择遗忘方法并进行遗忘
-              </el-card>
-            </div>
-          </el-card>
-          <br>
           <div class="demo-collapse">
             <el-collapse v-model="activeNames" @change="handleChange1" v-show="isCardVisible">
               <el-collapse-item title="遗忘前安全说明" name="1">
@@ -92,7 +74,7 @@ const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 const isMethodVisible = ref(false); // 初始状态为false，即不显示
 const loading_flag = ref(false);
 const isCardVisible = ref(true);
-const activeNames = ref()
+const activeNames = ref(['1'])
 const handleChange1 = (val: string[]) => {
   console.log(val)
 }
