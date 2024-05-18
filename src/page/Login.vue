@@ -2,8 +2,14 @@
   <div class="loginbody">
     <div class="logindata">
       <h2 class="logintext">欢迎来到遗忘学习系统</h2>
-      <el-tabs stretch="true" class="tags">
-        <el-tab-pane label="用户端" class="UserTag">
+      <el-tabs stretch="true" class="custom-tabs-label">
+        <el-tab-pane>
+          <template #label>
+            <span class="Tag">
+              <el-icon><User /></el-icon>
+              <span>用户端</span>
+            </span>
+          </template>
           <div>
             <el-form>
               <el-form-item prop="username">
@@ -27,7 +33,13 @@
             <el-button @click="UserSet"> 登录 </el-button>
           </div> 
         </el-tab-pane>
-        <el-tab-pane label="公司端">
+        <el-tab-pane>
+          <template #label>
+            <span class="custom-tabs-label">
+              <el-icon><OfficeBuilding /></el-icon>
+              <span>公司端</span>
+            </span>
+          </template>
           <div>
             <el-form>
               <el-form-item prop="username">
@@ -75,11 +87,13 @@ const CompanySet = () => {
 </script>
 
 <style>
-.UserTag {
-  font-size: 3rem;
+.custom-tabs-label .el-icon {
+  vertical-align: middle;
 }
-.CompanyTag {
-  font-size: 3rem;
+.custom-tabs-label span {
+  vertical-align: middle;
+  margin-left: 4px;
+  font-size: 20px;
 }
 .tags{
   font-size: 3rem;
@@ -122,14 +136,14 @@ const CompanySet = () => {
   color: white;
   text-shadow: 2px 2px 4px #000000;
   position: fixed;
-  top: -3%;
+  top: -14%;
   left: 14%;
 }
 .logindata {
   width: 400px;
   height: 400px;
   position: fixed;
-  top: 60%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

@@ -37,15 +37,16 @@
     @selection-change="handleSelectionChange"
   >
     <el-table-column type="selection" width="55" header-align="center" align="center"/>
-    <el-table-column prop="inf_type" label="信息类型" width="100" header-align="center" align="center" />
-    <el-table-column label="是否遗忘" prop="forget_flag" align="center" width="100">
+    <el-table-column prop="inf_type" label="信息类型" width="90" header-align="center" align="center" />
+    <el-table-column label="是否遗忘" prop="forget_flag" align="center" width="90">
       <template #default="scope">
         <span :class="[scope.row.forget_flag === '已遗忘' ? 'cell-green' : 'cell-red']">{{ scope.row.forget_flag }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="forget_content" label="遗忘内容" width="250" header-align="center" align="center" />
+    <el-table-column prop="forget_content" label="遗忘内容" width="220" header-align="center" align="center" />
     <el-table-column prop="acc" label="模型精确度变化" width="130" header-align="center" align="center" />
-    <el-table-column prop="cost_time" label="用时" width="100" header-align="center" align="center" />
+    <el-table-column prop="cost_time" label="用时" width="90" header-align="center" align="center" />
+    <el-table-column prop="user" label="来源用户" width="90" header-align="center" align="center" />
     <el-table-column label="操作时间" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">{{ scope.row.date }}</template>
     </el-table-column>
@@ -90,6 +91,7 @@ interface User {
   forget_flag: string
   inf_type: string
   cost_time: string
+  user: string
 }
 
 const value = ref('')
@@ -166,6 +168,7 @@ const tableData: User[] = [
     date: '2024-05-07 23:13:51',
     forget_content: 'His name is Mike',
     cost_time: '1.75s',
+    user: 'Mike',
   },
   {
     acc: '+0.01',
@@ -174,6 +177,7 @@ const tableData: User[] = [
     date: '2024-05-05 10:31:11',
     forget_content: '7张已上传图片',
     cost_time: '4.1min',
+    user: 'Aaron',
   },
   {
     acc: '-0.01',
@@ -182,6 +186,7 @@ const tableData: User[] = [
     date: '2024-05-04 21:27:15',
     forget_content: 'Liu Xuan',
     cost_time: '2.14s',
+    user: 'Benson',
   },
   {
     acc: '+0.02',
@@ -190,6 +195,7 @@ const tableData: User[] = [
     date: '2024-05-04 10:35:59',
     forget_content: '船类',
     cost_time: '4.2min',
+    user: 'Benson',
   },
   {
     acc: '-0.02',
@@ -198,14 +204,16 @@ const tableData: User[] = [
     date: '2024-05-04 10:27:23',
     forget_content: '飞机类',
     cost_time: '3.2min',
+    user: 'Denny',
   },
   {
     acc: '-0.03',
     inf_type: '文本',
     forget_flag: '已遗忘',
     date: '2024-05-03 18:45:18',
-    forget_content: 'John phone number is 115152',
+    forget_content: 'Johns number is 615152',
     cost_time: '1.34s',
+    user: 'Ethan',
   },
   {
     acc: '-0.01',
@@ -214,6 +222,7 @@ const tableData: User[] = [
     date: '2024-05-03 20:32:13',
     forget_content: '青蛙类',
     cost_time: '3.7min',
+    user: 'Gavin',
   },
   {
     acc: '+0.03',
@@ -222,6 +231,7 @@ const tableData: User[] = [
     date: '2024-05-01 18:36:35',
     forget_content: 'Dating on July 14nd',
     cost_time: '1.87s',
+    user: 'Johnny',
   },
 ]
 </script>   

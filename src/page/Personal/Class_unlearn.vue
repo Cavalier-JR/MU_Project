@@ -7,43 +7,68 @@
     </el-header>
     <el-main>
       <el-row justify="center">
-        <el-col :span="12">
+        <el-col :span="13">
           <div class="select_title">
             <p> 请选择你想遗忘的类别 </p>
           </div> 
-          <div class="select"> 
-            <span>
-              <el-cascader v-model="value1" :options="options1" @change="handleChange" clearable :show-all-levels="false" collapse-tags/>
-            </span>
-            <span class="button">
-              <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected"> 选择 </el-button>
-            </span> 
+          <div class="select1"> 
+            <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" clearable :show-all-levels="false" collapse-tags/>
+            <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" class="button"> 选择 </el-button>
           </div> 
-          <div class="select"> 
-            <span>
-              <el-select v-model="value2" placeholder="请选择你的遗忘方法" style="width: 240px" v-show="isMethodVisible">
-                <el-option
-                  v-for="item in options2"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                  :disabled="item.disabled"
-                />
-              </el-select>
-            </span>
-            <span class="button">
-              <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible"> 进行遗忘 </el-button>
-            </span> 
+          <div class="select2"> 
+            <el-select class="select_area" v-model="value2" placeholder="请选择你的遗忘方法" style="width: 240px" v-show="isMethodVisible">
+              <el-option
+                v-for="item in options2"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+                :disabled="item.disabled"
+              />
+            </el-select>
+            <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible" 
+            :loading="loading_flag" class="button"> 
+              进行遗忘 
+            </el-button>
+          </div> 
+          <div>
+            <el-card v-show="isCardVisible" class="card-body">
+              <template #header>
+                <div class="card-header">
+                  <span class="Tag">
+                    <el-icon><InfoFilled /></el-icon>
+                    <span>遗忘前安全说明</span>
+                  </span>
+                </div>
+              </template>
+              <div class="card-content">
+                <p>
+                  您可以通过申请“遗忘”来移除本系统中存储的您的图像数据。一旦您的图像数据被成功移除，系统将不再保留与您相关的任何特征和内容。
+                  在未来的任何生成、恢复或处理过程中，本系统都不会涉及或引用您的图像数据。这意味着，您的个人信息将完全从系统的记忆中被删除，
+                  确保您的隐私得到彻底保护。我们致力于维护您的数据安全和隐私，任何时候您都可以联系我们以启动这一遗忘程序，
+                  从而享受更加安全和私密的服务体验。
+                </p>
+              </div>
+            </el-card>
+          </div>
+          <div> 
+            <el-result
+              icon="success"
+              title="已成功遗忘！"
+              sub-title="本次遗忘操作用时为3.4min"
+              v-show="isRightPanelVisible"
+            >
+            </el-result>
           </div> 
         </el-col>
        
-        <el-col :span="12" v-show="isRightPanelVisible">
+        <el-col :span="9" v-show="isRightPanelVisible">
           <el-table :data="tableData" style="width: 100%" border stripe>
             <el-table-column label="图像" prop="image" width="100" header-align="center" align="center"></el-table-column>
             <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
-            <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center"></el-table-column>
+            <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center" show-overflow-tooltip></el-table-column>
           </el-table>
-        </el-col>         
+        </el-col>    
+        <el-col :span="2" v-show="isRightPanelVisible"></el-col>     
       </el-row>
 
     </el-main>
@@ -56,17 +81,24 @@ import { ElMessageBox, ElNotification } from "element-plus"
 
 const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 const isMethodVisible = ref(false); // 初始状态为false，即不显示
+const loading_flag = ref(false);
+const isCardVisible = ref(true);
 
 function Forget_Button_Click() {
-ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
+  ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
   confirmButtonText: "我已知晓",
   cancelButtonText: "取消",
   type: "info",
 })
   .then(() => {
     console.log("用户已知晓图片遗忘的功能");
-    isRightPanelVisible.value = true;
-    Success_Notify();
+    loading_flag.value = true;
+    let timer: number | null = setTimeout(() => {
+      isCardVisible.value = false;
+      isRightPanelVisible.value = true;
+      loading_flag.value = false;
+      Success_Notify();
+    }, 5000)
   })
   .catch(() => {
     //取消：就不做任何提示了
@@ -184,22 +216,18 @@ font-size: 50px;
 font-family:'社会体';
 text-align: center;
 }
-
 .text-card {
 margin-top:5px;
 margin-bottom: 10px;
 cursor: pointer;
 }
-
 .el-form-item label {
 font-size: 20px;
 font-family: '扁桃体';
 }
-
 .el-form-item .el-input__inner {
 font-family: 'Helvetica Neue', Arial, sans-serif;
 }
-
 h2 {
   font-size: 30px;
   margin-top:-40px;
@@ -207,7 +235,6 @@ h2 {
   text-align: center;
   font-family: '扁桃体';
 }
-
 .custom-button {
 padding: 20px 20px !important;
 margin-left: 40% !important;
@@ -220,7 +247,6 @@ border: none !important;
 cursor: pointer !important;
 outline: none !important;
 }
-
 .el-col.el-col-12:nth-child(2) {
 border: 3px solid #EEE9E9;
 border-radius: 20px;
@@ -234,17 +260,13 @@ padding: 20px;
 overflow-y: auto;
 margin: 1px;
 }
-
 .el-scrollbar__view {
 overflow-y: auto;
 margin: 1px;
-
 }
-
 .custom-button {
   margin:6px
 }
-
 .el-card {
   width: 400px;
   height: 290px;
@@ -287,9 +309,33 @@ margin: 1px;
   text-align: center;
   font-size: 30px; /* 设置字体大小 */
 }
-.select{
+.select_area {
+  display: inline-block;
+}
+.select1{
   margin-top: 40px; /* 可选：设置顶部边距 */
   margin-bottom: 40px;
-  margin-left: 35px;
+  margin-left: 125px;
+}
+.select2{
+  margin-top: 40px; /* 可选：设置顶部边距 */
+  margin-bottom: 40px;
+  margin-left: 100px;
+}
+.card-header .el-icon {
+  vertical-align: middle;
+}
+.card-header span {
+  vertical-align: middle;
+  margin-left: 4px;
+  font-size: 20px;
+}
+.card-content {
+  font-size: 14px;
+}
+.card-body {
+  max-height: 200px;
+  min-width: 500px;
+  background-color:#a0f2ea;
 }
 </style>
