@@ -84,8 +84,95 @@
         <!-- <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div> -->
 
         <div class="page-container5" style="width: 70%">
-          
-          <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 100%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <table style="border-collapse: collapse; width: 100%; font-size: 16px;">
+            <tr style="background-color: #f2f2f2;">
+              <th style="padding: 8px; border: 1px solid #ddd; width: 20%; color: white; background-color: #4CAF50; font-weight: bold;" >遗忘隐私数据</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词1</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词2</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词3</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词4</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词5</th>
+
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid #ddd;">123@qq.com</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">98%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">(+86) sdf54s6d54</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">98</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">91</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px; border: 1px solid #ddd;">440106xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">98</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+                        <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+          </table>
+          <!-- <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 100%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div> -->
           <!-- <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
         </div>
 
