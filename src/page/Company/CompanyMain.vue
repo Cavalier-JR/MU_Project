@@ -2,25 +2,26 @@
   <el-row :gutter="20" style="background-color: rgba(117, 152, 146, 0.542);">
     <el-col :span="14">
       <el-row>
-        <el-col class="taskPanel" :span="4" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <el-col class="taskPanel" :span="4" style="text-align: center; display: block; flex-direction: column; align-items: center;">
           <div style="font-size: 24px; font-family: '扁桃体'">模型总数量</div>
           <div style="display: flex; align-items: center;">
-            <div style="font-size: 36px; background-color: rgb(160, 160, 255); height: 50px; width: 50px; border-radius: 10px; display: flex; justify-content: center; align-items: center;">6</div>
-            <el-button style="margin-left: 10px; font-size: 16px; font-family: '扁桃体';" type="primary">更改模型</el-button> <!-- Button beside the text -->
+            <br>
+            <div style="margin-top:10px;font-size: 30px; background-color: rgb(160, 160, 255); height: 30px; width: 50px; border-radius: 10px; display: block; justify-content: center; align-items: center;">6</div>
+            <el-button style="margin-top:10px;margin-left: 10px; font-size: 16px; font-family: '扁桃体';" type="primary">更改模型</el-button> <!-- Button beside the text -->
           </div>
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 20px;"> <!-- Increase text size -->
-          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
+        <el-col class="taskPanel" :span="6" style="font-size: 20px;display: block;"> <!-- Increase text size -->
+          <div style="font-size:19px;margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
+        <el-col class="taskPanel" :span="8" style="font-size: 19px;display: block;">
           <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已完成计划任务数   /    异常任务数</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
+        <el-col class="taskPanel" :span="4" style="font-size: 19px; display: block;">
           <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已查看   /   未查看</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
@@ -47,12 +48,8 @@
           <el-table-column prop="executionTime" label="执行时间"></el-table-column>
           <el-table-column prop="duration" label="耗时"></el-table-column>
         </el-table>
-      </el-row>
-      
+      </el-row> 
     </el-col>
-
-
-
     <el-col :span="10">
       <el-row> <!--第二列 第一行-->
         <el-col :span="12"> 
@@ -72,7 +69,7 @@
 
       <el-row>
         <div style="margin-bottom: 10px; margin-top: 10px;"> 
-          <h3 style="font-size: 20px; font-family: '扁桃体'">备份记录</h3>
+          <h3 style="font-size: 20px; font-family: '扁桃体';">备份记录</h3>
         </div>
         <el-table :data="tableData2" border >
           <el-table-column class="tableHeader" prop="taskName" label="类型"></el-table-column>
@@ -417,6 +414,7 @@ onMounted(() => {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
         text: '4种方法雷达图'
+
       },
       legend: {},
       radar: [
@@ -625,7 +623,7 @@ onMounted(() => {
   border-radius: 10px; 
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 10px;
+  margin: 8px;
 }
 
 .echartPanel {
