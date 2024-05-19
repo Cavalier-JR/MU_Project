@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="page-container" style="background-color: rgb(255, 255, 255);">
     <div class="page-container1">
       <span class="page-text">目前模型：Model A</span>
       <select class="page-select">
@@ -9,10 +9,11 @@
       </select>
       <button type="button" class="page-button button">导入模型</button>
     </div>
+
     <div class="page-container2">
-      <div class="page-container3">
+      <div class="page-container3" style="background-color: rgb(177, 197, 238); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">部分遗忘</span>
-        <select class="page-select1">
+        <select class="page-select1" style="background-color: rgb(135, 164, 187); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
           <option value="Option 1">Option 1</option>
           <option value="Option 2">Option 2</option>
           <option value="Option 3">Option 3</option>
@@ -22,17 +23,69 @@
       </div>
       <div class="page-container4">
 
-        <div id="partchart1" ref="partchart1" style="width: 30%;height: 100%; background-color: rgb(255, 255, 255);">ddddd</div>
+        <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; ">ddd</div>
-          <div ref="timechart" style="width: 100%;height: 50%; "></div>
+          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;">ddd</div>
+          <div ref="timechart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
-        <div id="partchart2" ref="partchart2" style="width: 30%;height: 300px; background-color: rgb(255, 255, 255);">ddddd</div>
+        <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
 
       </div>
     </div>
+
+    <div class="page-container2">
+      <div class="page-container3" style="background-color: rgb(238, 229, 177); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
+        <span class="page-text1">类别遗忘</span>
+        <select class="page-select1" style="background-color: rgb(187, 185, 135); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+        </select>
+        <span class="page-text2">目前版本：2024-5-18</span>
+        <button type="button" class="page-button1 button">历史记录</button>
+      </div>
+      <div class="page-container4">
+
+        <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+
+        <div class="page-container5" style="width: 40%">
+          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;">ddd</div>
+          <div ref="timechart" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+        </div>
+
+        <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+
+      </div>
+    </div>
+
+
+    <div class="page-container2">
+      <div class="page-container3" style="background-color: rgb(177, 238, 191); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
+        <span class="page-text1">文本遗忘</span>
+        <select class="page-select1" style="background-color: rgb(135, 187, 164); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+        </select>
+        <span class="page-text2">目前版本：2024-5-18</span>
+        <button type="button" class="page-button1 button">历史记录</button>
+      </div>
+      <div class="page-container4">
+
+        <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+
+        <div class="page-container5" style="width: 40%">
+          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;">ddd</div>
+          <div ref="timechart" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+        </div>
+
+        <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -271,7 +324,14 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
+.echartPanel {
+  margin-top: 10px;
+  margin-right: 10px;
+  background: #ffffff;
+  border-radius: 10px 10px 10px 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 300px;
+}
 .page-container {
   width: 100%;
   display: flex;
@@ -282,7 +342,7 @@ onMounted(() => {
 }
 .page-container1 {
   width: 100%;
-  height: 103px;
+  height: 50px;
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
@@ -324,28 +384,28 @@ onMounted(() => {
 }
 .page-container3 {
   width: 100%;
-  height: 15%;
+  height: 10%;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
   flex-direction: row;
 }
 .page-text1 {
-  font-size: 30px;
+  font-size: 20px;
   margin-top: 0px;
   margin-left: 20px;
   margin-right: 0px;
   margin-bottom: 0px;
 }
 .page-select1 {
-  height: 100%;
+  height: 70%;
   align-self: center;
   margin-left: 20px;
   border-color: var(--dl-color-gray-black);
   border-width: 1px;
 }
 .page-text2 {
-  font-size: 30px;
+  font-size: 20px;
   margin-top: 0px;
   margin-left: 20px;
   margin-right: 0px;
