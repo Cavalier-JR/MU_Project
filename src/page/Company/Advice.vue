@@ -14,9 +14,9 @@
       <div class="page-container3" style="background-color: rgb(177, 197, 238); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">部分遗忘</span>
         <select class="page-select1" style="background-color: rgb(135, 164, 187); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
-          <option value="Option 1">Option 1</option>
-          <option value="Option 2">Option 2</option>
-          <option value="Option 3">Option 3</option>
+          <option value="Option 1">Part 1</option>
+          <option value="Option 2">Part 2</option>
+          <option value="Option 3">Part 3</option>
         </select>
         <span class="page-text2">目前版本：2024-5-18</span>
         <button type="button" class="page-button1 button">历史记录</button>
@@ -39,9 +39,12 @@
       <div class="page-container3" style="background-color: rgb(238, 229, 177); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">类别遗忘</span>
         <select class="page-select1" style="background-color: rgb(187, 185, 135); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
-          <option value="Option 1">Option 1</option>
-          <option value="Option 2">Option 2</option>
-          <option value="Option 3">Option 3</option>
+          <option value="Option 1">选择类别</option>
+          <option value="Option 2">猫🐱</option>
+          <option value="Option 3">狗🐕</option>
+          <option value="Option 3">猪🐖</option>
+          <option value="Option 3">鸡🐓</option>
+          <option value="Option 3">羊🐏</option>
         </select>
         <span class="page-text2">目前版本：2024-5-18</span>
         <button type="button" class="page-button1 button">历史记录</button>
@@ -65,9 +68,13 @@
       <div class="page-container3" style="background-color: rgb(177, 238, 191); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">文本遗忘</span>
         <select class="page-select1" style="background-color: rgb(135, 187, 164); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
-          <option value="Option 1">Option 1</option>
-          <option value="Option 2">Option 2</option>
-          <option value="Option 3">Option 3</option>
+          <option value="Option 1">选择文本</option>
+          <option value="Option 2">+86 444546s4d65f4</option>
+          <option value="Option 3">this is a secret message</option>
+          <option value="Option 3">this is a secret message 2</option>
+          <option value="Option 3">this is a secret message 22</option>
+          <option value="Option 3">this is a secret message 222</option>
+          <option value="Option 3">u cant c me</option>
         </select>
         <span class="page-text2">目前版本：2024-5-18</span>
         <button type="button" class="page-button1 button">历史记录</button>

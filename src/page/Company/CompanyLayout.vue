@@ -241,7 +241,7 @@ export default {
 .box {
   width: 100vw;
   height: 100vh;
-  background-color: #bae301;
+  background-color: #019be3;
 }
 .header {
   padding: 0;

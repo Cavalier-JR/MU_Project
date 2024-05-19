@@ -289,174 +289,33 @@ onMounted(() => {
 
   if(accuracyChart.value){
     const myChart = echarts.init(accuracyChart.value)
-    const posList = [
-            'left',
-            'right',
-            'top',
-            'bottom',
-            'inside',
-            'insideTop',
-            'insideLeft',
-            'insideRight',
-            'insideBottom',
-            'insideTopLeft',
-            'insideTopRight',
-            'insideBottomLeft',
-            'insideBottomRight'
-            ];
-            app.configParameters = {
-            rotate: {
-                min: -90,
-                max: 90
-            },
-            align: {
-                options: {
-                left: 'left',
-                center: 'center',
-                right: 'right'
-                }
-            },
-            verticalAlign: {
-                options: {
-                top: 'top',
-                middle: 'middle',
-                bottom: 'bottom'
-                }
-            },
-            position: {
-                options: posList.reduce(function (map, pos) {
-                map[pos] = pos;
-                return map;
-                }, {})
-            },
-            distance: {
-                min: 0,
-                max: 100
-            }
-            };
-            app.config = {
-            rotate: 90,
-            align: 'left',
-            verticalAlign: 'middle',
-            position: 'insideBottom',
-            distance: 15,
-            onChange: function () {
-                const labelOption = {
-                rotate: app.config.rotate,
-                align: app.config.align,
-                verticalAlign: app.config.verticalAlign,
-                position: app.config.position,
-                distance: app.config.distance
-                };
-                myChart.setOption({
-                series: [
-                    {
-                    label: labelOption
-                    },
-                    {
-                    label: labelOption
-                    },
-                    {
-                    label: labelOption
-                    },
-                    {
-                    label: labelOption
-                    }
-                ]
-                });
-            }
-            };
-            const labelOption = {
-            show: true,
-            position: app.config.position,
-            distance: app.config.distance,
-            align: app.config.align,
-            verticalAlign: app.config.verticalAlign,
-            rotate: app.config.rotate,
-            formatter: '{c}  {name|{a}}',
-            fontSize: 16,
-            rich: {
-                name: {}
-            }
-            };
-            option = {
-                title: {
-                    text: '总任务数'
-                },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['ConMU', 'GA', 'FT', 'RL']
-            },
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                left: 'right',
-                top: 'center',
-                feature: {
-                mark: { show: true },
-                dataView: { show: true, readOnly: false },
-                magicType: { show: true, type: ['line', 'bar', 'stack'] },
-                restore: { show: true },
-                saveAsImage: { show: true }
-                }
-            },
-            xAxis: [
-                {
-                type: 'category',
-                axisTick: { show: false },
-                data: ['部分遗忘', '类别遗忘', '文本遗忘']
-                }
-            ],
-            yAxis: [
-                {
-                type: 'value'
-                }
-            ],
-            series: [
-                {
-                name: 'ConMU',
-                type: 'bar',
-                barGap: 0,
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [320, 332, 301]
-                },
-                {
-                name: 'GA',
-                type: 'bar',
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [220, 182, 191]
-                },
-                {
-                name: 'FT',
-                type: 'bar',
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [150, 232, 201]
-                },
-                {
-                name: 'RL',
-                type: 'bar',
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [98, 77, 101]
-                }
-            ]
-            };
+    option = {
+      legend: {
+        data: ['文本', '图像']
+      },
+      title: {
+        text : "2024年5月19日准确率"
+      },
+      xAxis: {
+        type: 'category',
+        data: ['9 am.', '10 am.', '11 am.', '12 am.', '1 pm.', '2 pm.', '3 pm.']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: '文本',
+          data: [100, 99, 98, 97, 96, 95, 94],
+          type: 'line'
+        },
+        {
+        name: '图像',
+          data: [98, 96, 96, 95,96, 97, 86],
+          type: 'line'
+        }
+      ]
+    };
     myChart.setOption(option);
   }
 
