@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="20" style="background-color: rgba(170, 218, 255, 0.542);">
+  <el-row :gutter="20" style="background-color: rgba(117, 152, 146, 0.542);">
     <el-col :span="14">
       <el-row>
         <el-col class="taskPanel" :span="4" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
@@ -21,7 +21,7 @@
         </el-col>
 
         <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
-          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已完成计划任务数   /    异常任务数</div>
+          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已查看   /   未查看</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
@@ -42,7 +42,7 @@
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="taskName" label="任务名"></el-table-column>
           <el-table-column prop="taskType" label="任务类型"></el-table-column>
-          <el-table-column prop="executionPeriod" label="执行周期"></el-table-column>
+          <el-table-column prop="executionPeriod" label="执行周期(预计)"></el-table-column>
           <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
           <el-table-column prop="executionTime" label="执行时间"></el-table-column>
           <el-table-column prop="duration" label="耗时"></el-table-column>
@@ -101,8 +101,8 @@ const radarChart = ref(null);
 
 // 表格内容
 const tableData = ref([
-  { taskName: 'Task 1', taskType: 'Type A', executionPeriod: 'Daily', executionStatus: 'Completed', executionTime: '10:00 AM', duration: '1 hour' },
-  { taskName: 'Task 2', taskType: 'Type B', executionPeriod: 'Weekly', executionStatus: 'Pending', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 1', taskType: '文本遗忘', executionPeriod: '1min', executionStatus: '已完成', executionTime: '10:00 AM', duration: '1 hour' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
 
 ]);
 const tableData2 = ref([
@@ -381,7 +381,7 @@ onMounted(() => {
             };
             option = {
                 title: {
-                    text: '4种方法的正确率'
+                    text: '总任务数'
                 },
             tooltip: {
                 trigger: 'axis',

@@ -1,102 +1,554 @@
 <template>
-  <div class="features18-layout349 thq-section-padding">
-    <div class="features18-max-width thq-section-max-width">
-      <div class="features18-content">
-        <div class="features18-section-title">
-          <span class="thq-body-small">{{ feature1Slogan }}</span>
-          <div class="features18-content1">
-            <h2 class="thq-heading-2">{{ feature1Title }}</h2>
-            <p class="thq-body-large">{{ feature1Description }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="features18-image-container">
-        <img
-          :alt="feature1ImageAlt"
-          :src="feature1ImageSrc"
-          class="thq-img-ratio-16-9"
-        />
-      </div>
-    </div>
-  </div>
-</template>
+    <el-row :gutter="24" style="background-color: rgba(50, 87, 98, 0.542);">
+      <el-row :span="3">
+        <el-col class="taskPanel" :span="4" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <div style="font-size: 24px; font-family: '扁桃体'">切换模型</div>
+          </el-col>
+  
+          <el-col class="taskPanel" :span="6" style="font-size: 20px;"> <!-- Increase text size -->
+            <div style="margin: 20px; font-family: '扁桃体'; text-align: center; ">导入模型</div> <!-- Add margin for spacing -->
+          </el-col>
+  
+          <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
+            <div style="margin: 10px; font-family: '扁桃体'; text-align: center; ">当前模型： Model A</div>
+          </el-col>
 
-<script>
-export default {
-  name: 'Features18',
-  props: {
-    feature1ImageSrc: {
-      type: String,
-      default:
-        'https://images.unsplash.com/photo-1469334031218-e382a71b716b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MTMyMXwwfDF8cmFuZG9tfHx8fHx8fHx8MTcxNjAxNzQxOXw&ixlib=rb-4.0.3&q=80&w=1080',
-    },
-    feature1ImageAlt: {
-      type: String,
-      default: 'Data Forgetting Solutions',
-    },
-    feature1Slogan: {
-      type: String,
-      default: 'Balancing Privacy and Utility',
-    },
-    feature1Title: {
-      type: String,
-      default: 'Efficient Data Forgetting',
-    },
-    feature1Description: {
-      type: String,
-      default:
-        'Our solutions focus on effectively forgetting image and text data while maintaining model utility, ensuring privacy in various scenarios.',
-    },
-  },
-}
-</script>
+      </el-row>
 
-<style scoped>
-.features18-layout349 {
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  align-items: center;
-  padding-top: 0px;
-  flex-direction: column;
-  padding-bottom: 0px;
-}
-.features18-max-width {
-  gap: var(--dl-space-space-fiveunits);
-  display: flex;
-  align-items: center;
-}
-.features18-content {
-  gap: var(--dl-space-space-oneandhalfunits);
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.features18-section-title {
-  gap: var(--dl-space-space-oneandhalfunits);
-  display: flex;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.features18-content1 {
-  gap: var(--dl-space-space-oneandhalfunits);
-  display: flex;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.features18-image-container {
-  flex: 1;
-  display: flex;
-  position: relative;
-  align-items: center;
-}
-@media(max-width: 991px) {
-  .features18-max-width {
-    gap: var(--dl-space-space-twounits);
-    flex-direction: column-reverse;
+
+      <el-row :span="21">
+        <el-col :span="24">
+          <el-row :span="12" class="echartPanel" style="height: 500px; width:70%; margin-top: 10px;">
+            <div ref="textchart" style="height: 100%; width: 100%;"></div>
+          </el-row>
+
+          <el-row :span="12" class="echartPanel" style="height: 350px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+            <div ref="radarChart" style="height: 100%; width: 100%;"></div>
+          </el-row>
+
+          <el-row :span="12">
+            <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
+              <h3 style="font-size: 20px; font-family: '扁桃体';">任务执行记录</h3>
+            </div>
+            <el-table :data="tableData" style="width: 100%">
+              <el-table-column prop="taskName" label="任务名"></el-table-column>
+              <el-table-column prop="taskType" label="任务类型"></el-table-column>
+              <el-table-column prop="executionPeriod" label="执行周期"></el-table-column>
+              <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
+              <el-table-column prop="executionTime" label="执行时间"></el-table-column>
+              <el-table-column prop="duration" label="耗时"></el-table-column>
+            </el-table>
+          </el-row>
+          
+        </el-col>
+
+      </el-row>
+
+
+    </el-row>
+  </template>
+  
+  <script setup>
+  import { onMounted, ref } from 'vue';
+  import * as echarts from 'echarts';
+  
+  const textchart = ref(null);
+  const thirdChart = ref(null);
+  const radarChart = ref(null);
+  
+  // 表格内容
+  const tableData = ref([
+    { taskName: 'Task 1', taskType: 'Type A', executionPeriod: 'Daily', executionStatus: 'Completed', executionTime: '10:00 AM', duration: '1 hour' },
+    { taskName: 'Task 2', taskType: 'Type B', executionPeriod: 'Weekly', executionStatus: 'Pending', executionTime: '2:00 PM', duration: '30 minutes' },
+  
+  ]);
+  const tableData2 = ref([
+    { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: 'Daily', executionStatus: '2', executionTime: '9:00 AM', duration: '2 hours' },
+    { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
+    { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
+  
+  ]);
+  
+  onMounted(() => {
+    if(textchart.value) {
+      const myChart = echarts.init(textchart.value);
+      var option = {
+        title: [
+          {
+            text: '文本遗忘指标可视化'
+          },
+          {
+            left: '9%',
+            top: '90%',
+            text: '手机号 3364634443'
+          },
+          {
+            top: '90%',
+            left: 'center',
+            text: '邮件内容'
+          },
+          {
+            left: '80%',
+            top: '90%',
+            text: '手机号 3364634443'
+          },
+          {
+            top: '45%',
+            left: 'center',
+            text: '邮件内容'
+          }
+        ],
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          left: 'center',
+          data: [
+            'ConMU',
+            'A Phone',
+            'Another Phone',
+            'Precipitation',
+            'Evaporation'
+          ]
+        },
+        radar: [
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['15%', '70%'],
+            radius: 60
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            radius: 60,
+            center: ['50%', '30%']
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['85%', '30%'],
+            radius: 60
+          },
+              {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['15%', '30%'],
+            radius: 60
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            radius: 60,
+            center: ['50%', '70%']
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['85%', '70%'],
+            radius: 60
+          }
+        ],
+        series: [
+          {
+            type: 'radar',
+            tooltip: {
+              trigger: 'item'
+            },
+            areaStyle: {},
+            data: [
+              {
+                value: [60, 73, 85, 40],
+                name: 'ConMU'
+              }
+            ]
+          },
+          {
+            type: 'radar',
+            radarIndex: 2,
+            areaStyle: {},
+            data: [
+              {
+                value: [85, 90, 90, 95, 95],
+                name: 'A Phone'
+              },
+              {
+                value: [95, 80, 95, 90, 93],
+                name: 'Another Phone'
+              }
+            ]
+          },
+              {
+            type: 'radar',
+            radarIndex: 1,
+            areaStyle: {},
+            data: [
+              {
+                value: [85, 90, 90, 95, 95],
+                name: 'A Phone'
+              },
+              {
+                value: [95, 80, 95, 90, 93],
+                name: 'Another Phone'
+              }
+            ]
+          },
+
+        ]
+      };
+      myChart.setOption(option);
+    }
+
+
+    if(thirdChart.value) {
+      const myChart = echarts.init(thirdChart.value)
+      function randomData() {
+        now = new Date(+now + oneDay);
+        value = value + Math.random() * 21 - 10;
+        return {
+          name: now.toString(),
+          value: [
+            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+            Math.round(value)
+          ]
+        };
+      }
+      let data = [];
+      // let data2 = [];
+      // for (var i = 0; i < 1000; i++) {
+      //   data2.push(randomData());
+      // }  TODO 加了这个 表格就挂了
+  
+      let now = new Date(1997, 9, 3);
+      let oneDay = 24 * 3600 * 1000;
+      let value = Math.random() * 1000;
+      for (var i = 0; i < 1000; i++) {
+        data.push(randomData());
+      }
+      option = {
+        title: {
+          text: '遗忘次数'
+        },
+        tooltip: {
+          trigger: 'axis',
+          formatter: function (params) {
+            params = params[0];
+            var date = new Date(params.name);
+            return (
+              date.getDate() +
+              '/' +
+              (date.getMonth() + 1) +
+              '/' +
+              date.getFullYear() +
+              ' : ' +
+              params.value[1]
+            );
+          },
+          axisPointer: {
+            animation: false
+          }
+        },
+        xAxis: {
+          type: 'time',
+          splitLine: {
+            show: false
+          }
+        },
+        yAxis: {
+          type: 'value',
+          boundaryGap: [0, '100%'],
+          splitLine: {
+            show: false
+          }
+        },
+        series: [
+          {
+            name: 'cpu',
+            type: 'line',
+            showSymbol: false,
+            data: data
+          },
+          // {
+          //   name: 'memory',
+          //   type: 'line',
+          //   showSymbol: false,
+          //   data: data2 // Add the data for the second line
+          // }
+        ]
+      };
+      setInterval(function () {
+        for (var i = 0; i < 5; i++) {
+          data.shift();
+          data.push(randomData());
+        }
+        myChart.setOption({
+          series: [
+            {
+              data: data
+            }
+          ]
+        });
+      }, 1000);
+      myChart.setOption(option);
+    }
+  
+    if (radarChart.value) {
+      const myChart = echarts.init(radarChart.value);
+      var option = {
+        color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+        title: {
+          text: '4种方法雷达图'
+        },
+        legend: {},
+        radar: [
+          {
+            indicator: [
+              { text: '模型准确率' },
+              { text: '耗时' },
+              { text: '效果' },
+              { text: '指标4' },
+              { text: '指标5' }
+            ],
+            center: ['15%', '50%'],
+            radius: 120,
+            startAngle: 90,
+            splitNumber: 4,
+            shape: 'circle',
+            axisName: {
+              formatter: '【{value}】',
+              color: '#428BD4'
+            },
+            splitArea: {
+              areaStyle: {
+                color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+                shadowColor: 'rgba(0, 0, 0, 0.2)',
+                shadowBlur: 10
+              }
+            },
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(211, 253, 250, 0.8)'
+              }
+            },
+            splitLine: {
+              lineStyle: {
+                color: 'rgba(211, 253, 250, 0.8)'
+              }
+            },
+          },
+          {
+            indicator: [
+              { text: '正确率', max: 150 },
+              { text: '耗时', max: 150 },
+              { text: '效果', max: 150 },
+              { text: 'Indicator4', max: 120 },
+              { text: 'Indicator5', max: 108 },
+              { text: 'Indicator6', max: 72 }
+            ],
+            center: ['45%', '50%'],
+            radius: 120,
+            axisName: {
+              color: '#fff',
+              backgroundColor: '#666',
+              borderRadius: 3,
+              padding: [3, 5]
+            }
+          },
+          {
+            indicator: [
+              { text: 'Indicator1' },
+              { text: 'Indicator2' },
+              { text: 'Indicator3' },
+              { text: 'Indicator4' },
+              { text: 'Indicator5' }
+            ],
+            center: ['80%', '50%'],
+            radius: 120,
+            startAngle: 90,
+            splitNumber: 4,
+            shape: 'circle',
+            axisName: {
+              formatter: '【{value}】',
+              color: '#428BD4'
+            },
+            splitArea: {
+              areaStyle: {
+                color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+                shadowColor: 'rgba(0, 0, 0, 0.2)',
+                shadowBlur: 10
+              }
+            },
+            axisLine: {
+              lineStyle: {
+                color: 'rgba(211, 253, 250, 0.8)'
+              }
+            },
+            splitLine: {
+              lineStyle: {
+                color: 'rgba(211, 253, 250, 0.8)'
+              }
+            }
+          },
+        ],
+        series: [
+          {
+            type: 'radar',
+            emphasis: {
+              lineStyle: {
+                width: 4
+              }
+            },
+            data: [
+              {
+                value: [100, 8, 0.4, -80, 2000],
+                name: 'ConMU'
+              },
+              {
+                value: [60, 5, 0.3, -100, 1500],
+                name: 'GA',
+                areaStyle: {
+                  color: 'rgba(255, 228, 52, 0.6)'
+                }
+              }
+            ],
+          },
+          {
+            type: 'radar',
+            radarIndex: 1,
+            data: [
+              {
+                value: [120, 118, 130, 100, 99, 70],
+                name: 'FT',
+                symbol: 'rect',
+                symbolSize: 12,
+                lineStyle: {
+                  type: 'dashed'
+                },
+                label: {
+                  show: true,
+                  formatter: function (params) {
+                    return params.value;
+                  }
+                }
+              },
+              {
+                value: [100, 93, 50, 90, 70, 60],
+                name: 'RL',
+                areaStyle: {
+                  color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                    {
+                      color: 'rgba(255, 145, 124, 0.1)',
+                      offset: 0
+                    },
+                    {
+                      color: 'rgba(255, 145, 124, 0.9)',
+                      offset: 1
+                    }
+                  ])
+                }
+              }
+            ]
+          },
+          {
+            type: 'radar',
+            radarIndex: 1,
+            data: [
+              {
+                value: [100, 100, 100, 100, 100, 100],
+                name: 'FT',
+                symbol: 'rect',
+                symbolSize: 12,
+                lineStyle: {
+                  type: 'dashed'
+                },
+                label: {
+                  show: true,
+                  formatter: function (params) {
+                    return params.value;
+                  }
+                }
+              },
+              {
+                value: [100, 93, 50, 90, 70, 60],
+                name: 'RL',
+                areaStyle: {
+                  color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                    {
+                      color: 'rgba(255, 145, 124, 0.1)',
+                      offset: 0
+                    },
+                    {
+                      color: 'rgba(255, 145, 124, 0.9)',
+                      offset: 1
+                    }
+                  ])
+                }
+              }
+            ]
+          },
+        ]
+      };
+      myChart.setOption(option);
+    }
+  
+  
+  })
+  
+  </script>
+  
+  
+  <style scoped>
+   .el-table thead {
+    background-color: lightgreen;
   }
-}
-</style>
+  .taskPanel {
+    background-color: #f9fffe;
+    border-radius: 10px; 
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+  }
+  
+  .echartPanel {
+    background-color: #ffffff;
+    border-radius: 10px 10px 10px 10px; 
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1px;
+    position: center;
+    height: 100%;
+  }
+  .echartPane2 {
+    margin-top: 10px;
+    margin-right: 10px;
+    background: #ffffff;
+    border-radius: 10px 10px 10px 10px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 300px;
+  }
+  </style>
+  
