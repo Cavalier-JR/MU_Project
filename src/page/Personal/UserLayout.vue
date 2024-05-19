@@ -49,7 +49,13 @@
 
       <el-container>
         <!-- header头部菜单 -->
-        <el-header class="header">
+         <!-- header头部菜单 -->
+         <el-header class="header">
+          <!-- 标题和信安公司 -->
+          <div class="header-left">
+            <h2>ERASER：面向多模态数据的隐私遗忘系统</h2>
+          </div>
+          <div class="header-right">
           <el-menu
             class="el-menu-demo"
             mode="horizontal"
@@ -69,6 +75,7 @@
               >
             </el-sub-menu>
           </el-menu>
+          </div>
         </el-header>
 
         <!-- 主体模块：标签页 + 当前路由内容 -->
@@ -244,7 +251,7 @@ export default {
 .box {
   width: 100vw;
   height: 100vh;
-  background-color: #5F9F9F;
+  background-color: #27b2bd;
 }
 .header {
   padding: 0;
@@ -253,6 +260,7 @@ export default {
 /* 将消息中心和我的控制台摆放在最右侧 */
 .el-menu--horizontal {
   justify-content: flex-end;
+  width:400px;
 }
 
 /* 去除默认的边框样式 */
@@ -293,4 +301,24 @@ export default {
   background-color: blue;
   padding: 0 !important;
 }
+.header-left {
+  float: left;
+  font-family: "抖音体";
+  margin-left: 30%;
+  line-height: 58px;
+}
+.header-left h2 {
+  color: #fff;
+  font-size: 30px;
+}
+
+.header-right {
+  float: right;
+  margin-right: 20px;
+  line-height: 58px;
+}
+.header-right .el-menu-demo {
+  float: right;
+}
+
 </style>
