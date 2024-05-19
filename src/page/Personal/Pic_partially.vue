@@ -118,8 +118,9 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 import * as echarts from 'echarts';
-import { ElMessageBox } from "element-plus"
+import { ElMessageBox, ElMessage } from "element-plus"
 
+const loading_flag = ref(false);
 const radio = ref(0) //默认不选按钮
 const pieChart = ref(null);
 const activeNames = ref(['1', '2'])
@@ -133,14 +134,28 @@ function Forget_Button_Click() {
     cancelButtonText: "取消",
     type: "info",
   })
-    .then(() => {
+  .then(() => {
+    loading_flag.value = true;
+    let timer: number | null = setTimeout(() => {
       console.log("用户已知晓图片遗忘的功能");
       isCosttimeVisible.value = true;
-    })
-    .catch(() => {
-      //取消：就不做任何提示了
-    });
+      loading_flag.value = false;
+      Success_Notify();
+    }, 5000)
+  })
+  .catch(() => {
+    //取消：就不做任何提示了
+  });
 }
+
+const Success_Notify = () => {
+  ElMessage({
+    showClose: true,
+    message: '已成功遗忘该类别',
+    type: 'success',
+    offset: 450,
+  });
+};
 
 const value = ref([])
 const isCosttimeVisible = ref(false);
