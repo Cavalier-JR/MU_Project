@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="20" style="background-color: rgba(170, 218, 255, 0.542);">
+  <el-row :gutter="20" style="background-color: rgba(117, 152, 146, 0.542);">
     <el-col :span="14">
       <el-row>
         <el-col class="taskPanel" :span="4" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
@@ -21,7 +21,7 @@
         </el-col>
 
         <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
-          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已完成计划任务数   /    异常任务数</div>
+          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已查看   /   未查看</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
@@ -42,7 +42,7 @@
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="taskName" label="任务名"></el-table-column>
           <el-table-column prop="taskType" label="任务类型"></el-table-column>
-          <el-table-column prop="executionPeriod" label="执行周期"></el-table-column>
+          <el-table-column prop="executionPeriod" label="执行周期(预计)"></el-table-column>
           <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
           <el-table-column prop="executionTime" label="执行时间"></el-table-column>
           <el-table-column prop="duration" label="耗时"></el-table-column>
@@ -101,8 +101,8 @@ const radarChart = ref(null);
 
 // 表格内容
 const tableData = ref([
-  { taskName: 'Task 1', taskType: 'Type A', executionPeriod: 'Daily', executionStatus: 'Completed', executionTime: '10:00 AM', duration: '1 hour' },
-  { taskName: 'Task 2', taskType: 'Type B', executionPeriod: 'Weekly', executionStatus: 'Pending', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 1', taskType: '文本遗忘', executionPeriod: '1min', executionStatus: '已完成', executionTime: '10:00 AM', duration: '1 hour' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
 
 ]);
 const tableData2 = ref([
@@ -289,174 +289,33 @@ onMounted(() => {
 
   if(accuracyChart.value){
     const myChart = echarts.init(accuracyChart.value)
-    const posList = [
-            'left',
-            'right',
-            'top',
-            'bottom',
-            'inside',
-            'insideTop',
-            'insideLeft',
-            'insideRight',
-            'insideBottom',
-            'insideTopLeft',
-            'insideTopRight',
-            'insideBottomLeft',
-            'insideBottomRight'
-            ];
-            app.configParameters = {
-            rotate: {
-                min: -90,
-                max: 90
-            },
-            align: {
-                options: {
-                left: 'left',
-                center: 'center',
-                right: 'right'
-                }
-            },
-            verticalAlign: {
-                options: {
-                top: 'top',
-                middle: 'middle',
-                bottom: 'bottom'
-                }
-            },
-            position: {
-                options: posList.reduce(function (map, pos) {
-                map[pos] = pos;
-                return map;
-                }, {})
-            },
-            distance: {
-                min: 0,
-                max: 100
-            }
-            };
-            app.config = {
-            rotate: 90,
-            align: 'left',
-            verticalAlign: 'middle',
-            position: 'insideBottom',
-            distance: 15,
-            onChange: function () {
-                const labelOption = {
-                rotate: app.config.rotate,
-                align: app.config.align,
-                verticalAlign: app.config.verticalAlign,
-                position: app.config.position,
-                distance: app.config.distance
-                };
-                myChart.setOption({
-                series: [
-                    {
-                    label: labelOption
-                    },
-                    {
-                    label: labelOption
-                    },
-                    {
-                    label: labelOption
-                    },
-                    {
-                    label: labelOption
-                    }
-                ]
-                });
-            }
-            };
-            const labelOption = {
-            show: true,
-            position: app.config.position,
-            distance: app.config.distance,
-            align: app.config.align,
-            verticalAlign: app.config.verticalAlign,
-            rotate: app.config.rotate,
-            formatter: '{c}  {name|{a}}',
-            fontSize: 16,
-            rich: {
-                name: {}
-            }
-            };
-            option = {
-                title: {
-                    text: '4种方法的正确率'
-                },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['ConMU', 'GA', 'FT', 'RL']
-            },
-            toolbox: {
-                show: true,
-                orient: 'vertical',
-                left: 'right',
-                top: 'center',
-                feature: {
-                mark: { show: true },
-                dataView: { show: true, readOnly: false },
-                magicType: { show: true, type: ['line', 'bar', 'stack'] },
-                restore: { show: true },
-                saveAsImage: { show: true }
-                }
-            },
-            xAxis: [
-                {
-                type: 'category',
-                axisTick: { show: false },
-                data: ['部分遗忘', '类别遗忘', '文本遗忘']
-                }
-            ],
-            yAxis: [
-                {
-                type: 'value'
-                }
-            ],
-            series: [
-                {
-                name: 'ConMU',
-                type: 'bar',
-                barGap: 0,
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [320, 332, 301]
-                },
-                {
-                name: 'GA',
-                type: 'bar',
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [220, 182, 191]
-                },
-                {
-                name: 'FT',
-                type: 'bar',
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [150, 232, 201]
-                },
-                {
-                name: 'RL',
-                type: 'bar',
-                label: labelOption,
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [98, 77, 101]
-                }
-            ]
-            };
+    option = {
+      legend: {
+        data: ['文本', '图像']
+      },
+      title: {
+        text : "2024年5月19日准确率"
+      },
+      xAxis: {
+        type: 'category',
+        data: ['9 am.', '10 am.', '11 am.', '12 am.', '1 pm.', '2 pm.', '3 pm.']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          name: '文本',
+          data: [100, 99, 98, 97, 96, 95, 94],
+          type: 'line'
+        },
+        {
+        name: '图像',
+          data: [98, 96, 96, 95,96, 97, 86],
+          type: 'line'
+        }
+      ]
+    };
     myChart.setOption(option);
   }
 
