@@ -8,7 +8,7 @@
           <div class="features17-content1">
             <div class="feature-info">
               <h2 class="thq-heading-2">
-                <i class="fas fa-user" style="color: rgb(97, 220, 177);"></i> {{ feature1Title }}
+                <i class="fas fa-home" style="color: rgb(220, 116, 97);"></i> {{ feature1Title }}
               </h2>
               <p class="thq-body-large">{{ feature1Description }}</p>
             </div>
@@ -38,10 +38,6 @@ export default {
       type: String,
       default:
       classPic,
-    },
-    feature1ImageAlt: {
-      type: String,
-      default: 'Customized Forgetting Solutions Image',
     },
     feature1Description: {
       type: String,

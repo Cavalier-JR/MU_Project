@@ -26,8 +26,8 @@
         <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
-          <div ref="timechart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <!-- <div ref="timechart" style="width: 50%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
         </div>
 
         <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -54,8 +54,8 @@
         <div cass="echartPanel" id="classchart1" ref="classchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart2" ref="accuracychart2" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
-          <div ref="timechart2" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+          <div id="accuracychart2" ref="accuracychart2" style="width: 50%;height: 100%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <div ref="timechart2" style="width: 50%;height: 100%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
         <div id="classchart2" ref="classchart2" style="width: 30%;height: 100%;background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -81,11 +81,11 @@
       </div>
       <div class="page-container4">
 
-        <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+        <!-- <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div> -->
 
-        <div class="page-container5" style="width: 40%">
-          <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
-          <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+        <div class="page-container5" style="width: 70%">
+          <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 100%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <!-- <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
         </div>
 
         <div id="textchart2" ref="textchart2" style="width: 30%;height: 100%;background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -293,24 +293,174 @@ onMounted(() => {
 
   if(accuracychart.value) {
     const myChart = echarts.init(accuracychart.value);
-    var option = {
-      title: {
-        text: '正确率'
-      },
-      xAxis: {
-        type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
-      },
-      yAxis: {
-        type: 'value'
-      },
+    const posList = [
+  'left',
+  'right',
+  'top',
+  'bottom',
+  'inside',
+  'insideTop',
+  'insideLeft',
+  'insideRight',
+  'insideBottom',
+  'insideTopLeft',
+  'insideTopRight',
+  'insideBottomLeft',
+  'insideBottomRight'
+];
+app.configParameters = {
+  rotate: {
+    min: -90,
+    max: 90
+  },
+  align: {
+    options: {
+      left: 'left',
+      center: 'center',
+      right: 'right'
+    }
+  },
+  verticalAlign: {
+    options: {
+      top: 'top',
+      middle: 'middle',
+      bottom: 'bottom'
+    }
+  },
+  position: {
+    options: posList.reduce(function (map, pos) {
+      map[pos] = pos;
+      return map;
+    }, {})
+  },
+  distance: {
+    min: 0,
+    max: 100
+  }
+};
+app.config = {
+  rotate: 90,
+  align: 'left',
+  verticalAlign: 'middle',
+  position: 'insideBottom',
+  distance: 15,
+  onChange: function () {
+    const labelOption = {
+      rotate: app.config.rotate,
+      align: app.config.align,
+      verticalAlign: app.config.verticalAlign,
+      position: app.config.position,
+      distance: app.config.distance
+    };
+    myChart.setOption({
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
         }
       ]
-    };
+    });
+  }
+};
+const labelOption = {
+  show: true,
+  position: app.config.position,
+  distance: app.config.distance,
+  align: app.config.align,
+  verticalAlign: app.config.verticalAlign,
+  rotate: app.config.rotate,
+  formatter: '{c}  {name|{a}}',
+  fontSize: 16,
+  rich: {
+    name: {}
+  }
+};
+option = {
+  title: {
+    text: '正确率'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['ConMU', 'GA', 'FT', 'RL']
+  },
+  toolbox: {
+    show: true,
+    orient: 'vertical',
+    left: 'right',
+    top: 'center',
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      magicType: { show: true, type: ['line', 'bar', 'stack'] },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  xAxis: [
+    {
+      type: 'category',
+      axisTick: { show: false },
+      data: ['部分遗忘', '类别遗忘', '文本遗忘']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'ConMU',
+      type: 'bar',
+      barGap: 0,
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [320, 332, 301, 334, 390]
+    },
+    {
+      name: 'GA',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [220, 182, 191, 234, 290]
+    },
+    {
+      name: 'FT',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [150, 232, 201, 154, 190]
+    },
+    {
+      name: 'RL',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [98, 77, 101, 99, 40]
+    }
+  ]
+};
     myChart.setOption(option);
   }
 
@@ -515,20 +665,45 @@ onMounted(() => {
 
   if(accuracychart2.value) {
     const myChart = echarts.init(accuracychart2.value);
-    var option = {
+    option = {
       title: {
-        text: '正确率'
+        text: "准确率"
       },
       xAxis: {
         type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
+        data: ['ConMU', 'FT', 'GA', 'RL']
       },
       yAxis: {
         type: 'value'
       },
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
+          data: [
+            {
+              value: 100,
+              itemStyle: {
+                color: '#a90000'
+              }
+            },
+            {
+              value: 97,
+              itemStyle: {
+                color: '#808080'
+              }
+            },
+            {
+              value: 98,
+              itemStyle: {
+                color: '#7B68EE'
+              }
+            },
+            {
+              value: 99,
+              itemStyle: {
+                color: '#FF8C00'
+              }
+            },
+          ],
           type: 'bar'
         }
       ]
@@ -736,24 +911,85 @@ onMounted(() => {
 
   if(accuracychart3.value) {
     const myChart = echarts.init(accuracychart3.value);
-    var option = {
-      title: {
-        text: '正确率'
+// prettier-ignore
+let dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
+// prettier-ignore
+let data = [99, 98, 97, 98, 96, 90, 95, 93, 98, 97.6, 90, 89, 96, 92, 93, 97, 94, 95, 93, 91];
+let yMax = 500;
+let dataShadow = [];
+for (let i = 0; i < data.length; i++) {
+  dataShadow.push(yMax);
+}
+option = {
+  title: {
+    text: '不同文本的正确率',
+    subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
+  },
+  xAxis: {
+    data: dataAxis,
+    axisLabel: {
+      inside: true,
+      color: '#fff'
+    },
+    axisTick: {
+      show: false
+    },
+    axisLine: {
+      show: false
+    },
+    z: 10
+  },
+  yAxis: {
+    axisLine: {
+      show: false
+    },
+    axisTick: {
+      show: false
+    },
+    axisLabel: {
+      color: '#999'
+    }
+  },
+  dataZoom: [
+    {
+      type: 'inside'
+    }
+  ],
+  series: [
+    {
+      type: 'bar',
+      showBackground: true,
+      itemStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: '#83bff6' },
+          { offset: 0.5, color: '#188df0' },
+          { offset: 1, color: '#188df0' }
+        ])
       },
-      xAxis: {
-        type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
+      emphasis: {
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: '#2378f7' },
+            { offset: 0.7, color: '#2378f7' },
+            { offset: 1, color: '#83bff6' }
+          ])
         }
-      ]
-    };
+      },
+      data: data
+    }
+  ]
+};
+// Enable data zoom when user click bar.
+const zoomSize = 6;
+myChart.on('click', function (params) {
+  console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+  myChart.dispatchAction({
+    type: 'dataZoom',
+    startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+    endValue:
+      dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+  });
+});
     myChart.setOption(option);
   }
 
@@ -895,7 +1131,7 @@ onMounted(() => {
   align-items: flex-start;
   margin-left: 10px;
   margin-right: 10px;
-  flex-direction: column;
+  flex-direction: row;
 }
 .page-image1 {
   width: 100%;
