@@ -26,7 +26,7 @@
         <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;">ddd</div>
+          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
           <div ref="timechart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
@@ -48,14 +48,14 @@
       </div>
       <div class="page-container4">
 
-        <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+        <div cass="echartPanel" id="classchart1" ref="classchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;">ddd</div>
-          <div ref="timechart" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+          <div id="accuracychart2" ref="accuracychart2" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <div ref="timechart2" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
-        <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+        <div id="classchart2" ref="classchart2" style="width: 30%;height: 100%;background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
 
       </div>
     </div>
@@ -74,14 +74,14 @@
       </div>
       <div class="page-container4">
 
-        <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+        <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;">ddd</div>
-          <div ref="timechart" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+          <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
-        <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+        <div id="textchart2" ref="textchart2" style="width: 30%;height: 100%;background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
 
       </div>
     </div>
@@ -97,6 +97,16 @@ const partchart1 = ref(null);
 const partchart2 = ref(null);
 const accuracychart = ref(null);
 const timechart = ref(null);
+
+const classchart1 = ref(null);
+const classchart2 = ref(null);
+const accuracychart2 = ref(null);
+const timechart2 = ref(null);
+
+const textchart1 = ref(null);
+const textchart2 = ref(null);
+const accuracychart3 = ref(null);
+const timechart3 = ref(null);
 
 onMounted(() => {
   if(partchart1.value) {
@@ -320,6 +330,448 @@ onMounted(() => {
   myChart.setOption(option);
   }
 
+
+  if(classchart1.value) {
+    const myChart = echarts.init(classchart1.value);
+    option = {
+      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+      title: {
+        text: '4个指标的对比'
+      },
+      legend: {},
+      radar: [
+        {
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '用时', max: 100 },
+            { text: '内存', max: 100 },
+            { text: '模型大小', max: 100 },
+
+          ],
+          center: ['50%', '50%'],
+          radius: 120,
+          axisName: {
+            color: '#fff',
+            backgroundColor: '#666',
+            borderRadius: 3,
+            padding: [3, 5]
+          }
+        }
+      ],
+      series: [
+
+        {
+          type: 'radar',
+          radarIndex: 0,
+          data: [
+            {
+              value: [99, 99, 99, 99],
+              name: 'ConMU',
+              symbol: 'rect',
+              symbolSize: 12,
+              lineStyle: {
+                type: 'dashed'
+              },
+              label: {
+                show: true,
+                formatter: function (params) {
+                  return params.value;
+                }
+              }
+            },
+            {
+              value: [88, 88, 88, 88],
+              name: 'GA',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 0.1)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(255, 145, 124, 0.9)',
+                    offset: 1
+                  }
+                ])
+              }
+            },
+            {
+              value: [75, 81, 13, 68],
+              name: 'FT',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 100)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(0, 145, 124, 0.5)',
+                    offset: 1
+                  }
+                ])
+              }
+            },
+            {
+              value: [90, 90, 90, 105, 70, 23],
+              name: 'RL',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 100)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(0, 145, 124, 0.5)',
+                    offset: 1
+                  }
+                ])
+              }
+            }
+          ]
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+
+  if(classchart2.value) {
+    const myChart = echarts.init(classchart2.value);
+    // myChart.resize({ width: '100%', height: '100%' });  TODO bug
+    var option = {
+      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+      title: {
+        text: '遗忘前后正确率对比'
+      },
+      legend: {},
+      radar: [
+        {
+          indicator: [
+            { text: 'ConMU' },
+            { text: 'GA' },
+            { text: 'FT' },
+            { text: 'RL' },
+          ],
+          center: ['50%', '50%'],
+          radius: 120,
+          startAngle: 90,
+          splitNumber: 4,
+          shape: 'circle',
+          axisName: {
+            formatter: '【{value}】',
+            color: '#428BD4'
+          },
+          splitArea: {
+            areaStyle: {
+              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+              shadowColor: 'rgba(0, 0, 0, 0.2)',
+              shadowBlur: 10
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
+            }
+          }
+        },
+      ],
+      series: [
+        {
+          type: 'radar',
+          emphasis: {
+            lineStyle: {
+              width: 4
+            }
+          },
+          data: [
+            {
+              value: [100, 8, 0.4, -80],
+              name: '遗忘前'
+            },
+            {
+              value: [60, 5, 0.3, -100],
+              name: '遗忘后',
+              areaStyle: {
+                color: 'rgba(255, 228, 52, 0.6)'
+              }
+            }
+          ]
+        },
+      ]
+    };
+    myChart.setOption(option);
+  }
+
+  if(accuracychart2.value) {
+    const myChart = echarts.init(accuracychart2.value);
+    var option = {
+      title: {
+        text: '正确率'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['ConMU', 'GA', 'FT', 'RL']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'bar'
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+
+  if(timechart2.value) {
+    const myChart = echarts.init(timechart2.value);
+    var option = {
+      title: {
+        text: '用时'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['ConMU', 'GA', 'FT', 'RL']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'bar'
+        }
+      ]
+    };
+  myChart.setOption(option);
+  }
+
+  if(textchart1.value) {
+    const myChart = echarts.init(textchart1.value);
+    option = {
+      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+      title: {
+        text: '4个指标的对比'
+      },
+      legend: {},
+      radar: [
+        {
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '用时', max: 100 },
+            { text: '内存', max: 100 },
+            { text: '模型大小', max: 100 },
+
+          ],
+          center: ['50%', '50%'],
+          radius: 120,
+          axisName: {
+            color: '#fff',
+            backgroundColor: '#666',
+            borderRadius: 3,
+            padding: [3, 5]
+          }
+        }
+      ],
+      series: [
+
+        {
+          type: 'radar',
+          radarIndex: 0,
+          data: [
+            {
+              value: [99, 99, 99, 99],
+              name: 'ConMU',
+              symbol: 'rect',
+              symbolSize: 12,
+              lineStyle: {
+                type: 'dashed'
+              },
+              label: {
+                show: true,
+                formatter: function (params) {
+                  return params.value;
+                }
+              }
+            },
+            {
+              value: [88, 88, 88, 88],
+              name: 'GA',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 0.1)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(255, 145, 124, 0.9)',
+                    offset: 1
+                  }
+                ])
+              }
+            },
+            {
+              value: [75, 81, 13, 68],
+              name: 'FT',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 100)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(0, 145, 124, 0.5)',
+                    offset: 1
+                  }
+                ])
+              }
+            },
+            {
+              value: [90, 90, 90, 105, 70, 23],
+              name: 'RL',
+              areaStyle: {
+                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
+                  {
+                    color: 'rgba(255, 145, 124, 100)',
+                    offset: 0
+                  },
+                  {
+                    color: 'rgba(0, 145, 124, 0.5)',
+                    offset: 1
+                  }
+                ])
+              }
+            }
+          ]
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+
+  if(textchart2.value) {
+    const myChart = echarts.init(textchart2.value);
+    // myChart.resize({ width: '100%', height: '100%' });  TODO bug
+    var option = {
+      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+      title: {
+        text: '遗忘前后正确率对比'
+      },
+      legend: {},
+      radar: [
+        {
+          indicator: [
+            { text: 'ConMU' },
+            { text: 'GA' },
+            { text: 'FT' },
+            { text: 'RL' },
+          ],
+          center: ['50%', '50%'],
+          radius: 120,
+          startAngle: 90,
+          splitNumber: 4,
+          shape: 'circle',
+          axisName: {
+            formatter: '【{value}】',
+            color: '#428BD4'
+          },
+          splitArea: {
+            areaStyle: {
+              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+              shadowColor: 'rgba(0, 0, 0, 0.2)',
+              shadowBlur: 10
+            }
+          },
+          axisLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(211, 253, 250, 0.8)'
+            }
+          }
+        },
+      ],
+      series: [
+        {
+          type: 'radar',
+          emphasis: {
+            lineStyle: {
+              width: 4
+            }
+          },
+          data: [
+            {
+              value: [100, 8, 0.4, -80],
+              name: '遗忘前'
+            },
+            {
+              value: [60, 5, 0.3, -100],
+              name: '遗忘后',
+              areaStyle: {
+                color: 'rgba(255, 228, 52, 0.6)'
+              }
+            }
+          ]
+        },
+      ]
+    };
+    myChart.setOption(option);
+  }
+
+  if(accuracychart3.value) {
+    const myChart = echarts.init(accuracychart3.value);
+    var option = {
+      title: {
+        text: '正确率'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['ConMU', 'GA', 'FT', 'RL']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'bar'
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+
+  if(timechart3.value) {
+    const myChart = echarts.init(timechart3.value);
+    var option = {
+      title: {
+        text: '用时'
+      },
+      xAxis: {
+        type: 'category',
+        data: ['ConMU', 'GA', 'FT', 'RL']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [
+        {
+          data: [120, 200, 150, 80, 70, 110, 130],
+          type: 'bar'
+        }
+      ]
+    };
+  myChart.setOption(option);
+  }
 })
 </script>
 
