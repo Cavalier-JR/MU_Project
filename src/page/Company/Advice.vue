@@ -26,8 +26,8 @@
         <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
-          <div ref="timechart" style="width: 100%;height: 50%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <!-- <div ref="timechart" style="width: 50%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
         </div>
 
         <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -293,24 +293,174 @@ onMounted(() => {
 
   if(accuracychart.value) {
     const myChart = echarts.init(accuracychart.value);
-    var option = {
-      title: {
-        text: '正确率'
-      },
-      xAxis: {
-        type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
-      },
-      yAxis: {
-        type: 'value'
-      },
+    const posList = [
+  'left',
+  'right',
+  'top',
+  'bottom',
+  'inside',
+  'insideTop',
+  'insideLeft',
+  'insideRight',
+  'insideBottom',
+  'insideTopLeft',
+  'insideTopRight',
+  'insideBottomLeft',
+  'insideBottomRight'
+];
+app.configParameters = {
+  rotate: {
+    min: -90,
+    max: 90
+  },
+  align: {
+    options: {
+      left: 'left',
+      center: 'center',
+      right: 'right'
+    }
+  },
+  verticalAlign: {
+    options: {
+      top: 'top',
+      middle: 'middle',
+      bottom: 'bottom'
+    }
+  },
+  position: {
+    options: posList.reduce(function (map, pos) {
+      map[pos] = pos;
+      return map;
+    }, {})
+  },
+  distance: {
+    min: 0,
+    max: 100
+  }
+};
+app.config = {
+  rotate: 90,
+  align: 'left',
+  verticalAlign: 'middle',
+  position: 'insideBottom',
+  distance: 15,
+  onChange: function () {
+    const labelOption = {
+      rotate: app.config.rotate,
+      align: app.config.align,
+      verticalAlign: app.config.verticalAlign,
+      position: app.config.position,
+      distance: app.config.distance
+    };
+    myChart.setOption({
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
+        },
+        {
+          label: labelOption
         }
       ]
-    };
+    });
+  }
+};
+const labelOption = {
+  show: true,
+  position: app.config.position,
+  distance: app.config.distance,
+  align: app.config.align,
+  verticalAlign: app.config.verticalAlign,
+  rotate: app.config.rotate,
+  formatter: '{c}  {name|{a}}',
+  fontSize: 16,
+  rich: {
+    name: {}
+  }
+};
+option = {
+  title: {
+    text: '正确率'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['ConMU', 'GA', 'FT', 'RL']
+  },
+  toolbox: {
+    show: true,
+    orient: 'vertical',
+    left: 'right',
+    top: 'center',
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      magicType: { show: true, type: ['line', 'bar', 'stack'] },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  xAxis: [
+    {
+      type: 'category',
+      axisTick: { show: false },
+      data: ['2012', '2013', '2014', '2015', '2016']
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  series: [
+    {
+      name: 'ConMU',
+      type: 'bar',
+      barGap: 0,
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [320, 332, 301, 334, 390]
+    },
+    {
+      name: 'GA',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [220, 182, 191, 234, 290]
+    },
+    {
+      name: 'FT',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [150, 232, 201, 154, 190]
+    },
+    {
+      name: 'RL',
+      type: 'bar',
+      label: labelOption,
+      emphasis: {
+        focus: 'series'
+      },
+      data: [98, 77, 101, 99, 40]
+    }
+  ]
+};
     myChart.setOption(option);
   }
 
@@ -895,7 +1045,7 @@ onMounted(() => {
   align-items: flex-start;
   margin-left: 10px;
   margin-right: 10px;
-  flex-direction: column;
+  flex-direction: row;
 }
 .page-image1 {
   width: 100%;
