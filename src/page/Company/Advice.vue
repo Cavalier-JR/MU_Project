@@ -1,548 +1,192 @@
 <template>
-    <el-row :gutter="24" style="background-color: rgba(170, 218, 255, 0.542);">
-      <el-col :span="24">
-        <el-row :span="2">
-          <el-col class="taskPanel" :span="4" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
-            <div style="font-size: 24px; font-family: '扁桃体'">切换模型</div>
-          </el-col>
-  
-          <el-col class="taskPanel" :span="6" style="font-size: 20px;"> <!-- Increase text size -->
-            <div style="margin: 20px; font-family: '扁桃体'; text-align: center; ">导入模型</div> <!-- Add margin for spacing -->
-          </el-col>
-  
-          <el-col class="taskPanel" :span="6" style="font-size: 19px; ">
-            <div style="margin: 10px; font-family: '扁桃体'; text-align: center; ">当前模型： Model A</div>
-          </el-col>
-  
-        </el-row>
-  
-        <el-row :span="12" class="echartPanel" style="height: 500px; width:70%; margin-top: 10px;">
-          <div ref="textchart" style="height: 100%; width: 100%;"></div>
-        </el-row>
-  
-        <el-row :span="12" class="echartPanel" style="height: 350px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
-          <div ref="radarChart" style="height: 100%; width: 100%;"></div>
-        </el-row>
-  
-        <el-row :span="12">
-          <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
-            <h3 style="font-size: 20px; font-family: '扁桃体';">任务执行记录</h3>
-          </div>
-          <el-table :data="tableData" style="width: 100%">
-            <el-table-column prop="taskName" label="任务名"></el-table-column>
-            <el-table-column prop="taskType" label="任务类型"></el-table-column>
-            <el-table-column prop="executionPeriod" label="执行周期"></el-table-column>
-            <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
-            <el-table-column prop="executionTime" label="执行时间"></el-table-column>
-            <el-table-column prop="duration" label="耗时"></el-table-column>
-          </el-table>
-        </el-row>
-        
-      </el-col>
-    </el-row>
-  </template>
-  
-  <script setup>
-  import { onMounted, ref } from 'vue';
-  import * as echarts from 'echarts';
-  
-  const textchart = ref(null);
-  const thirdChart = ref(null);
-  const radarChart = ref(null);
-  
-  // 表格内容
-  const tableData = ref([
-    { taskName: 'Task 1', taskType: 'Type A', executionPeriod: 'Daily', executionStatus: 'Completed', executionTime: '10:00 AM', duration: '1 hour' },
-    { taskName: 'Task 2', taskType: 'Type B', executionPeriod: 'Weekly', executionStatus: 'Pending', executionTime: '2:00 PM', duration: '30 minutes' },
-  
-  ]);
-  const tableData2 = ref([
-    { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: 'Daily', executionStatus: '2', executionTime: '9:00 AM', duration: '2 hours' },
-    { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
-    { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
-  
-  ]);
-  
-  onMounted(() => {
-    if(textchart.value) {
-      const myChart = echarts.init(textchart.value);
-      var option = {
-        title: [
-          {
-            text: '文本遗忘指标可视化'
-          },
-          {
-            left: '9%',
-            top: '90%',
-            text: '手机号 3364634443'
-          },
-          {
-            top: '90%',
-            left: 'center',
-            text: '邮件内容'
-          },
-          {
-            left: '80%',
-            top: '90%',
-            text: '手机号 3364634443'
-          },
-          {
-            top: '45%',
-            left: 'center',
-            text: '邮件内容'
-          }
-        ],
-        tooltip: {
-          trigger: 'axis'
+  <div class="row">
+
+    <div class="row">
+        <div style="font-family: '扁桃体'; border: 1px solid black; display: inline-block; padding: 5px;">当前模型： Model A</div>
+        <div style="font-family: '扁桃体'; border: 1px solid black; display: inline-block; padding: 5px;">导入模型</div>
+        <div style="font-family: '扁桃体'; border: 1px solid black; display: inline-block; padding: 5px;">切换模型</div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div ref="textchart" style="height: 400px; width: 800px; margin-top: 10px;"></div>
+      </div>
+
+      <div class="col">
+        <div ref="textchart" style="height: 400px; width: 800px; margin-top: 10px;"></div>
+      </div>
+      
+    </div>
+
+    <!-- <div class="row">
+      <div ref="textchart" style="height: 400px; width: 800px; margin-top: 10px;"></div>
+    </div> -->
+
+  </div>
+</template>
+
+
+<script setup>
+import { onMounted, ref } from 'vue';
+import * as echarts from 'echarts';
+
+const textchart = ref(null);
+onMounted(() => {
+  if(textchart.value) {
+    const myChart = echarts.init(textchart.value);
+    var option = {
+      title: [
+        {
+          text: '文本遗忘指标可视化'
         },
-        legend: {
+        {
+          left: '9%',
+          top: '90%',
+          text: '手机号 3364634443'
+        },
+        {
+          top: '90%',
           left: 'center',
-          data: [
-            'ConMU',
-            'A Phone',
-            'Another Phone',
-            'Precipitation',
-            'Evaporation'
-          ]
+          text: '邮件内容'
         },
-        radar: [
-          {
-            indicator: [
-              { text: '准确率', max: 100 },
-              { text: '运行时间', max: 100 },
-              { text: '内存使用', max: 100 },
-              { text: '模型大小', max: 100 }
-            ],
-            center: ['15%', '70%'],
-            radius: 60
-          },
-          {
-            indicator: [
-              { text: '准确率', max: 100 },
-              { text: '运行时间', max: 100 },
-              { text: '内存使用', max: 100 },
-              { text: '模型大小', max: 100 }
-            ],
-            radius: 60,
-            center: ['50%', '30%']
-          },
-          {
-            indicator: [
-              { text: '准确率', max: 100 },
-              { text: '运行时间', max: 100 },
-              { text: '内存使用', max: 100 },
-              { text: '模型大小', max: 100 }
-            ],
-            center: ['85%', '30%'],
-            radius: 60
-          },
-              {
-            indicator: [
-              { text: '准确率', max: 100 },
-              { text: '运行时间', max: 100 },
-              { text: '内存使用', max: 100 },
-              { text: '模型大小', max: 100 }
-            ],
-            center: ['15%', '30%'],
-            radius: 60
-          },
-          {
-            indicator: [
-              { text: '准确率', max: 100 },
-              { text: '运行时间', max: 100 },
-              { text: '内存使用', max: 100 },
-              { text: '模型大小', max: 100 }
-            ],
-            radius: 60,
-            center: ['50%', '70%']
-          },
-          {
-            indicator: [
-              { text: '准确率', max: 100 },
-              { text: '运行时间', max: 100 },
-              { text: '内存使用', max: 100 },
-              { text: '模型大小', max: 100 }
-            ],
-            center: ['85%', '70%'],
-            radius: 60
-          }
-        ],
-        series: [
-          {
-            type: 'radar',
-            tooltip: {
-              trigger: 'item'
-            },
-            areaStyle: {},
-            data: [
-              {
-                value: [60, 73, 85, 40],
-                name: 'ConMU'
-              }
-            ]
-          },
-          {
-            type: 'radar',
-            radarIndex: 2,
-            areaStyle: {},
-            data: [
-              {
-                value: [85, 90, 90, 95, 95],
-                name: 'A Phone'
-              },
-              {
-                value: [95, 80, 95, 90, 93],
-                name: 'Another Phone'
-              }
-            ]
-          },
-              {
-            type: 'radar',
-            radarIndex: 1,
-            areaStyle: {},
-            data: [
-              {
-                value: [85, 90, 90, 95, 95],
-                name: 'A Phone'
-              },
-              {
-                value: [95, 80, 95, 90, 93],
-                name: 'Another Phone'
-              }
-            ]
-          },
-
-        ]
-      };
-      myChart.setOption(option);
-    }
-
-
-    if(thirdChart.value) {
-      const myChart = echarts.init(thirdChart.value)
-      function randomData() {
-        now = new Date(+now + oneDay);
-        value = value + Math.random() * 21 - 10;
-        return {
-          name: now.toString(),
-          value: [
-            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-            Math.round(value)
-          ]
-        };
-      }
-      let data = [];
-      // let data2 = [];
-      // for (var i = 0; i < 1000; i++) {
-      //   data2.push(randomData());
-      // }  TODO 加了这个 表格就挂了
-  
-      let now = new Date(1997, 9, 3);
-      let oneDay = 24 * 3600 * 1000;
-      let value = Math.random() * 1000;
-      for (var i = 0; i < 1000; i++) {
-        data.push(randomData());
-      }
-      option = {
-        title: {
-          text: '遗忘次数'
+        {
+          left: '80%',
+          top: '90%',
+          text: '手机号 3364634443'
         },
-        tooltip: {
-          trigger: 'axis',
-          formatter: function (params) {
-            params = params[0];
-            var date = new Date(params.name);
-            return (
-              date.getDate() +
-              '/' +
-              (date.getMonth() + 1) +
-              '/' +
-              date.getFullYear() +
-              ' : ' +
-              params.value[1]
-            );
-          },
-          axisPointer: {
-            animation: false
-          }
-        },
-        xAxis: {
-          type: 'time',
-          splitLine: {
-            show: false
-          }
-        },
-        yAxis: {
-          type: 'value',
-          boundaryGap: [0, '100%'],
-          splitLine: {
-            show: false
-          }
-        },
-        series: [
-          {
-            name: 'cpu',
-            type: 'line',
-            showSymbol: false,
-            data: data
-          },
-          // {
-          //   name: 'memory',
-          //   type: 'line',
-          //   showSymbol: false,
-          //   data: data2 // Add the data for the second line
-          // }
-        ]
-      };
-      setInterval(function () {
-        for (var i = 0; i < 5; i++) {
-          data.shift();
-          data.push(randomData());
+        {
+          top: '45%',
+          left: 'center',
+          text: '邮件内容'
         }
-        myChart.setOption({
-          series: [
+      ],
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        left: 'center',
+        data: [
+          'ConMU',
+          'A Phone',
+          'Another Phone',
+          'Precipitation',
+          'Evaporation'
+        ]
+      },
+      radar: [
+        {
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '运行时间', max: 100 },
+            { text: '内存使用', max: 100 },
+            { text: '模型大小', max: 100 }
+          ],
+          center: ['15%', '70%'],
+          radius: 60
+        },
+        {
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '运行时间', max: 100 },
+            { text: '内存使用', max: 100 },
+            { text: '模型大小', max: 100 }
+          ],
+          radius: 60,
+          center: ['50%', '30%']
+        },
+        {
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '运行时间', max: 100 },
+            { text: '内存使用', max: 100 },
+            { text: '模型大小', max: 100 }
+          ],
+          center: ['85%', '30%'],
+          radius: 60
+        },
             {
-              data: data
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '运行时间', max: 100 },
+            { text: '内存使用', max: 100 },
+            { text: '模型大小', max: 100 }
+          ],
+          center: ['15%', '30%'],
+          radius: 60
+        },
+        {
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '运行时间', max: 100 },
+            { text: '内存使用', max: 100 },
+            { text: '模型大小', max: 100 }
+          ],
+          radius: 60,
+          center: ['50%', '70%']
+        },
+        {
+          indicator: [
+            { text: '准确率', max: 100 },
+            { text: '运行时间', max: 100 },
+            { text: '内存使用', max: 100 },
+            { text: '模型大小', max: 100 }
+          ],
+          center: ['85%', '70%'],
+          radius: 60
+        }
+      ],
+      series: [
+        {
+          type: 'radar',
+          tooltip: {
+            trigger: 'item'
+          },
+          areaStyle: {},
+          data: [
+            {
+              value: [60, 73, 85, 40],
+              name: 'ConMU'
             }
           ]
-        });
-      }, 1000);
-      myChart.setOption(option);
-    }
-  
-    if (radarChart.value) {
-      const myChart = echarts.init(radarChart.value);
-      var option = {
-        color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
-        title: {
-          text: '4种方法雷达图'
         },
-        legend: {},
-        radar: [
-          {
-            indicator: [
-              { text: '模型准确率' },
-              { text: '耗时' },
-              { text: '效果' },
-              { text: '指标4' },
-              { text: '指标5' }
-            ],
-            center: ['15%', '50%'],
-            radius: 120,
-            startAngle: 90,
-            splitNumber: 4,
-            shape: 'circle',
-            axisName: {
-              formatter: '【{value}】',
-              color: '#428BD4'
+        {
+          type: 'radar',
+          radarIndex: 2,
+          areaStyle: {},
+          data: [
+            {
+              value: [85, 90, 90, 95, 95],
+              name: 'A Phone'
             },
-            splitArea: {
-              areaStyle: {
-                color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
-                shadowColor: 'rgba(0, 0, 0, 0.2)',
-                shadowBlur: 10
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: 'rgba(211, 253, 250, 0.8)'
-              }
-            },
-            splitLine: {
-              lineStyle: {
-                color: 'rgba(211, 253, 250, 0.8)'
-              }
-            },
-          },
-          {
-            indicator: [
-              { text: '正确率', max: 150 },
-              { text: '耗时', max: 150 },
-              { text: '效果', max: 150 },
-              { text: 'Indicator4', max: 120 },
-              { text: 'Indicator5', max: 108 },
-              { text: 'Indicator6', max: 72 }
-            ],
-            center: ['45%', '50%'],
-            radius: 120,
-            axisName: {
-              color: '#fff',
-              backgroundColor: '#666',
-              borderRadius: 3,
-              padding: [3, 5]
+            {
+              value: [95, 80, 95, 90, 93],
+              name: 'Another Phone'
             }
-          },
-          {
-            indicator: [
-              { text: 'Indicator1' },
-              { text: 'Indicator2' },
-              { text: 'Indicator3' },
-              { text: 'Indicator4' },
-              { text: 'Indicator5' }
-            ],
-            center: ['80%', '50%'],
-            radius: 120,
-            startAngle: 90,
-            splitNumber: 4,
-            shape: 'circle',
-            axisName: {
-              formatter: '【{value}】',
-              color: '#428BD4'
+          ]
+        },
+            {
+          type: 'radar',
+          radarIndex: 1,
+          areaStyle: {},
+          data: [
+            {
+              value: [85, 90, 90, 95, 95],
+              name: 'A Phone'
             },
-            splitArea: {
-              areaStyle: {
-                color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
-                shadowColor: 'rgba(0, 0, 0, 0.2)',
-                shadowBlur: 10
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: 'rgba(211, 253, 250, 0.8)'
-              }
-            },
-            splitLine: {
-              lineStyle: {
-                color: 'rgba(211, 253, 250, 0.8)'
-              }
+            {
+              value: [95, 80, 95, 90, 93],
+              name: 'Another Phone'
             }
-          },
-        ],
-        series: [
-          {
-            type: 'radar',
-            emphasis: {
-              lineStyle: {
-                width: 4
-              }
-            },
-            data: [
-              {
-                value: [100, 8, 0.4, -80, 2000],
-                name: 'ConMU'
-              },
-              {
-                value: [60, 5, 0.3, -100, 1500],
-                name: 'GA',
-                areaStyle: {
-                  color: 'rgba(255, 228, 52, 0.6)'
-                }
-              }
-            ],
-          },
-          {
-            type: 'radar',
-            radarIndex: 1,
-            data: [
-              {
-                value: [120, 118, 130, 100, 99, 70],
-                name: 'FT',
-                symbol: 'rect',
-                symbolSize: 12,
-                lineStyle: {
-                  type: 'dashed'
-                },
-                label: {
-                  show: true,
-                  formatter: function (params) {
-                    return params.value;
-                  }
-                }
-              },
-              {
-                value: [100, 93, 50, 90, 70, 60],
-                name: 'RL',
-                areaStyle: {
-                  color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                    {
-                      color: 'rgba(255, 145, 124, 0.1)',
-                      offset: 0
-                    },
-                    {
-                      color: 'rgba(255, 145, 124, 0.9)',
-                      offset: 1
-                    }
-                  ])
-                }
-              }
-            ]
-          },
-          {
-            type: 'radar',
-            radarIndex: 1,
-            data: [
-              {
-                value: [100, 100, 100, 100, 100, 100],
-                name: 'FT',
-                symbol: 'rect',
-                symbolSize: 12,
-                lineStyle: {
-                  type: 'dashed'
-                },
-                label: {
-                  show: true,
-                  formatter: function (params) {
-                    return params.value;
-                  }
-                }
-              },
-              {
-                value: [100, 93, 50, 90, 70, 60],
-                name: 'RL',
-                areaStyle: {
-                  color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                    {
-                      color: 'rgba(255, 145, 124, 0.1)',
-                      offset: 0
-                    },
-                    {
-                      color: 'rgba(255, 145, 124, 0.9)',
-                      offset: 1
-                    }
-                  ])
-                }
-              }
-            ]
-          },
-        ]
-      };
-      myChart.setOption(option);
-    }
-  
-  
-  })
-  
-  </script>
-  
-  
-  <style scoped>
-   .el-table thead {
-    background-color: lightgreen;
-  }
-  .taskPanel {
-    background-color: #f9fffe;
-    border-radius: 10px; 
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-  }
-  
-  .echartPanel {
-    background-color: #ffffff;
-    border-radius: 10px 10px 10px 10px; 
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1px;
-    position: center;
-    height: 100%;
-  }
-  .echartPane2 {
-    margin-top: 10px;
-    margin-right: 10px;
-    background: #ffffff;
-    border-radius: 10px 10px 10px 10px; 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 300px;
-  }
-  </style>
-  
+          ]
+        },
+
+      ]
+    };
+    myChart.setOption(option);
+  };
+
+
+
+})
+
+</script>
