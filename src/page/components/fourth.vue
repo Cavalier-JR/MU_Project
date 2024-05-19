@@ -6,7 +6,7 @@
           <!-- <span class="thq-body-small">{{ feature1Slogan }}</span> -->
           <div class="features171-content1">
             <h2 class="thq-heading-2">
-              <i class="fas fa-user" style="color: rgb(97, 220, 177);"></i> {{ feature1Title }}
+              <i class="fas fa-star" style="color: rgb(122, 97, 220);"></i> {{ feature1Title }}
             </h2>
             <p class="thq-body-large">{{ feature1Description }}</p>
           </div>

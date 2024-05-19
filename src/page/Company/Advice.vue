@@ -54,8 +54,8 @@
         <div cass="echartPanel" id="classchart1" ref="classchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart2" ref="accuracychart2" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
-          <div ref="timechart2" style="width: 100%;height: 50%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+          <div id="accuracychart2" ref="accuracychart2" style="width: 50%;height: 100%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <div ref="timechart2" style="width: 50%;height: 100%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
         <div id="classchart2" ref="classchart2" style="width: 30%;height: 100%;background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -81,11 +81,11 @@
       </div>
       <div class="page-container4">
 
-        <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+        <!-- <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div> -->
 
-        <div class="page-container5" style="width: 40%">
-          <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
-          <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
+        <div class="page-container5" style="width: 70%">
+          <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 100%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <!-- <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
         </div>
 
         <div id="textchart2" ref="textchart2" style="width: 30%;height: 100%;background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -413,7 +413,7 @@ option = {
     {
       type: 'category',
       axisTick: { show: false },
-      data: ['2012', '2013', '2014', '2015', '2016']
+      data: ['部分遗忘', '类别遗忘', '文本遗忘']
     }
   ],
   yAxis: [
@@ -665,20 +665,45 @@ option = {
 
   if(accuracychart2.value) {
     const myChart = echarts.init(accuracychart2.value);
-    var option = {
+    option = {
       title: {
-        text: '正确率'
+        text: "准确率"
       },
       xAxis: {
         type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
+        data: ['ConMU', 'FT', 'GA', 'RL']
       },
       yAxis: {
         type: 'value'
       },
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
+          data: [
+            {
+              value: 100,
+              itemStyle: {
+                color: '#a90000'
+              }
+            },
+            {
+              value: 97,
+              itemStyle: {
+                color: '#808080'
+              }
+            },
+            {
+              value: 98,
+              itemStyle: {
+                color: '#7B68EE'
+              }
+            },
+            {
+              value: 99,
+              itemStyle: {
+                color: '#FF8C00'
+              }
+            },
+          ],
           type: 'bar'
         }
       ]
@@ -886,24 +911,85 @@ option = {
 
   if(accuracychart3.value) {
     const myChart = echarts.init(accuracychart3.value);
-    var option = {
-      title: {
-        text: '正确率'
+// prettier-ignore
+let dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
+// prettier-ignore
+let data = [99, 98, 97, 98, 96, 90, 95, 93, 98, 97.6, 90, 89, 96, 92, 93, 97, 94, 95, 93, 91];
+let yMax = 500;
+let dataShadow = [];
+for (let i = 0; i < data.length; i++) {
+  dataShadow.push(yMax);
+}
+option = {
+  title: {
+    text: '不同文本的正确率',
+    subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
+  },
+  xAxis: {
+    data: dataAxis,
+    axisLabel: {
+      inside: true,
+      color: '#fff'
+    },
+    axisTick: {
+      show: false
+    },
+    axisLine: {
+      show: false
+    },
+    z: 10
+  },
+  yAxis: {
+    axisLine: {
+      show: false
+    },
+    axisTick: {
+      show: false
+    },
+    axisLabel: {
+      color: '#999'
+    }
+  },
+  dataZoom: [
+    {
+      type: 'inside'
+    }
+  ],
+  series: [
+    {
+      type: 'bar',
+      showBackground: true,
+      itemStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: '#83bff6' },
+          { offset: 0.5, color: '#188df0' },
+          { offset: 1, color: '#188df0' }
+        ])
       },
-      xAxis: {
-        type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
+      emphasis: {
+        itemStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: '#2378f7' },
+            { offset: 0.7, color: '#2378f7' },
+            { offset: 1, color: '#83bff6' }
+          ])
         }
-      ]
-    };
+      },
+      data: data
+    }
+  ]
+};
+// Enable data zoom when user click bar.
+const zoomSize = 6;
+myChart.on('click', function (params) {
+  console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
+  myChart.dispatchAction({
+    type: 'dataZoom',
+    startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
+    endValue:
+      dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
+  });
+});
     myChart.setOption(option);
   }
 
