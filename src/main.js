@@ -14,8 +14,6 @@ import './assets/font/TheFont.css'
 import 'echarts'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
-
-
 // Vue.prototype.$echarts = echarts  // 这句话加上就白屏
 const app = createApp(App);
 app.use(router);
