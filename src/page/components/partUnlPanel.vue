@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import classPic from '../../assets/classPic.png'; // Import the local image
-
 export default {
   name: 'Features17',
   props: {
@@ -34,15 +32,10 @@ export default {
       type: String,
       default: '符合数据保护法规要求',
     },
-    feature1ImageSrc: {
-      type: String,
-      default:
-      classPic,
-    },
     feature1Description: {
       type: String,
       default:
-        '我们的解决方案旨在满足不同用户和信息服务提供商的独特要求，在保持模型实用性的同时确保高效的数据遗忘。',
+        '让模型忘记某个事物的类别',
     },
   },
 }
@@ -70,21 +63,21 @@ export default {
   align-items: center;
 }
 .features17-content {
-  gap: var(--dl-space-space-oneandhalfunits);
+  /* gap: var(--dl-space-space-oneandhalfunits); */
   flex: 1;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
 .features17-section-title {
-  gap: var(--dl-space-space-oneandhalfunits);
+  /* gap: var(--dl-space-space-oneandhalfunits); */
   display: flex;
   align-self: stretch;
   align-items: flex-start;
   flex-direction: column;
 }
 .features17-content1 {
-  gap: var(--dl-space-space-oneandhalfunits);
+  /* gap: var(--dl-space-space-oneandhalfunits); */
   display: flex;
   align-self: stretch;
   align-items: flex-start;

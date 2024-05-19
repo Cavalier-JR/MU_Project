@@ -26,8 +26,8 @@
         <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
         <div class="page-container5" style="width: 40%">
-          <div id="accuracychart" ref="accuracychart" style="width: 100%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
-          <!-- <div ref="timechart" style="width: 50%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
+          <div id="accuracychart" ref="accuracychart" style="width: 50%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+          <div ref="timechart" style="width: 50%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
         <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -91,8 +91,7 @@
               <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词2</th>
               <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词3</th>
               <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词4</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词5</th>
-
+              <!-- <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词5</th> -->
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">123@qq.com</td>
@@ -122,8 +121,29 @@
               <td style="padding: 8px; border: 1px solid #ddd;">96</td>
               <td style="padding: 8px; border: 1px solid #ddd;">97</td>
             </tr>
-            <tr style="background-color: #f2f2f2;">
+            <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #ffd3d3;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #ffd3d3;">
+              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+            </tr>
+            <tr style="background-color: #ebffb1;">
+              <td style="padding: 8px; border: 1px solid #ddd;">this is a secret</td>
               <td style="padding: 8px; border: 1px solid #ddd;">99</td>
               <td style="padding: 8px; border: 1px solid #ddd;">97</td>
               <td style="padding: 8px; border: 1px solid #ddd;">96</td>
@@ -136,29 +156,8 @@
               <td style="padding: 8px; border: 1px solid #ddd;">96</td>
               <td style="padding: 8px; border: 1px solid #ddd;">97</td>
             </tr>
-            <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-            </tr>
-            <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-            </tr>
-            <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-            </tr>
-            <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+            <tr style="background-color: #ebffb1;">
+              <td style="padding: 8px; border: 1px solid #ddd;">this is a secret</td>
               <td style="padding: 8px; border: 1px solid #ddd;">99</td>
               <td style="padding: 8px; border: 1px solid #ddd;">97</td>
               <td style="padding: 8px; border: 1px solid #ddd;">96</td>
@@ -381,194 +380,344 @@ onMounted(() => {
 
   if(accuracychart.value) {
     const myChart = echarts.init(accuracychart.value);
-    const posList = [
-  'left',
-  'right',
-  'top',
-  'bottom',
-  'inside',
-  'insideTop',
-  'insideLeft',
-  'insideRight',
-  'insideBottom',
-  'insideTopLeft',
-  'insideTopRight',
-  'insideBottomLeft',
-  'insideBottomRight'
-];
-app.configParameters = {
-  rotate: {
-    min: -90,
-    max: 90
-  },
-  align: {
-    options: {
-      left: 'left',
-      center: 'center',
-      right: 'right'
-    }
-  },
-  verticalAlign: {
-    options: {
-      top: 'top',
-      middle: 'middle',
-      bottom: 'bottom'
-    }
-  },
-  position: {
-    options: posList.reduce(function (map, pos) {
-      map[pos] = pos;
-      return map;
-    }, {})
-  },
-  distance: {
-    min: 0,
-    max: 100
-  }
-};
-app.config = {
-  rotate: 90,
-  align: 'left',
-  verticalAlign: 'middle',
-  position: 'insideBottom',
-  distance: 15,
-  onChange: function () {
+        const posList = [
+      'left',
+      'right',
+      'top',
+      'bottom',
+      'inside',
+      'insideTop',
+      'insideLeft',
+      'insideRight',
+      'insideBottom',
+      'insideTopLeft',
+      'insideTopRight',
+      'insideBottomLeft',
+      'insideBottomRight'
+    ];
+    app.configParameters = {
+      rotate: {
+        min: -90,
+        max: 90
+      },
+      align: {
+        options: {
+          left: 'left',
+          center: 'center',
+          right: 'right'
+        }
+      },
+      verticalAlign: {
+        options: {
+          top: 'top',
+          middle: 'middle',
+          bottom: 'bottom'
+        }
+      },
+      position: {
+        options: posList.reduce(function (map, pos) {
+          map[pos] = pos;
+          return map;
+        }, {})
+      },
+      distance: {
+        min: 0,
+        max: 100
+      }
+    };
+    app.config = {
+      rotate: 90,
+      align: 'left',
+      verticalAlign: 'middle',
+      position: 'insideBottom',
+      distance: 15,
+      onChange: function () {
+        const labelOption = {
+          rotate: app.config.rotate,
+          align: app.config.align,
+          verticalAlign: app.config.verticalAlign,
+          position: app.config.position,
+          distance: app.config.distance
+        };
+        myChart.setOption({
+          series: [
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            }
+          ]
+        });
+      }
+    };
     const labelOption = {
-      rotate: app.config.rotate,
+      show: true,
+      position: app.config.position,
+      distance: app.config.distance,
       align: app.config.align,
       verticalAlign: app.config.verticalAlign,
-      position: app.config.position,
-      distance: app.config.distance
+      rotate: app.config.rotate,
+      formatter: '{c}  {name|{a}}',
+      fontSize: 16,
+      rich: {
+        name: {}
+      }
     };
-    myChart.setOption({
+    option = {
+      title: {
+        text: '正确率'
+      },
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+        data: ['ConMU', 'GA', 'FT', 'RL']
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ['line', 'bar', 'stack'] },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: { show: false },
+          data: ['遗忘前', '遗忘后']
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
       series: [
         {
-          label: labelOption
+          name: 'ConMU',
+          type: 'bar',
+          barGap: 0,
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [320, 332, 301, 334, 390]
         },
         {
-          label: labelOption
+          name: 'GA',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [220, 182, 191, 234, 290]
         },
         {
-          label: labelOption
+          name: 'FT',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [150, 232, 201, 154, 190]
         },
         {
-          label: labelOption
+          name: 'RL',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [98, 77, 101, 99, 40]
         }
       ]
-    });
-  }
-};
-const labelOption = {
-  show: true,
-  position: app.config.position,
-  distance: app.config.distance,
-  align: app.config.align,
-  verticalAlign: app.config.verticalAlign,
-  rotate: app.config.rotate,
-  formatter: '{c}  {name|{a}}',
-  fontSize: 16,
-  rich: {
-    name: {}
-  }
-};
-option = {
-  title: {
-    text: '正确率'
-  },
-  tooltip: {
-    trigger: 'axis',
-    axisPointer: {
-      type: 'shadow'
-    }
-  },
-  legend: {
-    data: ['ConMU', 'GA', 'FT', 'RL']
-  },
-  toolbox: {
-    show: true,
-    orient: 'vertical',
-    left: 'right',
-    top: 'center',
-    feature: {
-      mark: { show: true },
-      dataView: { show: true, readOnly: false },
-      magicType: { show: true, type: ['line', 'bar', 'stack'] },
-      restore: { show: true },
-      saveAsImage: { show: true }
-    }
-  },
-  xAxis: [
-    {
-      type: 'category',
-      axisTick: { show: false },
-      data: ['部分遗忘', '类别遗忘', '文本遗忘']
-    }
-  ],
-  yAxis: [
-    {
-      type: 'value'
-    }
-  ],
-  series: [
-    {
-      name: 'ConMU',
-      type: 'bar',
-      barGap: 0,
-      label: labelOption,
-      emphasis: {
-        focus: 'series'
-      },
-      data: [320, 332, 301, 334, 390]
-    },
-    {
-      name: 'GA',
-      type: 'bar',
-      label: labelOption,
-      emphasis: {
-        focus: 'series'
-      },
-      data: [220, 182, 191, 234, 290]
-    },
-    {
-      name: 'FT',
-      type: 'bar',
-      label: labelOption,
-      emphasis: {
-        focus: 'series'
-      },
-      data: [150, 232, 201, 154, 190]
-    },
-    {
-      name: 'RL',
-      type: 'bar',
-      label: labelOption,
-      emphasis: {
-        focus: 'series'
-      },
-      data: [98, 77, 101, 99, 40]
-    }
-  ]
-};
+    };
     myChart.setOption(option);
   }
 
   if(timechart.value) {
     const myChart = echarts.init(timechart.value);
-    var option = {
+    const posList = [
+      'left',
+      'right',
+      'top',
+      'bottom',
+      'inside',
+      'insideTop',
+      'insideLeft',
+      'insideRight',
+      'insideBottom',
+      'insideTopLeft',
+      'insideTopRight',
+      'insideBottomLeft',
+      'insideBottomRight'
+    ];
+    app.configParameters = {
+      rotate: {
+        min: -90,
+        max: 90
+      },
+      align: {
+        options: {
+          left: 'left',
+          center: 'center',
+          right: 'right'
+        }
+      },
+      verticalAlign: {
+        options: {
+          top: 'top',
+          middle: 'middle',
+          bottom: 'bottom'
+        }
+      },
+      position: {
+        options: posList.reduce(function (map, pos) {
+          map[pos] = pos;
+          return map;
+        }, {})
+      },
+      distance: {
+        min: 0,
+        max: 100
+      }
+    };
+    app.config = {
+      rotate: 90,
+      align: 'left',
+      verticalAlign: 'middle',
+      position: 'insideBottom',
+      distance: 15,
+      onChange: function () {
+        const labelOption = {
+          rotate: app.config.rotate,
+          align: app.config.align,
+          verticalAlign: app.config.verticalAlign,
+          position: app.config.position,
+          distance: app.config.distance
+        };
+        myChart.setOption({
+          series: [
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            }
+          ]
+        });
+      }
+    };
+    const labelOption = {
+      show: true,
+      position: app.config.position,
+      distance: app.config.distance,
+      align: app.config.align,
+      verticalAlign: app.config.verticalAlign,
+      rotate: app.config.rotate,
+      formatter: '{c}  {name|{a}}',
+      fontSize: 16,
+      rich: {
+        name: {}
+      }
+    };
+    option = {
       title: {
         text: '用时'
       },
-      xAxis: {
-        type: 'category',
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
         data: ['ConMU', 'GA', 'FT', 'RL']
       },
-      yAxis: {
-        type: 'value'
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ['line', 'bar', 'stack'] },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: { show: false },
+          data: ['遗忘前', '遗忘后']
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
+          name: 'ConMU',
+          type: 'bar',
+          barGap: 0,
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [320, 332, 301, 334, 390]
+        },
+        {
+          name: 'GA',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [220, 182, 191, 234, 290]
+        },
+        {
+          name: 'FT',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [150, 232, 201, 154, 190]
+        },
+        {
+          name: 'RL',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [98, 77, 101, 99, 40]
         }
       ]
     };
