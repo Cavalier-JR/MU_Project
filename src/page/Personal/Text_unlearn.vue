@@ -1,19 +1,41 @@
 <template>
   <div v-if="!isSubmitted" class="center-container">
-    <el-container>
+    <el-container >
       <el-header class="my_el-header">
       <div class="header-content">
         <h1>文本遗忘</h1>
-        <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
+        <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
           <el-icon class="question-icon" style="font-size:30px;color:#888888;">
             <QuestionFilled/>
           </el-icon> 
-        </el-tooltip>
+        </el-tooltip> -->
       </div>
     </el-header>
     <el-main>
       <el-row>
         <el-col :span="24">
+          <el-card style="max-width: 1000px">
+            <div class="card-content">
+              <p> 在当前界面,您可以对文本类型的隐私数据进行遗忘处理~ </p>
+              <br>
+              <br>
+              <p> 想知道怎么操作？可以看下面哦~</p>
+            </div> 
+            <div class="card-content">
+              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:25px;" shadow="always">
+                <el-icon style="color: red"><Tickets /></el-icon>
+                首先输入隐私信息提示词
+              </el-card>
+              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:25px;" shadow="always">
+                <el-icon style="color: blue"><Promotion /></el-icon>
+                再选择替换词并进行遗忘
+              </el-card>
+              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:25px;" shadow="always">
+                <el-icon style="color: green"><Checked /></el-icon>
+                最后可验证遗忘是否成功
+              </el-card>
+            </div>
+          </el-card>
           <el-form :model="formData1" >
             <el-form-item 
             label="请输入隐私信息提示词"
@@ -21,9 +43,9 @@
             >
 
               <el-input 
-                style="width:1000px ;margin-top:20px;font-size:25px"
+                style="width:1000px ;margin-top:20px;font-size:25px;"
                 type="textarea"
-                :autosize="{ minRows: 8, maxRows: 20}"
+                :autosize="{ minRows: 5, maxRows: 20}"
                 placeholder="请输入内容"
                 v-model="formData1.text"
               ></el-input>
@@ -31,7 +53,7 @@
             <el-button 
               @click="showTheRest"
              class="begin-submit"
-             style="margin-left:40%"
+             style="margin-left:43%"
               >提交</el-button>
           </el-form >
         </el-col>
@@ -40,21 +62,21 @@
   </el-container>
   </div>
   <div v-else>
-  <el-container>
+  <el-container >
     <el-header class="my_el-header">
       <div class="header-content">
         <h1>文本遗忘</h1>
-        <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
+        <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
           <el-icon class="question-icon" style="font-size:30px;color:#888888;">
             <QuestionFilled/>
           </el-icon> 
-        </el-tooltip>
+        </el-tooltip> -->
       </div>
     </el-header>
-    <el-main>
-      <el-row>
+    <el-main >
+      <el-row >
         <el-col :span="12">
-          <el-form :model="formData1">
+          <el-form :model="formData1" >
             <el-form-item  label ="请输入隐私信息提示词">
               <el-input
                 style="font-size:15px"
@@ -83,7 +105,7 @@
                   ></el-input>
                 </el-form-item>
 
-              <el-form-item label="输入想要遗忘的敏感信息：" style="margin-top:40px">
+              <el-form-item label="输入想要遗忘的敏感信息" style="margin-top:40px">
                 <el-input
                 style="font-size:15px"
                   placeholder="输入敏感信息"
@@ -96,7 +118,7 @@
                 </el-input>
               </el-form-item>
               
-              <el-form-item label="隐私替换词：" v-if="showOptions">
+              <el-form-item label="隐私替换词" v-if="showOptions" style="margin-top: 30px;">
                 <el-checkbox-group v-model="selectedOptions" class="checkbox-group">
                   <el-checkbox :label="option" v-for="(option, index) in replacementOptions" :key="index" class="checkbox-item">
                     {{ option }}
@@ -117,7 +139,7 @@
         </el-col>
         <el-col :span="12" v-if="isSubmitted && showPanel">
           <el-form :model="formData2">
-            <el-form-item  label="重测试文本：">
+            <el-form-item  label="请输入测试提示词">
               <el-input
               style="font-size:15px"
                 type="textarea"
@@ -132,7 +154,7 @@
             <div v-if="showModelOutput2">
               <el-form-item 
               
-                label="模型的输出："
+                label="模型的输出"
                 style="margin-top:35px;"
               >
                 <el-input
@@ -264,18 +286,35 @@ setup() {
    };
    const addTextToPanelAndNotify = () => {
   // 逻辑处理文本...
-   addTextToPanel();
+    if (formData1.value.text.trim()) {
+      // 非空，逻辑处理文本...
+      addTextToPanel();
 
-   ElNotification({
-    title: '成功',
-    message: '已成功遗忘',
-    type: 'success',
-    position:"bottom-left",
-    duration: 5000,
-    customClass: "focus-button",
-    offset:110
-  });
-};
+      // 显示成功通知
+      ElNotification({
+        title: '成功',
+        message: '已成功遗忘',
+        type: 'success',
+        position: "bottom-left",
+        duration: 5000,
+        customClass: "focus-button",
+        offset: 110
+      });
+    }
+    else {
+      // 如果为空，显示失败通知
+      ElNotification({
+        title: '失败',
+        message: '输入为空，无法进行遗忘操作',
+        type: 'error',
+        position: "bottom-left",
+        customClass: "focus-button",
+        duration: 5000,
+        offset: 110
+      });
+    }
+  };
+
 
   const resetToInitial = () => {
   // 重置formData1使界面回到初始状态，清空已输入的文本
@@ -376,7 +415,7 @@ h2 {
 }
 .begin-submit {
   padding: 25px 25px !important;
-  margin-left: 42% !important;
+  margin-left: 44% !important;
   font-size: 25px !important;
   background-color: #2da7bdc5 !important;
   border-radius: 10px !important;
@@ -387,17 +426,19 @@ h2 {
   outline: none !important;
   color: white !important; 
 }
+
 .custom-button {
   padding: 20px 20px !important;
   margin-left: 40% !important;
-  font-size: 20px !important;
-  background-color: #B0C4DE !important;
+  font-size: 28px !important;
+  background-color: #2da7bdc5 !important;
   border-radius: 10px !important;
-  font-family: '斗鱼体' !important;
+  font-family: '社会体' !important;
   box-shadow: 5px 5px #EEE9E8 !important;
   border: none !important;
   cursor: pointer !important;
   outline: none !important;
+  color: rgba(247, 243, 243, 0.921) !important; 
 }
 .Begin_Middle{
 
@@ -405,7 +446,6 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 .Label_Bigger{
   font-size: 70px;
@@ -466,6 +506,7 @@ h2 {
   display: block;
   margin-bottom: 10px; /* 根据需要调整间距 */
   margin-top:8px;
+  margin-left: 10%;
 }
 
 /* 调整checkbox后的文字大小 */
@@ -533,5 +574,11 @@ h2 {
     color: black !important;
   }
 }
-
+.card-content {
+  font-size: 20px;
+}
+.card-body {
+  max-height: 200px;
+  min-width: 500px;
+}
 </style>

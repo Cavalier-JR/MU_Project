@@ -240,11 +240,7 @@ font-size: 50px;
 font-family:'社会体';
 text-align: center;
 }
-.text-card {
-margin-top:5px;
-margin-bottom: 10px;
-cursor: pointer;
-}
+
 .el-form-item label {
 font-size: 20px;
 font-family: '扁桃体';
@@ -271,23 +267,8 @@ border: none !important;
 cursor: pointer !important;
 outline: none !important;
 }
-.el-col.el-col-12:nth-child(2) {
-border: 3px solid #EEE9E9;
-border-radius: 20px;
-padding: 67px;
-box-shadow: 5px 10px  #EEE9E8;
-}
-.el-col.el-col-12{
-padding: 20px;
-}
-.el-scrollbar__wrap {
-overflow-y: auto;
-margin: 1px;
-}
-.el-scrollbar__view {
-overflow-y: auto;
-margin: 1px;
-}
+
+
 .custom-button {
   margin:6px
 }
