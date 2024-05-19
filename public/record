@@ -1,0 +1,502 @@
+<template>
+  <div class="page-container" style="background-color: rgb(208, 255, 233);">
+    <div class="page-container01">
+      <span class="page-text">目前模型：Model A</span>
+      <select class="page-select">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+      </select>
+      <button type="button" class="page-button button">导入模型</button>
+    </div>
+    <div class="page-container02">
+      <div class="page-container03">
+        <span class="page-text1">部分遗忘</span>
+        <select class="page-select1">
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+        </select>
+        <span class="page-text2">目前版本：2024-5-18</span>
+        <button type="button" class="page-button1 button">历史记录</button>
+      </div>
+      <div class="page-container04">
+
+        <!-- <div id="partchart" ref="partchart" style="width: 800px;height: 300px; background-color: rgb(255, 255, 255);"></div> -->
+
+        <img
+          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          alt="image"
+          class="page-image1"
+        />
+      </div>
+    </div>
+    <div class="page-container05">
+      <div class="page-container06">
+        <span class="page-text3">类别遗忘</span>
+        <select class="page-select2">
+          <option value="Option 1">Option 1</option>
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+          <option value="Option 3">Option 3</option>
+        </select>
+        <span class="page-text4">目前版本：2024-5-18</span>
+        <button type="button" class="page-button2 button">l历史记录</button>
+      </div>
+      <div class="page-container07">
+        <img
+          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          alt="image"
+          class="page-image2"
+        />
+        <img
+          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          alt="image"
+          class="page-image3"
+        />
+      </div>
+    </div>
+    <div class="page-container08">
+      <div class="page-container09">
+        <span class="page-text5">文本遗忘</span>
+        <select class="page-select3">
+          <option value="Option 1">Option 1</option>
+          <option value="Option 1">Option 1</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 2">Option 2</option>
+          <option value="Option 3">Option 3</option>
+          <option value="Option 3">Option 3</option>
+        </select>
+        <span class="page-text6">目前版本：2024-5-18</span>
+        <button type="button" class="page-button3 button">l历史记录</button>
+      </div>
+      <div class="page-container10">
+        <div id="partchart" ref="partchart" style="width: 800px;height: 400px; background-color: rgb(255, 255, 255);"></div>
+
+        <img
+          src="https://play.teleporthq.io/static/svg/default-img.svg"
+          alt="image"
+          class="page-image5"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { onMounted, ref } from 'vue';
+import * as echarts from 'echarts';
+
+const partchart = ref(null);
+
+onMounted(() => {
+  if (partchart.value) {
+      const myChart = echarts.init(partchart.value);
+      var option = {
+        title: [
+          {
+            text: '文本遗忘指标可视化'
+          },
+          {
+            left: '9%',
+            top: '90%',
+            text: '手机号 3364634443'
+          },
+          {
+            top: '90%',
+            left: 'center',
+            text: '邮件内容'
+          },
+          {
+            left: '80%',
+            top: '90%',
+            text: '手机号 3364634443'
+          },
+          {
+            top: '45%',
+            left: 'center',
+            text: '邮件内容'
+          }
+        ],
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          left: 'center',
+          data: [
+            'ConMU',
+            'A Phone',
+            'Another Phone',
+            'Precipitation',
+            'Evaporation'
+          ]
+        },
+        radar: [
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['15%', '70%'],
+            radius: 60
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            radius: 60,
+            center: ['50%', '30%']
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['85%', '30%'],
+            radius: 60
+          },
+              {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['15%', '30%'],
+            radius: 60
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            radius: 60,
+            center: ['50%', '70%']
+          },
+          {
+            indicator: [
+              { text: '准确率', max: 100 },
+              { text: '运行时间', max: 100 },
+              { text: '内存使用', max: 100 },
+              { text: '模型大小', max: 100 }
+            ],
+            center: ['85%', '70%'],
+            radius: 60
+          }
+        ],
+        series: [
+          {
+            type: 'radar',
+            tooltip: {
+              trigger: 'item'
+            },
+            areaStyle: {},
+            data: [
+              {
+                value: [60, 73, 85, 40],
+                name: 'ConMU'
+              }
+            ]
+          },
+          {
+            type: 'radar',
+            radarIndex: 2,
+            areaStyle: {},
+            data: [
+              {
+                value: [85, 90, 90, 95, 95],
+                name: 'A Phone'
+              },
+              {
+                value: [95, 80, 95, 90, 93],
+                name: 'Another Phone'
+              }
+            ]
+          },
+              {
+            type: 'radar',
+            radarIndex: 1,
+            areaStyle: {},
+            data: [
+              {
+                value: [85, 90, 90, 95, 95],
+                name: 'A Phone'
+              },
+              {
+                value: [95, 80, 95, 90, 93],
+                name: 'Another Phone'
+              }
+            ]
+          },
+
+        ]
+      };
+      myChart.setOption(option);
+    }
+    
+})
+
+    
+
+</script>
+
+<style scoped>
+.page-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.page-container01 {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.page-text {
+  margin: 10px;
+  padding: 0px;
+  font-size: 30px;
+  align-self: center;
+  text-align: center;
+}
+.page-select {
+  width: 222px;
+  padding: 10px;
+  align-self: stretch;
+  margin-left: 60px;
+  border-color: var(--dl-color-gray-black);
+  border-width: 3px;
+  padding-left: 10px;
+  border-radius: var(--dl-radius-radius-radius12);
+}
+.page-button {
+  width: 196px;
+  height: 100%;
+  font-size: 40px;
+  text-align: center;
+  margin-left: 50px;
+  border-radius: var(--dl-radius-radius-radius12);
+}
+.page-container02 {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+.page-container03 {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-direction: row;
+}
+.page-text1 {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-select1 {
+  height: 100%;
+  align-self: center;
+  margin-left: 20px;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+}
+.page-text2 {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-button1 {
+  margin-left: 20px;
+}
+.page-container04 {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-self: center;
+  align-items: center;
+}
+.page-image {
+  width: 60%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0px;
+  object-fit: cover;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-image1 {
+  width: 40%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0px;
+  object-fit: cover;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-bottom: 0px;
+}
+.page-container05 {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+.page-container06 {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-direction: row;
+}
+.page-text3 {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-select2 {
+  height: 100%;
+  align-self: center;
+  margin-left: 20px;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+}
+.page-text4 {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-button2 {
+  margin-left: 20px;
+}
+.page-container07 {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-self: center;
+  align-items: center;
+}
+.page-image2 {
+  width: 60%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0px;
+  object-fit: cover;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-image3 {
+  width: 40%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0px;
+  object-fit: cover;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-bottom: 0px;
+}
+.page-container08 {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+.page-container09 {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-direction: row;
+}
+.page-text5 {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-select3 {
+  height: 100%;
+  align-self: center;
+  margin-left: 20px;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+}
+.page-text6 {
+  font-size: 30px;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-button3 {
+  margin-left: 20px;
+}
+.page-container10 {
+  width: 100%;
+  height: 85%;
+  display: flex;
+  align-self: center;
+  align-items: center;
+}
+.page-image4 {
+  width: 60%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0px;
+  object-fit: cover;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.page-image5 {
+  width: 40%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0px;
+  object-fit: cover;
+  margin-left: 10px;
+  margin-right: 20px;
+  margin-bottom: 0px;
+}
+</style>
