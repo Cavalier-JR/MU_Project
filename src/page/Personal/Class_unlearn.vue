@@ -47,25 +47,114 @@
           <div> 
             <el-result
               icon="success"
-              title="已成功遗忘！"
-              sub-title="本次遗忘操作用时为3.4min"
+              title="本次遗忘操作用时为 412 s"
               v-show="isRightPanelVisible"
             >
             </el-result>
           </div> 
+          <br>
+          <div class="pic_tag" v-show="isPicVisible">
+            <span>
+              <el-icon style="margin-left: 20px;font-size: 17px"><PictureFilled /></el-icon>
+                <span style="font-size: 15px;margin-left: 5px;"> 类别数据集展示 </span>
+            </span>
+          </div>
+          <div class="image_box" v-show="isPicVisible">
+            <div class="item"> <img src="../../assets/pic/image_0.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_1.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_2.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_3.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_4.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_5.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_6.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_7.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_8.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_9.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_10.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_11.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_12.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_13.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_14.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_15.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_16.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_17.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_18.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_19.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_20.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_21.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_22.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_23.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_24.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_25.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_26.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_27.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_28.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_29.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_30.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_31.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_32.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_33.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_34.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_35.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_36.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_37.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_38.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_39.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_40.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_41.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_42.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_43.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_44.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_45.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_46.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_47.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_48.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_49.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_50.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_51.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_52.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_53.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_54.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_55.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_56.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_57.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_58.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_59.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_60.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_61.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_62.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_63.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_64.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_65.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_66.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_67.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_68.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_69.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_70.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_71.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_72.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_73.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_74.png" alt="示例图片" /> </div>
+          </div>
         </el-col>
 
-        <el-col :span="1"></el-col>
+        <el-col :span="1" v-show="isRightPanelVisible"></el-col>
 
         <el-col :span="9" v-show="isRightPanelVisible">
-          <el-table :data="tableData" style="width: 100%" border  height="400" stripe>
-            <el-table-column  height="250" prop="image" label="图像" width="100" header-align="center" align="center"></el-table-column>
+          <el-table :data="tableData" style="width: 100%" border height="480" stripe>
+            <el-table-column prop="pic" label="图像" align="center" width="100" height="250" header-align="center">
+              <template #default="scope">
+                <el-image :src="scope.row.pic" style="width: 40px;height: 40px" 
+                :preview-src-list="[scope.row.pic]" :preview-teleported="true"> </el-image>
+              </template>
+            </el-table-column>
             <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
             <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center" show-overflow-tooltip></el-table-column>
           </el-table>
         </el-col>  
         
-        <el-col :span="2"></el-col>
+        <el-col :span="2" v-show="isRightPanelVisible"></el-col>
+
       </el-row>
     </el-main>
   </el-container>
@@ -79,12 +168,14 @@ const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 const isMethodVisible = ref(false); // 初始状态为false，即不显示
 const loading_flag = ref(false);
 const isCardVisible = ref(true);
+const isPicVisible = ref(true);
+
 const handleChange1 = (val: string[]) => {
   console.log(val)
 }
 
 interface User {
-  image: string
+  pic: string
   beforeCategory: string
   afterCategory: string
 }
@@ -102,6 +193,7 @@ function Forget_Button_Click() {
       isCardVisible.value = false;
       isRightPanelVisible.value = true;
       loading_flag.value = false;
+      isPicVisible.value = false;
       Success_Notify();
     }, 5000)
   })
@@ -131,25 +223,26 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
+    offset: 390,
   });
 };
 
 const tableData: User[] = [
-  { image: 'cat1.jpg', beforeCategory: '猫', afterCategory: '狗'},
-  { image: 'cat2.jpg', beforeCategory: '猫', afterCategory: '狗'},
-  { image: 'cat3.jpg', beforeCategory: '猫', afterCategory: '羊'},
-  { image: 'cat4.jpg', beforeCategory: '猫', afterCategory: '驴'},
-  { image: 'cat5.jpg', beforeCategory: '猫', afterCategory: '猪'},
-  { image: 'cat6.jpg', beforeCategory: '猫',  afterCategory: '狗'},
-  { image: 'cat7.jpg', beforeCategory: '猫', afterCategory: '牛'},
-  { image: 'cat8.jpg', beforeCategory: '猫', afterCategory: '猴'},
-  { image: 'cat9.jpg', beforeCategory: '狗', afterCategory: '驴'},
-  { image: 'dog1.jpg', beforeCategory: '狗', afterCategory: '猫'},
-  { image: 'dog2.jpg', beforeCategory: '狗', afterCategory: '蛇'},
-  { image: 'dog3.jpg', beforeCategory: '狗', afterCategory: '猴'},
-  { image: 'dog4.jpg', beforeCategory: '狗', afterCategory: '猫'},
-  { image: 'dog5.jpg', beforeCategory: '狗', afterCategory: '马'},
-  { image: 'dog6.jpg', beforeCategory: '狗', afterCategory: '骆驼'},
+  { pic: 'http://picture.gptkong.com/20240519/15581b7b4ccd944af1b5c387a8df5257bc.png', beforeCategory: '狗', afterCategory: '猫'},
+  { pic: 'http://picture.gptkong.com/20240519/15595e6b339c944b2a9467f00e4382ba3e.png', beforeCategory: '狗', afterCategory: '猪'},
+  { pic: 'http://picture.gptkong.com/20240519/1600136bb87d6943ac8257e9b82a8a684f.png', beforeCategory: '狗', afterCategory: '羊'},
+  { pic: 'http://picture.gptkong.com/20240519/16002101bd462e4ef986d79bdcb1ca0dc4.png', beforeCategory: '狗', afterCategory: '驴'},
+  { pic: 'http://picture.gptkong.com/20240519/1600bc7ed87ce544989997cbda8792dd38.png', beforeCategory: '狗', afterCategory: '猪'},
+  { pic: 'http://picture.gptkong.com/20240519/16005d72a59498441e90b6dd9ba15986c4.png', beforeCategory: '狗',  afterCategory: '猫'},
+  { pic: 'http://picture.gptkong.com/20240519/160172d1b1dded40e487a598b8522760a2.png', beforeCategory: '狗', afterCategory: '牛'},
+  { pic: 'http://picture.gptkong.com/20240519/1601e32db07851446292f261d16389a602.png', beforeCategory: '狗', afterCategory: '猴'},
+  { pic: 'http://picture.gptkong.com/20240519/1601625292168548dbbf6ec74573794fe1.png', beforeCategory: '狗', afterCategory: '驴'},
+  { pic: 'http://picture.gptkong.com/20240519/160104ad6b69d948b7bdc320cf1cf1f128.png', beforeCategory: '狗', afterCategory: '猫'},
+  { pic: 'http://picture.gptkong.com/20240519/160100f6584997414d8eaef667717d329b.png', beforeCategory: '狗', afterCategory: '蛇'},
+  { pic: 'http://picture.gptkong.com/20240519/1602ff0bec5f99452faf84eb9ce6e6ffe9.png', beforeCategory: '狗', afterCategory: '猴'},
+  { pic: 'http://picture.gptkong.com/20240519/160291f94037d64fa0a5d5ee3f459b9541.png', beforeCategory: '狗', afterCategory: '蛇'},
+  { pic: 'http://picture.gptkong.com/20240519/16023794c760ee4cf088e1b6f4855c5331.png', beforeCategory: '狗', afterCategory: '马'},
+  { pic: 'http://picture.gptkong.com/20240519/1602fc5eb5f4e446b18cd42b3f04ad325d.png', beforeCategory: '狗', afterCategory: '骆驼'},
 ];
 
 const value1 = ref([])
@@ -208,6 +301,141 @@ const options1 = [
       },
     ],
   },
+  {
+    value: 'people',
+    label: '人',
+    children: [
+      {
+        value: 'man',
+        label: '男人',
+      },
+      {
+        value: 'woman',
+        label: '女人',
+      },
+      {
+        value: 'boy',
+        label: '男孩',
+      },
+      {
+        value: 'girl',
+        label: '女孩',
+      },
+    ],
+  },
+  {
+    value: 'flower',
+    label: '花朵',
+    children: [
+      {
+        value: 'meigui',
+        label: '玫瑰',
+      },
+      {
+        value: 'xiangrikui',
+        label: '向日葵',
+      },
+      {
+        value: 'yujinxiang',
+        label: '郁金香',
+      },
+      {
+        value: 'yingsuhua',
+        label: '罂粟花',
+      },
+    ],
+  },
+  {
+    value: 'tree',
+    label: '树',
+    children: [
+      {
+        value: 'fengshu',
+        label: '枫树',
+      },
+      {
+        value: 'xiangshu',
+        label: '橡树',
+      },
+      {
+        value: 'zonglvshu',
+        label: '棕榈树',
+      },
+      {
+        value: 'liushu',
+        label: '柳树',
+      },
+    ],
+  },
+  {
+    value: 'food_container',
+    label: '食品容器',
+    children: [
+      {
+        value: 'wan',
+        label: '碗',
+      },
+      {
+        value: 'guan',
+        label: '罐',
+      },
+      {
+        value: 'beizi',
+        label: '杯子',
+      },
+      {
+        value: 'panzi',
+        label: '盘子',
+      },
+    ],
+  },
+  {
+    value: 'number',
+    label: '号码',
+    children: [
+      {
+        value: 'one',
+        label: '1',
+      },
+      {
+        value: 'two',
+        label: '2',
+      },
+      {
+        value: 'three',
+        label: '3',
+      },
+      {
+        value: 'four',
+        label: '4',
+      },
+      {
+        value: 'five',
+        label: '5',
+      },
+      {
+        value: 'six',
+        label: '6',
+      },
+      {
+        value: 'seven',
+        label: '7',
+      },
+      {
+        value: 'eight',
+        label: '8',
+      },
+      {
+        value: 'nine',
+        label: '9',
+      },
+      {
+        value: 'zero',
+        label: '0',
+      },
+    ],
+  },
+  
 ]
 const options2 = [
   {
@@ -345,5 +573,24 @@ outline: none !important;
 }
 .el-table .row2 {
   --el-table-tr-bg-color: #ebe0d6;
+}
+.image_box {
+  display: flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  height: 200px;
+  width: 100%;
+  margin-left: 13px; /* 第一个项目左侧需要间隔 */
+}
+.item {
+  margin-right: 4px; /*设置每个项目右侧的间隔 */
+  margin-bottom: 4px; /* 设置每个项目下侧的间隔 */
+}
+.item:last-child {
+  margin-right: 0; /* 最后一个项目不需要右侧间隔 */
+  margin-bottom: 0; /* 最后一行项目不需要下侧间隔 */
+}
+.pic_tag {
+  margin-bottom: 15px;
 }
 </style>
