@@ -84,6 +84,7 @@
         <!-- <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div> -->
 
         <div class="page-container5" style="width: 70%">
+          
           <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 100%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
           <!-- <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
         </div>

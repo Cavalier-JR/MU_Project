@@ -30,26 +30,21 @@
 
 
 <script>
-import AppHero3 from '../components/first.vue'
 import AppFeatures17 from '../components/second.vue'
 import AppFeatures18 from '../components/third.vue'
 import AppFeatures171 from '../components/fourth.vue'
 import AppCta1 from '../components/fiveth.vue'
-import AppFaq1 from '../components/faq1.vue'
-import AppContact4 from '../components/contactBelow.vue'
+
 
 
 export default {
   name: 'Home',
   props: {},
   components: {
-    AppHero3,
     AppFeatures17,
     AppFeatures18,
     AppFeatures171,
     AppCta1,
-    AppFaq1,
-    AppContact4,
   },
   metaInfo: {
     title: 'Incomplete Dual Hamster',
