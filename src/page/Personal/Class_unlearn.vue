@@ -27,7 +27,7 @@
           <div class="select"> 
             <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" 
             style="width: 190px" clearable :show-all-levels="false" placeholder="请选择需要遗忘的类别" collapse-tags/>
-            <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" class="button"> 选择 </el-button>
+            <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" class="my_button"> 选择 </el-button>
           </div> 
           <div class="select"> 
             <el-select class="select_area" v-model="value2" placeholder="请选择你的遗忘方法" style="width: 190px" v-show="isMethodVisible">
@@ -40,7 +40,7 @@
               />
             </el-select>
             <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible" 
-            :loading="loading_flag" class="button"> 
+            :loading="loading_flag" class="my_button"> 
               遗忘 
             </el-button>
           </div> 
@@ -460,55 +460,12 @@ const options2 = [
 
 
 <style>
-.el-header {
-background-color: #f2f2f2;
-color: black;
-padding: 8px;
-font-size: 50px;
-font-family:'社会体';
-text-align: center;
-}
-
-.el-form-item label {
-font-size: 20px;
-font-family: '扁桃体';
-}
-.el-form-item .el-input__inner {
-font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-.custom-button {
-padding: 20px 20px !important;
-margin-left: 40% !important;
-font-size: 20px !important;
-background-color: #B0C4DE !important;
-border-radius: 10px !important;
-font-family: '斗鱼体' !important;
-box-shadow: 5px 5px #EEE9E8 !important;
-border: none !important;
-cursor: pointer !important;
-outline: none !important;
-}
-
-
-.custom-button {
-  margin:6px
-}
-.centered-text {
-  text-align: center; /* 让文本居中 */
-  font-size: 25px; /* 设置字体大小 */
-  margin-top: 3px; /* 可选：设置顶部边距 */
-}
-.centered-plus {
-  text-align: center; /* 让文本居中 */
-  font-size: 150px; /* 设置字体大小 */
-  margin-bottom: 10px; /* 可选：设置底部边距 */
-}
 .function_select{
   text-align: center;
   font-size: 20px; /* 设置字体大小 */
   margin-bottom: 15px; /* 可选：设置底部边距 */
 }
-.button {
+.my_button {
   margin-left: 50px;
   text-align: center;
 }

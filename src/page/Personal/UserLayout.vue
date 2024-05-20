@@ -48,7 +48,6 @@
       </el-aside>
 
       <el-container>
-        <!-- header头部菜单 -->
          <!-- header头部菜单 -->
          <el-header class="header">
           <!-- 标题和信安公司 -->
@@ -251,11 +250,12 @@ export default {
 .box {
   width: 100vw;
   height: 100vh;
-  background-color: #27b2bd !important;
+  background-color: #27B2BD;
 }
 .header {
   padding: 0;
   height: 58px;
+  padding:0 10px;
 }
 /* 将消息中心和我的控制台摆放在最右侧 */
 .el-menu--horizontal {
@@ -303,15 +303,14 @@ export default {
 }
 .header-left {
   float: left;
-  font-family: "抖音体" !important;
-  margin-left: 35%;
-  line-height: 58px !important;
+  font-family: "抖音体";
+  margin-left: 30%;
+  line-height: 58px;
 }
 .header-left h2 {
-  color: #fff !important;
-  font-size: 20px !important;
+  color: #fff;
+  font-size: 20px;
 }
-
 .header-right {
   float: right;
   margin-right: 20px;
@@ -320,5 +319,4 @@ export default {
 .header-right .el-menu-demo {
   float: right;
 }
-
 </style>

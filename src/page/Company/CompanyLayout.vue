@@ -252,7 +252,6 @@ export default {
 .el-menu--horizontal {
   justify-content: flex-end;
   width:400px;
-
 }
 
 /* 去除默认的边框样式 */
@@ -309,8 +308,8 @@ export default {
   margin-right: 20px;
   line-height: 58px;
 }
+
 .header-right .el-menu-demo {
   float: right;
 }
-
 </style>

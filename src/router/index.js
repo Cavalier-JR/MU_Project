@@ -29,7 +29,7 @@ const routes = [
             {
                 path: "Class_unlearn",
                 name: "class_unlearn",
-                component: () => import("../page/Personal/class_unlearn.vue"),
+                component: () => import("../page/Personal/Class_unlearn.vue"),
             },
             {
                 path: "Pic_partially",
