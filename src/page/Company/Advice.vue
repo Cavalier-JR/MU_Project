@@ -1,7 +1,7 @@
 <template>
   <div class="page-container" style="background-color: rgb(255, 255, 255);">
     <div class="page-container1">
-      <span class="page-text">目前模型：Model A</span>
+      <span class="page-text" style="font-family: 黑体;  font-weight: bold;">目前模型：Model A</span>
       <select class="page-select">
         <option value="Option 1">Option 1</option>
         <option value="Option 2">Option 2</option>

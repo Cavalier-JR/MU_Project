@@ -29,24 +29,28 @@
       </el-row>
 
       <el-row class="echartPanel" style="height: 252px; width: 100%; margin-top: 10px;">
-        <div ref="accuracyChart" style="height: 100%; width: 100%;"></div>
+        <div ref="accuracyChart" style="height: 110%; width: 100%;"></div>
       </el-row>
 
       <el-row class="echartPanel" style="height: 350px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
-        <div ref="radarChart" style="height: 100%; width: 100%;"></div>
+        <div ref="threeMethodsChart" style="height: 100%; width: 100%;"></div>
       </el-row>
+
+      <!-- <el-row class="echartPanel" style="height: 350px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+        <div ref="" style="height: 100%; width: 100%;"></div>
+      </el-row> -->
 
       <el-row>
         <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
           <h3 style="font-size: 20px; font-family: '黑体';  font-weight: bold;">任务执行记录</h3>
         </div>
-        <el-table :data="tableData" style="width: 100%">
+        <el-table :data="tableData" style="width: 100%" class="el-table">
           <el-table-column prop="taskName" label="任务名"></el-table-column>
           <el-table-column prop="taskType" label="任务类型"></el-table-column>
-          <el-table-column prop="executionPeriod" label="执行周期(预计)"></el-table-column>
+          <el-table-column prop="executionPeriod" label="预计时长"></el-table-column>
           <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
           <el-table-column prop="executionTime" label="执行时间"></el-table-column>
-          <el-table-column prop="duration" label="耗时"></el-table-column>
+          <el-table-column prop="duration" label="实际用时"></el-table-column>
         </el-table>
       </el-row> 
     </el-col>
@@ -64,7 +68,11 @@
       </el-row>
 
       <el-row :span="8"> <!--第二列 第二行 监控-->
-        <div class="echartPanel" id="thirdChart" ref="thirdChart" style="height: 300px; width: 100%; margin-top: 10px;"></div>
+        <div class="echartPanel" id="thirdChart" ref="thirdChart" style="height: 200px; width: 100%; margin-top: 10px;"></div>
+      </el-row>
+
+      <el-row :span="8"> <!--第二列 第三行 饼图-->
+        <div class="echartPanel" ref="pieChart" style="height: 300px; width: 100%; margin-top: 10px;"></div>
       </el-row>
 
       <el-row :span="8">
@@ -76,7 +84,7 @@
           <el-table-column class="tableHeader" prop="taskType" label="模型名称"></el-table-column>
           <el-table-column class="tableHeader" prop="executionPeriod" label="执行时间"></el-table-column>
           <el-table-column class="tableHeader" prop="executionStatus" label="备份数量"></el-table-column>
-          <el-table-column class="tableHeader" prop="executionTime" label="最后备份时间"></el-table-column>
+          <!-- <el-table-column class="tableHeader" prop="executionTime" label="最后备份时间"></el-table-column> -->
         </el-table>
       </el-row>
       
@@ -94,7 +102,9 @@ const memchart = ref(null);
 
 const accuracyChart = ref(null);
 const thirdChart = ref(null);
-const radarChart = ref(null);
+
+const pieChart = ref(null);
+const threeMethodsChart = ref(null);
 
 // 表格内容
 const tableData = ref([
@@ -295,7 +305,7 @@ onMounted(() => {
         data: ['文本', '图像']
       },
       title: {
-        text : "准确率(单位:%)"
+        text : "模型准确率(单位:%)"
       },
       xAxis: {
         type: 'category',
@@ -307,12 +317,12 @@ onMounted(() => {
       series: [
         {
           name: '文本',
-          data: [92, 83, 95, 84, 94, 87, 95, 81, 82, 82, 91, 84, 89, 95],
+          data: [99, 97, 95, 93, 93, 90, 90, 90, 86, 86, 84, 83, 83, 81],
           type: 'line'
         },
         {
         name: '图像',
-          data: [81, 100, 88, 82, 82, 93, 87, 98, 96, 90, 92, 97, 92, 83],
+          data: [98, 96, 95, 94, 90, 90, 90, 86, 84, 83, 82, 82, 81, 81],
           type: 'line'
         }
       ]
@@ -324,7 +334,7 @@ onMounted(() => {
     const myChart = echarts.init(thirdChart.value)
     function randomData() {
       now = new Date(+now + oneDay);
-      value = value + Math.random() * 21 -10;
+      value = value + Math.random() * 2;
       return {
         name: now.toString(),
         value: [
@@ -340,7 +350,7 @@ onMounted(() => {
     for (var i = 0; i < 30; i++) { // 控制横坐标显示范围
       data.push(randomData());
     }
-    option = {
+    var option = {
       title: {
         text: '遗忘次数'
       },
@@ -363,6 +373,9 @@ onMounted(() => {
           animation: false
         }
       },
+      grid: {
+        bottom: '10%' // 调整这个值以减少底部空间
+      },
       xAxis: {
         type: 'time',
         splitLine: {
@@ -378,12 +391,12 @@ onMounted(() => {
       },
       series: [
         {
-          name: 'cpu',
+          // name: 'cpu',
           type: 'line',
           showSymbol: false,
           data: data
         },
-      ]
+      ],
     };
     setInterval(function () {
       for (var i = 0; i < 1; i++) { // 调节速度
@@ -402,167 +415,117 @@ onMounted(() => {
     myChart.setOption(option);
   }
 
-  if (radarChart.value) {
-    const myChart = echarts.init(radarChart.value);
+  if (threeMethodsChart.value) {  // 模型情况 第一列第3行
+    const myChart = echarts.init(threeMethodsChart.value);
+    const seriesLabel = {
+      show: true
+    };
     var option = {
-      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
-        text: '4种方法雷达图'
-
+        text: '模型情况'
       },
-      legend: {},
-      radar: [
-        {
-          indicator: [
-            { text: '模型准确率' },
-            { text: '耗时' },
-            { text: '效果' },
-            { text: '指标4' },
-            { text: '指标5' }
-          ],
-          center: ['30%', '50%'],
-          radius: 80,
-          startAngle: 90,
-          splitNumber: 4,
-          shape: 'circle',
-          axisName: {
-            formatter: '【{value}】',
-            color: '#428BD4'
-          },
-          splitArea: {
-            areaStyle: {
-              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
-              shadowColor: 'rgba(0, 0, 0, 0.2)',
-              shadowBlur: 10
-            }
-          },
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
-            }
-          },
-          splitLine: {
-            lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
-            }
-          },
-        },
-        {
-          indicator: [
-            { text: '正确率', max: 150 },
-            { text: '耗时', max: 150 },
-            { text: '效果', max: 150 },
-            { text: 'Indicator4', max: 120 },
-            { text: 'Indicator5', max: 108 },
-            { text: 'Indicator6', max: 72 }
-          ],
-          center: ['75%', '50%'],
-          radius: 70,
-          axisName: {
-            color: '#fff',
-            backgroundColor: '#666',
-            borderRadius: 3,
-            padding: [3, 5]
-          }
-        },
-
-      ],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
+      },
+      legend: {
+        data: ['正在进行', '已完成', '准确率降低超过阈值'],
+      },
+      grid: {
+        left: 100,
+        bottom: '10%'
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'value',
+        name: 'Days',
+        axisLabel: {
+          formatter: '{value}'
+        }
+      },
+      yAxis: {
+        type: 'category',
+        inverse: true,
+        data: ['图片部分遗忘', '图片类别遗忘', '文本遗忘'],
+        axisLabel: {
+          margin: 20,
+        }
+      },
       series: [
         {
-          type: 'radar',
+          name: '正在进行',
+          type: 'bar',
+          data: [165, 170, 30],
+          label: seriesLabel,
+        },
+        {
+          name: '已完成',
+          type: 'bar',
+          label: seriesLabel,
+          data: [150, 105, 110]
+        },
+        {
+          name: '准确率降低超过阈值',
+          type: 'bar',
+          label: seriesLabel,
+          data: [22, 8, 6]
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+
+  if (pieChart.value) {
+    const myChart = echarts.init(pieChart.value);
+    var option = {
+      title: {
+        text: '模型任务情况比例图',
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '9%',
+        left: 'center',
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          itemStyle: {
+            borderRadius: 10,
+            borderColor: '#fff',
+            borderWidth: 2
+          },
+          label: {
+            show: false,
+            position: 'center'
+          },
           emphasis: {
-            lineStyle: {
-              width: 4
+            label: {
+              show: true,
+              fontSize: 40,
+              fontWeight: 'bold'
             }
           },
+          labelLine: {
+            show: false
+          },
           data: [
-            {
-              value: [100, 8, 0.4, -80, 2000],
-              name: 'ConMU'
-            },
-            {
-              value: [60, 5, 0.3, -100, 1500],
-              name: 'GA',
-              areaStyle: {
-                color: 'rgba(255, 228, 52, 0.6)'
-              }
-            }
-          ],
-        },
-        {
-          type: 'radar',
-          radarIndex: 1,
-          data: [
-            {
-              value: [120, 118, 130, 100, 99, 70],
-              name: 'FT',
-              symbol: 'rect',
-              symbolSize: 12,
-              lineStyle: {
-                type: 'dashed'
-              },
-              label: {
-                show: true,
-                formatter: function (params) {
-                  return params.value;
-                }
-              }
-            },
-            {
-              value: [100, 93, 50, 90, 70, 60],
-              name: 'RL',
-              areaStyle: {
-                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                  {
-                    color: 'rgba(255, 145, 124, 0.1)',
-                    offset: 0
-                  },
-                  {
-                    color: 'rgba(255, 145, 124, 0.9)',
-                    offset: 1
-                  }
-                ])
-              }
-            }
+            { value: 1048, name: '正在进行' },
+            { value: 735, name: '已完成' },
+            { value: 580, name: '准确率降低超过阈值' },
           ]
-        },
-        {
-          type: 'radar',
-          radarIndex: 1,
-          data: [
-            {
-              value: [100, 100, 100, 100, 100, 100],
-              name: 'FT',
-              symbol: 'rect',
-              symbolSize: 12,
-              lineStyle: {
-                type: 'dashed'
-              },
-              label: {
-                show: true,
-                formatter: function (params) {
-                  return params.value;
-                }
-              }
-            },
-            {
-              value: [100, 93, 50, 90, 70, 60],
-              name: 'RL',
-              areaStyle: {
-                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                  {
-                    color: 'rgba(255, 145, 124, 0.1)',
-                    offset: 0
-                  },
-                  {
-                    color: 'rgba(255, 145, 124, 0.9)',
-                    offset: 1
-                  }
-                ])
-              }
-            }
-          ]
-        },
+        }
       ]
     };
     myChart.setOption(option);
@@ -575,6 +538,45 @@ onMounted(() => {
 
 
 <style scoped>
+/*这些不知道为啥没有用 */
+/* 基本表格样式 */
+.el-table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #6c1818; /* 轻灰色背景 */
+}
+
+/* 表格头部样式 */
+.el-table thead {
+  background-color: #471111; /* 深一点的灰色背景 */
+  color: #333; /* 字体颜色 */
+}
+
+/* 表格列头样式 */
+.el-table th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #840000; /* 底部边框 */
+}
+
+/* 表格单元格样式 */
+.el-table td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #761313; /* 底部边框 */
+}
+
+/* 鼠标悬停行的样式 */
+.el-table tr:hover {
+  background-color: #512020; /* 鼠标悬停时的背景色 */
+}
+
+/* 表格行条纹样式 */
+.el-table tr:nth-child(odd) {
+  background-color: #fafafa; /* 条纹效果 */
+}
+/*这些不知道为啥没有用 */
  .el-table thead {
   background-color: lightgreen;
 }
@@ -592,7 +594,7 @@ onMounted(() => {
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 1px;
-  position: center;
+  /* position: center; */
   height: 100%;
 }
 .echartPane2 {

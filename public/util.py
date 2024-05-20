@@ -23,9 +23,20 @@
 
 
 
+# import random
+
+# # 生成14个范围从80到90的随机数
+# random_numbers = [random.randint(80, 100) for _ in range(14)]
+
+# print(random_numbers)
+
+
 import random
 
-# 生成14个范围从80到90的随机数
+# 生成14个范围从80到100的随机数
 random_numbers = [random.randint(80, 100) for _ in range(14)]
+
+# 对生成的随机数进行降序排序
+random_numbers.sort(reverse=True)
 
 print(random_numbers)
