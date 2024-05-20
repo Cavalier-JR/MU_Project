@@ -196,7 +196,6 @@ const timechart2 = ref(null);
 
 const textchart2 = ref(null);
 
-const timechart3 = ref(null);
 
 onMounted(() => {
   if(partchart1.value) {
@@ -990,10 +989,10 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-            { text: 'ConMU' },
-            { text: 'GA' },
-            { text: 'FT' },
-            { text: 'RL' },
+            { text: '遗忘词1' },
+            { text: '遗忘词2' },
+            { text: '遗忘词3' },
+            { text: '遗忘词4' },
           ],
           center: ['50%', '50%'],
           radius: 100,

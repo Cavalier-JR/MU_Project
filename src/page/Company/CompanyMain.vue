@@ -38,7 +38,7 @@
 
       <el-row>
         <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
-          <h3 style="font-size: 20px; font-family: '扁桃体';">任务执行记录</h3>
+          <h3 style="font-size: 20px; font-family: '黑体';  font-weight: bold;">任务执行记录</h3>
         </div>
         <el-table :data="tableData" style="width: 100%">
           <el-table-column prop="taskName" label="任务名"></el-table-column>
@@ -69,7 +69,7 @@
 
       <el-row :span="8">
         <div style="margin-bottom: 10px; margin-top: 10px;"> 
-          <h3 style="font-size: 20px; font-family: '扁桃体';">备份记录</h3>
+          <h3 style="font-size: 20px; font-family: '黑体'; font-weight: bold;">备份记录</h3>
         </div>
         <el-table :data="tableData2" border >
           <el-table-column class="tableHeader" prop="taskName" label="类型"></el-table-column>
@@ -103,9 +103,9 @@ const tableData = ref([
 
 ]);
 const tableData2 = ref([
-  { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: 'Daily', executionStatus: '2', executionTime: '9:00 AM', duration: '2 hours' },
-  { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
-  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: 'Monthly', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
+  { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: '2024-5-12', executionStatus: '2', executionTime: '9:00 AM', duration: '2 hours' },
+  { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: '2024-5-11', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
+  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-11', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
 
 ]);
 
@@ -124,7 +124,7 @@ onMounted(() => {
           type: 'gauge',
           axisLine: {
             lineStyle: {
-              width: 30,
+              width: 17,
               color: [
                 [0.3, '#67e0e3'],
                 [0.7, '#37a2da'],
@@ -138,7 +138,7 @@ onMounted(() => {
             }
           },
           axisTick: {
-            distance: -30,
+            distance: -3,
             length: 8,
             lineStyle: {
               color: '#fff',
@@ -150,18 +150,19 @@ onMounted(() => {
             length: 30,
             lineStyle: {
               color: '#fff',
-              width: 4
+              width: 2
             }
           },
           axisLabel: {
             color: 'inherit',
-            distance: 40,
+            distance: 20,
             fontSize: 10
           },
           detail: {
             valueAnimation: true,
             formatter: '{value} %',
-            color: 'inherit'
+            color: 'inherit',
+            fontSize: 15,
           },
           data: [
             {
@@ -294,11 +295,11 @@ onMounted(() => {
         data: ['文本', '图像']
       },
       title: {
-        text : "2024年5月19日准确率"
+        text : "准确率(单位:%)"
       },
       xAxis: {
         type: 'category',
-        data: ['9 am.', '10 am.', '11 am.', '12 am.', '1 pm.', '2 pm.', '3 pm.']
+        data: ['4.1', '4.8', '4.15', '4.22', '5.6', '5.13', '5.20', '5.27', '6.3', '6.10', '6.17', '6.24', '7.1', '7.8']
       },
       yAxis: {
         type: 'value'
@@ -306,12 +307,12 @@ onMounted(() => {
       series: [
         {
           name: '文本',
-          data: [100, 99, 98, 97, 96, 95, 94],
+          data: [92, 83, 95, 84, 94, 87, 95, 81, 82, 82, 91, 84, 89, 95],
           type: 'line'
         },
         {
         name: '图像',
-          data: [98, 96, 96, 95,96, 97, 86],
+          data: [81, 100, 88, 82, 82, 93, 87, 98, 96, 90, 92, 97, 92, 83],
           type: 'line'
         }
       ]
@@ -323,7 +324,7 @@ onMounted(() => {
     const myChart = echarts.init(thirdChart.value)
     function randomData() {
       now = new Date(+now + oneDay);
-      value = value + Math.random() * 21 - 10;
+      value = value + Math.random() * 21 -10;
       return {
         name: now.toString(),
         value: [
@@ -333,12 +334,7 @@ onMounted(() => {
       };
     }
     let data = [];
-    // let data2 = [];
-    // for (var i = 0; i < 1000; i++) {
-    //   data2.push(randomData());
-    // }  TODO 加了这个 表格就挂了
-
-    let now = new Date(1997, 9, 3);
+    let now = new Date(2024, 1, 1);
     let oneDay = 24 * 3600 * 1000;
     let value = Math.random() * 1000;
     for (var i = 0; i < 1000; i++) {
@@ -399,6 +395,7 @@ onMounted(() => {
       for (var i = 0; i < 5; i++) {
         data.shift();
         data.push(randomData());
+        console.log(randomData());
       }
       myChart.setOption({
         series: [

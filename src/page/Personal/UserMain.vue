@@ -2,13 +2,13 @@
   <el-card style="max-width: 1000px; margin: 0 auto;">
     <template #header>
       <div class="card1_title">
-        <p>您好！欢迎来到遗忘系统</p>
+        <p style="padding-left: 90px;">您好！欢迎来到遗忘系统</p>
       </div>
     </template>
     <div class="card-content">
-      <p> 作为你的隐私保护伙伴，您可以上传不同的图片让我遗忘哦！ </p>
+      <p style="padding-left: 90px;">作为你的隐私保护伙伴，您可以上传不同的图片或文本让我遗忘哦！ </p>
       <br>
-      <p> 有以下三种情况可供您选择，不妨试试吧~ </p>
+      <p style="padding-left: 90px;">有以下三种情况可供您选择，不妨试试吧~ </p>
     </div> 
 
     <div class="card-content">
