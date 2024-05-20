@@ -3,32 +3,32 @@
     <el-col :span="14">
       <el-row>
         <el-col class="taskPanel" :span="4" style="text-align: center; display: block; flex-direction: column; align-items: center;">
-          <div style="font-size: 24px; font-family: '扁桃体'">模型总数量</div>
+          <div style="font-size: 20px; font-family: '扁桃体'">模型总数量</div>
           <div style="display: flex; align-items: center;">
             <br>
-            <div style="margin-top:10px;font-size: 30px; background-color: rgb(160, 160, 255); height: 30px; width: 50px; border-radius: 10px; display: block; justify-content: center; align-items: center;">6</div>
-            <el-button style="margin-top:10px;margin-left: 10px; font-size: 16px; font-family: '扁桃体';" type="primary">更改模型</el-button> <!-- Button beside the text -->
+            <div style="margin-top:10px;font-size: 30px; background-color: rgb(160, 160, 255); height: 30px; width: 100%; border-radius: 10px; display: block; justify-content: center; align-items: center;">6</div>
+            <el-button style="margin-top:10px;margin-left: 10px;  font-size: 14px; font-family: '扁桃体';" type="primary">更改模型</el-button> <!-- Button beside the text -->
           </div>
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 20px;display: block;"> <!-- Increase text size -->
-          <div style="font-size:19px;margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
+        <el-col class="taskPanel" :span="6" style="font-size: 15px;display: block;"> <!-- Increase text size -->
+          <div style="font-size:15px;margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
         </el-col>
 
-        <el-col class="taskPanel" :span="8" style="font-size: 19px;display: block;">
+        <el-col class="taskPanel" :span="8" style="font-size: 15px;display: block;">
           <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已完成计划任务数   /    异常任务数</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
-        <el-col class="taskPanel" :span="4" style="font-size: 19px; display: block;">
+        <el-col class="taskPanel" :span="4" style="font-size: 15px; display: block;">
           <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已查看   /   未查看</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
         </el-col>
 
       </el-row>
 
-      <el-row class="echartPanel" style="height: 300px; width: 100%; margin-top: 10px;">
+      <el-row class="echartPanel" style="height: 252px; width: 100%; margin-top: 10px;">
         <div ref="accuracyChart" style="height: 100%; width: 100%;"></div>
       </el-row>
 
@@ -51,9 +51,9 @@
       </el-row> 
     </el-col>
     <el-col :span="10">
-      <el-row> <!--第二列 第一行-->
+      <el-row :span="8"> <!--第二列 第一行-->
         <el-col :span="12"> 
-          <div class="echartPane2" id="cpuchart" ref="cpuchart">
+          <div class="echartPane2" id="cpuchart" ref="cpuchart" style="height: ;">
           </div>
         </el-col>
 
@@ -63,11 +63,11 @@
         </el-col>
       </el-row>
 
-      <el-row > <!--第二列 第二行 监控-->
-        <div class="echartPanel" id="thirdChart" ref="thirdChart" style="height: 400px; width: 100%; margin-top: 10px;"></div>
+      <el-row :span="8"> <!--第二列 第二行 监控-->
+        <div class="echartPanel" id="thirdChart" ref="thirdChart" style="height: 300px; width: 100%; margin-top: 10px;"></div>
       </el-row>
 
-      <el-row>
+      <el-row :span="8">
         <div style="margin-bottom: 10px; margin-top: 10px;"> 
           <h3 style="font-size: 20px; font-family: '扁桃体';">备份记录</h3>
         </div>
@@ -156,7 +156,7 @@ onMounted(() => {
           axisLabel: {
             color: 'inherit',
             distance: 40,
-            fontSize: 20
+            fontSize: 10
           },
           detail: {
             valueAnimation: true,
@@ -165,7 +165,8 @@ onMounted(() => {
           },
           data: [
             {
-              value: 70
+              value: 70,
+              
             }
           ]
         }
@@ -177,7 +178,8 @@ onMounted(() => {
           {
             data: [
               {
-                value: +(Math.random() * 100).toFixed(2)
+                value: +(Math.random() * 100).toFixed(2),
+               
               }
             ]
           }
@@ -247,15 +249,15 @@ onMounted(() => {
             distance: -60,
             rotate: 'tangential',
             formatter: function (value) {
-              if (value === 0.875) {
-                return 'Grade A';
-              } else if (value === 0.625) {
-                return 'Grade B';
-              } else if (value === 0.375) {
-                return 'Grade C';
-              } else if (value === 0.125) {
-                return 'Grade D';
-              }
+              // if (value === 0.875) {
+              //   return 'Grade A';
+              // } else if (value === 0.625) {
+              //   return 'Grade B';
+              // } else if (value === 0.375) {
+              //   return 'Grade C';
+              // } else if (value === 0.125) {
+              //   return 'Grade D';
+              // }
               return '';
             }
           },
@@ -275,7 +277,8 @@ onMounted(() => {
           data: [
             {
               value: 0.7,
-              name: 'Grade Rating'
+              // name: 'Grade Rating',
+
             }
           ]
         }
@@ -426,8 +429,8 @@ onMounted(() => {
             { text: '指标4' },
             { text: '指标5' }
           ],
-          center: ['15%', '50%'],
-          radius: 120,
+          center: ['30%', '50%'],
+          radius: 80,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -462,8 +465,8 @@ onMounted(() => {
             { text: 'Indicator5', max: 108 },
             { text: 'Indicator6', max: 72 }
           ],
-          center: ['45%', '50%'],
-          radius: 120,
+          center: ['75%', '50%'],
+          radius: 70,
           axisName: {
             color: '#fff',
             backgroundColor: '#666',
@@ -471,41 +474,7 @@ onMounted(() => {
             padding: [3, 5]
           }
         },
-        {
-          indicator: [
-            { text: 'Indicator1' },
-            { text: 'Indicator2' },
-            { text: 'Indicator3' },
-            { text: 'Indicator4' },
-            { text: 'Indicator5' }
-          ],
-          center: ['80%', '50%'],
-          radius: 120,
-          startAngle: 90,
-          splitNumber: 4,
-          shape: 'circle',
-          axisName: {
-            formatter: '【{value}】',
-            color: '#428BD4'
-          },
-          splitArea: {
-            areaStyle: {
-              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
-              shadowColor: 'rgba(0, 0, 0, 0.2)',
-              shadowBlur: 10
-            }
-          },
-          axisLine: {
-            lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
-            }
-          },
-          splitLine: {
-            lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
-            }
-          }
-        },
+
       ],
       series: [
         {
@@ -621,9 +590,9 @@ onMounted(() => {
 .taskPanel {
   background-color: #f9fffe;
   border-radius: 10px; 
-  padding: 10px;
+  padding: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 8px;
+  margin: 4px;
 }
 
 .echartPanel {
@@ -641,6 +610,6 @@ onMounted(() => {
   background: #ffffff;
   border-radius: 10px 10px 10px 10px; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 300px;
+  height: 200px;
 }
 </style>

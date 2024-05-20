@@ -23,14 +23,14 @@
       </div>
       <div class="page-container4">
 
-        <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+        <div cass="echartPanel" id="partchart1" ref="partchart1" style="width: 25%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
-        <div class="page-container5" style="width: 40%">
+        <div class="page-container5" style="width: 50%">
           <div id="accuracychart" ref="accuracychart" style="width: 50%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
           <div ref="timechart" style="width: 50%;height: 100%; background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
-        <div id="partchart2" ref="partchart2" style="width: 30%;height: 100%;background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+        <div id="partchart2" ref="partchart2" style="width: 25%;height: 100%;background-color: aliceblue; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
 
       </div>
     </div>
@@ -80,8 +80,6 @@
         <button type="button" class="page-button1 button">历史记录</button>
       </div>
       <div class="page-container4">
-
-        <!-- <div cass="echartPanel" id="textchart1" ref="textchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div> -->
 
         <div class="page-container5" style="width: 70%">
           <table style="border-collapse: collapse; width: 100%; font-size: 16px;">
@@ -171,8 +169,6 @@
               <td style="padding: 8px; border: 1px solid #ddd;">97</td>
             </tr>
           </table>
-          <!-- <div id="accuracychart3" ref="accuracychart3" style="width: 100%;height: 100%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div> -->
-          <!-- <div ref="timechart3" style="width: 100%;height: 50%; background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div> -->
         </div>
 
         <div id="textchart2" ref="textchart2" style="width: 30%;height: 100%;background-color: rgb(240, 255, 245); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
@@ -197,20 +193,22 @@ const classchart2 = ref(null);
 const accuracychart2 = ref(null);
 const timechart2 = ref(null);
 
-const textchart1 = ref(null);
+
 const textchart2 = ref(null);
-const accuracychart3 = ref(null);
+
 const timechart3 = ref(null);
 
 onMounted(() => {
   if(partchart1.value) {
     const myChart = echarts.init(partchart1.value);
-    option = {
+    var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
         text: '4个指标的对比'
       },
-      legend: {},
+      legend: {
+        top: '10%'
+      },
       radar: [
         {
           indicator: [
@@ -221,7 +219,7 @@ onMounted(() => {
 
           ],
           center: ['50%', '50%'],
-          radius: 120,
+          radius: 75,
           axisName: {
             color: '#fff',
             backgroundColor: '#666',
@@ -231,7 +229,6 @@ onMounted(() => {
         }
       ],
       series: [
-
         {
           type: 'radar',
           radarIndex: 0,
@@ -314,7 +311,9 @@ onMounted(() => {
       title: {
         text: '遗忘前后正确率对比'
       },
-      legend: {},
+      legend: {
+        top:'10%'
+      },
       radar: [
         {
           indicator: [
@@ -324,7 +323,7 @@ onMounted(() => {
             { text: 'RL' },
           ],
           center: ['50%', '50%'],
-          radius: 120,
+          radius: 75,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -481,7 +480,8 @@ onMounted(() => {
         }
       },
       legend: {
-        data: ['ConMU', 'GA', 'FT', 'RL']
+        data: ['ConMU', 'GA', 'FT', 'RL'],
+        top: '10%'
       },
       toolbox: {
         show: true,
@@ -654,7 +654,8 @@ onMounted(() => {
         }
       },
       legend: {
-        data: ['ConMU', 'GA', 'FT', 'RL']
+        data: ['ConMU', 'GA', 'FT', 'RL'],
+        top: '10%'
       },
       toolbox: {
         show: true,
@@ -732,7 +733,9 @@ onMounted(() => {
       title: {
         text: '4个指标的对比'
       },
-      legend: {},
+      legend: {
+        top: '10%'
+      },
       radar: [
         {
           indicator: [
@@ -743,7 +746,7 @@ onMounted(() => {
 
           ],
           center: ['50%', '50%'],
-          radius: 120,
+          radius: 80,
           axisName: {
             color: '#fff',
             backgroundColor: '#666',
@@ -836,7 +839,9 @@ onMounted(() => {
       title: {
         text: '遗忘前后正确率对比'
       },
-      legend: {},
+      legend: {
+        top: '10%'
+      },
       radar: [
         {
           indicator: [
@@ -846,7 +851,7 @@ onMounted(() => {
             { text: 'RL' },
           ],
           center: ['50%', '50%'],
-          radius: 120,
+          radius: 80,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -971,118 +976,17 @@ onMounted(() => {
   myChart.setOption(option);
   }
 
-  if(textchart1.value) {
-    const myChart = echarts.init(textchart1.value);
-    option = {
-      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
-      title: {
-        text: '4个指标的对比'
-      },
-      legend: {},
-      radar: [
-        {
-          indicator: [
-            { text: '准确率', max: 100 },
-            { text: '用时', max: 100 },
-            { text: '内存', max: 100 },
-            { text: '模型大小', max: 100 },
-
-          ],
-          center: ['50%', '50%'],
-          radius: 120,
-          axisName: {
-            color: '#fff',
-            backgroundColor: '#666',
-            borderRadius: 3,
-            padding: [3, 5]
-          }
-        }
-      ],
-      series: [
-
-        {
-          type: 'radar',
-          radarIndex: 0,
-          data: [
-            {
-              value: [99, 99, 99, 99],
-              name: 'ConMU',
-              symbol: 'rect',
-              symbolSize: 12,
-              lineStyle: {
-                type: 'dashed'
-              },
-              label: {
-                show: true,
-                formatter: function (params) {
-                  return params.value;
-                }
-              }
-            },
-            {
-              value: [88, 88, 88, 88],
-              name: 'GA',
-              areaStyle: {
-                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                  {
-                    color: 'rgba(255, 145, 124, 0.1)',
-                    offset: 0
-                  },
-                  {
-                    color: 'rgba(255, 145, 124, 0.9)',
-                    offset: 1
-                  }
-                ])
-              }
-            },
-            {
-              value: [75, 81, 13, 68],
-              name: 'FT',
-              areaStyle: {
-                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                  {
-                    color: 'rgba(255, 145, 124, 100)',
-                    offset: 0
-                  },
-                  {
-                    color: 'rgba(0, 145, 124, 0.5)',
-                    offset: 1
-                  }
-                ])
-              }
-            },
-            {
-              value: [90, 90, 90, 105, 70, 23],
-              name: 'RL',
-              areaStyle: {
-                color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
-                  {
-                    color: 'rgba(255, 145, 124, 100)',
-                    offset: 0
-                  },
-                  {
-                    color: 'rgba(0, 145, 124, 0.5)',
-                    offset: 1
-                  }
-                ])
-              }
-            }
-          ]
-        }
-      ]
-    };
-    myChart.setOption(option);
-  }
 
   if(textchart2.value) {
     const myChart = echarts.init(textchart2.value);
-    // myChart.resize({ width: '100%', height: '100%' });  TODO bug
     var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
         text: '遗忘前后正确率对比'
       },
-      legend: {},
+      legend: {
+        top: '10%'
+      },
       radar: [
         {
           indicator: [
@@ -1092,7 +996,7 @@ onMounted(() => {
             { text: 'RL' },
           ],
           center: ['50%', '50%'],
-          radius: 120,
+          radius: 100,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -1146,112 +1050,7 @@ onMounted(() => {
     myChart.setOption(option);
   }
 
-  if(accuracychart3.value) {
-    const myChart = echarts.init(accuracychart3.value);
-// prettier-ignore
-let dataAxis = ['点', '击', '柱', '子', '或', '者', '两', '指', '在', '触', '屏', '上', '滑', '动', '能', '够', '自', '动', '缩', '放'];
-// prettier-ignore
-let data = [99, 98, 97, 98, 96, 90, 95, 93, 98, 97.6, 90, 89, 96, 92, 93, 97, 94, 95, 93, 91];
-let yMax = 500;
-let dataShadow = [];
-for (let i = 0; i < data.length; i++) {
-  dataShadow.push(yMax);
-}
-option = {
-  title: {
-    text: '不同文本的正确率',
-    subtext: 'Feature Sample: Gradient Color, Shadow, Click Zoom'
-  },
-  xAxis: {
-    data: dataAxis,
-    axisLabel: {
-      inside: true,
-      color: '#fff'
-    },
-    axisTick: {
-      show: false
-    },
-    axisLine: {
-      show: false
-    },
-    z: 10
-  },
-  yAxis: {
-    axisLine: {
-      show: false
-    },
-    axisTick: {
-      show: false
-    },
-    axisLabel: {
-      color: '#999'
-    }
-  },
-  dataZoom: [
-    {
-      type: 'inside'
-    }
-  ],
-  series: [
-    {
-      type: 'bar',
-      showBackground: true,
-      itemStyle: {
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          { offset: 0, color: '#83bff6' },
-          { offset: 0.5, color: '#188df0' },
-          { offset: 1, color: '#188df0' }
-        ])
-      },
-      emphasis: {
-        itemStyle: {
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: '#2378f7' },
-            { offset: 0.7, color: '#2378f7' },
-            { offset: 1, color: '#83bff6' }
-          ])
-        }
-      },
-      data: data
-    }
-  ]
-};
-// Enable data zoom when user click bar.
-const zoomSize = 6;
-myChart.on('click', function (params) {
-  console.log(dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)]);
-  myChart.dispatchAction({
-    type: 'dataZoom',
-    startValue: dataAxis[Math.max(params.dataIndex - zoomSize / 2, 0)],
-    endValue:
-      dataAxis[Math.min(params.dataIndex + zoomSize / 2, data.length - 1)]
-  });
-});
-    myChart.setOption(option);
-  }
 
-  if(timechart3.value) {
-    const myChart = echarts.init(timechart3.value);
-    var option = {
-      title: {
-        text: '用时'
-      },
-      xAxis: {
-        type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
-      },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
-        {
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
-        }
-      ]
-    };
-  myChart.setOption(option);
-  }
 })
 </script>
 
@@ -1291,18 +1090,38 @@ myChart.on('click', function (params) {
   padding: 10px;
   align-self: stretch;
   margin-left: 60px;
-  border-color: var(--dl-color-gray-black);
+  border-color: #0088cc; /* Vibrant blue border */
   border-width: 3px;
   padding-left: 10px;
-  border-radius: var(--dl-radius-radius-radius12);
+  border-radius: 20px; /* More pronounced rounded corners */
+  background-image: linear-gradient(to right, #ffffff, #e6f7ff); /* Subtle gradient background */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
+}
+
+.page-select:focus {
+  border-color: #ff4500; /* Bright orange border on focus */
+  box-shadow: 0 0 8px rgba(255, 69, 0, 0.6); /* Glowing effect on focus */
+  outline: none; /* Removes the default focus outline */
 }
 .page-button {
   width: 196px;
-  height: 100%;
-  font-size: 40px;
+  height: 90%;
+  font-size: 30px;
   text-align: center;
   margin-left: 50px;
-  border-radius: var(--dl-radius-radius-radius12);
+  border-radius: 20px; /* More rounded corners */
+  background-color: #008cff; /* Vibrant orange background */
+  color: white; /* White text for contrast */
+  border: none; /* No border */
+  cursor: pointer; /* Cursor indicates it's clickable */
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+.page-button:hover {
+  background-color: #c547ff; /* Slightly lighter orange on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover for a "lifting" effect */
 }
 .page-container2 {
   width: 100%;
