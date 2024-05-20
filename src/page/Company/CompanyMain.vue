@@ -1,31 +1,30 @@
 <template>
   <el-row :gutter="20" style="background-color: rgba(117, 152, 146, 0.542);">
     <el-col :span="14">
-      <el-row>
-        <el-col class="taskPanel" :span="4" style="text-align: center; display: block; flex-direction: column; align-items: center;">
+      <el-row style="margin-top:5px;">
+        <el-row class="taskPanel" span="6" style="text-align: center; display: block; flex-direction: column; align-items: center; width: 20%;">
           <div style="font-size: 20px; font-family: '扁桃体'">模型总数量</div>
           <div style="display: flex; align-items: center;">
             <br>
             <div style="margin-top:10px;font-size: 30px; background-color: rgb(160, 160, 255); height: 30px; width: 100%; border-radius: 10px; display: block; justify-content: center; align-items: center;">6</div>
             <el-button style="margin-top:10px;margin-left: 10px;  font-size: 14px; font-family: '扁桃体';" type="primary">更改模型</el-button> <!-- Button beside the text -->
           </div>
-        </el-col>
+        </el-row>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 15px;display: block;">
+        <el-row class="taskPanel" span="5" style="font-size: 15px;display: block; width: 25%;">
           <div style="font-size:15px;margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
-        </el-col>
+        </el-row>
 
-        <el-col class="taskPanel" :span="8" style="font-size: 15px;display: block;">
+        <el-row class="taskPanel" style="font-size: 15px;display: block; width: 30%;">
           <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已完成计划任务数   /    异常任务数</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
-        </el-col>
+        </el-row>
 
-        <el-col class="taskPanel" :span="4" style="font-size: 15px; display: block;">
+        <el-row class="taskPanel" style="font-size: 15px; display: block; width: 20.4%;">
           <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已查看   /   未查看</div>
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
-        </el-col>
-
+        </el-row>
       </el-row>
 
       <el-row :span="8">
@@ -316,17 +315,18 @@ onMounted(() => {
         data: ['4.1', '4.8', '4.15', '4.22', '5.6', '5.13', '5.20', '5.27', '6.3', '6.10', '6.17', '6.24', '7.1', '7.8']
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        min: 80
       },
       series: [
         {
           name: '文本',
-          data: [83, 85, 82, 77, 72, 81, 77, 82, 75, 75, 83, 78, 76, 75],
+          data: [91, 95, 91, 92, 91, 86, 94, 82, 88, 93, 82, 90, 90, 83],
           type: 'line'
         },
         {
         name: '图像',
-          data: [83, 82, 82, 80, 80, 80, 79, 78, 77, 76, 75, 75, 74, 70],
+          data: [87, 92, 91, 86, 94, 94, 90, 87, 89, 82, 94, 82, 92, 94],
           type: 'line'
         }
       ]
