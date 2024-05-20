@@ -43,8 +43,8 @@
       </el-row>
 
       <el-row>
-        <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
-          <h3 style="font-size: 20px; font-family: '黑体';  font-weight: bold;">任务执行记录</h3>
+        <div style="width: 100%; height: 100%; background-color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px;"> 
+          <h3 style="font-size: 22px; font-family: '黑体';  font-weight: bold;  margin-left: 10px; margin-top: 10px;">任务执行记录</h3>
         </div>
         <el-table :data="tableData" style="width: 100%" class="el-table">
           <el-table-column prop="taskName" label="任务名"></el-table-column>
@@ -74,16 +74,16 @@
       </el-row>
 
 
-      <el-row :span="8">
-        <div style="margin-bottom: 10px; margin-top: 10px;"> 
-          <h3 style="font-size: 20px; font-family: '黑体'; font-weight: bold;">备份记录</h3>
+      <el-row :span="8" style="margin-bottom: 20px;">
+        <div style="width: 100%; height: 100%; background-color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px;"> 
+          <h3 style="font-size: 22px; font-family: '黑体'; font-weight: bold; margin-left: 10px; margin-top: 10px;">备份记录</h3>
         </div>
-        <el-table :data="tableData2" border >
+        
+        <el-table :data="tableData2" >
           <el-table-column class="tableHeader" prop="taskName" label="类型"></el-table-column>
           <el-table-column class="tableHeader" prop="taskType" label="模型名称"></el-table-column>
           <el-table-column class="tableHeader" prop="executionPeriod" label="执行时间"></el-table-column>
           <el-table-column class="tableHeader" prop="executionStatus" label="备份数量"></el-table-column>
-          <!-- <el-table-column class="tableHeader" prop="executionTime" label="最后备份时间"></el-table-column> -->
         </el-table>
       </el-row>
       
@@ -112,9 +112,14 @@ const tableData = ref([
 
 ]);
 const tableData2 = ref([
-  { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: '2024-5-12', executionStatus: '2', executionTime: '9:00 AM', duration: '2 hours' },
-  { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: '2024-5-11', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
-  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-11', executionStatus: '1', executionTime: '3:00 PM', duration: '45 minutes' },
+  { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: '2024-5-12', executionStatus: '2', },
+  { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: '2024-5-11', executionStatus: '1', },
+  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-10', executionStatus: '1',  },
+  { taskName: '部分遗忘', taskType: 'Model A', executionPeriod: '2024-5-10', executionStatus: '2',  },
+  { taskName: '类别遗忘', taskType: 'Model B', executionPeriod: '2024-5-11', executionStatus: '1',  },
+  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-20', executionStatus: '2',  },
+  { taskName: '文本遗忘', taskType: 'Model C', executionPeriod: '2024-5-15', executionStatus: '1', },
+  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-16', executionStatus: '1',  },
 
 ]);
 
@@ -214,7 +219,7 @@ onMounted(() => {
           type: 'gauge',
           startAngle: 180,
           endAngle: 0,
-          center: ['50%', '75%'],
+          center: ['50%', '65%'],
           radius: '90%',
           min: 0,
           max: 1,
@@ -316,7 +321,7 @@ onMounted(() => {
       series: [
         {
           name: '文本',
-          data: [85, 84, 84, 84, 82, 82, 82, 81, 81, 81, 80, 79, 78, 76],
+          data: [83, 85, 82, 77, 72, 81, 77, 82, 75, 75, 83, 78, 76, 75],
           type: 'line'
         },
         {
@@ -431,7 +436,7 @@ onMounted(() => {
       },
       legend: {
         data: ['正在进行', '已完成', '准确率降低超过阈值'],
-        top: '10%'
+        top: '10%',
       },
       grid: {
         left: 100,
@@ -494,14 +499,17 @@ onMounted(() => {
         trigger: 'item'
       },
       legend: {
-        top: '9%',
+        top: '15%',
         left: 'center',
+
       },
+
       series: [
         {
           name: 'Access From',
           type: 'pie',
           radius: ['30%', '60%'],
+          center: ['50%', '65%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
@@ -540,45 +548,7 @@ onMounted(() => {
 
 
 <style scoped>
-/*这些不知道为啥没有用 */
-/* 基本表格样式 */
-.el-table {
-  border-collapse: collapse;
-  width: 100%;
-  background-color: #6c1818; /* 轻灰色背景 */
-}
 
-/* 表格头部样式 */
-.el-table thead {
-  background-color: #471111; /* 深一点的灰色背景 */
-  color: #333; /* 字体颜色 */
-}
-
-/* 表格列头样式 */
-.el-table th {
-  padding: 12px 15px;
-  text-align: left;
-  font-weight: bold;
-  border-bottom: 2px solid #840000; /* 底部边框 */
-}
-
-/* 表格单元格样式 */
-.el-table td {
-  padding: 10px 15px;
-  text-align: left;
-  border-bottom: 1px solid #761313; /* 底部边框 */
-}
-
-/* 鼠标悬停行的样式 */
-.el-table tr:hover {
-  background-color: #512020; /* 鼠标悬停时的背景色 */
-}
-
-/* 表格行条纹样式 */
-.el-table tr:nth-child(odd) {
-  background-color: #fafafa; /* 条纹效果 */
-}
-/*这些不知道为啥没有用 */
  .el-table thead {
   background-color: lightgreen;
 }

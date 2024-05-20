@@ -37,6 +37,6 @@ import random
 random_numbers = [random.randint(70, 85) for _ in range(14)]
 
 # 对生成的随机数进行降序排序
-random_numbers.sort(reverse=True)
+# random_numbers.sort(reverse=True)
 
 print(random_numbers)
