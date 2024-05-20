@@ -337,7 +337,7 @@ onMounted(() => {
     let now = new Date(2024, 1, 1);
     let oneDay = 24 * 3600 * 1000;
     let value = Math.random() * 1000;
-    for (var i = 0; i < 1000; i++) {
+    for (var i = 0; i < 30; i++) { // 控制横坐标显示范围
       data.push(randomData());
     }
     option = {
@@ -383,19 +383,13 @@ onMounted(() => {
           showSymbol: false,
           data: data
         },
-        // {
-        //   name: 'memory',
-        //   type: 'line',
-        //   showSymbol: false,
-        //   data: data2 // Add the data for the second line
-        // }
       ]
     };
     setInterval(function () {
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < 1; i++) { // 调节速度
         data.shift();
         data.push(randomData());
-        console.log(randomData());
+        // console.log(randomData());
       }
       myChart.setOption({
         series: [
