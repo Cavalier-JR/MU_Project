@@ -11,7 +11,7 @@
           </div>
         </el-col>
 
-        <el-col class="taskPanel" :span="6" style="font-size: 15px;display: block;"> <!-- Increase text size -->
+        <el-col class="taskPanel" :span="6" style="font-size: 15px;display: block;">
           <div style="font-size:15px;margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
           <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
         </el-col>
@@ -28,17 +28,19 @@
 
       </el-row>
 
+      <el-row :span="8">
+        <el-col :span="10">
+          <div class="echartPanel" ref="pieChart" style="height: 300px; margin-top: 10px;margin-bottom: 10px;"></div>
+
+        </el-col>
+        <el-col :span="14">
+          <div class="echartPanel" ref="threeMethodsChart" style="height: 300px; width: 95%; margin-top: 10px;margin-bottom: 10px;"></div>
+        </el-col>
+      </el-row>
+
       <el-row class="echartPanel" style="height: 252px; width: 100%; margin-top: 10px;">
         <div ref="accuracyChart" style="height: 110%; width: 100%;"></div>
       </el-row>
-
-      <el-row class="echartPanel" style="height: 350px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
-        <div ref="threeMethodsChart" style="height: 100%; width: 100%;"></div>
-      </el-row>
-
-      <!-- <el-row class="echartPanel" style="height: 350px; width: 100%; margin-top: 10px; margin-bottom: 10px;">
-        <div ref="" style="height: 100%; width: 100%;"></div>
-      </el-row> -->
 
       <el-row>
         <div style="margin-bottom: 10px; background-color: bisque;"> <!-- Add a title above the table -->
@@ -57,7 +59,7 @@
     <el-col :span="10">
       <el-row :span="8"> <!--第二列 第一行-->
         <el-col :span="12"> 
-          <div class="echartPane2" id="cpuchart" ref="cpuchart" style="height: ;">
+          <div class="echartPane2" id="cpuchart" ref="cpuchart">
           </div>
         </el-col>
 
@@ -71,9 +73,6 @@
         <div class="echartPanel" id="thirdChart" ref="thirdChart" style="height: 200px; width: 100%; margin-top: 10px;"></div>
       </el-row>
 
-      <el-row :span="8"> <!--第二列 第三行 饼图-->
-        <div class="echartPanel" ref="pieChart" style="height: 300px; width: 100%; margin-top: 10px;"></div>
-      </el-row>
 
       <el-row :span="8">
         <div style="margin-bottom: 10px; margin-top: 10px;"> 
@@ -317,12 +316,12 @@ onMounted(() => {
       series: [
         {
           name: '文本',
-          data: [99, 97, 95, 93, 93, 90, 90, 90, 86, 86, 84, 83, 83, 81],
+          data: [85, 84, 84, 84, 82, 82, 82, 81, 81, 81, 80, 79, 78, 76],
           type: 'line'
         },
         {
         name: '图像',
-          data: [98, 96, 95, 94, 90, 90, 90, 86, 84, 83, 82, 82, 81, 81],
+          data: [83, 82, 82, 80, 80, 80, 79, 78, 77, 76, 75, 75, 74, 70],
           type: 'line'
         }
       ]
@@ -432,10 +431,13 @@ onMounted(() => {
       },
       legend: {
         data: ['正在进行', '已完成', '准确率降低超过阈值'],
+        top: '10%'
       },
       grid: {
         left: 100,
-        bottom: '10%'
+        bottom: '10%',
+        left: '23%',
+        
       },
       toolbox: {
         show: true,
@@ -445,7 +447,7 @@ onMounted(() => {
       },
       xAxis: {
         type: 'value',
-        name: 'Days',
+        name: '数量',
         axisLabel: {
           formatter: '{value}'
         }
@@ -453,7 +455,7 @@ onMounted(() => {
       yAxis: {
         type: 'category',
         inverse: true,
-        data: ['图片部分遗忘', '图片类别遗忘', '文本遗忘'],
+        data: ['图片\n部分遗忘', '图片\n类别遗忘', '文本遗忘'],
         axisLabel: {
           margin: 20,
         }
@@ -486,7 +488,7 @@ onMounted(() => {
     const myChart = echarts.init(pieChart.value);
     var option = {
       title: {
-        text: '模型任务情况比例图',
+        text: '模型总任务情况比例图',
       },
       tooltip: {
         trigger: 'item'
@@ -499,7 +501,7 @@ onMounted(() => {
         {
           name: 'Access From',
           type: 'pie',
-          radius: ['40%', '70%'],
+          radius: ['30%', '60%'],
           avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
@@ -521,9 +523,9 @@ onMounted(() => {
             show: false
           },
           data: [
-            { value: 1048, name: '正在进行' },
-            { value: 735, name: '已完成' },
-            { value: 580, name: '准确率降低超过阈值' },
+            { value: 616, name: '正在进行' },
+            { value: 365, name: '已完成' },
+            { value: 36, name: '准确率降低超过阈值' },
           ]
         }
       ]
@@ -593,9 +595,10 @@ onMounted(() => {
   border-radius: 10px 10px 10px 10px; 
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1px;
+  margin-bottom: 10px;
   /* position: center; */
   height: 100%;
+  margin-right: 10px;
 }
 .echartPane2 {
   margin-top: 10px;
