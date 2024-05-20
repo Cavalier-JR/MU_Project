@@ -34,7 +34,7 @@
 import random
 
 # 生成14个范围从80到100的随机数
-random_numbers = [random.randint(80, 95) for _ in range(14)]
+random_numbers = [random.randint(85, 90) for _ in range(6)]
 
 # 对生成的随机数进行降序排序
 # random_numbers.sort(reverse=True)
