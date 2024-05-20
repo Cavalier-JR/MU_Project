@@ -321,12 +321,12 @@ onMounted(() => {
       series: [
         {
           name: '文本',
-          data: [91, 95, 91, 92, 91, 86, 94, 82, 88, 93, 82, 90, 90, 83],
+          data: [85, 90, 91, 92, 91, 86, 94, 89, 88, 93, 90, 90, 91, 95],
           type: 'line'
         },
         {
         name: '图像',
-          data: [87, 92, 91, 86, 94, 94, 90, 87, 89, 82, 94, 82, 92, 94],
+          data: [83, 85, 91, 86, 94, 94, 90, 87, 89, 88, 94, 95, 92, 94],
           type: 'line'
         }
       ]
@@ -350,7 +350,7 @@ onMounted(() => {
     let data = [];
     let now = new Date(2024, 1, 1);
     let oneDay = 24 * 3600 * 1000;
-    let value = Math.random() * 1000;
+    let value = Math.random() * 100;
     for (var i = 0; i < 30; i++) { // 控制横坐标显示范围
       data.push(randomData());
     }
@@ -391,7 +391,8 @@ onMounted(() => {
         boundaryGap: [0, '100%'],
         splitLine: {
           show: false
-        }
+        },
+        // min: 100
       },
       series: [
         {
