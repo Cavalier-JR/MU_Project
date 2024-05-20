@@ -476,13 +476,6 @@ font-family: '扁桃体';
 .el-form-item .el-input__inner {
 font-family: 'Helvetica Neue', Arial, sans-serif;
 }
-h2 {
-  font-size: 30px;
-  margin-top:-40px;
-  margin-bottom:10px;
-  text-align: center;
-  font-family: '扁桃体';
-}
 .custom-button {
 padding: 20px 20px !important;
 margin-left: 40% !important;
