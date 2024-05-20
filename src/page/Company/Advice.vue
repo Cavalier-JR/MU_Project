@@ -1,7 +1,7 @@
 <template>
   <div class="page-container" style="background-color: rgb(255, 255, 255);">
     <div class="page-container1">
-      <span class="page-text">目前模型：Model A</span>
+      <span class="page-text" style="font-family: 黑体;  font-weight: bold;">目前模型：Model A</span>
       <select class="page-select">
         <option value="Option 1">Option 1</option>
         <option value="Option 2">Option 2</option>
@@ -196,7 +196,6 @@ const timechart2 = ref(null);
 
 const textchart2 = ref(null);
 
-const timechart3 = ref(null);
 
 onMounted(() => {
   if(partchart1.value) {
@@ -990,10 +989,10 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-            { text: 'ConMU' },
-            { text: 'GA' },
-            { text: 'FT' },
-            { text: 'RL' },
+            { text: '遗忘词1' },
+            { text: '遗忘词2' },
+            { text: '遗忘词3' },
+            { text: '遗忘词4' },
           ],
           center: ['50%', '50%'],
           radius: 100,
