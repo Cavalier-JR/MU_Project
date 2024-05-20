@@ -251,7 +251,7 @@ export default {
 .box {
   width: 100vw;
   height: 100vh;
-  background-color: #27b2bd;
+  background-color: #27b2bd !important;
 }
 .header {
   padding: 0;
@@ -303,13 +303,13 @@ export default {
 }
 .header-left {
   float: left;
-  font-family: "抖音体";
-  margin-left: 30%;
-  line-height: 58px;
+  font-family: "抖音体" !important;
+  margin-left: 35%;
+  line-height: 58px !important;
 }
 .header-left h2 {
-  color: #fff;
-  font-size: 30px;
+  color: #fff !important;
+  font-size: 20px !important;
 }
 
 .header-right {

@@ -406,13 +406,6 @@ setup() {
   font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
-h2 {
-    font-size: 30px;
-    margin-top:-40px;
-    margin-bottom:10px;
-    text-align: center;
-    font-family: '抖音体';
-}
 .begin-submit {
   padding: 25px 25px !important;
   margin-left: 44% !important;
