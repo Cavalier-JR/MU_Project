@@ -3,7 +3,6 @@
     <div class="features18-max-width thq-section-max-width">
       <div class="features18-content">
         <div class="features18-section-title">
-          <!-- <span class="thq-body-small">{{ feature1Slogan }}</span> -->
           <div class="features18-content1">
             <h2 class="thq-heading-2">
               <i class="fas fa-user" style="color: rgb(97, 220, 177);"></i> {{ feature1Title }}
@@ -18,24 +17,9 @@
 </template>
 
 <script>
-import partPic from '../../assets/partPic.png'; // Import the local image
-
 export default {
   name: 'Features18',
   props: {
-    feature1ImageSrc: {
-      type: String,
-      default:
-      partPic,
-    },
-    feature1ImageAlt: {
-      type: String,
-      default: 'Data Forgetting Solutions',
-    },
-    feature1Slogan: {
-      type: String,
-      default: '平衡隐私和准确率',
-    },
     feature1Title: {
       type: String,
       default: '图片部分遗忘',
@@ -43,7 +27,7 @@ export default {
     feature1Description: {
       type: String,
       default:
-        '我们的解决方案侧重于有效地忘记图像和文本数据，同时保持模型的效用，确保各种情况下的隐私。',
+        '图片里的某个部分泄露了您的隐私？来这里解决这个问题吧！',
     },
   },
 }
@@ -60,7 +44,7 @@ export default {
   padding-top: 0px;
 }
 .features18-max-width {
-  gap: var(--dl-space-space-fiveunits);
+  /* gap: var(--dl-space-space-fiveunits); */
   display: flex;
   align-items: center;
   padding-bottom: 0px;
@@ -81,7 +65,7 @@ export default {
   flex-direction: column;
 }
 .features18-content1 {
-  gap: var(--dl-space-space-oneandhalfunits);
+  /* gap: var(--dl-space-space-oneandhalfunits); */
   display: flex;
   align-self: stretch;
   align-items: flex-start;

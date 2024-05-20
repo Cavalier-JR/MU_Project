@@ -3,7 +3,6 @@
     <div class="features171-max-width thq-section-max-width">
       <div class="features171-content">
         <div class="features171-section-title">
-          <!-- <span class="thq-body-small">{{ feature1Slogan }}</span> -->
           <div class="features171-content1">
             <h2 class="thq-heading-2">
               <i class="fas fa-star" style="color: rgb(122, 97, 220);"></i> {{ feature1Title }}
@@ -17,8 +16,6 @@
 </template>
 
 <script>
-import textPic from '../../assets/textPic.png';
-
 export default {
   name: 'Features171',
   props: {
@@ -26,23 +23,10 @@ export default {
       type: String,
       default: '文本遗忘',
     },
-    feature1Slogan: {
-      type: String,
-      default: '根据您特定的数据隐私需求量身定制',
-    },
-    feature1ImageSrc: {
-      type: String,
-      default:
-      textPic,
-    },
-    feature1ImageAlt: {
-      type: String,
-      default: 'Customized Forgetting Solutions Image',
-    },
     feature1Description: {
       type: String,
       default:
-        '这一技术可以广泛应用于各个领域，如医疗保健、金融服务、社交媒体等，为企业和用户之间的数据交换提供了更加安全可靠的保障',
+        '发现您的隐私信息以文本的形式被泄露了？不用担心，文本遗忘为您擦除模型中的信息',
     },
   },
 }
@@ -70,21 +54,21 @@ export default {
   align-items: center;
 }
 .features171-content {
-  gap: var(--dl-space-space-oneandhalfunits);
+  /* gap: var(--dl-space-space-oneandhalfunits); */
   flex: 1;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
 .features171-section-title {
-  gap: var(--dl-space-space-oneandhalfunits);
+  /* gap: var(--dl-space-space-oneandhalfunits); */
   display: flex;
   align-self: stretch;
   align-items: flex-start;
   flex-direction: column;
 }
 .features171-content1 {
-  gap: var(--dl-space-space-oneandhalfunits);
+  /* gap: var(--dl-space-space-oneandhalfunits); */
   display: flex;
   align-self: stretch;
   align-items: flex-start;
