@@ -44,11 +44,11 @@
               遗忘 
             </el-button>
           </div> 
-          <div> 
+          <div class="successNotify"> 
             <el-result
               icon="success"
               title="本次遗忘操作用时为 412 s"
-              v-show="isRightPanelVisible"
+              v-show="isColVisible"
             >
             </el-result>
           </div> 
@@ -140,8 +140,8 @@
 
         <el-col :span="1" v-show="isRightPanelVisible"></el-col>
 
-        <el-col :span="9" v-show="isRightColVisible">
-          <el-table :data="tableData" style="width: 100%" border height="480" stripe v-show="isRightPanelVisible">
+        <el-col :span="9" v-show="isRightPanelVisible">
+          <el-table :data="tableData" style="width: 100%" border height="480" stripe>
             <el-table-column prop="pic" label="图像" align="center" width="100" height="250" header-align="center">
               <template #default="scope">
                 <el-image :src="scope.row.pic" style="width: 40px;height: 40px" 
@@ -149,13 +149,30 @@
               </template>
             </el-table-column>
             <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
-            <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center" show-overflow-tooltip></el-table-column>
+            <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center" 
+            show-overflow-tooltip>
+              <template #default="scope">
+                <div v-show="isColVisible">{{ scope.row.afterCategory }}</div>
+              </template>
+            </el-table-column>
           </el-table>
         </el-col>  
         
         <el-col :span="2" v-show="isRightPanelVisible"></el-col>
 
       </el-row>
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
+      <br v-show="isbrShow">
     </el-main>
   </el-container>
 </template>
@@ -170,6 +187,8 @@ const isRightColVisible = ref(false); // 初始状态为false，即不显示
 const loading_flag = ref(false);
 const isCardVisible = ref(true);
 const isPicVisible = ref(true);
+const isbrShow = ref(false);
+const isColVisible = ref(false);
 
 const handleChange1 = (val: string[]) => {
   console.log(val)
@@ -212,12 +231,15 @@ function Forget_Button_Click() {
     .then(() => {
       isRightColVisible.value = true;
       console.log("用户已知晓图片遗忘的功能");
+      isPicVisible.value = false;
       loading_flag.value = true;
+      isbrShow.value = true;
+      isRightPanelVisible.value = true;
       let timer: number | null = setTimeout(() => {
         isCardVisible.value = false;
-        isRightPanelVisible.value = true;
+        isColVisible.value = true;
         loading_flag.value = false;
-        isPicVisible.value = false;
+        isbrShow.value = false;
         Success_Notify();
       }, 5000)
     })
@@ -248,7 +270,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 390,
+    offset: 550,
   });
 };
 
@@ -476,8 +498,6 @@ const options2 = [
 
 </script>
 
-
-
 <style>
 .function_select{
   text-align: center;
@@ -561,5 +581,8 @@ const options2 = [
 }
 .pic_tag {
   margin-bottom: 15px;
+}
+.successNotify {
+  margin-top: 15px;
 }
 </style>
