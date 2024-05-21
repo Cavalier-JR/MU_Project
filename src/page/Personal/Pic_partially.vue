@@ -2,7 +2,7 @@
   <el-container>
   <el-header class="my_el-header"> 部分遗忘 </el-header>
   <el-main>
-  <el-row :gutter="70" >
+  <el-row :gutter="10" >
     <el-col :span="8" >
       <div>
         <el-upload
@@ -34,7 +34,7 @@
         <span class="tag">
           <el-icon><Notification /></el-icon> 
           <span> 注意：请从本地上传 </span>
-      </span>
+        </span>
       </div>
     </el-col>
     <el-col :span="8">
@@ -49,12 +49,12 @@
       <el-card class="box-card">
 			  <div style="font-size: 20px;text-align:center;">
           <p> 您已完成遗忘图片个数 </p>
-          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>198
+          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon> {{completed}}
         </div>
       </el-card>
     </el-col>
   </el-row>
-  <el-row>
+  <el-row justify="center">
     <el-col :span="8">
       <div>
         <el-collapse v-model="activeNames" @change="handleChange2">
@@ -88,7 +88,7 @@
       <br>
       <br>
       <div> 
-        <el-select class="select_area" v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
+        <el-select class="select_area" v-model="value" placeholder="请选择你的遗忘方法" style="width: 170px">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -98,14 +98,26 @@
           />
         </el-select>
         <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
-        :loading="loading_flag" class="button"> 
-          进行遗忘 
+        :loading="loading_flag" class="my_button"> 
+          遗忘 
         </el-button>
       </div> 
+      <br v-show="isProgressVisible">
+      <br v-show="isProgressVisible">
+      <div class="demo-progress" v-show="isProgressVisible">
+        <el-progress
+          :percentage="100"      
+          :status="success_flag"
+          :indeterminate="indeterminate_flag"
+          :duration="5"
+        > 
+          <span> 正在遗忘中... </span>
+        </el-progress>
+      </div>
       <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
     </el-col>
     <el-col :span="16">
-      <div id="pieChart" ref="pieChart" style="margin-top: 20px; margin-left: 130px; width: 500px; height: 500px"></div>
+      <div id="pieChart" ref="pieChart" style="margin-top: 50px; margin-left: 200px; width: 500px; height: 500px"></div>
     </el-col>
   </el-row>
   </el-main>
@@ -124,28 +136,36 @@ const loading_flag = ref(false);
 const radio = ref(0) //默认不选按钮
 const pieChart = ref(null);
 const activeNames = ref(['1', '2'])
+const indeterminate_flag = ref(true)
+const completed = ref(198)
+
 const handleChange2 = (val: string[]) => {
   console.log(val)
 }
 
 function Forget_Button_Click() {
-  ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
-    confirmButtonText: "我已知晓",
-    cancelButtonText: "取消",
-    type: "info",
-  })
-  .then(() => {
-    loading_flag.value = true;
-    let timer: number | null = setTimeout(() => {
-      console.log("用户已知晓图片遗忘的功能");
-      isCosttimeVisible.value = true;
-      loading_flag.value = false;
-      Success_Notify();
-    }, 5000)
-  })
-  .catch(() => {
-    //取消：就不做任何提示了
-  });
+  if(value.value) {
+    ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
+      confirmButtonText: "我已知晓",
+      cancelButtonText: "取消",
+      type: "info",
+    })
+    .then(() => {
+      loading_flag.value = true;
+      isProgressVisible.value = true;
+      let timer: number | null = setTimeout(() => {
+        console.log("用户已知晓图片遗忘的功能");
+        isCosttimeVisible.value = true;
+        isProgressVisible.value = false;
+        loading_flag.value = false;
+        completed.value = 345;
+        Success_Notify();
+      }, 5000)
+    })
+    .catch(() => {
+      //取消：就不做任何提示了
+    });
+  }
 }
 
 const Success_Notify = () => {
@@ -153,12 +173,13 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 450,
+    offset: 550,
   });
 };
 
 const value = ref([])
 const isCosttimeVisible = ref(false);
+const isProgressVisible = ref(false);
 
 const handleChange = (value) => {
   console.log(value)
@@ -186,11 +207,11 @@ onMounted(() => {
           type: 'pie',
           radius: '40%',
           data: [
-            { value: 1048, name: 'Animal' },
-            { value: 735, name: 'Vehicle' },
-            { value: 580, name: 'Fruit' },
-            { value: 484, name: 'Plant' },
-            { value: 300, name: 'Vegatable' }
+            { value: 1048, name: '动物' },
+            { value: 735, name: '车辆' },
+            { value: 580, name: '水果' },
+            { value: 484, name: '植物' },
+            { value: 300, name: '蔬菜' }
           ],
           emphasis: {
             itemStyle: {
@@ -244,18 +265,19 @@ const options = [
     font-size: 20px; /* 设置字体大小 */
     margin-bottom: 15px; /* 可选：设置底部边距 */
   }
-  .button {
+  .my_button {
     text-align: center;
+    margin-left: 30px;
   }
   .demo-progress {
-    margin-top: 40px; /* 可选：设置顶部边距 */
+    margin-top: 100px; /* 可选：设置顶部边距 */
     margin-bottom: 15px;
     max-width: 600px;
     margin: auto;
   }
   .text-bottom {
     margin-top: 20px; /* 可选：设置顶部边距 */
-    margin-left: 100px;
+    margin-left: 135px;
     text-align: center;
     font-size: 20px; /* 设置字体大小 */
   }
@@ -276,10 +298,11 @@ const options = [
   }
   .tag{
     font-size: 1.3rem;
-    margin-left: 82px;
+    margin-left: 128px;
   }
   .select_area {
     display: inline-block;
+    margin-left: 50px;
   }
   .my_el-header {
     background-color: #f2f2f3;
