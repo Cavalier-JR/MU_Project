@@ -1,28 +1,61 @@
 <template>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   <el-card style="max-width: 1000px; margin: 0 auto;">
     <template #header>
       <div class="card1_title">
-        <p style="padding-left: 90px;">您好！欢迎来到遗忘系统</p>
+        <p style="padding-left: 40px;">您好！欢迎来到遗忘系统</p>
       </div>
     </template>
     <div class="card-content">
-      <p style="padding-left: 90px;">作为你的隐私保护伙伴，您可以上传不同的图片或文本让我遗忘哦！ </p>
+      <p style="padding-left: 40px;">作为你的隐私保护伙伴，您可以上传不同的图片或文本让我遗忘哦！ </p>
       <br>
-      <p style="padding-left: 90px;">有以下三种情况可供您选择，不妨试试吧~ </p>
+      <br>
+      <p style="padding-left: 40px;">有以下三种情况可供您选择，不妨试试吧~ </p>
     </div> 
 
-    <div class="card-content">
-      <el-card style="max-width: 1000px;display: inline-block;margin-top:15px;" shadow="always">
-        <div class="home-features5"><app-features17></app-features17></div>
+    <div class="card-content" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+      <el-card style="width: 48%; margin-top: 15px;" shadow="always">
+          <div class="note">
+            <h2 class="thq-heading-2">
+              <i class="fas fa-home" style="color: rgb(220, 116, 97);"></i> 图片类别遗忘
+            </h2>
+            <p class="first-line">让模型忘记某个事物的类别</p>
+          </div>
       </el-card>
-      <el-card style="max-width: 1000px;display: inline-block;" shadow="always">
-        <div class="home-features6"><app-features18></app-features18></div>
+
+      <el-card style="width: 48%; margin-top: 15px;" shadow="always">
+          <div class="note">
+            <h2 class="thq-heading-2">
+              <i class="fas fa-tags" style="color: rgb(97, 220, 177);"></i> 图片部分遗忘
+            </h2>
+            <p class="first-line">图片里的某个部分泄露了您的隐私？</p>
+            <p class="first-line">来这里解决这个问题吧！</p>
+          </div>
       </el-card>
-      <el-card style="max-width: 1000px;display: inline-block;" shadow="always">
-        <div class="home-features7"><app-features171></app-features171></div>
+      <el-card style="width: 48%; margin-top: 15px;" shadow="always">
+        <div class="note">
+            <h2 class="thq-heading-2">
+              <i class="fas fa-pen" style="color: rgb(122, 97, 220);"></i> 文本遗忘
+            </h2>
+            <p class="first-line">发现您的隐私信息以文本的形式被泄露了？</p>
+            <p class="first-line">不用担心，文本遗忘为您擦除模型中的信息</p>
+        </div>
+
+      </el-card>
+
+      <el-card style="width: 48%; margin-top: 15px;" shadow="always">
+        <div class="note">
+          <h2 class="thq-heading-2">
+            <i class="fas fa-history" style="color: rgb(220, 193, 97);"></i> 遗忘记录
+          </h2>
+          <p class="first-line">在这里查看您遗忘过的内容</p>
+        </div>
       </el-card>
     </div>
-    
+
+    <div style="margin-bottom:300px;"></div>
+
   </el-card>
   
 
@@ -30,31 +63,7 @@
 
 
 <script>
-import AppFeatures17 from '../components/partUnlPanel.vue'
-import AppFeatures18 from '../components/classUnlPanel.vue'
-import AppFeatures171 from '../components/textUnlPanel.vue'
 
-
-
-
-export default {
-  name: 'Home',
-  props: {},
-  components: {
-    AppFeatures17,
-    AppFeatures18,
-    AppFeatures171,
-  },
-  metaInfo: {
-    title: 'Incomplete Dual Hamster',
-    meta: [
-      {
-        property: 'og:title',
-        content: 'Incomplete Dual Hamster',
-      },
-    ],
-  },
-}
 </script>
 
 
@@ -69,106 +78,10 @@ export default {
   font-size: 14px;
 }
 
-
-
-
-.home-container {
-  width: 100%;
-  display: flex;
-  overflow: auto;
-  min-height: 100vh;
-  align-items: center;
-  flex-direction: column;
+.note {
+  margin-left: 20px; /* Adjust the margin value as needed */
 }
-.home-navbar1 {
-  flex: 0 0 auto;
-  width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-hero2 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-logos3 {
-  flex: 0 0 auto;
-  width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-gallery4 {
-  flex: 0 0 auto;
-  width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-features5 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-features6 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-features7 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-cta8 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-faq9 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-contact10 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.home-footer11 {
-  flex: 0 0 auto;
-  width: 100%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.first-line {
+  margin-top: 10px;
 }
 </style>

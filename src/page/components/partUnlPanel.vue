@@ -1,5 +1,4 @@
 <template>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div class="features17-layout349 thq-section-padding">
     <div class="features17-max-width thq-section-max-width">
       <div class="features17-content">
@@ -42,6 +41,9 @@ export default {
 </script>
 
 <style scoped>
+.el-card .home-features5, .el-card .home-features6, .el-card .home-features7, .el-card .home-features8 {
+  padding-left: 10px; /* 调整这个值以减小左边距 */
+}
 .features17-layout349 {
   display: flex;
   overflow: hidden;
@@ -56,12 +58,7 @@ export default {
   display: flex;
   align-items: center;
 }
-.features17-image-container {
-  flex: 1;
-  display: flex;
-  position: relative;
-  align-items: center;
-}
+
 .features17-content {
   /* gap: var(--dl-space-space-oneandhalfunits); */
   flex: 1;

@@ -3,12 +3,14 @@
     <div class="features18-max-width thq-section-max-width">
       <div class="features18-content">
         <div class="features18-section-title">
+
           <div class="features18-content1">
             <h2 class="thq-heading-2">
               <i class="fas fa-user" style="color: rgb(97, 220, 177);"></i> {{ feature1Title }}
             </h2>
             <p class="thq-body-large">{{ feature1Description }}</p>
           </div>
+          
         </div>
       </div>
 
