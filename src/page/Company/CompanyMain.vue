@@ -6,8 +6,8 @@
           <div style="font-size: 20px; font-family: '扁桃体'">模型总数量</div>
           <div style="display: flex; align-items: center;">
             <br>
-            <div style="margin-top:10px;font-size: 30px; background-color: rgb(160, 160, 255); height: 30px; width: 100%; border-radius: 10px; display: block; justify-content: center; align-items: center;">6</div>
-            <el-button style="margin-top:10px;margin-left: 10px;  font-size: 14px; font-family: '扁桃体';" type="primary">更改模型</el-button> <!-- Button beside the text -->
+            <div style="margin-top:10px;font-size: 30px; background-color: rgb(160, 160, 255); height: 30px; width: 100%; border-radius: 10px; display: block; justify-content: center; align-items: center; margin-left: 20px;margin-right: 20px;" >6</div>
+            <!-- <el-button style="margin-top:10px;margin-left: 10px;  font-size: 14px; font-family: '扁桃体';" type="primary">更改模型</el-button> Button beside the text -->
           </div>
         </el-row>
 
@@ -176,6 +176,7 @@ onMounted(() => {
             formatter: '{value} %',
             color: 'inherit',
             fontSize: 15,
+            
           },
           data: [
             {
@@ -221,16 +222,16 @@ onMounted(() => {
           center: ['50%', '65%'],
           radius: '90%',
           min: 0,
-          max: 1,
+          max: 100,
           splitNumber: 8,
           axisLine: {
             lineStyle: {
               width: 6,
               color: [
-                [0.25, '#FF6E76'],
-                [0.5, '#FDDD60'],
-                [0.75, '#58D9F9'],
-                [1, '#7CFFB2']
+                [0.25, '#7CFFB2'],
+                [0.5, '#58D9F9'],
+                [0.75, '#FDDD60'],
+                [1, '#FF6E76']
               ]
             }
           },
@@ -281,16 +282,17 @@ onMounted(() => {
           },
           detail: {
             fontSize: 30,
-            offsetCenter: [0, '-35%'],
+            offsetCenter: [0, '-5%'],
             valueAnimation: true,
             formatter: function (value) {
               return Math.round(value * 100) + '';
             },
-            color: 'inherit'
+            color: 'inherit',
+            formatter: '{value} %',
           },
           data: [
             {
-              value: 0.7,
+              value: 70,
               // name: 'Grade Rating',
 
             }

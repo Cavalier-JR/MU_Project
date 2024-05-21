@@ -51,14 +51,14 @@
       </div>
       <div class="page-container4">
 
-        <div cass="echartPanel" id="classchart1" ref="classchart1" style="width: 30%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
+        <div cass="echartPanel" id="classchart1" ref="classchart1" style="width: 25%;height: 100%; border-radius: 10px 10px 10px 10px; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); margin-left: 20px;"></div>
 
-        <div class="page-container5" style="width: 40%">
+        <div class="page-container5" style="width: 50%">
           <div id="accuracychart2" ref="accuracychart2" style="width: 50%;height: 100%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
           <div ref="timechart2" style="width: 50%;height: 100%; background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; "></div>
         </div>
 
-        <div id="classchart2" ref="classchart2" style="width: 30%;height: 100%;background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
+        <div id="classchart2" ref="classchart2" style="width: 25%;height: 100%;background-color: rgb(255, 247, 240); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-bottom: 10px;"></div>
 
       </div>
     </div>
@@ -154,20 +154,8 @@
               <td style="padding: 8px; border: 1px solid #ddd;">96</td>
               <td style="padding: 8px; border: 1px solid #ddd;">97</td>
             </tr>
-            <tr style="background-color: #ebffb1;">
-              <td style="padding: 8px; border: 1px solid #ddd;">this is a secret</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-            </tr>
-                        <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-            </tr>
+
+
           </table>
         </div>
 
@@ -203,7 +191,8 @@ onMounted(() => {
     var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
-        text: '4个指标的对比'
+        text: '4个指标的对比',
+        top: '10px' 
       },
       legend: {
         top: '10%'
@@ -211,7 +200,7 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-            { text: '准确率', max: 100 },
+            { text: '正确率', max: 100 },
             { text: '用时', max: 100 },
             { text: '内存', max: 100 },
             { text: '模型大小', max: 100 },
@@ -308,8 +297,10 @@ onMounted(() => {
     var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
-        text: '遗忘前后正确率对比'
+        text: '遗忘前后正确率对比',
+        top: '10px' 
       },
+      
       legend: {
         top:'10%'
       },
@@ -378,7 +369,7 @@ onMounted(() => {
 
   if(accuracychart.value) {
     const myChart = echarts.init(accuracychart.value);
-        const posList = [
+    const posList = [
       'left',
       'right',
       'top',
@@ -470,7 +461,11 @@ onMounted(() => {
     };
     option = {
       title: {
-        text: '正确率'
+        text: '正确率',
+        top: '10px' 
+      },
+      grid: {
+        bottom: '10%',
       },
       tooltip: {
         trigger: 'axis',
@@ -516,7 +511,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [320, 332, 301, 334, 390]
+          data: [90, 89,]
         },
         {
           name: 'GA',
@@ -525,7 +520,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [220, 182, 191, 234, 290]
+          data: [88, 84,]
         },
         {
           name: 'FT',
@@ -534,7 +529,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [150, 232, 201, 154, 190]
+          data: [83, 82]
         },
         {
           name: 'RL',
@@ -543,7 +538,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [98, 77, 101, 99, 40]
+          data: [98, 77, ]
         }
       ]
     };
@@ -644,7 +639,11 @@ onMounted(() => {
     };
     option = {
       title: {
-        text: '用时'
+        text: '用时',
+        top: '10px' 
+      },
+      grid: {
+        bottom: '10%',
       },
       tooltip: {
         trigger: 'axis',
@@ -730,7 +729,8 @@ onMounted(() => {
     option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
-        text: '4个指标的对比'
+        text: '4个指标的对比',
+        top: '10px' 
       },
       legend: {
         top: '10%'
@@ -738,7 +738,7 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-            { text: '准确率', max: 100 },
+            { text: '正确率', max: 100 },
             { text: '用时', max: 100 },
             { text: '内存', max: 100 },
             { text: '模型大小', max: 100 },
@@ -829,18 +829,20 @@ onMounted(() => {
     };
     myChart.setOption(option);
   }
-
+  // 第二行的右边的雷达图
   if(classchart2.value) {
     const myChart = echarts.init(classchart2.value);
     // myChart.resize({ width: '100%', height: '100%' });  TODO bug
     var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
-        text: '遗忘前后正确率对比'
+        text: '遗忘前后正确率对比',
+        top: '10px' 
       },
       legend: {
         top: '10%'
       },
+      
       radar: [
         {
           indicator: [
@@ -903,72 +905,358 @@ onMounted(() => {
     };
     myChart.setOption(option);
   }
-
+  // 第二行的正确率柱状图
   if(accuracychart2.value) {
     const myChart = echarts.init(accuracychart2.value);
+    const posList = [
+      'left',
+      'right',
+      'top',
+      'bottom',
+      'inside',
+      'insideTop',
+      'insideLeft',
+      'insideRight',
+      'insideBottom',
+      'insideTopLeft',
+      'insideTopRight',
+      'insideBottomLeft',
+      'insideBottomRight'
+    ];
+    app.configParameters = {
+      rotate: {
+        min: -90,
+        max: 90
+      },
+      align: {
+        options: {
+          left: 'left',
+          center: 'center',
+          right: 'right'
+        }
+      },
+      verticalAlign: {
+        options: {
+          top: 'top',
+          middle: 'middle',
+          bottom: 'bottom'
+        }
+      },
+      position: {
+        options: posList.reduce(function (map, pos) {
+          map[pos] = pos;
+          return map;
+        }, {})
+      },
+      distance: {
+        min: 0,
+        max: 100
+      }
+    };
+    app.config = {
+      rotate: 90,
+      align: 'left',
+      verticalAlign: 'middle',
+      position: 'insideBottom',
+      distance: 15,
+      onChange: function () {
+        const labelOption = {
+          rotate: app.config.rotate,
+          align: app.config.align,
+          verticalAlign: app.config.verticalAlign,
+          position: app.config.position,
+          distance: app.config.distance
+        };
+        myChart.setOption({
+          series: [
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            }
+          ]
+        });
+      }
+    };
+    const labelOption = {
+      show: true,
+      position: app.config.position,
+      distance: app.config.distance,
+      align: app.config.align,
+      verticalAlign: app.config.verticalAlign,
+      rotate: app.config.rotate,
+      formatter: '{c}  {name|{a}}',
+      fontSize: 16,
+      rich: {
+        name: {}
+      }
+    };
     option = {
       title: {
-        text: "准确率"
+        text: '正确率',
+        top: '10px' 
       },
-      xAxis: {
-        type: 'category',
-        data: ['ConMU', 'FT', 'GA', 'RL']
+      grid: {
+        bottom: '10%',
       },
-      yAxis: {
-        type: 'value'
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
       },
+      legend: {
+        data: ['ConMU', 'GA', 'FT', 'RL'],
+        top: '10%'
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ['line', 'bar', 'stack'] },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: { show: false },
+          data: ['遗忘前', '遗忘后']
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
       series: [
         {
-          data: [
-            {
-              value: 100,
-              itemStyle: {
-                color: '#a90000'
-              }
-            },
-            {
-              value: 97,
-              itemStyle: {
-                color: '#808080'
-              }
-            },
-            {
-              value: 98,
-              itemStyle: {
-                color: '#7B68EE'
-              }
-            },
-            {
-              value: 99,
-              itemStyle: {
-                color: '#FF8C00'
-              }
-            },
-          ],
-          type: 'bar'
+          name: 'ConMU',
+          type: 'bar',
+          barGap: 0,
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [90, 89,]
+        },
+        {
+          name: 'GA',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [88, 84,]
+        },
+        {
+          name: 'FT',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [83, 82]
+        },
+        {
+          name: 'RL',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [98, 77, ]
         }
       ]
     };
     myChart.setOption(option);
   }
 
+  // 第二行的时间柱形图
   if(timechart2.value) {
     const myChart = echarts.init(timechart2.value);
-    var option = {
+    const posList = [
+      'left',
+      'right',
+      'top',
+      'bottom',
+      'inside',
+      'insideTop',
+      'insideLeft',
+      'insideRight',
+      'insideBottom',
+      'insideTopLeft',
+      'insideTopRight',
+      'insideBottomLeft',
+      'insideBottomRight'
+    ];
+    app.configParameters = {
+      rotate: {
+        min: -90,
+        max: 90
+      },
+      align: {
+        options: {
+          left: 'left',
+          center: 'center',
+          right: 'right'
+        }
+      },
+      verticalAlign: {
+        options: {
+          top: 'top',
+          middle: 'middle',
+          bottom: 'bottom'
+        }
+      },
+      position: {
+        options: posList.reduce(function (map, pos) {
+          map[pos] = pos;
+          return map;
+        }, {})
+      },
+      distance: {
+        min: 0,
+        max: 100
+      }
+    };
+    app.config = {
+      rotate: 90,
+      align: 'left',
+      verticalAlign: 'middle',
+      position: 'insideBottom',
+      distance: 15,
+      onChange: function () {
+        const labelOption = {
+          rotate: app.config.rotate,
+          align: app.config.align,
+          verticalAlign: app.config.verticalAlign,
+          position: app.config.position,
+          distance: app.config.distance
+        };
+        myChart.setOption({
+          series: [
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            },
+            {
+              label: labelOption
+            }
+          ]
+        });
+      }
+    };
+    const labelOption = {
+      show: true,
+      position: app.config.position,
+      distance: app.config.distance,
+      align: app.config.align,
+      verticalAlign: app.config.verticalAlign,
+      rotate: app.config.rotate,
+      formatter: '{c}  {name|{a}}',
+      fontSize: 16,
+      rich: {
+        name: {}
+      }
+    };
+    option = {
       title: {
-        text: '用时'
+        text: '用时',
+        top: '10px' 
       },
-      xAxis: {
-        type: 'category',
-        data: ['ConMU', 'GA', 'FT', 'RL']
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow'
+        }
       },
-      yAxis: {
-        type: 'value'
+      grid: {
+        bottom: '10%',
       },
+      legend: {
+        data: ['ConMU', 'GA', 'FT', 'RL'],
+        top: '10%'
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ['line', 'bar', 'stack'] },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
+      xAxis: [
+        {
+          type: 'category',
+          axisTick: { show: false },
+          data: ['遗忘前', '遗忘后']
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value'
+        }
+      ],
       series: [
         {
-          data: [120, 200, 150, 80, 70, 110, 130],
-          type: 'bar'
+          name: 'ConMU',
+          type: 'bar',
+          barGap: 0,
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [320, 332,]
+        },
+        {
+          name: 'GA',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [220, 182,]
+        },
+        {
+          name: 'FT',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [150, 232,]
+        },
+        {
+          name: 'RL',
+          type: 'bar',
+          label: labelOption,
+          emphasis: {
+            focus: 'series'
+          },
+          data: [98, 77, ]
         }
       ]
     };
@@ -976,12 +1264,14 @@ onMounted(() => {
   }
 
 
+  // 文本遗忘的雷达图
   if(textchart2.value) {
     const myChart = echarts.init(textchart2.value);
     var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
-        text: '遗忘前后正确率对比'
+        text: '遗忘前后正确率对比',
+        top: '10px' 
       },
       legend: {
         top: '10%'
@@ -995,7 +1285,7 @@ onMounted(() => {
             { text: '遗忘词4' },
           ],
           center: ['50%', '50%'],
-          radius: 100,
+          radius: 80,
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
@@ -1124,7 +1414,7 @@ onMounted(() => {
 }
 .page-container2 {
   width: 100%;
-  height: 500px;
+  height: 400px;
   display: flex;
   align-items: flex-start;
   margin-left: 0px;
