@@ -73,7 +73,14 @@
     direction="rtl"
     :before-close="handleClose"
   >
-    <div class="text-container">
+    <template slot="title">
+      <!-- 图片显示区域 -->
+        <div style="display: flex; justify-content: space-around;">
+          <img src="../../assets/before_UL.png" alt="图片1" style="max-width: 100%; height: auto;" />
+          <img src="../../assets/after_UL.png" style="max-width: 100%; height: auto;" />
+        </div>
+    </template>
+    <!-- <div class="text-container">
       <p> 投毒防护前 </p>
     </div>
     <div>
@@ -84,7 +91,7 @@
     </div>
     <div>
       <img src="../../assets/after_UL.png" alt="示例图片" />
-    </div>
+    </div> -->
   </el-drawer>
   <div>
     <el-button 

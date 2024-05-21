@@ -34,7 +34,7 @@
         <span class="tag">
           <el-icon><Notification /></el-icon> 
           <span> 注意：请从本地上传 </span>
-      </span>
+        </span>
       </div>
     </el-col>
     <el-col :span="8">
@@ -49,7 +49,7 @@
       <el-card class="box-card">
 			  <div style="font-size: 20px;text-align:center;">
           <p> 您已完成遗忘图片个数 </p>
-          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon>198
+          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon> {{completed}}
         </div>
       </el-card>
     </el-col>
@@ -99,9 +99,21 @@
         </el-select>
         <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
         :loading="loading_flag" class="my_button"> 
-          进行遗忘 
+          遗忘 
         </el-button>
       </div> 
+      <br v-show="isProgressVisible">
+      <br v-show="isProgressVisible">
+      <div class="demo-progress" v-show="isProgressVisible">
+        <el-progress
+          :percentage="100"      
+          :status="success_flag"
+          :indeterminate="indeterminate_flag"
+          :duration="5"
+        > 
+          <span> 正在遗忘中... </span>
+        </el-progress>
+      </div>
       <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
     </el-col>
     <el-col :span="16">
@@ -124,28 +136,36 @@ const loading_flag = ref(false);
 const radio = ref(0) //默认不选按钮
 const pieChart = ref(null);
 const activeNames = ref(['1', '2'])
+const indeterminate_flag = ref(true)
+const completed = ref(198)
+
 const handleChange2 = (val: string[]) => {
   console.log(val)
 }
 
 function Forget_Button_Click() {
-  ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
-    confirmButtonText: "我已知晓",
-    cancelButtonText: "取消",
-    type: "info",
-  })
-  .then(() => {
-    loading_flag.value = true;
-    let timer: number | null = setTimeout(() => {
-      console.log("用户已知晓图片遗忘的功能");
-      isCosttimeVisible.value = true;
-      loading_flag.value = false;
-      Success_Notify();
-    }, 5000)
-  })
-  .catch(() => {
-    //取消：就不做任何提示了
-  });
+  if(value.value) {
+    ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
+      confirmButtonText: "我已知晓",
+      cancelButtonText: "取消",
+      type: "info",
+    })
+    .then(() => {
+      loading_flag.value = true;
+      isProgressVisible.value = true;
+      let timer: number | null = setTimeout(() => {
+        console.log("用户已知晓图片遗忘的功能");
+        isCosttimeVisible.value = true;
+        isProgressVisible.value = false;
+        loading_flag.value = false;
+        completed.value = 345;
+        Success_Notify();
+      }, 5000)
+    })
+    .catch(() => {
+      //取消：就不做任何提示了
+    });
+  }
 }
 
 const Success_Notify = () => {
@@ -153,12 +173,13 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 500,
+    offset: 550,
   });
 };
 
 const value = ref([])
 const isCosttimeVisible = ref(false);
+const isProgressVisible = ref(false);
 
 const handleChange = (value) => {
   console.log(value)
@@ -249,7 +270,7 @@ const options = [
     margin-left: 30px;
   }
   .demo-progress {
-    margin-top: 40px; /* 可选：设置顶部边距 */
+    margin-top: 100px; /* 可选：设置顶部边距 */
     margin-bottom: 15px;
     max-width: 600px;
     margin: auto;
@@ -277,7 +298,7 @@ const options = [
   }
   .tag{
     font-size: 1.3rem;
-    margin-left: 82px;
+    margin-left: 128px;
   }
   .select_area {
     display: inline-block;

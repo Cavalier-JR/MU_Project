@@ -140,8 +140,8 @@
 
         <el-col :span="1" v-show="isRightPanelVisible"></el-col>
 
-        <el-col :span="9" v-show="isRightPanelVisible">
-          <el-table :data="tableData" style="width: 100%" border height="480" stripe>
+        <el-col :span="9" v-show="isRightColVisible">
+          <el-table :data="tableData" style="width: 100%" border height="480" stripe v-show="isRightPanelVisible">
             <el-table-column prop="pic" label="图像" align="center" width="100" height="250" header-align="center">
               <template #default="scope">
                 <el-image :src="scope.row.pic" style="width: 40px;height: 40px" 
@@ -166,6 +166,7 @@ import { ElMessageBox, ElNotification, ElMessage } from "element-plus"
 
 const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
 const isMethodVisible = ref(false); // 初始状态为false，即不显示
+const isRightColVisible = ref(false); // 初始状态为false，即不显示
 const loading_flag = ref(false);
 const isCardVisible = ref(true);
 const isPicVisible = ref(true);
@@ -180,26 +181,50 @@ interface User {
   afterCategory: string
 }
 
+const value1 = ref([])
+const value2 = ref([])
+
+function ClassSelected() {
+  if(value1.value[1]) {
+    console.log(value1.value[1])
+    ElMessageBox.confirm("您已选择需要遗忘的类，接下来请选择您想使用的遗忘方法", "提示", {
+      confirmButtonText: "好的",
+      cancelButtonText: "取消",
+      type: "info",
+    })
+    .then(() => {
+      isMethodVisible.value = true;
+    })
+    .catch(() => {
+      //取消：就不做任何提示了
+    });
+  }
+};
+
 function Forget_Button_Click() {
-  ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
-  confirmButtonText: "我已知晓",
-  cancelButtonText: "取消",
-  type: "info",
-})
-  .then(() => {
-    console.log("用户已知晓图片遗忘的功能");
-    loading_flag.value = true;
-    let timer: number | null = setTimeout(() => {
-      isCardVisible.value = false;
-      isRightPanelVisible.value = true;
-      loading_flag.value = false;
-      isPicVisible.value = false;
-      Success_Notify();
-    }, 5000)
-  })
-  .catch(() => {
-    //取消：就不做任何提示了
-  });
+  if(value2.value) {
+    console.log(value2.value)
+    ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
+      confirmButtonText: "我已知晓",
+      cancelButtonText: "取消",
+      type: "info",
+    })
+    .then(() => {
+      isRightColVisible.value = true;
+      console.log("用户已知晓图片遗忘的功能");
+      loading_flag.value = true;
+      let timer: number | null = setTimeout(() => {
+        isCardVisible.value = false;
+        isRightPanelVisible.value = true;
+        loading_flag.value = false;
+        isPicVisible.value = false;
+        Success_Notify();
+      }, 5000)
+    })
+    .catch(() => {
+      //取消：就不做任何提示了
+    });
+  }
 };
 
 const tableRowClassName = ({
@@ -245,15 +270,8 @@ const tableData: User[] = [
   { pic: 'http://picture.gptkong.com/20240519/1602fc5eb5f4e446b18cd42b3f04ad325d.png', beforeCategory: '狗', afterCategory: '骆驼'},
 ];
 
-const value1 = ref([])
-const value2 = ref([])
-
 const handleChange = (value1) => {
   console.log(value1)
-}
-
-const ClassSelected = () => {
-  isMethodVisible.value = true
 }
 
 const options1 = [
@@ -455,6 +473,7 @@ const options2 = [
     label: 'RL',
   },
 ]
+
 </script>
 
 
