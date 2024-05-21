@@ -2,7 +2,7 @@
   <el-container>
   <el-header class="my_el-header"> 部分遗忘 </el-header>
   <el-main>
-  <el-row :gutter="70" >
+  <el-row :gutter="10" >
     <el-col :span="8" >
       <div>
         <el-upload
@@ -54,7 +54,7 @@
       </el-card>
     </el-col>
   </el-row>
-  <el-row>
+  <el-row justify="center">
     <el-col :span="8">
       <div>
         <el-collapse v-model="activeNames" @change="handleChange2">
@@ -88,7 +88,7 @@
       <br>
       <br>
       <div> 
-        <el-select class="select_area" v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
+        <el-select class="select_area" v-model="value" placeholder="请选择你的遗忘方法" style="width: 170px">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -98,14 +98,14 @@
           />
         </el-select>
         <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
-        :loading="loading_flag" class="button"> 
+        :loading="loading_flag" class="my_button"> 
           进行遗忘 
         </el-button>
       </div> 
       <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
     </el-col>
     <el-col :span="16">
-      <div id="pieChart" ref="pieChart" style="margin-top: 20px; margin-left: 130px; width: 500px; height: 500px"></div>
+      <div id="pieChart" ref="pieChart" style="margin-top: 50px; margin-left: 200px; width: 500px; height: 500px"></div>
     </el-col>
   </el-row>
   </el-main>
@@ -153,7 +153,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 450,
+    offset: 500,
   });
 };
 
@@ -186,11 +186,11 @@ onMounted(() => {
           type: 'pie',
           radius: '40%',
           data: [
-            { value: 1048, name: 'Animal' },
-            { value: 735, name: 'Vehicle' },
-            { value: 580, name: 'Fruit' },
-            { value: 484, name: 'Plant' },
-            { value: 300, name: 'Vegatable' }
+            { value: 1048, name: '动物' },
+            { value: 735, name: '车辆' },
+            { value: 580, name: '水果' },
+            { value: 484, name: '植物' },
+            { value: 300, name: '蔬菜' }
           ],
           emphasis: {
             itemStyle: {
@@ -244,8 +244,9 @@ const options = [
     font-size: 20px; /* 设置字体大小 */
     margin-bottom: 15px; /* 可选：设置底部边距 */
   }
-  .button {
+  .my_button {
     text-align: center;
+    margin-left: 30px;
   }
   .demo-progress {
     margin-top: 40px; /* 可选：设置顶部边距 */
@@ -255,7 +256,7 @@ const options = [
   }
   .text-bottom {
     margin-top: 20px; /* 可选：设置顶部边距 */
-    margin-left: 100px;
+    margin-left: 135px;
     text-align: center;
     font-size: 20px; /* 设置字体大小 */
   }
@@ -280,6 +281,7 @@ const options = [
   }
   .select_area {
     display: inline-block;
+    margin-left: 50px;
   }
   .my_el-header {
     background-color: #f2f2f3;
