@@ -74,40 +74,36 @@
         </el-tooltip> -->
       </div>
     </el-header>
-    <el-main >
-      <el-row >
-
+    <el-main>
+      <el-row>
         <el-col :span="12">
           <el-form :model="formData1" >
-            <el-form-item  label ="隐私信息提示词">
+            <el-form-item label="隐私信息提示词">
               <el-input
                 style="font-size:15px"
                 type="textarea"
-                :autosize="{ minRows: 3, maxRows: 20}"
+                :autosize="{ minRows: 3, maxRows: 20 }"
                 placeholder="请输入提示词"
                 v-model="formData1.text"
                 readonly="true"
               ></el-input>
             </el-form-item>
-
-            <template class="demo-progress1"  v-if="isProgressVisible1">
+            <div class="demo-progress1" v-show="isProgressVisible1">
               <el-progress
                 :percentage="100"      
-                :status="success_flag"
-                :indeterminate="indeterminate_flag1"
+                :status="true"
+                :indeterminate="true"
                 :duration="5"
               > 
                 <span> 正在提交给模型... </span>
               </el-progress>
-              </template>
-          <template v-if="!isProgressVisible1">
+            </div>
+          <div v-show="!isProgressVisible1">
             <div v-if="isSubmitted">
               <div v-if="showModelOutput1">
-               
-
               <el-form-item label="输入想要遗忘的敏感信息" style="margin-top:40px">
                 <el-input
-                style="font-size:15px"
+                  style="font-size:15px"
                   placeholder="输入敏感信息"
                   v-model="formData1.sensitiveInfo"
                   clearable
@@ -126,24 +122,23 @@
                 </el-checkbox-group>
               </el-form-item>
               <el-form-item v-if="showOptions">
-              <el-button 
-                class="custom-button" 
-                @click="addTextToPanelAndNotify"
-                :loading="loading_flag" 
-              >
-                进行遗忘
-              </el-button>
-              <template class="demo-progress2"  v-if="isProgressVisible2">
+                <el-button 
+                  class="custom-button" 
+                  @click="addTextToPanelAndNotify"
+                  :loading="loading_flag" 
+                >
+                  进行遗忘
+                </el-button>
+              </el-form-item>
+              <div class="demo-progress2"  v-show="isProgressVisible2">
                 <el-progress
                   :percentage="100"      
-                  :status="success_flag"
-                  :indeterminate="indeterminate_flag2"
-                  :duration="3"
+                  :indeterminate="true"
+                  :duration="5"
                 > 
                   <span> 正在遗忘中... </span>
                 </el-progress>
-              </template>
-              </el-form-item>
+              </div>
               <template v-if="showTestPromptInput">
               <el-form-item label="请输入测试提示词" style="margin-top:45px">
                 <el-input
@@ -160,7 +155,7 @@
 
             </div>
             </div>
-          </template>
+          </div>
           </el-form>
         </el-col>
         <el-col :span="12" v-if="Load1">
@@ -251,11 +246,8 @@ setup() {
     const isProgressVisible1 = ref(false);
     const isProgressVisible2 = ref(false);
     const Load1 = ref(false);
-    const indeterminate_flag1 = ref(true);
-    const indeterminate_flag2 = ref(true);
     const showTestPromptInput = ref(false); // 控制“请输入提示词”的输入框显示
     const loading_flag = ref(false);
-    const completed = ref(198);
     const value = ref([]);
     const isCosttimeVisible = ref(false);
     
@@ -322,7 +314,6 @@ setup() {
       type: "info",
     })
     .then(() => {
-    
       loading_flag.value = true;
       isProgressVisible2.value = true;
       let timer = setTimeout(() => {
@@ -330,19 +321,17 @@ setup() {
         isCosttimeVisible.value = true;
         isProgressVisible2.value = false;
         loading_flag.value = false;
-        completed.value = 345;
 
         ElNotification({
-        title: '成功',
-        message: '已成功遗忘',
-        type: 'success',
-        position: "bottom-left",
-        duration: 5000,
-        customClass: "focus-button",
-        offset: 110
-      });
-      showTestPromptInput.value = true;
-
+          title: '成功',
+          message: '已成功遗忘',
+          type: 'success',
+          position: "bottom-left",
+          duration: 5000,
+          customClass: "focus-button",
+          offset: 110
+        });
+        showTestPromptInput.value = true;
       }, 5000)
     })
     .catch(() => {
@@ -420,8 +409,6 @@ setup() {
       isProgressVisible1,
       isProgressVisible2,
       Load1,
-      indeterminate_flag1,
-      indeterminate_flag2,
       showTestPromptInput,
     };
 }

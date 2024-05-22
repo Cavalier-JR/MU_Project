@@ -32,7 +32,7 @@
             </el-form>
           </div>
           <div class="butt">
-            <el-button @click="UserSet"> 登录 </el-button>
+            <el-button @click="UserSet" type="primary"> 登录 </el-button>
           </div> 
         </el-tab-pane>
         <el-tab-pane>
