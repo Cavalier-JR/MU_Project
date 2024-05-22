@@ -101,7 +101,7 @@
           <div v-show="!isProgressVisible1">
             <div v-if="isSubmitted">
               <div v-if="showModelOutput1">
-              <el-form-item label="输入想要遗忘的敏感信息" style="margin-top:40px">
+                <el-form-item label="输入想要遗忘的敏感信息" style="margin-top:40px" v-if="showSensitiveInfoSection">
                 <el-input
                   style="font-size:15px"
                   placeholder="输入敏感信息"
@@ -114,14 +114,14 @@
                 </el-input>
               </el-form-item>
               
-              <el-form-item label="隐私替换词" v-if="showOptions" style="margin-top: 40px;">
-                <el-checkbox-group v-model="selectedOptions" class="checkbox-group">
-                  <el-checkbox :label="option" v-for="(option, index) in replacementOptions" :key="index" class="checkbox-item">
+              <el-form-item label="隐私替换词" v-if="showSensitiveInfoSection && showOptions" style="margin-top: 40px;">
+                <el-radio-group v-model="selectedOption" class="radio-group">
+                  <el-radio :label="option" v-for="(option, index) in replacementOptions" :key="index" class="radio-item">
                     {{ option }}
-                  </el-checkbox>
-                </el-checkbox-group>
+                  </el-radio>
+                </el-radio-group>
               </el-form-item>
-              <el-form-item v-if="showOptions">
+              <el-form-item v-if="showSensitiveInfoSection && showOptions">
                 <el-button 
                   class="custom-button" 
                   @click="addTextToPanelAndNotify"
@@ -140,7 +140,10 @@
                 </el-progress>
               </div>
               <template v-if="showTestPromptInput">
-              <el-form-item label="请输入测试提示词" style="margin-top:45px">
+              <el-form-item style="margin-top:100px">
+                <template #label>
+                          <span style="color:#7986CB;">请输入测试提示词</span>
+                </template>
                 <el-input
                   style="font-size:15px"
                   type="textarea"
@@ -149,8 +152,21 @@
                   v-model="formData2.text"
                 ></el-input>
                 <!-- 提交按钮 -->
-                <el-button class="submit-button" @click="TestSubmit">提交</el-button>
+                <el-button :dark="isDark" @click="TestSubmit" size="large" 
+                  :loading="loading_flag2" class="submit-button"> 
+                   提交
+                 </el-button>
               </el-form-item>
+              <div class="demo-progress1" v-show="isProgressVisible3">
+                <el-progress
+                  :percentage="100"      
+                  :status="true"
+                  :indeterminate="true"
+                  :duration="5"
+                > 
+                  <span> 正在提交给模型... </span>
+                </el-progress>
+            </div>
             </template>
 
             </div>
@@ -177,14 +193,15 @@
           
             <div v-if="isSubmitted">
              <!-- 右侧面板模型输出下方添加按钮 -->
-            <div v-if="showModelOutput2">
-              <el-form-item 
-              
-                label="遗忘后输出"
-                style="margin-top:350px;"
+            <div v-if="Load2">
+              <el-form-item          
+                style="margin-top:100px;"
               >
+              <template #label>
+                  <span style="color:#7986CB;">遗忘后输出</span>
+                </template>
                 <el-input
-                style="font-size:15px"
+                style="font-size:15px;"
                   type="textarea"
                   :autosize="{ minRows: 3, maxRows: 20}"
                   placeholder="这里是模型的输出"
@@ -235,21 +252,24 @@ components: {
 setup() {
    const isSensitiveInfoShown = ref(true); // 控制敏感信息部分的显示
     const showOptions = ref(false);
-    const selectedOptions = ref([]);
+    const selectedOption = ref('');
     const replacementOptions = ref(['.odd place you are', '$ max do go & than', '#vex sorrow his break done']);
     const textPanel = ref([]); 
     const isSubmitted = ref(false);
     const showPanel = ref(false);
     const showModelOutput1 = ref(true);  
-    const showModelOutput2 = ref(false);  
+  
     isSensitiveInfoShown.value = true;
     const isProgressVisible1 = ref(false);
     const isProgressVisible2 = ref(false);
+    const isProgressVisible3 = ref(false);
     const Load1 = ref(false);
+    const Load2 = ref(false);
     const showTestPromptInput = ref(false); // 控制“请输入提示词”的输入框显示
     const loading_flag = ref(false);
-    const value = ref([]);
+    const loading_flag2 = ref(false);
     const isCosttimeVisible = ref(false);
+    const showSensitiveInfoSection = ref(true);
     
     watch(isSubmitted, (newValue) => {
       if (newValue === true) {
@@ -285,28 +305,35 @@ setup() {
     modelOutput2: '' // 新增字段 modelOutput2
 });
    
-    const updateTextAndNotify = () => {
-      // 确保不显示右侧模型的输出
-      showModelOutput2.value = false;
-    };
 
     const addTextToPanel = () => {
-     if (formData1.value.text) {
-       let processedText = formData1.value.text;
-       if (formData1.value.sensitiveInfo && selectedOptions.value.length) {
-         selectedOptions.value.forEach(option => {
-           const regex = new RegExp(formData1.value.sensitiveInfo, 'g');
-           processedText = processedText.replace(regex, option);
-         });
-       }
-       formData2.value.text = formData1.value.text; 
-       showModelOutput1.value = true;
-       textPanel.value.push(formData1.value.text);
-       selectedOptions.value = [];
-       showPanel.value = true;  // 确保文本被添加到面板中
-     }
-   };
+      if (formData1.value.text) {
+      let processedText = formData1.value.text;
+      // 使用selectedOption.value（单一替换词）替代selectedOptions
+      if (formData1.value.sensitiveInfo && selectedOption.value) {
+        const regex = new RegExp(formData1.value.sensitiveInfo, 'g');
+        processedText = processedText.replace(regex, selectedOption.value);
+      }
+      formData2.value.text = formData1.value.text; // 更新为处理过的文本
+      showModelOutput1.value = true;
+      textPanel.value.push(processedText);
+      selectedOption.value = ''; // 重置选中的替换词
+      showPanel.value = true;  // 确保文本被添加到面板中
+    }
+  };
    const addTextToPanelAndNotify = () => {
+    if (!selectedOption.value) {
+    ElNotification({
+      title: '注意',
+      message: '您没有选择任何替换词',
+      type: 'warning',
+      duration: 5000,
+      customClass: "focus-button",
+      offset: 555
+    });
+    return;
+  }
+
       showTestPromptInput.value = false;
       ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
       confirmButtonText: "我已知晓",
@@ -317,7 +344,7 @@ setup() {
       loading_flag.value = true;
       isProgressVisible2.value = true;
       let timer = setTimeout(() => {
-        console.log("用户已知晓图片遗忘的功能");
+        console.log("用户已知晓文本遗忘的功能");
         isCosttimeVisible.value = true;
         isProgressVisible2.value = false;
         loading_flag.value = false;
@@ -329,37 +356,24 @@ setup() {
           position: "bottom-left",
           duration: 5000,
           customClass: "focus-button",
-          offset: 110
+          offset: 130
         });
         showTestPromptInput.value = true;
+        showSensitiveInfoSection.value = false;
       }, 5000)
     })
     .catch(() => {
       //取消：就不做任何提示了
     });
 
-    
     if (formData1.value.text.trim()) {
       // 非空，逻辑处理文本...
       addTextToPanel();
     //  显示成功通知
-  
-    }
-    else {
-      // 如果为空，显示失败通知
-      ElNotification({
-        title: '失败',
-        message: '输入为空，无法进行遗忘操作',
-        type: 'error',
-        position: "bottom-left",
-        customClass: "focus-button",
-        duration: 5000,
-        offset: 110
-      });
     }
   };
 
-  
+
 
   const resetToInitial = () => {
   // 重置formData1使界面回到初始状态，清空已输入的文本
@@ -370,7 +384,6 @@ setup() {
   // 重置其他状态变量
   isSubmitted.value = false; // 重置提交状态
   showModelOutput1.value = false; // 隐藏模型输出
-  showModelOutput2.value = false; // 隐藏右侧模型输出
   showPanel.value = false; // 确保显示左侧面板
 };
     const showReplacementOptions = () => {
@@ -384,13 +397,33 @@ setup() {
    };
 
    const TestSubmit = () => {
-  showModelOutput2.value = true; // 现在使用 showModelOutput2 来控制右侧模型输出
+
+    loading_flag2.value = true;
+    isProgressVisible3.value = true;
+    let timer = setTimeout(() => {
+      isCosttimeVisible.value = true;
+      isProgressVisible3.value = false;
+      Load2.value = true;
+      loading_flag2.value = false;
+      ElNotification({
+        title: '成功',
+        message: '已提交至模型并输出',
+        type: 'success',
+        customClass: "focus-button2",
+        duration: 5000, // 自动关闭延时
+        offset:540
+      });
+      completed.value = 345;
+
+    }, 5000)
+
+
 
 };
     return {
       formData1,
       showOptions,
-      selectedOptions,
+      selectedOption,
       replacementOptions,
       textPanel,
       showReplacementOptions,
@@ -403,13 +436,16 @@ setup() {
       showTheRest,
       formData2,
       TestSubmit,
-      showModelOutput2,
       resetToInitial,
-      updateTextAndNotify,
       isProgressVisible1,
       isProgressVisible2,
+      isProgressVisible3,
       Load1,
+      Load2,
       showTestPromptInput,
+      showSensitiveInfoSection,
+      loading_flag,
+      loading_flag2,
     };
 }
 }
@@ -500,8 +536,8 @@ setup() {
 
 .submit-button {
   background-color: #beef8a;
-  background-image: linear-gradient(#37ADB2, #329CA0);
-  border: 1px solid #2A8387;
+  background-image: linear-gradient(#7986CB, #7986CB);
+  border: 1px solid #7986CB;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
   color: #FFFFFF;
@@ -509,22 +545,22 @@ setup() {
   display: block;
   font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
-  line-height: 50%;
+  line-height: auto;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
-  padding: 12px 19px; /* 调整padding以确保文本垂直居中 */
+  padding: 12px 19px;
   text-align: center;
   transition: box-shadow 0.05s ease-in-out, opacity 0.05s ease-in-out;
   user-select: none;
   -webkit-user-select: none;
   width: auto;
-}
+} 
 
 .AnotherUnlearn {
   background-color: #beef8a;
-  background-image: linear-gradient(#37ADB2, #329CA0);
-  border: 1px solid #2A8387;
+  background-image: linear-gradient(#7986CB, #7986CB);
+  border: 1px solid #7986CB;
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
   color: #FFFFFF;
@@ -544,7 +580,7 @@ setup() {
   width: auto;
 }
 /* 确保checkbox垂直排列 */
-.checkbox-group .el-checkbox {
+.radio-group .el-radio {
   display: block;
   margin-bottom: 10px; /* 根据需要调整间距 */
   margin-top:8px;
@@ -552,7 +588,7 @@ setup() {
 }
 
 /* 调整checkbox后的文字大小 */
-.checkbox-group .el-checkbox__label {
+.radio-group .el-radio__label {
   font-size: 18px; /* 设置字体大小 */
 }
 
@@ -634,5 +670,9 @@ setup() {
     margin-bottom: 15px;
     max-width: 600px;
     margin: auto;
+  }
+  .my_button {
+    text-align: center;
+    margin-left: 30px;
   }
 </style>
