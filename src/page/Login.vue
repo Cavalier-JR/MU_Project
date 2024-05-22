@@ -75,7 +75,7 @@
 <script setup>
 import { useRouter, useRoute } from "vue-router";
 const $router = useRouter();
-let username = "Lihua";
+let username = "admin";
 let password = "1234";
 
 const UserSet = () => {
