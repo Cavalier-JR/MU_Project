@@ -1,20 +1,21 @@
 <template>
   <div v-if="!isSubmitted" class="center-container">
-    <el-container >
+    <el-container style="background-color:#fdfcff;">
       <el-header class="my_el-header">
       <div class="header-content">
-        <h1>文本遗忘</h1>
+        <h1 class="glowing-title">文本遗忘</h1>
         <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
           <el-icon class="question-icon" style="font-size:30px;color:#888888;">
             <QuestionFilled/>
           </el-icon> 
         </el-tooltip> -->
       </div>
+      <div class="divider-with-text">一尘不缁，保护您的敏感信息</div>
     </el-header>
     <el-main>
       <el-row>
         <el-col :span="24">
-          <el-card style="max-width: 1000px">
+          <el-card style="max-width: 1000px;margin-top: 40px; margin-left: 165px;">
             <div class="card-content">
               <p> 在当前界面,您可以对文本类型的隐私数据进行遗忘处理~ </p>
               <br>
@@ -60,21 +61,25 @@
       </el-row>
     </el-main>
   </el-container>
+
+
   </div>
 
   <div v-else>
-  <el-container >
+  <el-container style="background-color:#fdfcff;">
     <el-header class="my_el-header">
       <div class="header-content">
-        <h1>文本遗忘</h1>
+        <h1 class="glowing-title">文本遗忘</h1>
         <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
           <el-icon class="question-icon" style="font-size:30px;color:#888888;">
             <QuestionFilled/>
           </el-icon> 
         </el-tooltip> -->
       </div>
+      <div class="divider-with-text">一尘不缁，保护您的敏感信息</div>
     </el-header>
-    <el-main>
+
+    <el-main style="margin-top: 40px;">
       <el-row>
         <el-col :span="12">
           <el-form :model="formData1" >
@@ -140,12 +145,12 @@
                 </el-progress>
               </div>
               <template v-if="showTestPromptInput">
-              <el-form-item style="margin-top:100px">
+              <el-form-item style="margin-top:150px">
                 <template #label>
                           <span style="color:#7986CB;">请输入测试提示词</span>
                 </template>
                 <el-input
-                  style="font-size:15px"
+                  style="font-size:15px; z-index: 9; "
                   type="textarea"
                   :autosize="{ minRows: 3, maxRows: 20}"
                   placeholder="请输入提示词"
@@ -174,7 +179,7 @@
           </div>
           </el-form>
         </el-col>
-        <el-col :span="12" v-if="Load1">
+        <el-col :span="12" v-if="Load1" style="z-index: 3;">
             <el-form-item 
               label="遗忘前输出"
 
@@ -193,15 +198,15 @@
           
             <div v-if="isSubmitted">
              <!-- 右侧面板模型输出下方添加按钮 -->
-            <div v-if="Load2">
+            <div v-if="Load2" >
               <el-form-item          
-                style="margin-top:100px;"
+                style="margin-top:150px;"
               >
               <template #label>
                   <span style="color:#7986CB;">遗忘后输出</span>
                 </template>
                 <el-input
-                style="font-size:15px;"
+                style="font-size:15px; z-index: 9;"
                   type="textarea"
                   :autosize="{ minRows: 3, maxRows: 20}"
                   placeholder="这里是模型的输出"
@@ -209,7 +214,6 @@
                   readonly="true"
                 ></el-input>
               </el-form-item>
-              <!-- 继续进行遗忘按钮 -->
               <el-button class="AnotherUnlearn"  @click="resetToInitial">继续进行遗忘</el-button>
             </div>
            </div>
@@ -217,6 +221,21 @@
         </el-col>
       </el-row>
     </el-main>
+    <div v-if=" showBorder">
+      <div class="login">
+      <div class="lightline"></div>
+      <ol>
+        <li v-for="(item, index) in indoorParams" :key="index">
+          <div class="Test_Label">测试遗忘结果
+          </div>
+          <div class="animate-border">
+            <i></i>
+            <i></i>
+          </div>
+        </li>
+      </ol>
+      </div>
+  </div>
   </el-container>
 </div >
 
@@ -250,7 +269,7 @@ components: {
 
 },
 setup() {
-   const isSensitiveInfoShown = ref(true); // 控制敏感信息部分的显示
+    const isSensitiveInfoShown = ref(true); // 控制敏感信息部分的显示
     const showOptions = ref(false);
     const selectedOption = ref('');
     const replacementOptions = ref(['.odd place you are', '$ max do go & than', '#vex sorrow his break done']);
@@ -258,7 +277,6 @@ setup() {
     const isSubmitted = ref(false);
     const showPanel = ref(false);
     const showModelOutput1 = ref(true);  
-  
     isSensitiveInfoShown.value = true;
     const isProgressVisible1 = ref(false);
     const isProgressVisible2 = ref(false);
@@ -266,11 +284,14 @@ setup() {
     const Load1 = ref(false);
     const Load2 = ref(false);
     const showTestPromptInput = ref(false); // 控制“请输入提示词”的输入框显示
+    const showBorder = ref(false); // 控制“请输入提示词”的输入框显示
     const loading_flag = ref(false);
     const loading_flag2 = ref(false);
     const isCosttimeVisible = ref(false);
     const showSensitiveInfoSection = ref(true);
-    
+
+    let indoorParams = ref([1]);
+
     watch(isSubmitted, (newValue) => {
       if (newValue === true) {
         // 进入v-else分支后立刻触发
@@ -281,6 +302,7 @@ setup() {
           isProgressVisible1.value = false;
           // 显示“遗忘前输出”
           Load1.value = true;
+          showSensitiveInfoSection.value = true;
           // 弹出通知
           ElNotification({
             title: '成功',
@@ -319,23 +341,25 @@ setup() {
       textPanel.value.push(processedText);
       selectedOption.value = ''; // 重置选中的替换词
       showPanel.value = true;  // 确保文本被添加到面板中
+
     }
   };
    const addTextToPanelAndNotify = () => {
     if (!selectedOption.value) {
     ElNotification({
-      title: '注意',
-      message: '您没有选择任何替换词',
-      type: 'warning',
-      duration: 5000,
-      customClass: "focus-button",
-      offset: 555
-    });
-    return;
-  }
+        title: '注意',
+        message: '您没有选择任何替换词',
+        type: 'warning',
+        duration: 5000,
+        customClass: "focus-button",
+        offset: 555
+      });
+      return;
+    }
 
       showTestPromptInput.value = false;
-      ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
+      showBorder.value=false;
+      ElMessageBox.confirm("本操作将对您提供的隐私文本进行敏感信息的遗忘操作", "提示", {
       confirmButtonText: "我已知晓",
       cancelButtonText: "取消",
       type: "info",
@@ -359,6 +383,7 @@ setup() {
           offset: 130
         });
         showTestPromptInput.value = true;
+        showBorder.value=true;
         showSensitiveInfoSection.value = false;
       }, 5000)
     })
@@ -385,13 +410,33 @@ setup() {
   isSubmitted.value = false; // 重置提交状态
   showModelOutput1.value = false; // 隐藏模型输出
   showPanel.value = false; // 确保显示左侧面板
+  showBorder.value=false;
+  showTestPromptInput.value=false;
+  Load1.value=false;
+  Load2.value=false;
+  isProgressVisible2.value=false;
+  isProgressVisible3.value=false;
+  showOptions.value = false;
 };
     const showReplacementOptions = () => {
     showOptions.value = true;
     };
 
     const showTheRest = () => {
-     isSubmitted.value = true;
+      if (!formData1.value.text.trim()) {
+            // formData1.text为空
+            ElNotification({
+                title: '错误',
+                message: '输入为空',
+                type: 'warning',
+                customClass: "focus-button2",
+                duration: 5000, // 自动关闭延时
+                offset:600
+            });
+        } else {
+            // 如果不为空，就将 isSubmitted 设为 true
+            isSubmitted.value = true;
+        }
 
      showModelOutput1.value = true;  // 确保提交时显示组件
    };
@@ -428,7 +473,7 @@ setup() {
       textPanel,
       showReplacementOptions,
       addTextToPanel,
-
+      indoorParams,
       isSubmitted,
       showPanel,
       showModelOutput1,
@@ -443,6 +488,7 @@ setup() {
       Load1,
       Load2,
       showTestPromptInput,
+      showBorder,
       showSensitiveInfoSection,
       loading_flag,
       loading_flag2,
@@ -452,7 +498,7 @@ setup() {
 </script>
 <style>
 .center-container {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   height: 100vh; 
@@ -460,7 +506,7 @@ setup() {
 }
 
 .my_el-header {
-  background-color: #f2f2f3;
+  background-color: #fcfbff;
   color: black;
   padding: 8px;
   font-size: 50px;
@@ -541,6 +587,7 @@ setup() {
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
   color: #FFFFFF;
+  z-index: 10; /* 设置一个足够大的 z-index 值以确保按钮显示在上面 */
   cursor: pointer;
   display: block;
   font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -565,6 +612,7 @@ setup() {
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
   color: #FFFFFF;
   cursor: pointer;
+
   display: block;
   font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -675,4 +723,188 @@ setup() {
     text-align: center;
     margin-left: 30px;
   }
+
+  /*下面是边框 */
+.Test_Label{
+  margin-top:30px;
+  margin-left:20px;
+  font-family: "扁桃体";
+  font-size: 30px;
+  color:rgb(24, 30, 86);
+}
+.login {
+  margin-top:-300px;
+  height: 80%;
+}
+ 
+ol li {
+  border: 1px solid rgba(13, 2, 16, 0.964);
+  border-width: 2px;
+  border-radius: 20px;
+  /* 宽高和相对定位是一定要给的,因为这会影响.animate-border子元素的定位 */
+  position: relative;
+  width:97%;
+  margin:auto;
+  height: 280px;
+  overflow: hidden;
+  /* 利用伪元素和两个i元素产生4条线 */
+  .animate-border {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+    }
+    i {
+      position: absolute;
+      display: inline-block;
+      height: 100%;
+      width: 1px;
+    }
+    &::before {
+      top: 0;
+      left: -100%;
+      background-image: linear-gradient(
+        90deg,
+        transparent,
+        #03e9f4,
+        transparent
+      );
+ 
+      animation: one 4s linear infinite;
+    }
+    i:nth-child(1) {
+      top: -100%;
+      right: 0;
+      background-image: linear-gradient(
+        180deg,
+        transparent,
+        #03e9f4,
+        transparent
+      );
+      /* 动画名称  动画持续时间  动画渲染函数 动画延迟时间 动画执行次数 */
+      animation: two 4s linear 1s infinite;
+    }
+    &::after {
+      bottom: 0;
+      right: -100%;
+      background-image: linear-gradient(
+        -90deg,
+        transparent,
+        #03e9f4,
+        transparent
+      );
+      animation: three 4s linear 2s infinite;
+    }
+    i:nth-child(2) {
+      bottom: -100%;
+      left: 0;
+      background-image: linear-gradient(
+        360deg,
+        transparent,
+        #03e9f4,
+        transparent
+      );
+      animation: four 4s linear 3s infinite;
+    }
+  }
+}
+@keyframes one {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+ 
+@keyframes two {
+  0% {
+    top: -100%;
+  }
+  50%,
+  100% {
+    top: 100%;
+  }
+}
+ 
+@keyframes three {
+  0% {
+    right: -100%;
+  }
+  50%,
+  100% {
+    right: 100%;
+  }
+}
+ 
+@keyframes four {
+  0% {
+    bottom: -100%;
+  }
+  50%,
+  100% {
+    bottom: 100%;
+  }
+}
+.lightline {
+  margin-left: 100px;
+  width: 100px;
+  height: 2px;
+  background-image: linear-gradient(90deg, transparent, #03e9f4, transparent);
+}
+
+/*devider */
+.divider-with-text {
+  margin-top: 20px; /* 与标题部分的距离 */
+  text-align: center;
+  position: relative;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 18px;
+}
+
+.divider-with-text::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 40%; /* 长细线的宽度比例 */
+  height: 2px;
+  background-color: #7986cb; /* 同标题渐变的主颜色一致 */
+  top: 50%;
+  left: 0;
+}
+
+.divider-with-text::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 40%; /* 长细线的宽度比例 */
+  height: 2px;
+  background-color: #7986cb;
+  top: 50%;
+  right: 0;
+}
+.glowing-title {
+  text-align: center;
+  color: #000000;
+  font-size: 48px;
+  text-shadow: 0 0 5px #03e9f4, 0 0 10px #03e9f4, 0 0 20px #03e9f4, 0 0 40px #03e9f4;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #03e9f4, 0 0 10px #03e9f4, 0 0 20px #03e9f4, 0 0 40px #03e9f4;
+  }
+  to {
+    text-shadow: 0 0 10px #03e9f4, 0 0 20px #03e9f4, 0 0 30px #03e9f4, 0 0 50px #03e9f4, 0 0 60px #03e9f4;
+  }
+}
+
 </style>
