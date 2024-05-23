@@ -894,16 +894,16 @@ ol li {
   text-align: center;
   color: #000000;
   font-size: 48px;
-  text-shadow: 0 0 5px #03e9f4, 0 0 10px #03e9f4, 0 0 20px #03e9f4, 0 0 40px #03e9f4;
+  text-shadow: 0 0 5px #cdc8d6, 0 0 10px #cdc8d6, 0 0 20px #cdc8d6, 0 0 40px #cdc8d6;
   animation: glow 1s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 5px #03e9f4, 0 0 10px #03e9f4, 0 0 20px #03e9f4, 0 0 40px #03e9f4;
+    text-shadow: 0 0 5px #cdc8d6, 0 0 10px #cdc8d6, 0 0 20px #cdc8d6, 0 0 40px #cdc8d6;
   }
   to {
-    text-shadow: 0 0 10px #03e9f4, 0 0 20px #03e9f4, 0 0 30px #03e9f4, 0 0 50px #03e9f4, 0 0 60px #03e9f4;
+    text-shadow: 0 0 10px #cdc8d6, 0 0 20px #cdc8d6, 0 0 30px #cdc8d6, 0 0 50px #cdc8d6, 0 0 60px #cdc8d6;
   }
 }
 
