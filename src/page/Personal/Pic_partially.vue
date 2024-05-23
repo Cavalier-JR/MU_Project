@@ -107,7 +107,7 @@
       <div class="demo-progress" v-show="isProgressVisible">
         <el-progress
           :percentage="100"      
-          :status="success_flag"
+          :status="true"
           :indeterminate="indeterminate_flag"
           :duration="5"
         > 

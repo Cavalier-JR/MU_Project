@@ -1,14 +1,6 @@
 <template>
   <div class="page-container" style="background-color: rgb(255, 255, 255);">
-    <div class="page-container1">
-      <span class="page-text" style="font-family: 黑体;  font-weight: bold;">目前模型：Model A</span>
-      <select class="page-select">
-        <option value="Option 1">Option 1</option>
-        <option value="Option 2">Option 2</option>
-        <option value="Option 3">Option 3</option>
-      </select>
-      <button type="button" class="page-button button">导入模型</button>
-    </div>
+
 
     <div class="page-container2">
       <div class="page-container3" style="background-color: rgb(177, 197, 238); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
@@ -1344,14 +1336,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.echartPanel {
-  margin-top: 10px;
-  margin-right: 10px;
-  background: #ffffff;
-  border-radius: 10px 10px 10px 10px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: 300px;
-}
 .page-container {
   width: 100%;
   display: flex;
@@ -1360,58 +1344,7 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
 }
-.page-container1 {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
-}
-.page-text {
-  margin: 10px;
-  padding: 0px;
-  font-size: 30px;
-  align-self: center;
-  text-align: center;
-}
-.page-select {
-  width: 222px;
-  padding: 10px;
-  align-self: stretch;
-  margin-left: 60px;
-  border-color: #0088cc; /* Vibrant blue border */
-  border-width: 3px;
-  padding-left: 10px;
-  border-radius: 20px; /* More pronounced rounded corners */
-  background-image: linear-gradient(to right, #ffffff, #e6f7ff); /* Subtle gradient background */
-  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
-}
 
-.page-select:focus {
-  border-color: #ff4500; /* Bright orange border on focus */
-  box-shadow: 0 0 8px rgba(255, 69, 0, 0.6); /* Glowing effect on focus */
-  outline: none; /* Removes the default focus outline */
-}
-.page-button {
-  width: 196px;
-  height: 90%;
-  font-size: 30px;
-  text-align: center;
-  margin-left: 50px;
-  border-radius: 20px; /* More rounded corners */
-  background-color: #008cff; /* Vibrant orange background */
-  color: white; /* White text for contrast */
-  border: none; /* No border */
-  cursor: pointer; /* Cursor indicates it's clickable */
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-}
-
-.page-button:hover {
-  background-color: #c547ff; /* Slightly lighter orange on hover */
-  transform: scale(1.05); /* Slightly increase size on hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Deeper shadow on hover for a "lifting" effect */
-}
 .page-container2 {
   width: 100%;
   height: 400px;
@@ -1478,24 +1411,5 @@ onMounted(() => {
   margin-right: 10px;
   flex-direction: row;
 }
-.page-image1 {
-  width: 100%;
-  height: 50%;
-  align-self: center;
-  object-fit: cover;
-  padding-bottom: 10px;
-}
-.page-image2 {
-  width: 100%;
-  height: 50%;
-  align-self: center;
-  object-fit: cover;
-}
-.page-image3 {
-  width: 25%;
-  height: 100%;
-  align-self: center;
-  object-fit: cover;
-  padding-right: 20px;
-}
+
 </style>
