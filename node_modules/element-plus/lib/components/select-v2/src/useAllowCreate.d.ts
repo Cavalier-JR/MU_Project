@@ -1,6 +1,6 @@
-import type { ISelectProps } from './token';
+import type { ISelectV2Props } from './token';
 import type { Option } from './select.types';
-export declare function useAllowCreate(props: ISelectProps, states: any): {
+export declare function useAllowCreate(props: ISelectV2Props, states: any): {
     createNewOption: (query: string) => void;
     removeNewOption: (option: Option) => void;
     selectNewOption: (option: Option) => void;

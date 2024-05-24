@@ -66,7 +66,7 @@
   </div>
 
   <div v-else>
-  <el-container style="background-color:#fdfcff;">
+  <el-container class="center-container2" style="background-color:#fdfcff;">
     <el-header class="my_el-header">
       <div class="header-content">
         <h1 class="glowing-title">文本遗忘</h1>
@@ -106,9 +106,10 @@
           <div v-show="!isProgressVisible1">
             <div v-if="isSubmitted">
               <div v-if="showModelOutput1">
+                <div class="animated lightSpeedInLeft"  >
                 <el-form-item label="输入想要遗忘的敏感信息" style="margin-top:40px" v-if="showSensitiveInfoSection">
                 <el-input
-                  style="font-size:15px"
+                 class="custom-sensitive-input"
                   placeholder="输入敏感信息"
                   v-model="formData1.sensitiveInfo"
                   clearable
@@ -118,35 +119,14 @@
                   </template>
                 </el-input>
               </el-form-item>
+            </div>
+           
               
-              <el-form-item label="隐私替换词" v-if="showSensitiveInfoSection && showOptions" style="margin-top: 40px;">
-                <el-radio-group v-model="selectedOption" class="radio-group">
-                  <el-radio :label="option" v-for="(option, index) in replacementOptions" :key="index" class="radio-item">
-                    {{ option }}
-                  </el-radio>
-                </el-radio-group>
-              </el-form-item>
-              <el-form-item v-if="showSensitiveInfoSection && showOptions">
-                <el-button 
-                  class="custom-button" 
-                  @click="addTextToPanelAndNotify"
-                  :loading="loading_flag" 
-                >
-                  进行遗忘
-                </el-button>
-              </el-form-item>
-              <div class="demo-progress2"  v-show="isProgressVisible2">
-                <el-progress
-                  :percentage="100"      
-                  :indeterminate="true"
-                  :duration="5"
-                > 
-                  <span> 正在遗忘中... </span>
-                </el-progress>
-              </div>
               <template v-if="showTestPromptInput">
-              <el-form-item style="margin-top:150px">
-                <template #label>
+                 <!-- <div class="animated2 bounceInDown"> -->
+              <el-form-item style="margin-top:150px" >
+        
+                <template #label >
                           <span style="color:#7986CB;">请输入测试提示词</span>
                 </template>
                 <el-input
@@ -161,7 +141,9 @@
                   :loading="loading_flag2" class="submit-button"> 
                    提交
                  </el-button>
+               
               </el-form-item>
+            <!-- </div> -->
               <div class="demo-progress1" v-show="isProgressVisible3">
                 <el-progress
                   :percentage="100"      
@@ -173,13 +155,22 @@
                 </el-progress>
             </div>
             </template>
+            <el-form-item v-if="showSensitiveInfoSection && showOptions" class="animated1 slideInDown" >
+                <el-button 
+                  class="custom-button" 
+                  @click="addTextToPanelAndNotify"
+                  :loading="loading_flag" 
+                >
+                  进行遗忘
+                </el-button>
+              </el-form-item>
 
             </div>
             </div>
           </div>
           </el-form>
         </el-col>
-        <el-col :span="12" v-if="Load1" style="z-index: 3;">
+        <el-col :span="12" v-if="Load1" >
             <el-form-item 
               label="遗忘前输出"
 
@@ -195,33 +186,42 @@
               ></el-input>
             </el-form-item>
           <el-form :model="formData2">
-          
-            <div v-if="isSubmitted">
-             <!-- 右侧面板模型输出下方添加按钮 -->
-            <div v-if="Load2" >
+            <el-form-item label="隐私替换词"  class="animated1 slideInDown" v-if="showSensitiveInfoSection && showOptions" style="margin-top: 40px ; ">
+                <el-radio-group v-model="selectedOption" class="radio-group">
+                  <el-radio :label="option" v-for="(option, index) in replacementOptions" :key="index" class="radio-item">
+                    {{ option }}
+                  </el-radio>
+                </el-radio-group>
+              </el-form-item>
+            
+
+            <div v-if="Load2" style="z-index: 8;position: relative;">
               <el-form-item          
-                style="margin-top:150px;"
+                style="margin-top:150px"
+
               >
-              <template #label>
-                  <span style="color:#7986CB;">遗忘后输出</span>
+                <template #label>
+                  <span style="color:#7986CB;" class="animated2 bounceInDown">遗忘后输出</span>
                 </template>
                 <el-input
-                style="font-size:15px; z-index: 9;"
+                  class="animated2 bounceInDown"
+                  style="font-size:15px; z-index: 9;"
                   type="textarea"
                   :autosize="{ minRows: 3, maxRows: 20}"
                   placeholder="这里是模型的输出"
                   v-model="formData2.modelOutput2"
                   readonly="true"
                 ></el-input>
-              </el-form-item>
+              </el-form-item>             
+              <div class="animated2 bounceInDown">
               <el-button class="AnotherUnlearn"  @click="resetToInitial">继续进行遗忘</el-button>
+              </div>
             </div>
-           </div>
           </el-form>
         </el-col>
       </el-row>
     </el-main>
-    <div v-if=" showBorder">
+    <div v-if=" showBorder" class="animated2 bounceInDown"  >
       <div class="login">
       <div class="lightline"></div>
       <ol>
@@ -238,7 +238,15 @@
   </div>
   </el-container>
 </div >
-
+<div class="demo-progress2" v-show="isProgressVisible2">
+    <el-progress
+      :percentage="100"      
+      :indeterminate="true"
+      :duration="5"
+    > 
+      <span> 正在遗忘中... </span>
+    </el-progress>
+  </div>
 </template>
 
 
@@ -501,7 +509,14 @@ setup() {
   display: block;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 85vh; 
+  flex-direction: column;
+}
+.center-container2 {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  height: 85vh; 
   flex-direction: column;
 }
 
@@ -553,7 +568,8 @@ setup() {
 
 .custom-button {
   padding: 20px 20px !important;
-  margin-left: 40% !important;
+  margin-top: 120px;
+  margin-left: 90% !important;
   font-size: 28px !important;
   background-color: #2da7bdc5 !important;
   border-radius: 10px !important;
@@ -587,7 +603,7 @@ setup() {
   border-radius: 4px;
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
   color: #FFFFFF;
-  z-index: 10; /* 设置一个足够大的 z-index 值以确保按钮显示在上面 */
+  z-index: 1000 !important; /* 设置一个足够大的 z-index 值以确保按钮显示在上面 */
   cursor: pointer;
   display: block;
   font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -612,7 +628,8 @@ setup() {
   box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
   color: #FFFFFF;
   cursor: pointer;
-
+position:relative;
+z-index: 1000;
   display: block;
   font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px;
@@ -661,8 +678,8 @@ setup() {
   font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 20px !important;
   line-height: 50%;
-  margin-left: 48%;
-  margin-right: auto;
+  margin-left: 78%;
+
   margin-top: 10px;
   padding: 12px 19px; /* 调整padding以确保文本垂直居中 */
   text-align: center;
@@ -714,10 +731,9 @@ setup() {
     margin: auto;
   }
   .demo-progress2{
-    margin-top: 300px; /* 可选：设置顶部边距 */
-    margin-bottom: 15px;
-    max-width: 600px;
-    margin: auto;
+    margin-top: -220px;
+    margin-left:310px;
+    max-width: 800px;
   }
   .my_button {
     text-align: center;
@@ -736,7 +752,9 @@ setup() {
   margin-top:-300px;
   height: 80%;
 }
- 
+
+
+
 ol li {
   border: 1px solid rgba(13, 2, 16, 0.964);
   border-width: 2px;
@@ -744,15 +762,19 @@ ol li {
   /* 宽高和相对定位是一定要给的,因为这会影响.animate-border子元素的定位 */
   position: relative;
   width:97%;
+  z-index: 1;
   margin:auto;
   height: 280px;
+  pointer-events: none;
   overflow: hidden;
   /* 利用伪元素和两个i元素产生4条线 */
   .animate-border {
     position: absolute;
     top: 0px;
+    z-index: 1;
     width: 100%;
     height: 100%;
+    pointer-events: none;
     &::before,
     &::after {
       content: "";
@@ -906,5 +928,106 @@ ol li {
     text-shadow: 0 0 10px #cdc8d6, 0 0 20px #cdc8d6, 0 0 30px #cdc8d6, 0 0 50px #cdc8d6, 0 0 60px #cdc8d6;
   }
 }
+.animated {
+    z-index: 1;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
 
+@keyframes lightSpeedInLeft {
+    from {
+        transform: translate3d(-100%, 0, 0) skewX(30deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: skewX(-20deg);
+        opacity: 1;
+    }
+
+    80% {
+        transform: skewX(5deg);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.lightSpeedInLeft {
+    animation-name: lightSpeedInLeft;
+    animation-timing-function: ease-out;
+}
+
+.animated1 {
+    z-index: 1;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -20%, 0);
+        visibility: visible;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInDown {
+    animation-name: slideInDown;
+    z-index: 1;
+}
+
+.animated2 {
+    z-index: 1 !important;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+
+}
+
+@keyframes bounceInDown {
+    from,
+    15%,
+    30%,
+    45%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -3000px, 0) scaleY(3);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0) scaleY(0.9);
+    }
+
+    30% {
+        transform: translate3d(0, -10px, 0) scaleY(0.95);
+    }
+
+    45% {
+        transform: translate3d(0, 5px, 0) scaleY(0.985);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.bounceInDown {
+    z-index: 1 !important;
+    animation-name: bounceInDown;
+}
+
+
+.custom-sensitive-input .el-input__inner {
+  font-size: 15px;
+  width: 150px !important;
+}
 </style>

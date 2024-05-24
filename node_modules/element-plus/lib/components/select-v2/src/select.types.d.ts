@@ -1,18 +1,12 @@
-export declare type OptionCommon = {
-    label: string;
-};
-export declare type Option<T = any> = OptionCommon & {
+declare type OptionCommon = Record<string, any>;
+export declare type Option = OptionCommon & {
     created?: boolean;
-    value: T;
-    [prop: string]: any;
 };
-export declare type OptionGroup<T = any> = OptionCommon & {
-    options: Array<T>;
-    [prop: string]: any;
-};
-export declare type OptionType<T = any> = Option<T> | OptionGroup<T>;
+export declare type OptionGroup = OptionCommon;
+export declare type OptionType = Option | OptionGroup;
 export declare type OptionItemProps = {
     item: any;
     index: number;
     disabled: boolean;
 };
+export {};

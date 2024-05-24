@@ -5,4 +5,5 @@ export declare function useOption(props: any, states: any): {
     itemSelected: import("vue").ComputedRef<boolean>;
     isDisabled: import("vue").ComputedRef<any>;
     hoverItem: () => void;
+    updateOption: (query: string) => void;
 };
