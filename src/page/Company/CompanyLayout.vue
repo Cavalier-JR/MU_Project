@@ -62,8 +62,8 @@
             text-color="#fff"
             active-text-color="#5C3317"
           >
-            <el-menu-item index="1" class="fr">信安公司</el-menu-item>
-            <el-menu-item index="2" class="fr"click="exitLogin">退出登陆</el-menu-item>
+            <el-menu-item index="1">信安公司</el-menu-item>
+            <el-menu-item index="2" @click="exitLogin">退出登陆</el-menu-item>
           </el-menu>
           </div>
         </el-header>

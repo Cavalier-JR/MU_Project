@@ -1,7 +1,7 @@
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  <el-card style="max-width: 1000px; margin: 0 auto;">
+  <el-card style="max-width: 1200px; margin: 0 auto;">
     <template #header>
       <div class="card1_title">
         <p style="padding-left: 40px;">您好！欢迎来到遗忘系统</p>
@@ -12,6 +12,8 @@
       <br>
       <br>
       <p style="padding-left: 40px;">有以下三种情况可供您选择，不妨试试吧~ </p>
+      <br>
+      <br>
     </div> 
 
     <div class="card-content" style="display: flex; flex-wrap: wrap; justify-content: space-between;">

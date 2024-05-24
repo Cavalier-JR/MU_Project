@@ -1,21 +1,9 @@
 <template>
-  <div class="flex flex-wrap gap-4 items-center">
-    <font size="4">筛选 ：</font>
-    <el-time-select
-      v-model="value"
-      style="width: 200px"
-      start="08:30"
-      step="00:15"
-      end="18:30"
-      placeholder="时间"
-    /> 
-    <!--这里时间筛选和其他的没对齐，之后再调-->
-  </div>
-  <br>
   <el-table
     border
     ref="multipleTableRef"
     style="width: 100%"
+    sortable
     :data="tableData"
     :row-class-name="tableRowClassName"
     @selection-change="handleSelectionChange"
@@ -205,9 +193,18 @@ const tableData: User[] = [
     acc: '+0.03',
     inf_type: '文本',
     forget_flag: '已遗忘',
-    date: '2024-04-23 18:36:35',
+    date: '2024-04-27 18:36:35',
     forget_content: 'Dating on July 14nd',
     cost_time: '1.87s',
+    user: 'Johnny',
+  },
+  {
+    acc: '+0.02',
+    inf_type: '文本',
+    forget_flag: '已遗忘',
+    date: '2024-04-23 09:17:26',
+    forget_content: 'Go to the London hospital',
+    cost_time: '1.36s',
     user: 'Johnny',
   },
 ]

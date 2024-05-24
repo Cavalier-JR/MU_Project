@@ -24,25 +24,31 @@
           </el-card>
           <br>
           <br>
-          <div class="select"> 
-            <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" 
-            style="width: 190px" clearable :show-all-levels="false" placeholder="请选择需要遗忘的类别" collapse-tags/>
-            <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" class="my_button"> 选择 </el-button>
+          <div style="width: 100%;height: 60px;"> 
+            <p style="margin: auto;width: 50%;">
+              <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" 
+              style="width: 190px" clearable :show-all-levels="false" 
+              placeholder="请选择需要遗忘的类别" collapse-tags/>
+              <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" 
+              class="my_button"> 选择 </el-button>
+            </p>
           </div> 
-          <div class="select"> 
-            <el-select class="select_area" v-model="value2" placeholder="请选择你的遗忘方法" style="width: 190px" v-show="isMethodVisible">
-              <el-option
-                v-for="item in options2"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-                :disabled="item.disabled"
-              />
-            </el-select>
-            <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible" 
-            :loading="loading_flag" class="my_button"> 
-              遗忘 
-            </el-button>
+          <div style="width: 100%;height: 60px;" v-show="isMethodVisible"> 
+            <p style="margin: auto;width: 50%;">
+              <el-select v-model="value2" placeholder="请选择你的遗忘方法" style="width: 190px">
+                <el-option
+                  v-for="item in options2"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                  :disabled="item.disabled"
+                />
+              </el-select>
+              <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible" 
+              :loading="loading_flag" class="my_button"> 
+                遗忘 
+              </el-button>
+            </p>
           </div> 
           <div class="successNotify"> 
             <el-result
@@ -53,11 +59,11 @@
             </el-result>
           </div> 
           <br>
-          <div class="pic_tag" v-show="isPicVisible">
-            <span>
-              <el-icon style="margin-left: 20px;font-size: 17px"><PictureFilled /></el-icon>
+          <div style="width: 100%;" v-show="isPicVisible">
+            <p style="margin:auto auto;width: 30%;height: 30px;">
+              <el-icon style="font-size: 17px"><PictureFilled /></el-icon>
                 <span style="font-size: 15px;margin-left: 5px;"> 类别数据集展示 </span>
-            </span>
+            </p>
           </div>
           <div class="image_box" v-show="isPicVisible">
             <div class="item"> <img src="../../assets/pic/image_0.png" alt="示例图片" /> </div>
@@ -270,7 +276,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 550,
+    offset: 548,
   });
 };
 
@@ -505,7 +511,7 @@ const options2 = [
   margin-bottom: 15px; /* 可选：设置底部边距 */
 }
 .my_button {
-  margin-left: 50px;
+  margin-left: 20px;
   text-align: center;
 }
 .demo-progress {
@@ -578,9 +584,6 @@ const options2 = [
 .item:last-child {
   margin-right: 0; /* 最后一个项目不需要右侧间隔 */
   margin-bottom: 0; /* 最后一行项目不需要下侧间隔 */
-}
-.pic_tag {
-  margin-bottom: 15px;
 }
 .successNotify {
   margin-top: 15px;

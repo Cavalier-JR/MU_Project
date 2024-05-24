@@ -3,7 +3,7 @@
     <el-container class="box">
       <!-- 左侧菜单栏 -->
       <el-aside class="el-aside">
-        <h1 class="logoBox">遗忘学习系统</h1>
+        <h1 class="logoBox">欢迎您！</h1>
         <el-menu
           active-text-color="#97FFFF"
           background-color="#27B2BD"
@@ -63,8 +63,8 @@
             text-color="#fff"
             active-text-color="#5C3317"
           >
-            <el-menu-item index="1" class="fr">小明</el-menu-item>
-            <el-menu-item index="2" class="fr" @click="exitLogin">退出登陆</el-menu-item>
+            <el-menu-item index="1">小明</el-menu-item>
+            <el-menu-item index="2" @click="exitLogin">退出登陆</el-menu-item>
           </el-menu>
           </div>
         </el-header>
@@ -110,9 +110,9 @@ export default {
     return {
       //当前选项卡
       activeTabName: "UserHome",
+      //默认展开图片遗忘下的二级菜单
+      activeIndex: ['图片遗忘'],
       //需要显示的标签数组
-      
-      activeIndex: ['Class_unlearn','Pic_partially'],
       editableTabs: [
         {
           title: "首页",
@@ -235,8 +235,8 @@ export default {
 .logoBox {
   position: absolute;
   top: 18px;
-  left: 30px;
-  font-size: 24px;
+  left: 50px;
+  font-size: 22px;
   color: #fff;
 }
 
@@ -270,7 +270,7 @@ export default {
 }
 
 .el-aside {
-  width: 240px;
+  width: 180px;
   background: #545c64;
   padding-top: 58px;
 }

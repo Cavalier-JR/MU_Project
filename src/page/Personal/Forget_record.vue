@@ -1,33 +1,4 @@
 <template>
-  <div class="flex flex-wrap gap-4 items-center">
-    <font size="4">筛选 ：</font>
-    <!-- <el-select v-model="value" placeholder="信息类型" style="width: 200px">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
-    </el-select>
-    <el-select v-model="value" placeholder="是否遗忘" style="width: 200px">
-      <el-option
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
-    </el-select> -->
-    <el-time-select
-      v-model="value"
-      style="width: 200px"
-      start="08:30"
-      step="00:15"
-      end="18:30"
-      placeholder="时间"
-    /> 
-    <!--这里时间筛选和其他的没对齐，之后再调-->
-  </div>
-  <br>
   <el-table
     border
     ref="multipleTableRef"

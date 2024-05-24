@@ -46,16 +46,6 @@ const routes = [
                 name: "forget_record",
                 component: () => import("../page/Personal/Forget_record.vue"),
             },
-            {
-                path: "Test", // 用户端-遗忘记录
-                name: "test",
-                component: () => import("../page/Personal/test.vue"),
-            },
-            {
-                path: "Test2", // 用户端-遗忘记录
-                name: "test2",
-                component: () => import("../page/Personal/test2.vue"),
-            },
         ],
     },
     {

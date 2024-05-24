@@ -1,9 +1,12 @@
 <template>
   <div class="loginbody">
-    <div class="login_title"> 
-      <h2 class="logintext">欢迎来到遗忘学习系统</h2>
+    <div style="width: 100%;height: 100%;">
+    <p style="margin:auto auto;width: 27%;height: 50%;">
+    <div style="margin:auto auto;width: 100%;height: 65%;"> </div>
+    <div style="margin:auto auto;width: 100%;height: 18%;"> 
+      <h2 class="logintext"> 欢迎来到遗忘学习系统 </h2>
     </div>
-    <div class="logindata">
+    <div style="margin:auto auto;width: 100%;height: 17%;">
       <el-tabs stretch="true" class="custom-tabs-label">
         <el-tab-pane>
           <template #label>
@@ -70,8 +73,10 @@
           </div>
         </el-tab-pane>
       </el-tabs>
+    </div>
+    </p>
+    </div>
   </div>
-</div>
 </template>
 
 <script setup>
@@ -112,28 +117,10 @@ const CompanySet = () => {
 .loginbody {
   width: 100%;
   height: 100%;
-  /* 主层必须为相对定位,否则伪元素的图片将不符合预期 */
-  position: relative;
-}
-
-.loginbody:before {
-  /* 下面4行代码确保背景图覆盖主层 */
   background: url(../assets/login/bg.png);
   background-size: cover;
-  width: 100%;
-  height: 100%;
-  /* 插入空内容，必须要的样式 */
-  content: '';
-  /* 绝对定位，确保背景图起点在主层的0,0位置 */
-  position: absolute;
-  left: 0;
-  top: 0;
-  /*避免遮盖其他元素*/
-  z-index: -1;
-  /* 滤镜效果 */
-  -webkit-filter: opacity(50%);
-  filter: opacity(100%);
 }
+
 .logintext {
   line-height: 40px;
   text-align: center;
@@ -141,23 +128,11 @@ const CompanySet = () => {
   font-weight: bolder;
   color: white;
   text-shadow: 2px 2px 4px #000000;
-  position: fixed;
-  top: -14%;
-  left: 14%;
 }
 .login_title {
-  width: 500px;
-  position: fixed;
-  top: 37%;
-  left: 53%;
   transform: translate(-50%, -50%);
 }
 .logindata {
-  width: 260px;
-  height: 500px;
-  position: fixed;
-  top: 78%;
-  left: 50%;
   transform: translate(-50%, -50%);
 }
 .tool {

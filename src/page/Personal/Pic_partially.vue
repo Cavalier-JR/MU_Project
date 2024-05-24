@@ -20,11 +20,11 @@
           </div> -->
         </el-upload>
       </div>
-      <div>
-        <span class="my_tag">
+      <div style="width: 100%;">
+        <p class="my_tag">
           <el-icon><Notification /></el-icon> 
           <span> 注意：请从本地上传 </span>
-        </span>
+        </p>
       </div>
     </el-col>
     <el-col :span="8">
@@ -56,37 +56,42 @@
     <el-col :span="8">
       <br v-show="isLoad">
       <div v-show="isLoad">
-        <img style="width: 80%;height: 65%;margin-left:35px;margin-bottom:30px;"
+        <img style="width: 100%;height: 80%;margin: auto;"
         src="../../assets/load_file.png" alt="" />
       </div>
       <br>
       <br>
-      <div> 
-        <el-select class="select_area" v-model="value" placeholder="请选择你的遗忘方法" style="width: 170px">
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-            :disabled="item.disabled"
-          />
-        </el-select>
-        <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
-        :loading="loading_flag" class="my_button"> 
-          遗忘 
-        </el-button>
+      <div style="width: 100%;"> 
+        <p style="margin: 0 auto;width: 80%;">
+          <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+              :disabled="item.disabled"
+            />
+          </el-select>
+          <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
+          :loading="loading_flag" class="my_button"> 
+            遗忘 
+          </el-button>
+        </p>
       </div> 
+      <div style="margin-bottom:310px;" v-show="tianchong"></div>
       <br v-show="isProgressVisible">
       <br v-show="isProgressVisible">
-      <div class="demo-progress" v-show="isProgressVisible">
-        <el-progress
-          :percentage="100"      
-          :status="true"
-          :indeterminate="indeterminate_flag"
-          :duration="5"
-        > 
-          <span> 正在遗忘中... </span>
-        </el-progress>
+      <div style="width: 100%;" v-show="isProgressVisible">
+        <p class="demo-progress">
+          <el-progress
+            :percentage="100"      
+            :status="true"
+            :indeterminate="true"
+            :duration="5"
+          > 
+            <span> 正在遗忘中... </span>
+          </el-progress>
+        </p>
       </div>
       <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
     </el-col>
@@ -109,8 +114,7 @@ import { ElMessageBox, ElMessage } from "element-plus"
 const loading_flag = ref(false);
 const radio = ref(0) //默认不选按钮
 const pieChart = ref(null);
-const activeNames = ref(['1', '2'])
-const indeterminate_flag = ref(true)
+const tianchong = ref(true);
 const completed = ref(0)
 
 const handleChange2 = (val: string[]) => {
@@ -148,7 +152,6 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 558,
   });
 };
 
@@ -162,6 +165,7 @@ const loadSuccess = () => {
       message: '已成功上传图片',
       type: 'success',
     });
+    tianchong.value = false;
   }, 4000)
 }
 
@@ -259,10 +263,8 @@ const options = [
     margin-left: 30px;
   }
   .demo-progress {
-    margin-top: 10px; /* 可选：设置顶部边距 */
-    margin-bottom: 10px;
-    margin-left: 50px;
-    max-width: 600px;
+    width: 380px;
+    margin: 0 auto;
   }
   .text-bottom {
     margin-top: 20px; /* 可选：设置顶部边距 */
@@ -287,12 +289,13 @@ const options = [
   }
   .my_tag{
     font-size: 1.3rem;
-    margin-left: 108px;
+    width: 150px;
+    margin: 0 auto;
   }
-  .select_area {
+  /* .select_area {
     display: inline-block;
-    margin-left: 35px;
-  }
+    margin-left: 40px;
+  } */
   .my_el-header {
     background-color: #f2f2f3;
     color: black;
