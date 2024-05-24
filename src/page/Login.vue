@@ -1,7 +1,9 @@
 <template>
   <div class="loginbody">
-    <div class="logindata">
+    <div class="login_title"> 
       <h2 class="logintext">欢迎来到遗忘学习系统</h2>
+    </div>
+    <div class="logindata">
       <el-tabs stretch="true" class="custom-tabs-label">
         <el-tab-pane>
           <template #label>
@@ -16,7 +18,7 @@
                 <el-input
                   v-model="username"
                   clearable
-                  style="margin-top: 15px;"
+                  style="margin-top: 10px;"
                   placeholder="请输入账号"
                 ></el-input>
               </el-form-item>
@@ -24,7 +26,7 @@
                 <el-input
                   v-model="password"
                   clearable
-                  style="margin-top: 15px;margin-bottom: 5px;"
+                  style="margin-top: 10px;margin-bottom: 5px;"
                   placeholder="请输入密码"
                   show-password
                 ></el-input>
@@ -48,7 +50,7 @@
                 <el-input
                   v-model="username"
                   clearable
-                  style="margin-top: 15px;"
+                  style="margin-top: 10px;"
                   placeholder="请输入账号"
                 ></el-input>
               </el-form-item>
@@ -56,7 +58,7 @@
                 <el-input
                   v-model="password"
                   clearable
-                  style="margin-top: 15px;margin-bottom: 5px;"
+                  style="margin-top: 10px;margin-bottom: 5px;"
                   placeholder="请输入密码"
                   show-password
                 ></el-input>
@@ -76,7 +78,7 @@
 import { useRouter, useRoute } from "vue-router";
 const $router = useRouter();
 let username = "admin";
-let password = "1234";
+let password = "123456789";
 
 const UserSet = () => {
   localStorage.setItem("isLogin", 1);
@@ -133,9 +135,9 @@ const CompanySet = () => {
   filter: opacity(100%);
 }
 .logintext {
-  line-height: 50px;
+  line-height: 40px;
   text-align: center;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bolder;
   color: white;
   text-shadow: 2px 2px 4px #000000;
@@ -143,11 +145,18 @@ const CompanySet = () => {
   top: -14%;
   left: 14%;
 }
-.logindata {
-  width: 400px;
-  height: 400px;
+.login_title {
+  width: 500px;
   position: fixed;
-  top: 70%;
+  top: 35%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+}
+.logindata {
+  width: 260px;
+  height: 500px;
+  position: fixed;
+  top: 89%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

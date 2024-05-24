@@ -8,9 +8,10 @@
           active-text-color="#97FFFF"
           background-color="#27B2BD"
           class="el-menu-vertical-demo"
-          default-active="2"
+          :default-openeds="activeIndex"
           text-color="#fff"
           :router="true"
+          :unique-opened="true"
         >
           <template v-for="item in asideMenu">
             <!-- 两级菜单 -->
@@ -119,6 +120,8 @@ export default {
       //当前选项卡
       activeTabName: "UserHome",
       //需要显示的标签数组
+      
+      activeIndex: ['Class_unlearn','Pic_partially'],
       editableTabs: [
         {
           title: "首页",
@@ -235,8 +238,7 @@ export default {
         });
     },
   },
-};
-</script>
+};</script>
 
 <style scoped>
 .logoBox {
