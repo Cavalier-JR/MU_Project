@@ -2,36 +2,26 @@
   <el-container>
   <el-header class="my_el-header"> 部分遗忘 </el-header>
   <el-main>
-  <el-row :gutter="10" >
-    <el-col :span="8" >
+  <el-row :gutter="10" justify="center">
+    <el-col :span="8">
       <div>
         <el-upload
           align="center"
-          ref="upload"
-          action="uploadImg"
           accept=".txt, .txts, .pdf, .docx,.xlsx, .xls, .jpg, .jpeg, .png"
-          :on-remove="handleRemove"
-          :on-change="handleImgChange"
-          :file-list="imgList"
-          :on-preview="handlePreview"
-          :http-request="handUploadFile"
-          :before-upload="handleBefore"
           :limit="6"
           multiple
-          :on-exceed="handleExceed"
-          :auto-upload="false"
         >
           <div class="load_button">
-            <el-button size="large" type="primary">点击上传需要遗忘的图片</el-button>
+            <el-button size="large" type="primary" @click="loadSuccess">点击上传需要遗忘的图片</el-button>
           </div>
           
-          <div slot="tip" style="text-align:center;">
-            <!-- 上传附件,大小不超过4M。 -->
-          </div>
+          <!-- <div slot="tip" style="text-align:center;">
+            上传附件,大小不超过4M。
+          </div> -->
         </el-upload>
       </div>
       <div>
-        <span class="tag">
+        <span class="my_tag">
           <el-icon><Notification /></el-icon> 
           <span> 注意：请从本地上传 </span>
         </span>
@@ -41,7 +31,11 @@
       <el-card class="box-card">
         <div style="font-size: 20px;text-align:center;">
           <p> 您上传想要遗忘的图片数 </p>
-          <el-icon style="color: gray;margin-top:20px;margin-right:10px;"><Picture /></el-icon>345
+          <div v-show="isForget">
+            <el-icon style="color: gray;margin-top:20px;margin-right:10px;">
+            <Picture /></el-icon>
+            345
+          </div>
         </div>
       </el-card>
     </el-col>
@@ -49,41 +43,21 @@
       <el-card class="box-card">
 			  <div style="font-size: 20px;text-align:center;">
           <p> 您已完成遗忘图片个数 </p>
-          <el-icon style="color: green;margin-top:20px;margin-right:10px;"> <Check /> </el-icon> {{completed}}
+          <div v-show="isForget">
+            <el-icon style="color: green;margin-top:20px;margin-right:10px;"> 
+              <Check /> </el-icon> 
+              {{completed}}
+          </div>
         </div>
       </el-card>
     </el-col>
   </el-row>
   <el-row justify="center">
     <el-col :span="8">
-      <div>
-        <el-collapse v-model="activeNames" @change="handleChange2">
-          <el-collapse-item title="文件夹" name="1">
-            <div>
-              animal_fold
-            </div>
-            <div>
-              vehicle_fold
-            </div>
-            <div>
-              pic_fold
-            </div>
-          </el-collapse-item>
-          <el-collapse-item title="单个图片" name="2">
-            <div>
-              cat1.png
-            </div>
-            <div>
-              my_dog.jpg
-            </div>
-            <div>
-              cat2.jpg
-            </div>
-            <div>
-              bike.png
-            </div>
-          </el-collapse-item>
-        </el-collapse>
+      <br v-show="isLoad">
+      <div v-show="isLoad">
+        <img style="width: 80%;height: 65%;margin-left:35px;margin-bottom:30px;"
+        src="../../assets/load_file.png" alt="" />
       </div>
       <br>
       <br>
@@ -117,7 +91,7 @@
       <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
     </el-col>
     <el-col :span="16">
-      <div id="pieChart" ref="pieChart" style="margin-top: 50px; margin-left: 200px; width: 500px; height: 500px"></div>
+      <div v-show="isForget" id="pieChart" ref="pieChart" style="margin-top: 50px; margin-left: 150px; width: 500px; height: 500px"></div>
     </el-col>
   </el-row>
   </el-main>
@@ -137,7 +111,7 @@ const radio = ref(0) //默认不选按钮
 const pieChart = ref(null);
 const activeNames = ref(['1', '2'])
 const indeterminate_flag = ref(true)
-const completed = ref(198)
+const completed = ref(0)
 
 const handleChange2 = (val: string[]) => {
   console.log(val)
@@ -158,6 +132,7 @@ function Forget_Button_Click() {
         isCosttimeVisible.value = true;
         isProgressVisible.value = false;
         loading_flag.value = false;
+        isForget.value = true;
         completed.value = 345;
         Success_Notify();
       }, 5000)
@@ -173,13 +148,28 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 550,
+    offset: 558,
   });
 };
+
+const loadSuccess = () => {
+  console.log("用户已点击按钮");
+  let timer: number | null = setTimeout(() => {
+    console.log("用户已上传图片");
+    isLoad.value = true;
+    ElMessage({
+      showClose: true,
+      message: '已成功上传图片',
+      type: 'success',
+    });
+  }, 4000)
+}
 
 const value = ref([])
 const isCosttimeVisible = ref(false);
 const isProgressVisible = ref(false);
+const isLoad = ref(false);
+const isForget = ref(false);
 
 const handleChange = (value) => {
   console.log(value)
@@ -258,7 +248,6 @@ const options = [
     text-align: center; /* 让文本居中 */
     font-size: 25px; /* 设置字体大小 */
     margin-top: 3px; /* 可选：设置顶部边距 */
-    margin-bottom: 30px; /* 可选：设置底部边距 */
   }
   .function_select{
     text-align: center;
@@ -270,14 +259,14 @@ const options = [
     margin-left: 30px;
   }
   .demo-progress {
-    margin-top: 100px; /* 可选：设置顶部边距 */
-    margin-bottom: 15px;
+    margin-top: 10px; /* 可选：设置顶部边距 */
+    margin-bottom: 10px;
+    margin-left: 50px;
     max-width: 600px;
-    margin: auto;
   }
   .text-bottom {
     margin-top: 20px; /* 可选：设置顶部边距 */
-    margin-left: 135px;
+    margin-left: 105px;
     text-align: center;
     font-size: 20px; /* 设置字体大小 */
   }
@@ -296,13 +285,13 @@ const options = [
     max-width: 300px;
     background-color:#b9f4ee;
   }
-  .tag{
+  .my_tag{
     font-size: 1.3rem;
-    margin-left: 128px;
+    margin-left: 108px;
   }
   .select_area {
     display: inline-block;
-    margin-left: 50px;
+    margin-left: 35px;
   }
   .my_el-header {
     background-color: #f2f2f3;

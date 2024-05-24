@@ -51,6 +51,11 @@ const routes = [
                 name: "test",
                 component: () => import("../page/Personal/test.vue"),
             },
+            {
+                path: "Test2", // 用户端-遗忘记录
+                name: "test2",
+                component: () => import("../page/Personal/test2.vue"),
+            },
         ],
     },
     {

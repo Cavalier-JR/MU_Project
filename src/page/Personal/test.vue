@@ -1,26 +1,26 @@
 <template>
-  <div>
-    <el-button type="text" @click="dialogVisible = true">打开嵌套图片的 Dialog</el-button>
-  
-    <el-dialog title="图片展示" :visible.sync="dialogVisible">
-    <!-- 使用自定义模板插槽来显示图片 -->
-      <template slot="title">
-      <!-- 图片显示区域 -->
-        <div style="display: flex; justify-content: space-around;">
-          <img src="../../assets/before_UL.png" alt="图片1" style="max-width: 100%; height: auto;" />
-          <img src="../../assets/after_UL.png" style="max-width: 100%; height: auto;" />
-        </div>
-      </template>
-    </el-dialog>
-  </div>
+  <el-button @click="dialogVisible = true">
+    Click to open the Dialog
+  </el-button>
+
+  <el-dialog
+    v-model="dialogVisible"
+    title="投毒防护效果图"
+    width="40%"
+    draggable="true"
+  >
+    <div style="text-align: center;">
+      <p style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;"> 投毒防护前 </p>"
+      <img src="../../assets/before_UL.png" style="width: 60%;height: 60%;" />
+      <p style="font-size: 20px;margin-top: 5px;margin-bottom: 5px;"> 投毒防护后 </p>"
+      <img src="../../assets/after_UL.png" style="width: 60%;height: 60%;" />
+    </div>
+  </el-dialog>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      dialogVisible: false,
-    }
-  }
-};
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { ElMessageBox } from 'element-plus'
+
+const dialogVisible = ref(false)
 </script>

@@ -54,7 +54,7 @@
       </el-card>
     </div>
 
-    <div style="margin-bottom:300px;"></div>
+    <div style="margin-bottom:125px;"></div>
 
   </el-card>
   

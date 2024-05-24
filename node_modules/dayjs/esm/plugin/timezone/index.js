@@ -120,9 +120,7 @@ export default (function (o, c, d) {
       timeZone: timezone
     });
     var diff = Math.round((date - new Date(target)) / 1000 / 60);
-    var ins = d(target, {
-      locale: this.$L
-    }).$set(MS, this.$ms).utcOffset(-Math.round(date.getTimezoneOffset() / 15) * 15 - diff, true);
+    var ins = d(target).$set(MS, this.$ms).utcOffset(-Math.round(date.getTimezoneOffset() / 15) * 15 - diff, true);
 
     if (keepLocalTime) {
       var newOffset = ins.utcOffset();
@@ -151,9 +149,7 @@ export default (function (o, c, d) {
       return oldStartOf.call(this, units, startOf);
     }
 
-    var withoutTz = d(this.format('YYYY-MM-DD HH:mm:ss:SSS'), {
-      locale: this.$L
-    });
+    var withoutTz = d(this.format('YYYY-MM-DD HH:mm:ss:SSS'));
     var startOfWithoutTz = oldStartOf.call(withoutTz, units, startOf);
     return startOfWithoutTz.tz(this.$x.$timezone, true);
   };

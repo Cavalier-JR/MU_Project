@@ -148,15 +148,15 @@ const CompanySet = () => {
 .login_title {
   width: 500px;
   position: fixed;
-  top: 35%;
-  left: 54%;
+  top: 37%;
+  left: 53%;
   transform: translate(-50%, -50%);
 }
 .logindata {
   width: 260px;
   height: 500px;
   position: fixed;
-  top: 89%;
+  top: 78%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

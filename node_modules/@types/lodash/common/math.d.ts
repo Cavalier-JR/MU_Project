@@ -130,7 +130,7 @@ declare module "../index" {
          *
          * var objects = [{ 'n': 1 }, { 'n': 2 }];
          *
-         * _.maxBy(objects, function(o) { return o.n; });
+         * _.maxBy(objects, function(o) { return o.a; });
          * // => { 'n': 2 }
          *
          * // using the `_.property` iteratee shorthand
