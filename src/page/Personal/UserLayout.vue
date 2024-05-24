@@ -64,16 +64,7 @@
             active-text-color="#5C3317"
           >
             <el-menu-item index="1" class="fr">小明</el-menu-item>
-            <el-sub-menu index="2" class="fr">
-              <template #title >
-                <span class="fr">我的工作台</span>
-              </template>
-              <el-menu-item index="2-1">我的消息</el-menu-item>
-              <el-menu-item index="2-2">设置</el-menu-item>
-              <el-menu-item index="2-3" @click="exitLogin"
-                >退出登陆</el-menu-item
-              >
-            </el-sub-menu>
+            <el-menu-item index="2" class="fr" @click="exitLogin">退出登陆</el-menu-item>
           </el-menu>
           </div>
         </el-header>
@@ -261,6 +252,7 @@ export default {
 }
 /* 将消息中心和我的控制台摆放在最右侧 */
 .el-menu--horizontal {
+  margin-top: -2px;
   justify-content: flex-end;
   width:400px;
 }
