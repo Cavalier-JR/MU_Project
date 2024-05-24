@@ -13,11 +13,12 @@ const TableV2Cell = (props, {
     style
   } = props;
   const displayText = ((_a = cellData == null ? void 0 : cellData.toString) == null ? void 0 : _a.call(cellData)) || "";
+  const defaultSlot = vue.renderSlot(slots, "default", props, () => [displayText]);
   return vue.createVNode("div", {
     "class": props.class,
     "title": displayText,
     "style": style
-  }, [slots.default ? slots.default(props) : displayText]);
+  }, [defaultSlot]);
 };
 TableV2Cell.displayName = "ElTableV2Cell";
 TableV2Cell.inheritAttrs = false;

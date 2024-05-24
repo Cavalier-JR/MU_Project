@@ -44,5 +44,7 @@ declare class Node {
     getChildren(forceInit?: boolean): TreeNodeData | TreeNodeData[];
     updateChildren(): void;
     loadData(callback: (node: Node) => void, defaultProps?: TreeNodeLoadedDefaultProps): void;
+    eachNode(callback: (node: Node) => void): void;
+    reInitChecked(): void;
 }
 export default Node;

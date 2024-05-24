@@ -1,31 +1,7 @@
 <template>
   <el-row :gutter="20" style="background-color: rgba(117, 152, 146, 0.542);">
     <el-col :span="14">
-      <el-row style="margin-top:5px;">
-        <el-row class="taskPanel" span="6" style="text-align: center; display: block; flex-direction: column; align-items: center; width: 20%;">
-          <div style="font-size: 20px; font-family: '扁桃体'">模型总数量</div>
-          <div style="display: flex; align-items: center;">
-            <br>
-            <div style="margin-top:10px;font-size: 30px; background-color: rgb(160, 160, 255); height: 30px; width: 100%; border-radius: 10px; display: block; justify-content: center; align-items: center; margin-left: 20px;margin-right: 20px;" >6</div>
-            <!-- <el-button style="margin-top:10px;margin-left: 10px;  font-size: 14px; font-family: '扁桃体';" type="primary">更改模型</el-button> Button beside the text -->
-          </div>
-        </el-row>
 
-        <el-row class="taskPanel" span="5" style="font-size: 15px;display: block; width: 25%;">
-          <div style="font-size:15px;margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已更改模型    /  未更改模型</div> <!-- Add margin for spacing -->
-          <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress> <!-- Customize progress bar -->
-        </el-row>
-
-        <el-row class="taskPanel" style="font-size: 15px;display: block; width: 30%;">
-          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center; ">已完成计划任务数   /    异常任务数</div>
-          <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
-        </el-row>
-
-        <el-row class="taskPanel" style="font-size: 15px; display: block; width: 20.4%;">
-          <div style="margin-bottom: 20px; font-family: '扁桃体'; text-align: center;">已查看   /   未查看</div>
-          <el-progress :percentage="70" color="#13c2c2" text-inside stroke-width="18"></el-progress>
-        </el-row>
-      </el-row>
 
       <el-row :span="8">
         <el-col :span="10">
@@ -37,23 +13,11 @@
         </el-col>
       </el-row>
 
-      <el-row class="echartPanel" style="height: 252px; width: 100%; margin-top: 10px;">
-        <div ref="accuracyChart" style="height: 110%; width: 100%;"></div>
+      <el-row class="echartPanel" style="height: 280px; width: 100%; margin-top: 10px;">
+        <div ref="accuracyChart" style="height: 120%; width: 100%;"></div>
       </el-row>
 
-      <el-row>
-        <div style="width: 100%; height: 100%; background-color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px;"> 
-          <h3 style="font-size: 22px; font-family: '黑体';  font-weight: bold;  margin-left: 10px; margin-top: 10px;">任务执行记录</h3>
-        </div>
-        <el-table :data="tableData" style="width: 100%" class="el-table">
-          <el-table-column prop="taskName" label="任务名"></el-table-column>
-          <el-table-column prop="taskType" label="任务类型"></el-table-column>
-          <el-table-column prop="executionPeriod" label="预计时长"></el-table-column>
-          <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
-          <el-table-column prop="executionTime" label="执行时间"></el-table-column>
-          <el-table-column prop="duration" label="实际用时"></el-table-column>
-        </el-table>
-      </el-row> 
+
     </el-col>
     <el-col :span="10">
       <el-row :span="8"> <!--第二列 第一行-->
@@ -72,19 +36,21 @@
         <div class="echartPanel" id="thirdChart" ref="thirdChart" style="height: 200px; width: 100%; margin-top: 10px;"></div>
       </el-row>
 
-
-      <el-row :span="8" style="margin-bottom: 20px;">
+      <el-row>
         <div style="width: 100%; height: 100%; background-color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px;"> 
-          <h3 style="font-size: 22px; font-family: '黑体'; font-weight: bold; margin-left: 10px; margin-top: 10px;">备份记录</h3>
+          <h3 style="font-size: 22px; font-family: '黑体';  font-weight: bold;  margin-left: 10px; margin-top: 10px;">任务执行记录</h3>
         </div>
-        
-        <el-table :data="tableData2" >
-          <el-table-column class="tableHeader" prop="taskName" label="类型"></el-table-column>
-          <el-table-column class="tableHeader" prop="taskType" label="模型名称"></el-table-column>
-          <el-table-column class="tableHeader" prop="executionPeriod" label="执行时间"></el-table-column>
-          <el-table-column class="tableHeader" prop="executionStatus" label="备份数量"></el-table-column>
-        </el-table>
-      </el-row>
+        <div class="table-container" >
+          <el-table :data="tableData"  class="el-table">
+            <el-table-column prop="taskName" label="任务名"></el-table-column>
+            <el-table-column prop="taskType" label="任务类型"></el-table-column>
+            <el-table-column prop="executionPeriod" label="预计时长"></el-table-column>
+            <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
+            <el-table-column prop="executionTime" label="执行时间"></el-table-column>
+            <el-table-column prop="duration" label="实际用时"></el-table-column>
+          </el-table>
+        </div>
+      </el-row> 
       
     </el-col>
 
@@ -108,20 +74,14 @@ const threeMethodsChart = ref(null);
 const tableData = ref([
   { taskName: 'Task 1', taskType: '文本遗忘', executionPeriod: '1min', executionStatus: '已完成', executionTime: '10:00 AM', duration: '1 hour' },
   { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
 
 ]);
-const tableData2 = ref([
-  { taskName: '文本遗忘', taskType: 'Model X', executionPeriod: '2024-5-12', executionStatus: '2', },
-  { taskName: '类别遗忘', taskType: 'Model Y', executionPeriod: '2024-5-11', executionStatus: '1', },
-  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-10', executionStatus: '1',  },
-  { taskName: '部分遗忘', taskType: 'Model A', executionPeriod: '2024-5-10', executionStatus: '2',  },
-  { taskName: '类别遗忘', taskType: 'Model B', executionPeriod: '2024-5-11', executionStatus: '1',  },
-  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-20', executionStatus: '2',  },
-  { taskName: '文本遗忘', taskType: 'Model C', executionPeriod: '2024-5-15', executionStatus: '1', },
-  { taskName: '部分遗忘', taskType: 'Model Z', executionPeriod: '2024-5-16', executionStatus: '1',  },
-
-]);
-
 onMounted(() => {
   if(cpuchart.value) {
     const myChart = echarts.init(cpuchart.value);
@@ -193,7 +153,7 @@ onMounted(() => {
           {
             data: [
               {
-                value: +(Math.random() * 100).toFixed(2),
+                value: +(40 + Math.random() * 10).toFixed(2),
                
               }
             ]
@@ -293,8 +253,6 @@ onMounted(() => {
           data: [
             {
               value: 70,
-              // name: 'Grade Rating',
-
             }
           ]
         }
@@ -324,12 +282,24 @@ onMounted(() => {
         {
           name: '文本',
           data: [93, 94, 95, 94, 94, 92, 91, 89, 90, 90, 87, 85, 86, 86],
-          type: 'line'
+          type: 'line',
+          lineStyle: {
+            color: 'rgb(0, 0, 255)' // Adjust line color here
+          },
+          itemStyle: {
+            color: 'rgb(0, 0, 255)' // Adjust point color here
+          }
         },
         {
         name: '图像',
           data: [91, 93, 92, 91, 91, 91, 91, 90, 85, 88, 89, 89, 88, 85],
-          type: 'line'
+          type: 'line',
+          lineStyle: {
+            color: 'rgb(0, 255, 0)' // Adjust line color here
+          },
+          itemStyle: {
+            color: 'rgb(0, 255, 0)' // Adjust point color here
+          }
         }
       ]
     };
@@ -338,91 +308,37 @@ onMounted(() => {
 
   if(thirdChart.value) {
     const myChart = echarts.init(thirdChart.value)
-    function randomData() {
-      now = new Date(+now + oneDay);
-      value = value + Math.random() * 2;
-      return {
-        name: now.toString(),
-        value: [
-          [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-          Math.round(value)
-        ]
-      };
-    }
-    let data = [];
-    let now = new Date(2024, 1, 1);
-    let oneDay = 24 * 3600 * 1000;
-    let value = Math.random() * 100;
-    for (var i = 0; i < 30; i++) { // 控制横坐标显示范围
-      data.push(randomData());
-    }
     var option = {
       title: {
         text: '遗忘次数'
       },
-      tooltip: {
-        trigger: 'axis',
-        formatter: function (params) {
-          params = params[0];
-          var date = new Date(params.name);
-          return (
-            date.getDate() +
-            '/' +
-            (date.getMonth() + 1) +
-            '/' +
-            date.getFullYear() +
-            ' : ' +
-            params.value[1]
-          );
-        },
-        axisPointer: {
-          animation: false
-        }
+      xAxis: {
+        type: 'category',
+        data: ['4.1', '4.8', '4.15', '4.22', '5.6', '5.13', '5.20', '5.27', '6.3', '6.10', '6.17', '6.24', '7.1', '7.8']
+      },
+      yAxis: {
+        type: 'value'
       },
       grid: {
         bottom: '10%' // 调整这个值以减少底部空间
       },
-      xAxis: {
-        type: 'time',
-        splitLine: {
-          show: false
-        }
-      },
-      yAxis: {
-        type: 'value',
-        boundaryGap: [0, '100%'],
-        splitLine: {
-          show: false
-        },
-        // min: 100
-      },
       series: [
         {
-          // name: 'cpu',
+          data: [19, 11, 14, 19, 19, 12, 16, 11, 13, 12, 10, 20, 14, 20],
           type: 'line',
-          showSymbol: false,
-          data: data
-        },
-      ],
-    };
-    setInterval(function () {
-      for (var i = 0; i < 1; i++) { // 调节速度
-        data.shift();
-        data.push(randomData());
-        // console.log(randomData());
-      }
-      myChart.setOption({
-        series: [
-          {
-            data: data
+          lineStyle: {
+            color: 'orange' // Adjust line color here
+          },
+          itemStyle: {
+            color: 'orange' // Adjust point color here
           }
-        ]
-      });
-    }, 1000);
+        }
+      ]
+    };
     myChart.setOption(option);
   }
 
-  if (threeMethodsChart.value) {  // 模型情况 第一列第3行
+  if (threeMethodsChart.value) {  // 模型情况 第一列第1行
     const myChart = echarts.init(threeMethodsChart.value);
     const seriesLabel = {
       show: true
@@ -474,6 +390,7 @@ onMounted(() => {
           type: 'bar',
           data: [165, 170, 30],
           label: seriesLabel,
+          // fontSize: 5
         },
         {
           name: '已完成',
@@ -526,15 +443,15 @@ onMounted(() => {
           emphasis: {
             label: {
               show: true,
-              fontSize: 40,
-              fontWeight: 'bold'
+              fontSize: 10,
+              fontWeight: 'bold',
             }
           },
           labelLine: {
             show: false
           },
           data: [
-            { value: 616, name: '正在进行' },
+            { value: 616, name: '正在进行' ,},
             { value: 365, name: '已完成' },
             { value: 36, name: '准确率降低超过阈值' },
           ]
@@ -551,7 +468,13 @@ onMounted(() => {
 
 
 <style scoped>
-
+.table-container {
+  width: 100%;
+  height: 150px;
+  overflow-y: auto;
+  margin-bottom: 10px; 
+  border-bottom-left-radius: 10px;
+}
  .el-table thead {
   background-color: lightgreen;
 }

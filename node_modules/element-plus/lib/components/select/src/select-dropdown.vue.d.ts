@@ -18,8 +18,8 @@ declare const _default: import("vue").DefineComponent<{}, {
         cssVarBlockName: (name: string) => string;
     };
     minWidth: import("vue").Ref<string>;
-    popperClass: import("vue").ComputedRef<string | undefined>;
-    isMultiple: import("vue").ComputedRef<boolean | undefined>;
-    isFitInputWidth: import("vue").ComputedRef<boolean | undefined>;
+    popperClass: import("vue").ComputedRef<string>;
+    isMultiple: import("vue").ComputedRef<boolean>;
+    isFitInputWidth: import("vue").ComputedRef<boolean>;
 }, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, import("vue").EmitsOptions, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{}>>, {}>;
 export default _default;

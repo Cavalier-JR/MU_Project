@@ -1,14 +1,14 @@
-import { createVNode } from 'vue';
+import { renderSlot, createVNode } from 'vue';
 
 const HeaderCell = (props, {
   slots
-}) => {
+}) => renderSlot(slots, "default", props, () => {
   var _a, _b;
-  return slots.default ? slots.default(props) : createVNode("div", {
+  return [createVNode("div", {
     "class": props.class,
     "title": (_a = props.column) == null ? void 0 : _a.title
-  }, [(_b = props.column) == null ? void 0 : _b.title]);
-};
+  }, [(_b = props.column) == null ? void 0 : _b.title])];
+});
 HeaderCell.displayName = "ElTableV2HeaderCell";
 HeaderCell.inheritAttrs = false;
 
