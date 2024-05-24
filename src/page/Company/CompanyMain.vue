@@ -13,8 +13,8 @@
         </el-col>
       </el-row>
 
-      <el-row class="echartPanel" style="height: 252px; width: 100%; margin-top: 10px;">
-        <div ref="accuracyChart" style="height: 110%; width: 100%;"></div>
+      <el-row class="echartPanel" style="height: 280px; width: 100%; margin-top: 10px;">
+        <div ref="accuracyChart" style="height: 120%; width: 100%;"></div>
       </el-row>
 
 
@@ -40,14 +40,16 @@
         <div style="width: 100%; height: 100%; background-color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px;"> 
           <h3 style="font-size: 22px; font-family: '黑体';  font-weight: bold;  margin-left: 10px; margin-top: 10px;">任务执行记录</h3>
         </div>
-        <el-table :data="tableData" style="width: 100%" class="el-table">
-          <el-table-column prop="taskName" label="任务名"></el-table-column>
-          <el-table-column prop="taskType" label="任务类型"></el-table-column>
-          <el-table-column prop="executionPeriod" label="预计时长"></el-table-column>
-          <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
-          <el-table-column prop="executionTime" label="执行时间"></el-table-column>
-          <el-table-column prop="duration" label="实际用时"></el-table-column>
-        </el-table>
+        <div class="table-container" >
+          <el-table :data="tableData"  class="el-table">
+            <el-table-column prop="taskName" label="任务名"></el-table-column>
+            <el-table-column prop="taskType" label="任务类型"></el-table-column>
+            <el-table-column prop="executionPeriod" label="预计时长"></el-table-column>
+            <el-table-column prop="executionStatus" label="执行状态"></el-table-column>
+            <el-table-column prop="executionTime" label="执行时间"></el-table-column>
+            <el-table-column prop="duration" label="实际用时"></el-table-column>
+          </el-table>
+        </div>
       </el-row> 
       
     </el-col>
@@ -71,6 +73,12 @@ const threeMethodsChart = ref(null);
 // 表格内容
 const tableData = ref([
   { taskName: 'Task 1', taskType: '文本遗忘', executionPeriod: '1min', executionStatus: '已完成', executionTime: '10:00 AM', duration: '1 hour' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
   { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
 
 ]);
@@ -245,8 +253,6 @@ onMounted(() => {
           data: [
             {
               value: 70,
-              // name: 'Grade Rating',
-
             }
           ]
         }
@@ -276,12 +282,24 @@ onMounted(() => {
         {
           name: '文本',
           data: [93, 94, 95, 94, 94, 92, 91, 89, 90, 90, 87, 85, 86, 86],
-          type: 'line'
+          type: 'line',
+          lineStyle: {
+            color: 'rgb(0, 0, 255)' // Adjust line color here
+          },
+          itemStyle: {
+            color: 'rgb(0, 0, 255)' // Adjust point color here
+          }
         },
         {
         name: '图像',
           data: [91, 93, 92, 91, 91, 91, 91, 90, 85, 88, 89, 89, 88, 85],
-          type: 'line'
+          type: 'line',
+          lineStyle: {
+            color: 'rgb(0, 255, 0)' // Adjust line color here
+          },
+          itemStyle: {
+            color: 'rgb(0, 255, 0)' // Adjust point color here
+          }
         }
       ]
     };
@@ -290,87 +308,33 @@ onMounted(() => {
 
   if(thirdChart.value) {
     const myChart = echarts.init(thirdChart.value)
-    function randomData() {
-      now = new Date(+now + oneDay);
-      value = value + Math.random() * 2;
-      return {
-        name: now.toString(),
-        value: [
-          [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-          Math.round(value)
-        ]
-      };
-    }
-    let data = [];
-    let now = new Date(2024, 1, 1);
-    let oneDay = 24 * 3600 * 1000;
-    let value = Math.random() * 100;
-    for (var i = 0; i < 30; i++) { // 控制横坐标显示范围
-      data.push(randomData());
-    }
     var option = {
       title: {
         text: '遗忘次数'
       },
-      tooltip: {
-        trigger: 'axis',
-        formatter: function (params) {
-          params = params[0];
-          var date = new Date(params.name);
-          return (
-            date.getDate() +
-            '/' +
-            (date.getMonth() + 1) +
-            '/' +
-            date.getFullYear() +
-            ' : ' +
-            params.value[1]
-          );
-        },
-        axisPointer: {
-          animation: false
-        }
+      xAxis: {
+        type: 'category',
+        data: ['4.1', '4.8', '4.15', '4.22', '5.6', '5.13', '5.20', '5.27', '6.3', '6.10', '6.17', '6.24', '7.1', '7.8']
+      },
+      yAxis: {
+        type: 'value'
       },
       grid: {
         bottom: '10%' // 调整这个值以减少底部空间
       },
-      xAxis: {
-        type: 'time',
-        splitLine: {
-          show: false
-        }
-      },
-      yAxis: {
-        type: 'value',
-        boundaryGap: [0, '100%'],
-        splitLine: {
-          show: false
-        },
-        // min: 100
-      },
       series: [
         {
-          // name: 'cpu',
+          data: [19, 11, 14, 19, 19, 12, 16, 11, 13, 12, 10, 20, 14, 20],
           type: 'line',
-          showSymbol: false,
-          data: data
-        },
-      ],
-    };
-    setInterval(function () {
-      for (var i = 0; i < 1; i++) { // 调节速度
-        data.shift();
-        data.push(randomData());
-        // console.log(randomData());
-      }
-      myChart.setOption({
-        series: [
-          {
-            data: data
+          lineStyle: {
+            color: 'orange' // Adjust line color here
+          },
+          itemStyle: {
+            color: 'orange' // Adjust point color here
           }
-        ]
-      });
-    }, 1000);
+        }
+      ]
+    };
     myChart.setOption(option);
   }
 
@@ -504,7 +468,13 @@ onMounted(() => {
 
 
 <style scoped>
-
+.table-container {
+  width: 100%;
+  height: 150px;
+  overflow-y: auto;
+  margin-bottom: 10px; 
+  border-bottom-left-radius: 10px;
+}
  .el-table thead {
   background-color: lightgreen;
 }
