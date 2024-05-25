@@ -5,16 +5,18 @@
     style="width: 100%"
     :data="tableData"
     :row-class-name="tableRowClassName"
+    :row-style="{ height: '50px' }" 
+    :cell-style="{ padding: '0px' }"
     @selection-change="handleSelectionChange"
   >
-    <el-table-column prop="inf_type" label="信息类型" width="150" header-align="center" align="center"> </el-table-column>
-    <el-table-column label="是否遗忘" prop="forget_flag" align="center" width="150">
+    <el-table-column prop="inf_type" label="信息类型" width="180" header-align="center" align="center"> </el-table-column>
+    <el-table-column label="是否遗忘" prop="forget_flag" align="center" width="180">
       <template #default="scope">
         <span :class="[scope.row.forget_flag === '已遗忘' ? 'cell-green' : 'cell-red']">{{ scope.row.forget_flag }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="forget_content" label="遗忘内容" width="320" header-align="center" align="center" />
-    <el-table-column prop="cost_time" label="用时" width="150" header-align="center" align="center" /> 
+    <el-table-column prop="forget_content" label="遗忘内容" width="350" header-align="center" align="center" />
+    <el-table-column prop="cost_time" label="用时" width="180" header-align="center" align="center" /> 
     <el-table-column label="操作时间" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">{{ scope.row.date }}</template>
     </el-table-column>
@@ -44,9 +46,7 @@
   </el-dialog>
   <br>
   <br>
-  <br>
   <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100"/>
-  <br>
   <br>
 </template>
 
@@ -173,6 +173,13 @@ const tableData: User[] = [
     forget_content: '29张已上传图片',
     cost_time: '4.7min',
   },
+  {
+    inf_type: '文本',
+    forget_flag: '已遗忘',
+    date: '2024-04-09 19:46:32',
+    forget_content: 'I have heart disease',
+    cost_time: '1.79s',
+  },
 ]
 
 const tableRowClassName = ({
@@ -211,4 +218,33 @@ const tableRowClassName = ({
     font-size: 15px;
     font-weight: bold;
   }
+  /* ::v-deep(.el-table__header) {
+		    tr {
+		      height: 40px;  
+		    }
+		    .cell {
+		      display: inline-flex;
+		      align-items: center;
+		      justify-content: center;
+		      height: 23px;
+		      width: 100%;
+    }
+  }
+  ::v-deep(.el-table__body) {
+    tr {
+		      height: 40px;  
+		    }
+      .cell {
+        width: 100%;
+        height: 30px; 
+        line-height: 30px;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        justify-content: center;
+        align-items: center;
+      }
+    
+  } */
 </style>

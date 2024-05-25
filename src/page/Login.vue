@@ -2,11 +2,11 @@
   <div class="loginbody">
     <div style="width: 100%;height: 100%;">
     <p style="margin:auto auto;width: 27%;height: 50%;">
-    <div style="margin:auto auto;width: 100%;height: 65%;"> </div>
-    <div style="margin:auto auto;width: 100%;height: 18%;"> 
+    <div style="margin:auto auto;width: 100%;height: 80%;"> </div>
+    <div style="margin:auto auto;width: 100%;height: 14%;"> 
       <h2 class="logintext"> 欢迎来到遗忘学习系统 </h2>
     </div>
-    <div style="margin:auto auto;width: 100%;height: 17%;">
+    <div style="margin:auto auto;width: 100%;height: 6%;">
       <el-tabs stretch="true" class="custom-tabs-label">
         <el-tab-pane>
           <template #label>

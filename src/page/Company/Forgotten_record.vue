@@ -6,6 +6,8 @@
     sortable
     :data="tableData"
     :row-class-name="tableRowClassName"
+    :row-style="{ height: '55px' }" 
+    :cell-style="{ padding: '0px' }"
     @selection-change="handleSelectionChange"
   >
     <el-table-column prop="inf_type" label="信息类型" width="100" header-align="center" align="center" />
@@ -35,13 +37,23 @@
   <el-dialog
     v-model="dialogVisible"
     title="运行日志"
-    width="40%"
+    width="25%"
     draggable="true"
     top="35vh"
   >
-    <span>这里是具体信息</span>
+    <span style="font-size: 18px;text-align: center;">
+      <p>模型名称 vgg_16</p>
+      <br>
+      <p>使用遗忘方法:Conmue</p>
+      <br>
+      <p>执行批次:104</p>
+      <br>
+      <p>优化器:Adame</p>
+      <br>
+      <p>学习率:1e-24</p>
+    </span>
     <template #footer>
-      <div class="dialog-footer">
+      <div style="margin: auto;">
         <el-button type="primary" @click="dialogVisible = false">
           我已知晓
         </el-button>
@@ -51,6 +63,7 @@
   <br>
   <br>
   <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
+  <br>
 </template>
 
 <script lang="ts" setup>
@@ -119,7 +132,7 @@ const tableRowClassName = ({
   row: User
   rowIndex: number
 }) => {
-  if (rowIndex === 1 || rowIndex === 3 || rowIndex === 4 || rowIndex === 6) {
+  if (rowIndex === 1 || rowIndex === 3 || rowIndex === 4 || rowIndex === 6 || rowIndex === 9) {
     return 'pic-row'
   }
   return 'text-row'
@@ -206,6 +219,15 @@ const tableData: User[] = [
     forget_content: 'Go to the London hospital',
     cost_time: '1.36s',
     user: 'Johnny',
+  },
+  {
+    acc: '-0.01',
+    inf_type: '图片',
+    forget_flag: '已遗忘',
+    date: '2024-04-12 17:12:23',
+    forget_content: '19张已上传图片',
+    cost_time: '3.7min',
+    user: 'Gavin',
   },
 ]
 const dialogVisible = ref(false)

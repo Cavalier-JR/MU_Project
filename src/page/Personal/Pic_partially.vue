@@ -62,7 +62,7 @@
       <br>
       <br>
       <div style="width: 100%;"> 
-        <p style="margin: 0 auto;width: 80%;">
+        <p style="margin: 0 auto;width: 75%;">
           <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
             <el-option
               v-for="item in options"
@@ -78,7 +78,7 @@
           </el-button>
         </p>
       </div> 
-      <div style="margin-bottom:310px;" v-show="tianchong"></div>
+      <div style="margin-bottom:450px;" v-show="tianchong"></div>
       <br v-show="isProgressVisible">
       <br v-show="isProgressVisible">
       <div style="width: 100%;" v-show="isProgressVisible">
@@ -93,18 +93,25 @@
           </el-progress>
         </p>
       </div>
-      <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
+      <div style="width: 100%;"> 
+        <p style="margin: 0 auto;width: 30%;">
+          <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
+        </p>
+      </div>
     </el-col>
     <el-col :span="16">
-      <div v-show="isForget" id="pieChart" ref="pieChart" style="margin-top: 50px; margin-left: 150px; width: 500px; height: 500px"></div>
+      <div style="margin:auto auto;width: 100%;height: 20%;"> </div>
+      <div style="width: 100%;height: 80%;"> 
+        <p style="width: 50%;height: 100%;margin: auto auto;">
+          <div v-show="isForget" id="pieChart" ref="pieChart" style="width: 500px; height: 500px"></div>
+        </p>
+      </div>
+      
     </el-col>
   </el-row>
   </el-main>
 </el-container>
-  
 </template>
-
-
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
@@ -268,7 +275,6 @@ const options = [
   }
   .text-bottom {
     margin-top: 20px; /* 可选：设置顶部边距 */
-    margin-left: 105px;
     text-align: center;
     font-size: 20px; /* 设置字体大小 */
   }

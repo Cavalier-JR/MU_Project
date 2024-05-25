@@ -12,11 +12,11 @@
               <p> 想知道怎么操作？可以看下面哦~</p>
             </div> 
             <div class="card-content">
-              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:30px;" shadow="always">
+              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:55px;" shadow="always">
                 <el-icon style="color: green"><SetUp /></el-icon>
                 首先选择某个类别的图片
               </el-card>
-              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:50px;" shadow="always">
+              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:60px;" shadow="always">
                 <el-icon style="color: blue"><Promotion /></el-icon>
                 选择遗忘方法并进行遗忘
               </el-card>
@@ -51,12 +51,11 @@
             </p>
           </div> 
           <div style="width: 100%;"> 
-            <p style="width: 55%;height:80%;margin: 0 auto;">
+            <p style="width: 50%;height:80%;margin: 0 auto;">
               <el-result
                 icon="success"
                 title="本次遗忘操作用时为 412 s"
                 v-show="isColVisible"
-                
               >
               </el-result>
             </p>
@@ -143,6 +142,21 @@
             <div class="item"> <img src="../../assets/pic/image_72.png" alt="示例图片" /> </div>
             <div class="item"> <img src="../../assets/pic/image_73.png" alt="示例图片" /> </div>
             <div class="item"> <img src="../../assets/pic/image_74.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_75.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_76.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_77.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_78.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_79.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_80.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_81.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_82.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_83.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_84.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_85.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_86.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_87.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_88.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_89.png" alt="示例图片" /> </div>
           </div>
         </el-col>
 
@@ -150,14 +164,14 @@
 
         <el-col :span="9" v-show="isRightPanelVisible">
           <el-table :data="tableData" style="width: 100%" height="480" border stripe>
-            <el-table-column prop="pic" label="图像" align="center" width="100" height="250" header-align="center">
+            <el-table-column prop="pic" label="图像" align="center" height="250" header-align="center" show-overflow-tooltip>
               <template #default="scope">
                 <el-image :src="scope.row.pic" style="width: 40px;height: 40px" 
                 :preview-src-list="[scope.row.pic]" :preview-teleported="true"> </el-image>
               </template>
             </el-table-column>
-            <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="140" header-align="center" align="center"></el-table-column>
-            <el-table-column prop="afterCategory" label="遗忘后分类结果" width="140" header-align="center" align="center" 
+            <el-table-column prop="beforeCategory" label="遗忘前分类结果" width="160" header-align="center" align="center"></el-table-column>
+            <el-table-column prop="afterCategory" label="遗忘后分类结果" width="160" header-align="center" align="center" 
             show-overflow-tooltip>
               <template #default="scope">
                 <div v-show="isColVisible">{{ scope.row.afterCategory }}</div>
@@ -561,7 +575,6 @@ const options2 = [
   flex-wrap:wrap;
   height: 180px;
   width: 100%;
-  margin-left: 13px; /* 第一个项目左侧需要间隔 */
 }
 .item {
   margin-right: 4px; /*设置每个项目右侧的间隔 */

@@ -13,7 +13,6 @@
       <br>
       <p style="padding-left: 40px;">有以下三种情况可供您选择，不妨试试吧~ </p>
       <br>
-      <br>
     </div> 
 
     <div class="card-content" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -35,7 +34,8 @@
             <p class="first-line">来这里解决这个问题吧！</p>
           </div>
       </el-card>
-      <el-card style="width: 48%; margin-top: 15px;" shadow="always">
+
+      <el-card style="width: 48%; margin-top: 35px;" shadow="always">
         <div class="note">
             <h2 class="thq-heading-2">
               <i class="fas fa-pen" style="color: rgb(122, 97, 220);"></i> 文本遗忘
@@ -43,10 +43,9 @@
             <p class="first-line">发现您的隐私信息以文本的形式被泄露了？</p>
             <p class="first-line">不用担心，文本遗忘为您擦除模型中的信息</p>
         </div>
-
       </el-card>
 
-      <el-card style="width: 48%; margin-top: 15px;" shadow="always">
+      <el-card style="width: 48%; margin-top: 35px;" shadow="always">
         <div class="note">
           <h2 class="thq-heading-2">
             <i class="fas fa-history" style="color: rgb(220, 193, 97);"></i> 遗忘记录
@@ -56,7 +55,7 @@
       </el-card>
     </div>
 
-    <div style="margin-bottom:125px;"></div>
+    <div style="margin-bottom:170px;"></div>
 
   </el-card>
   
