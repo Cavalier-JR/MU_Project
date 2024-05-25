@@ -159,6 +159,13 @@ const tableData: User[] = [
     forget_content: 'Her name is Xiao Heizi!!!',
     cost_time: '1.06s',
   },
+  {
+    inf_type: '图片',
+    forget_flag: '已遗忘',
+    date: '2024-04-23 14:25:13',
+    forget_content: '17张已上传图片',
+    cost_time: '4.7min',
+  },
 ]
 
 const tableRowClassName = ({
