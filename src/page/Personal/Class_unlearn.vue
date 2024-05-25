@@ -183,6 +183,15 @@
         <el-col :span="2" v-show="isRightPanelVisible"></el-col>
 
       </el-row>
+      <el-row v-show="isbrshow">
+        <el-col span="24">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        </el-col>
+      </el-row>
     </el-main>
   </el-container>
 </template>
@@ -198,6 +207,7 @@ const loading_flag = ref(false);
 const isCardVisible = ref(true);
 const isPicVisible = ref(true);
 const isColVisible = ref(false);
+const isbrshow = ref(true);
 
 const handleChange1 = (val: string[]) => {
   console.log(val)
@@ -248,6 +258,7 @@ function Forget_Button_Click() {
         isColVisible.value = true;
         loading_flag.value = false;
         Success_Notify();
+        isbrshow.value = false;
       }, 5000)
     })
     .catch(() => {
