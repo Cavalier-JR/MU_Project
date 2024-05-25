@@ -7,27 +7,24 @@
     :row-class-name="tableRowClassName"
     @selection-change="handleSelectionChange"
   >
-    <el-table-column prop="inf_type" label="信息类型" width="120" header-align="center" align="center"> </el-table-column>
-    <el-table-column label="是否遗忘" prop="forget_flag" align="center" width="120">
+    <el-table-column prop="inf_type" label="信息类型" width="150" header-align="center" align="center"> </el-table-column>
+    <el-table-column label="是否遗忘" prop="forget_flag" align="center" width="150">
       <template #default="scope">
         <span :class="[scope.row.forget_flag === '已遗忘' ? 'cell-green' : 'cell-red']">{{ scope.row.forget_flag }}</span>
       </template>
     </el-table-column>
-    <el-table-column prop="forget_content" label="遗忘内容" width="300" header-align="center" align="center" />
-    <el-table-column prop="cost_time" label="用时" width="120" header-align="center" align="center" /> 
+    <el-table-column prop="forget_content" label="遗忘内容" width="320" header-align="center" align="center" />
+    <el-table-column prop="cost_time" label="用时" width="150" header-align="center" align="center" /> 
     <el-table-column label="操作时间" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">{{ scope.row.date }}</template>
     </el-table-column>
-    <el-table-column label="日志信息" width="170" align="center">
-      <!-- <template #header>
-        <el-input v-model="search" size="small" placeholder="搜索历史记录" />
-      </template> -->
+    <!-- <el-table-column label="日志信息" width="170" align="center">
       <template #default="scope">
         <el-button type="primary" @click="dialogVisible = true">
           查看详情
         </el-button>
       </template>
-    </el-table-column>
+    </el-table-column> -->
   </el-table>
   <el-dialog
     v-model="dialogVisible"
@@ -47,7 +44,10 @@
   </el-dialog>
   <br>
   <br>
+  <br>
   <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
+  <br>
+  <br>
 </template>
 
 <script lang="ts" setup>
@@ -162,8 +162,15 @@ const tableData: User[] = [
   {
     inf_type: '图片',
     forget_flag: '已遗忘',
-    date: '2024-04-23 14:25:13',
+    date: '2024-04-27 09:17:24',
     forget_content: '17张已上传图片',
+    cost_time: '4.3min',
+  },
+  {
+    inf_type: '图片',
+    forget_flag: '已遗忘',
+    date: '2024-04-23 14:25:13',
+    forget_content: '29张已上传图片',
     cost_time: '4.7min',
   },
 ]
@@ -175,7 +182,8 @@ const tableRowClassName = ({
   row: User
   rowIndex: number
 }) => {
-  if (rowIndex === 0 || rowIndex === 1 || rowIndex === 3 || rowIndex === 5 || rowIndex === 8) {
+  if (rowIndex === 0 || rowIndex === 1 || rowIndex === 3 || rowIndex === 5 
+  || rowIndex === 8 || rowIndex === 9) {
     return 'pic-row'
   }
   return 'text-row'
