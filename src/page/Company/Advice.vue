@@ -10,7 +10,6 @@
           <option value="Option 2">Part 2</option>
           <option value="Option 3">Part 3</option>
         </select>
-        <span class="page-text2">目前版本：2024-5-18</span>
         <button type="button" class="page-button1 button">历史记录</button>
       </div>
       <div class="page-container4">
@@ -30,7 +29,7 @@
     <div class="page-container2">
       <div class="page-container3" style="background-color: rgb(238, 229, 177); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">类别遗忘</span>
-        <select class="page-select1" style="background-color: rgb(187, 185, 135); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
+        <select class="page-select1" style="background-color: rgb(187, 185, 135); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-right: 20px;">
           <option value="Option 1">选择类别</option>
           <option value="Option 2">猫🐱</option>
           <option value="Option 3">狗🐕</option>
@@ -38,8 +37,7 @@
           <option value="Option 3">鸡🐓</option>
           <option value="Option 3">羊🐏</option>
         </select>
-        <span class="page-text2">目前版本：2024-5-18</span>
-        <button type="button" class="page-button1 button">历史记录</button>
+        <button type="button" class="page-button2 button">历史记录</button>
       </div>
       <div class="page-container4">
 
@@ -59,7 +57,7 @@
     <div class="page-container2">
       <div class="page-container3" style="background-color: rgb(177, 238, 191); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">文本遗忘</span>
-        <select class="page-select1" style="background-color: rgb(135, 187, 164); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
+        <select class="page-select1" style="background-color: rgb(135, 187, 164); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-right: 20px;">
           <option value="Option 1">选择文本</option>
           <option value="Option 2">+86 444546s4d65f4</option>
           <option value="Option 3">this is a secret message</option>
@@ -68,8 +66,7 @@
           <option value="Option 3">this is a secret message 222</option>
           <option value="Option 3">u cant c me</option>
         </select>
-        <span class="page-text2">目前版本：2024-5-18</span>
-        <button type="button" class="page-button1 button">历史记录</button>
+        <button type="button" class="page-button3 button">历史记录</button>
       </div>
       <div class="page-container4">
 
@@ -87,64 +84,64 @@
               <td style="padding: 8px; border: 1px solid #ddd;">123@qq.com</td>
               <td style="padding: 8px; border: 1px solid #ddd; ">99%</td>
               <td style="padding: 8px; border: 1px solid #ddd; ">98%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">97%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;">(+86) sdf54s6d54</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">98</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">91</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">98%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">91%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">440106xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">98</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">98%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
             <tr style="background-color: #ebffb1;">
               <td style="padding: 8px; border: 1px solid #ddd;">this is a secret</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
             </tr>
 
 
@@ -198,8 +195,8 @@ onMounted(() => {
             { text: '模型大小', max: 100 },
 
           ],
-          center: ['50%', '50%'],
-          radius: 75,
+          center: ['45%', '55%'],  // 在这里控制图片的位置
+          radius: 70,
           axisName: {
             color: '#fff',
             backgroundColor: '#666',
@@ -736,8 +733,8 @@ onMounted(() => {
             { text: '模型大小', max: 100 },
 
           ],
-          center: ['50%', '50%'],
-          radius: 80,
+          center: ['45%', '55%'],
+          radius: 75,
           axisName: {
             color: '#fff',
             backgroundColor: '#666',
@@ -843,7 +840,7 @@ onMounted(() => {
             { text: 'FT' },
             { text: 'RL' },
           ],
-          center: ['50%', '50%'],
+          center: ['50%', '55%'],
           radius: 80,
           startAngle: 90,
           splitNumber: 4,
@@ -1344,7 +1341,39 @@ onMounted(() => {
   align-items: center;
   flex-direction: column;
 }
-
+.page-button1 {
+  background-color: rgb(87, 110, 186); /* Change button background color to red */
+  color: white; /* Change button text color to white */
+  font-weight: bold; /* Make button text bold */
+  border: 2px solid rgb(52, 75, 121); /* Add a red border around the button */
+  border-radius: 5px; /* Add rounded corners to the button */
+  padding: 5px 10px; /* Add padding to the button */
+}
+.page-button1:hover {
+  background-color: rgb(42, 32, 92); /* Change button background color to blue on hover */
+}
+.page-button2 {
+  background-color: rgb(223, 156, 78); /* Change button background color to red */
+  color: white; /* Change button text color to white */
+  font-weight: bold; /* Make button text bold */
+  border: 2px solid rgb(255, 94, 0); /* Add a red border around the button */
+  border-radius: 5px; /* Add rounded corners to the button */
+  padding: 5px 10px; /* Add padding to the button */
+}
+.page-button2:hover {
+  background-color: rgb(212, 128, 2); /* Change button background color to blue on hover */
+}
+.page-button3 {
+  background-color: rgb(101, 199, 111); /* Change button background color to red */
+  color: white; /* Change button text color to white */
+  font-weight: bold; /* Make button text bold */
+  border: 2px solid rgb(2, 126, 6); /* Add a red border around the button */
+  border-radius: 5px; /* Add rounded corners to the button */
+  padding: 5px 10px; /* Add padding to the button */
+}
+.page-button3:hover {
+  background-color: rgb(41, 139, 85); /* Change button background color to blue on hover */
+}
 .page-container2 {
   width: 100%;
   height: 400px;

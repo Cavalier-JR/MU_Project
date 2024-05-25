@@ -45,7 +45,7 @@
   <br>
   <br>
   <br>
-  <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
+  <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100"/>
   <br>
   <br>
 </template>
