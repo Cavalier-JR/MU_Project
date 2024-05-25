@@ -23,7 +23,7 @@
     :row-class-name="tableRowClassName"
     @selection-change="handleSelectionChange"
   >
-    <el-table-column prop="model" label="模型名称" width="130" header-align="center" align="center" />
+    <el-table-column prop="model" label="模型名称" width="150" header-align="center" align="center" />
     <el-table-column prop="progress" label="进度" width="320" header-align="center" align="center">
       <template #default="scope">
         <span style="margin-left: -20px;" align="center">
@@ -44,10 +44,10 @@
         </span>
       </template>
     </el-table-column>
-    <el-table-column prop="expected_acc" label="原准确率" width="120" header-align="center" align="center" />
-    <el-table-column prop="recovered_acc" label="恢复后准确率" width="120" header-align="center" align="center" />
+    <el-table-column prop="expected_acc" label="原准确率" width="130" header-align="center" align="center" />
+    <el-table-column prop="recovered_acc" label="恢复后准确率" width="130" header-align="center" align="center" />
     <el-table-column prop="cost_time" label="用时" width="120" header-align="center" align="center" />
-    <el-table-column label="状态" prop="state" align="center" width="120">
+    <el-table-column label="交付状态" prop="state" align="center" width="120">
       <template #default="scope">
         <span :class="[scope.row.state === '已交付' ? 'cell-green' : 'cell-red']">{{ scope.row.state }}</span>
       </template>
@@ -85,6 +85,7 @@
       </div>
     </div>
   </el-dialog>
+  <br>
   <br>
   <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
 </template>
@@ -199,11 +200,29 @@ const tableData: User[] = [
   },
   {
     model: 'ResNet',
-    state: '未交付',
+    state: '已交付',
     expected_acc: '72%',
     actual_acc: '0.93',
-    cost_time: '3.6min',
+    cost_time: '4.1min',
     recovered_acc: '84%',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "恢复",
+    operation3: "验证",
+    b1: 'success',
+    b2: 'success',
+    b3: 'success',
+    detail: 'yes',
+  },
+  {
+    model: 'SqueezeNet',
+    state: '未交付',
+    expected_acc: '70%',
+    actual_acc: '0.93',
+    cost_time: '3.6min',
+    recovered_acc: '81%',
     loading: "no",
     loading2: "no",
     loading3: "no",
@@ -278,7 +297,7 @@ const tableRowClassName = ({
   row: User
   rowIndex: number
 }) => {
-  if (rowIndex === 0 || rowIndex === 1 || rowIndex === 2 || rowIndex === 3) {
+  if (rowIndex === 0 || rowIndex === 1 || rowIndex === 2 || rowIndex === 3 || rowIndex === 4) {
     return 'warning-row'
   } 
   return ''
@@ -289,7 +308,7 @@ const detect = (index: number, row: User) => {
   let timer: number | null = setTimeout(() => {
     row.operation = "检测" 
     row.loading = 'no'
-    if(index === 6) {
+    if(index === 7) {
       row.expected_acc = '92%'
       row.b1 = "success"
       ElMessage({
@@ -316,14 +335,14 @@ const fixes = (index: number, row: User) => {
     row.loading2 = 'no'
     row.b2 = "success"
     row.b3 = "primary"
-    if(index === 5) {
-      row.cost_time = '3.4min'
+    if(index === 6) {
+      row.cost_time = '2.4min'
       ElMessage({
         message: '模型恢复完成！恢复后精确度提高了 8 %',
         type: 'success',
       })
-    } else if(index === 7) {
-      row.cost_time = '3.5min'
+    } else if(index === 8) {
+      row.cost_time = '3.1min'
       ElMessage({
         message: '模型恢复完成！恢复后精确度提高了 9 %',
         type: 'success',
@@ -342,9 +361,9 @@ const verify = (index: number, row: User) => {
     row.operation3 = "验证"
     row.loading3 = 'no'
     row.detail = 'yes'
-    if(index === 5) {
+    if(index === 6) {
       row.recovered_acc = '81%'
-    } else if(index === 7) {
+    } else if(index === 8) {
       row.recovered_acc = '89%'
     }
     ElMessage({
