@@ -114,7 +114,7 @@ const tableData: User[] = [
     inf_type: '图片',
     forget_flag: '正在遗忘',
     date: '2024-05-19 10:27:23',
-    forget_content: '3张已上传图片',
+    forget_content: '358张已上传图片',
     cost_time: '\\',
   },
   {
