@@ -119,6 +119,7 @@ interface User {
   b2: string
   b3: string
   detail: string
+  be_flag: string
 }
 
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
@@ -146,6 +147,7 @@ const tableData: User[] = [
     b2: 'success',
     b3: 'success',
     detail: 'yes',
+    be_flag: 'no',
   },
   {
     model: 'SqueezeNet',
@@ -164,6 +166,7 @@ const tableData: User[] = [
     b2: 'success',
     b3: 'success',
     detail: 'yes',
+    be_flag: 'no',
   },
   {
     model: 'ResNeXt',
@@ -182,84 +185,32 @@ const tableData: User[] = [
     b2: 'success',
     b3: 'success',
     detail: 'yes',
+    be_flag: 'no',
   },
   {
     model: 'ResNeXt',
-    state: '已交付',
-    expected_acc: '77%',
+    state: '未交付',
+    expected_acc: '\\',
     actual_acc: '0.93',
-    cost_time: '2.1min',
-    recovered_acc: '86%',
+    cost_time: '\\',
+    recovered_acc: '\\',
     loading: "no",
     loading2: "no",
     loading3: "no",
     operation: "检测",
     operation2: "恢复",
     operation3: "验证",
-    b1: 'success',
-    b2: 'success',
-    b3: 'success',
-    detail: 'yes',
+    b1: 'primary',
+    b2: 'info',
+    b3: 'info',
+    detail: 'no',
+    be_flag: 'no',
   },
   {
     model: 'ResNet',
-    state: '已交付',
-    expected_acc: '72%',
-    actual_acc: '0.93',
-    cost_time: '4.1min',
-    recovered_acc: '84%',
-    loading: "no",
-    loading2: "no",
-    loading3: "no",
-    operation: "检测",
-    operation2: "恢复",
-    operation3: "验证",
-    b1: 'success',
-    b2: 'success',
-    b3: 'success',
-    detail: 'yes',
-  },
-  {
-    model: 'SqueezeNet',
-    state: '未交付',
-    expected_acc: '70%',
-    actual_acc: '0.93',
-    cost_time: '3.6min',
-    recovered_acc: '81%',
-    loading: "no",
-    loading2: "no",
-    loading3: "no",
-    operation: "检测",
-    operation2: "恢复",
-    operation3: "验证",
-    b1: 'success',
-    b2: 'success',
-    b3: 'success',
-    detail: 'yes',
-  },
-  {
-    model: 'vgg16',
-    state: '未交付',
-    expected_acc: '73%',
-    actual_acc: '\\',
-    cost_time: '\\',
-    recovered_acc: '\\',
-    loading: "no",
-    loading2: "no",
-    loading3: "no",
-    operation: "检测",
-    operation2: "恢复",
-    operation3: "验证",
-    b1: 'danger',
-    b2: 'primary',
-    b3: 'info',
-    detail: 'no',
-  },
-  {
-    model: 'SqueezeNet',
     state: '未交付',
     expected_acc: '\\',
-    actual_acc: '\\',
+    actual_acc: '0.93',
     cost_time: '\\',
     recovered_acc: '\\',
     loading: "no",
@@ -272,6 +223,26 @@ const tableData: User[] = [
     b2: 'info',
     b3: 'info',
     detail: 'no',
+    be_flag: 'no',
+  },
+  {
+    model: 'SqueezeNet',
+    state: '未交付',
+    expected_acc: '\\',
+    actual_acc: '0.93',
+    cost_time: '\\',
+    recovered_acc: '\\',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "恢复",
+    operation3: "验证",
+    b1: 'primary',
+    b2: 'info',
+    b3: 'info',
+    detail: 'no',
+    be_flag: 'no',
   },
   {
     model: 'vgg16',
@@ -290,6 +261,45 @@ const tableData: User[] = [
     b2: 'info',
     b3: 'info',
     detail: 'no',
+    be_flag: 'no',
+  },
+  {
+    model: 'SqueezeNet',
+    state: '未交付',
+    expected_acc: '\\',
+    actual_acc: '\\',
+    cost_time: '\\',
+    recovered_acc: '\\',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "恢复",
+    operation3: "验证",
+    b1: 'primary',
+    b2: 'info',
+    b3: 'info',
+    detail: 'no',
+    be_flag: 'no',
+  },
+  {
+    model: 'vgg16',
+    state: '未交付',
+    expected_acc: '\\',
+    actual_acc: '\\',
+    cost_time: '\\',
+    recovered_acc: '\\',
+    loading: "no",
+    loading2: "no",
+    loading3: "no",
+    operation: "检测",
+    operation2: "恢复",
+    operation3: "验证",
+    b1: 'primary',
+    b2: 'info',
+    b3: 'info',
+    detail: 'no',
+    be_flag: 'no',
   },
 ]
 
@@ -300,7 +310,7 @@ const tableRowClassName = ({
   row: User
   rowIndex: number
 }) => {
-  if (rowIndex === 0 || rowIndex === 1 || rowIndex === 2 || rowIndex === 3 || rowIndex === 4) {
+  if (row.detail === 'yes' || row.be_flag === 'yes') {
     return 'warning-row'
   } 
   return ''
@@ -311,16 +321,32 @@ const detect = (index: number, row: User) => {
   let timer: number | null = setTimeout(() => {
     row.operation = "检测" 
     row.loading = 'no'
-    if(index === 7) {
-      row.expected_acc = '92%'
+    if(index === 4 || index === 5 || index === 7) {
+      if(index === 4) {
+        row.expected_acc = '94%'
+      }
+      if(index === 5) {
+        row.expected_acc = '91%'
+      }
+      if(index === 7) {
+        row.expected_acc = '97%'
+      }
       row.b1 = "success"
+      row.be_flag = 'yes'
       ElMessage({
         message: '检测完成！模型未被投毒攻击！',
         type: 'success',
       })
     }
     else {
-      row.expected_acc = '80%'
+      if(index === 3) {
+        row.expected_acc = '77%'
+      } else if(index === 6) {
+        row.expected_acc = '73%'
+      }
+      else if(index === 8) {
+        row.expected_acc = '80%'
+      }
       row.b1 = "danger"
       row.b2 = "primary"
       ElMessage({
@@ -338,14 +364,32 @@ const fixes = (index: number, row: User) => {
     row.loading2 = 'no'
     row.b2 = "success"
     row.b3 = "primary"
-    if(index === 6) {
+    if(index === 3) {
+      row.cost_time = '2.1min'
+      ElMessage({
+        message: '模型恢复完成！恢复后精确度提高了 9 %',
+        type: 'success',
+      })
+    // } else if(index === 5) {
+    //   row.cost_time = '3.6min'
+    //   ElMessage({
+    //     message: '模型恢复完成！恢复后精确度提高了 10 %',
+    //     type: 'success',
+    //   })
+    } else if(index === 6) {
       row.cost_time = '2.4min'
       ElMessage({
         message: '模型恢复完成！恢复后精确度提高了 8 %',
         type: 'success',
       })
+    // } else if(index === 7) {
+    //   row.cost_time = '2.3min'
+    //   ElMessage({
+    //     message: '模型恢复完成！恢复后精确度提高了 8 %',
+    //     type: 'success',
+    //   })
     } else if(index === 8) {
-      row.cost_time = '3.1min'
+      row.cost_time = '3.8min'
       ElMessage({
         message: '模型恢复完成！恢复后精确度提高了 9 %',
         type: 'success',
@@ -364,9 +408,16 @@ const verify = (index: number, row: User) => {
     row.operation3 = "验证"
     row.loading3 = 'no'
     row.detail = 'yes'
+    if(index === 3) {
+      row.recovered_acc = '86%'
+    }
+    // if(index === 5) {
+    //   row.recovered_acc = '80%'
+    // }
     if(index === 6) {
       row.recovered_acc = '81%'
-    } else if(index === 8) {
+    } 
+    if(index === 8) {
       row.recovered_acc = '89%'
     }
     ElMessage({
