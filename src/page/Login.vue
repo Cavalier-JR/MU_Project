@@ -69,7 +69,7 @@
             </el-form>
           </div>
           <div class="butt">
-            <el-button @click="CompanySet"> 登录 </el-button>
+            <el-button @click="CompanySet" type="primary"> 登录 </el-button>
           </div>
         </el-tab-pane>
       </el-tabs>
