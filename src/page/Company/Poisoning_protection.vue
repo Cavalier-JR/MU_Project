@@ -47,12 +47,23 @@
     <el-table-column prop="expected_acc" label="原准确率" width="130" header-align="center" align="center" />
     <el-table-column prop="recovered_acc" label="恢复后准确率" width="130" header-align="center" align="center" />
     <el-table-column prop="cost_time" label="用时" width="120" header-align="center" align="center" />
-    <el-table-column label="交付状态" prop="state" align="center" width="120">
+    <el-table-column label="交付操作" width="150" align="center">
+      <!-- <template #header>
+        <el-input v-model="search" size="small" placeholder="搜索历史记录" />
+      </template> -->
+      <template #default="scope">
+        <el-button type="primary" @click="scope.row.state = '已交付',scope.row.jiaofu_flag = 'no'" 
+        :disabled="scope.row.jiaofu_flag !== 'yes'">
+          点击交付
+        </el-button>
+      </template>
+    </el-table-column>
+    <el-table-column label="交付状态" prop="state" align="center" width="140">
       <template #default="scope">
         <span :class="[scope.row.state === '已交付' ? 'cell-green' : 'cell-red']">{{ scope.row.state }}</span>
       </template>
     </el-table-column>
-    <el-table-column label="日志信息" width="170" align="center">
+    <el-table-column label="日志信息" width="150" align="center">
       <!-- <template #header>
         <el-input v-model="search" size="small" placeholder="搜索历史记录" />
       </template> -->
@@ -120,6 +131,7 @@ interface User {
   b3: string
   detail: string
   be_flag: string
+  jiaofu_flag: string
 }
 
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
@@ -148,14 +160,15 @@ const tableData: User[] = [
     b3: 'success',
     detail: 'yes',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
   {
     model: 'SqueezeNet',
     state: '已交付',
-    expected_acc: '74%',
+    expected_acc: '96%',
     actual_acc: '0.87',
-    cost_time: '5.2min',
-    recovered_acc: '83%',
+    cost_time: '\\',
+    recovered_acc: '\\',
     loading: "no",
     loading2: "no",
     loading3: "no",
@@ -163,10 +176,11 @@ const tableData: User[] = [
     operation2: "恢复",
     operation3: "验证",
     b1: 'success',
-    b2: 'success',
-    b3: 'success',
-    detail: 'yes',
-    be_flag: 'no',
+    b2: 'info',
+    b3: 'info',
+    detail: 'no',
+    be_flag: 'yes',
+    jiaofu_flag: 'no',
   },
   {
     model: 'ResNeXt',
@@ -186,6 +200,7 @@ const tableData: User[] = [
     b3: 'success',
     detail: 'yes',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
   {
     model: 'ResNeXt',
@@ -205,6 +220,7 @@ const tableData: User[] = [
     b3: 'info',
     detail: 'no',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
   {
     model: 'ResNet',
@@ -224,6 +240,7 @@ const tableData: User[] = [
     b3: 'info',
     detail: 'no',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
   {
     model: 'SqueezeNet',
@@ -243,6 +260,7 @@ const tableData: User[] = [
     b3: 'info',
     detail: 'no',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
   {
     model: 'vgg16',
@@ -262,6 +280,7 @@ const tableData: User[] = [
     b3: 'info',
     detail: 'no',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
   {
     model: 'SqueezeNet',
@@ -281,6 +300,7 @@ const tableData: User[] = [
     b3: 'info',
     detail: 'no',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
   {
     model: 'vgg16',
@@ -300,6 +320,7 @@ const tableData: User[] = [
     b3: 'info',
     detail: 'no',
     be_flag: 'no',
+    jiaofu_flag: 'no',
   },
 ]
 
@@ -311,6 +332,9 @@ const tableRowClassName = ({
   rowIndex: number
 }) => {
   if (row.detail === 'yes' || row.be_flag === 'yes') {
+    return 'warning-row'
+  } 
+  if (rowIndex === 1) {
     return 'warning-row'
   } 
   return ''
@@ -333,6 +357,7 @@ const detect = (index: number, row: User) => {
       }
       row.b1 = "success"
       row.be_flag = 'yes'
+      row.jiaofu_flag = 'yes',
       ElMessage({
         message: '检测完成！模型未被投毒攻击！',
         type: 'success',
@@ -408,6 +433,7 @@ const verify = (index: number, row: User) => {
     row.operation3 = "验证"
     row.loading3 = 'no'
     row.detail = 'yes'
+    row.be_flag = 'yes'
     if(index === 3) {
       row.recovered_acc = '86%'
     }
@@ -420,6 +446,7 @@ const verify = (index: number, row: User) => {
     if(index === 8) {
       row.recovered_acc = '89%'
     }
+    row.jiaofu_flag = 'yes',
     ElMessage({
       message: '验证成功！精确度无误',
       type: 'success',
