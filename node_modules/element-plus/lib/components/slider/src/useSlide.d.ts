@@ -1,0 +1,22 @@
+import type { CSSProperties, ComponentInternalInstance, Ref } from 'vue';
+import type { ISliderButton, ISliderInitData, ISliderProps } from './slider.type';
+import type { FormItemContext } from 'element-plus/es/tokens';
+export declare const useSlide: (props: ISliderProps, initData: ISliderInitData, emit: ComponentInternalInstance['emit']) => {
+    elFormItem: FormItemContext;
+    slider: import("vue").ShallowRef<HTMLElement | undefined>;
+    firstButton: Ref<ISliderButton | undefined>;
+    secondButton: Ref<ISliderButton | undefined>;
+    sliderDisabled: import("vue").ComputedRef<boolean>;
+    minValue: import("vue").ComputedRef<number>;
+    maxValue: import("vue").ComputedRef<number>;
+    runwayStyle: import("vue").ComputedRef<CSSProperties>;
+    barStyle: import("vue").ComputedRef<CSSProperties>;
+    resetSize: () => void;
+    setPosition: (percent: number) => Ref<ISliderButton | undefined>;
+    emitChange: () => Promise<void>;
+    onSliderWrapperPrevent: (event: TouchEvent) => void;
+    onSliderClick: (event: MouseEvent | TouchEvent) => void;
+    onSliderDown: (event: MouseEvent | TouchEvent) => Promise<void>;
+    setFirstValue: (firstValue: number) => void;
+    setSecondValue: (secondValue: number) => void;
+};

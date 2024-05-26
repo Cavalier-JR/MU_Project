@@ -6,11 +6,11 @@
       <div class="page-container3" style="background-color: rgb(177, 197, 238); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">部分遗忘</span>
         <select class="page-select1" style="background-color: rgb(135, 164, 187); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
-          <option value="Option 1">Part 1</option>
-          <option value="Option 2">Part 2</option>
-          <option value="Option 3">Part 3</option>
+          <option value="Option 1">记录 1</option>
+          <option value="Option 2">记录 2</option>
+          <option value="Option 3">记录 3</option>
         </select>
-        <button type="button" class="page-button1 button">历史记录</button>
+        <button type="button" class="page-button1 button">确定</button>
       </div>
       <div class="page-container4">
 
@@ -37,7 +37,7 @@
           <option value="Option 3">鸡🐓</option>
           <option value="Option 3">羊🐏</option>
         </select>
-        <button type="button" class="page-button2 button">历史记录</button>
+        <button type="button" class="page-button2 button">确定</button>
       </div>
       <div class="page-container4">
 
@@ -66,7 +66,7 @@
           <option value="Option 3">this is a secret message 222</option>
           <option value="Option 3">u cant c me</option>
         </select>
-        <button type="button" class="page-button3 button">历史记录</button>
+        <button type="button" class="page-button3 button">确定</button>
       </div>
       <div class="page-container4">
 
