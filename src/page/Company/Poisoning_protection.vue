@@ -3,14 +3,12 @@
     <el-col :span="6">
       <el-input
         v-model="textarea1"
-        style="width: 260px"
+        style="width: 200px"
         autosize
         type="textarea"
         placeholder="搜索历史记录"
       />
-    </el-col> 
-    <el-col :span="2" > 
-      <el-button type="primary" :icon="Search" align="right">搜索</el-button>
+      <el-button type="primary" :icon="Search" style="margin-left: 20px;">搜索</el-button>
     </el-col> 
   </el-row>
   <br>
@@ -21,10 +19,12 @@
     style="width: 100%"
     :data="tableData"
     :row-class-name="tableRowClassName"
+    :row-style="{ height: '51px' }" 
+    :cell-style="{ padding: '0px' }"
     @selection-change="handleSelectionChange"
   >
     <el-table-column prop="model" label="模型名称" width="150" header-align="center" align="center" />
-    <el-table-column prop="progress" label="进度" width="320" header-align="center" align="center">
+    <el-table-column prop="progress" label="进度" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">
         <span style="margin-left: -20px;" align="center">
           <el-button style="margin-left: 15px;" size="mini" :type="scope.row.b1" @click="detect(scope.$index, scope.row)"
@@ -87,7 +87,10 @@
   </el-dialog>
   <br>
   <br>
+  <br>
   <el-pagination background class="el-pagination" layout="prev, pager, next" :total="100" />
+  <br>
+  <br>
 </template>
 
 <script lang="ts" setup>

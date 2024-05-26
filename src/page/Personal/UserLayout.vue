@@ -7,7 +7,6 @@
         <el-menu
           active-text-color="#97FFFF"
           background-color="#27B2BD"
-          class="el-menu-vertical-demo"
           :default-openeds="activeIndex"
           text-color="#fff"
           :router="true"

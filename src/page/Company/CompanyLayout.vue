@@ -3,7 +3,7 @@
     <el-container class="box">
       <!-- 左侧菜单栏 -->
       <el-aside class="el-aside">
-        <h1 class="logoBox">遗忘学习系统</h1>
+        <h1 class="logoBox">欢迎您！</h1>
         <el-menu
           active-text-color="#97FFFF"
           background-color="#27B2BD"
@@ -224,11 +224,10 @@ export default {
 .logoBox {
   position: absolute;
   top: 18px;
-  left: 30px;
-  font-size: 24px;
+  left: 50px;
+  font-size: 22px;
   color: #fff;
 }
-
 .box {
   width: 100vw;
   height: 100vh;
@@ -259,7 +258,7 @@ export default {
 }
 
 .el-aside {
-  width: 240px;
+  width: 180px;
   background: #545c64;
   padding-top: 58px;
 }
