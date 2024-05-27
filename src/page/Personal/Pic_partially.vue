@@ -230,8 +230,8 @@ onMounted(() => {
 })
 const options = [
   {
-    value: 'ConMU',
-    label: 'ConMU（推荐）',
+    value: 'MU',
+    label: 'MU（推荐）',
   },
   {
     value: 'GA',
