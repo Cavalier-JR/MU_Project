@@ -242,7 +242,7 @@ function ClassSelected() {
 function Forget_Button_Click() {
   if(value2.value) {
     console.log(value2.value)
-    ElMessageBox.confirm("本操作为实现模型遗忘从该图片中学习到的信息", "提示", {
+    ElMessageBox.confirm("本操作为实现模型遗忘从该类图像中学习到的信息", "提示", {
       confirmButtonText: "我已知晓",
       cancelButtonText: "取消",
       type: "info",

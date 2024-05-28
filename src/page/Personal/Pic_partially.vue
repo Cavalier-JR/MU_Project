@@ -157,8 +157,9 @@ function Forget_Button_Click() {
 const Success_Notify = () => {
   ElMessage({
     showClose: true,
-    message: '已成功遗忘该类别',
+    message: '已成功遗忘所上传的图像',
     type: 'success',
+    offset: 700,
   });
 };
 
@@ -171,6 +172,7 @@ const loadSuccess = () => {
       showClose: true,
       message: '已成功上传图片',
       type: 'success',
+      offset: 250,
     });
     tianchong.value = false;
   }, 4000)
