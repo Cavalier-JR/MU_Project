@@ -223,7 +223,7 @@ const tableData: User[] = [
     jiaofu_flag: 'no',
   },
   {
-    model: 'vgg19 bn',
+    model: 'vgg19_bn',
     state: '未交付',
     expected_acc: '\\',
     actual_acc: '0.93',
@@ -243,7 +243,7 @@ const tableData: User[] = [
     jiaofu_flag: 'no',
   },
   {
-    model: 'wide resnet101 2',
+    model: 'wide_resnet101_2',
     state: '未交付',
     expected_acc: '\\',
     actual_acc: '0.93',
