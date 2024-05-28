@@ -187,6 +187,18 @@ onMounted(() => {
       legend: {
         top: '10%'
       },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
       radar: [
         {
           indicator: [
@@ -290,6 +302,18 @@ onMounted(() => {
       title: {
         text: '遗忘前后正确率对比',
         top: '10px' 
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
       tooltip: {
         trigger: 'item'
@@ -720,10 +744,22 @@ onMounted(() => {
   if(classchart1.value) {
     const myChart = echarts.init(classchart1.value);
     var option = {
-    color: ['#3366CC', '#DC3912', '#FF9900', '#109618'],
-    title: {
+      color: ['#3366CC', '#DC3912', '#FF9900', '#109618'],
+      title: {
         text: '4个指标的对比',
         top: '10px' 
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
       legend: {
         top: '10%'
@@ -834,6 +870,18 @@ onMounted(() => {
       },
       legend: {
         top: '10%'
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
       tooltip: {
         trigger: 'item'
@@ -1294,6 +1342,18 @@ onMounted(() => {
         text: '遗忘前后正确率对比',
         top: '10px' 
       },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
       legend: {
         top: '10%'
       },
@@ -1359,7 +1419,7 @@ onMounted(() => {
               }
             },
             {
-              value: [92.12, 93.14, 94.64, 91.94],
+              value: [82.12, 83.14, 84.64, 81.94],
               name: '遗忘后',
               areaStyle: {
                 color: 'rgba(0, 0, 128, 0.6)'
