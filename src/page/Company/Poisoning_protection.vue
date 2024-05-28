@@ -143,7 +143,7 @@ const handleSelectionChange = (val: User[]) => {
 
 const tableData: User[] = [
   {
-    model: 'vgg16',
+    model: 'MSRANet',
     state: '已交付',
     expected_acc: '79%',
     actual_acc: '0.84',
@@ -203,7 +203,7 @@ const tableData: User[] = [
     jiaofu_flag: 'no',
   },
   {
-    model: 'ResNeXt',
+    model: 'STNet',
     state: '未交付',
     expected_acc: '\\',
     actual_acc: '0.93',
@@ -223,7 +223,7 @@ const tableData: User[] = [
     jiaofu_flag: 'no',
   },
   {
-    model: 'ResNet',
+    model: 'vgg19 bn',
     state: '未交付',
     expected_acc: '\\',
     actual_acc: '0.93',
@@ -243,7 +243,7 @@ const tableData: User[] = [
     jiaofu_flag: 'no',
   },
   {
-    model: 'SqueezeNet',
+    model: 'wide resnet101 2',
     state: '未交付',
     expected_acc: '\\',
     actual_acc: '0.93',
@@ -283,7 +283,7 @@ const tableData: User[] = [
     jiaofu_flag: 'no',
   },
   {
-    model: 'SqueezeNet',
+    model: 'GAN',
     state: '未交付',
     expected_acc: '\\',
     actual_acc: '\\',
@@ -303,7 +303,7 @@ const tableData: User[] = [
     jiaofu_flag: 'no',
   },
   {
-    model: 'vgg16',
+    model: 'resnet34',
     state: '未交付',
     expected_acc: '\\',
     actual_acc: '\\',
