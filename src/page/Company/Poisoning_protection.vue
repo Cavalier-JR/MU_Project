@@ -77,12 +77,12 @@
   </el-table>
   <el-dialog
     v-model="dialogVisible"
-    
+    title="投毒减弱前后混淆矩阵"
     width="50%"
     draggable="true"
   >
     <div style="text-align: center;">
-      <p style="margin-bottom: 15px;">
+      <p style="margin-bottom: 20px;">
         <span style="font-size: 20px;margin-top: 5px;margin-right: 220px;">
           投毒防护前
         </span>
