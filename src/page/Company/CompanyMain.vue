@@ -278,6 +278,10 @@ onMounted(() => {
         type: 'value',
         min: 80
       },
+      tooltip: {
+        trigger: 'axis',
+        formatter: '{a0}: {c0}<br />{a1}: {c1}', // Customize the tooltip format as needed
+      },
       series: [
         {
           name: '文本',
@@ -318,6 +322,9 @@ onMounted(() => {
       },
       yAxis: {
         type: 'value'
+      },
+      tooltip: {
+        trigger: 'axis',
       },
       grid: {
         bottom: '10%' // 调整这个值以减少底部空间
@@ -426,7 +433,6 @@ onMounted(() => {
 
       series: [
         {
-          name: 'Access From',
           type: 'pie',
           radius: ['30%', '60%'],
           center: ['50%', '65%'],

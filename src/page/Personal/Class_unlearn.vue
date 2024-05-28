@@ -496,8 +496,8 @@ const options1 = [
 ]
 const options2 = [
   {
-    value: 'ConMU',
-    label: 'ConMU（推荐）',
+    value: 'MU',
+    label: 'MU（推荐）',
   },
   {
     value: 'GA',

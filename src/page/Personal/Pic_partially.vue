@@ -100,8 +100,8 @@
       </div>
     </el-col>
     <el-col :span="16">
-      <div style="margin:auto auto;width: 100%;height: 20%;"> </div>
-      <div style="width: 100%;height: 80%;"> 
+      <div style="margin:auto auto;width: 100%;height: 15%;"> </div>
+      <div style="width: 100%;height: 85%;"> 
         <p style="width: 50%;height: 100%;margin: auto auto;">
           <div v-show="isForget" id="pieChart" ref="pieChart" style="width: 500px; height: 500px"></div>
         </p>
@@ -230,8 +230,8 @@ onMounted(() => {
 })
 const options = [
   {
-    value: 'ConMU',
-    label: 'ConMU（推荐）',
+    value: 'MU',
+    label: 'MU（推荐）',
   },
   {
     value: 'GA',

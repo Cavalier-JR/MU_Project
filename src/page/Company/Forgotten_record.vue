@@ -37,11 +37,44 @@
   <el-dialog
     v-model="dialogVisible"
     title="运行日志"
-    width="25%"
     draggable="true"
-    top="35vh"
+    center
   >
-    <span style="font-size: 18px;text-align: center;">
+    <el-card>
+      <div style="text-align: left;">
+          <div>
+              <span style="font-size: 20px;font-weight: bold;"> 模 型 名 称: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="font-size: 18px;"> vgg_16 </span>
+              <el-divider></el-divider>
+          </div>
+          <div>
+              <span style="font-size: 20px;font-weight: bold;"> 使用遗忘方法: </span>
+              &nbsp;&nbsp;&nbsp;
+              <span style="font-size: 18px;"> Conmu </span>
+              <el-divider></el-divider>
+          </div>
+          <div>
+              <span style="font-size: 20px;font-weight: bold;"> 执 行 批 次: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="font-size: 18px;"> 10 </span>
+              <el-divider></el-divider>
+          </div>
+          <div>
+              <span style="font-size: 20px;font-weight: bold;"> 优 化 器: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="font-size: 18px;"> Adam </span>
+              <el-divider></el-divider>
+          </div>
+          <div>
+              <span style="font-size: 20px;font-weight: bold;"> 学 习 率: </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="font-size: 18px;"> 1e-2 </span>
+              <el-divider></el-divider>
+          </div>
+      </div>
+    </el-card>
+    <!-- <span style="font-size: 18px;text-align: center;">
       <p>模型名称 vgg_16</p>
       <br>
       <p>使用遗忘方法:Conmue</p>
@@ -58,7 +91,7 @@
           我已知晓
         </el-button>
       </div>
-    </template>
+    </template> -->
   </el-dialog>
   <br>
   <br>
@@ -140,25 +173,25 @@ const tableRowClassName = ({
 
 const tableData: User[] = [
   {
-    acc: '-0.04',
+    acc: '-2.1%',
     inf_type: '文本',
     forget_flag: '正在遗忘',
     date: '2024-05-23 23:13:51',
     forget_content: 'His name is Mike',
-    cost_time: '1.75s',
+    cost_time: '\\',
     user: 'Mike',
   },
   {
-    acc: '+0.01',
+    acc: '-3.2%',
     inf_type: '图片',
     forget_flag: '正在遗忘',
     date: '2024-05-21 10:31:11',
     forget_content: '7张已上传图片',
-    cost_time: '4.1min',
+    cost_time: '\\',
     user: 'Aaron',
   },
   {
-    acc: '-0.01',
+    acc: '-2.7%',
     inf_type: '文本',
     forget_flag: '已遗忘',
     date: '2024-05-17 21:27:15',
@@ -167,7 +200,7 @@ const tableData: User[] = [
     user: 'Benson',
   },
   {
-    acc: '+0.02',
+    acc: '-4.3%',
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-05-13 10:35:59',
@@ -176,7 +209,7 @@ const tableData: User[] = [
     user: 'Benson',
   },
   {
-    acc: '-0.02',
+    acc: '-1.9%',
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-05-11 10:27:23',
@@ -185,7 +218,7 @@ const tableData: User[] = [
     user: 'Denny',
   },
   {
-    acc: '-0.03',
+    acc: '-2.8%',
     inf_type: '文本',
     forget_flag: '已遗忘',
     date: '2024-05-05 18:45:18',
@@ -194,7 +227,7 @@ const tableData: User[] = [
     user: 'Ethan',
   },
   {
-    acc: '-0.01',
+    acc: '-3.5%',
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-05-01 20:32:13',
@@ -203,7 +236,7 @@ const tableData: User[] = [
     user: 'Gavin',
   },
   {
-    acc: '+0.03',
+    acc: '-2.8%',
     inf_type: '文本',
     forget_flag: '已遗忘',
     date: '2024-04-27 18:36:35',
@@ -212,7 +245,7 @@ const tableData: User[] = [
     user: 'Johnny',
   },
   {
-    acc: '+0.02',
+    acc: '-2.3%',
     inf_type: '文本',
     forget_flag: '已遗忘',
     date: '2024-04-23 09:17:26',
@@ -221,7 +254,7 @@ const tableData: User[] = [
     user: 'Johnny',
   },
   {
-    acc: '-0.01',
+    acc: '-1.1%',
     inf_type: '图片',
     forget_flag: '已遗忘',
     date: '2024-04-12 17:12:23',
