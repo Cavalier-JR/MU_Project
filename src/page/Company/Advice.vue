@@ -74,74 +74,74 @@
           <table style="border-collapse: collapse; width: 100%; font-size: 16px;">
             <tr style="background-color: #f2f2f2;">
               <th style="padding: 8px; border: 1px solid #ddd; width: 20%; color: white; background-color: #4CAF50; font-weight: bold;" >遗忘隐私数据</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词1</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词2</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词3</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词4</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词1后模型的准确率</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词2后模型的准确率</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词3后模型的准确率</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词4后模型的准确率</th>
               <!-- <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词5</th> -->
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">123@qq.com</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">98%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">94.25%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">88.76%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">83.16%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">86.05%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;">(+86) sdf54s6d54</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">98%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">91%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">89.16%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">88.76%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">91.10%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">93.76%</td>
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">440106xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">98%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">88.97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">88.16%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">86.37%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">87.15%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">89.07%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">90.98%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">86.94%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">84.76%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">89.79%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">87.13%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">93.78%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">91.62%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">93.37%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">86.48%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">90.38%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">81.61%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">95.89%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">93.16%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">86.75%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">87.65%</td>
             </tr>
             <tr style="background-color: #ebffb1;">
               <td style="padding: 8px; border: 1px solid #ddd;">this is a secret</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">93.44%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">91.35%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">89.71%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">86.80%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">99%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">96%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">93.94%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">92.18%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">91.68%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">85.37%</td>
             </tr>
 
 
@@ -175,6 +175,7 @@ const textchart2 = ref(null);
 
 
 onMounted(() => {
+  // 第一行的左边的雷达图
   if(partchart1.value) {
     const myChart = echarts.init(partchart1.value);
     var option = {
@@ -189,14 +190,13 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-            { text: '正确率', max: 100 },
-            { text: '用时', max: 100 },
-            { text: '内存', max: 100 },
-            { text: '模型大小', max: 100 },
-
+            { text: '正确率(%)', max: 100 },
+            { text: '用时(min)', max: 100 },
+            { text: '模型大小(Mb)', max: 100 },
+            { text: '内存(%)', max: 100 },
           ],
-          center: ['45%', '55%'],  // 在这里控制图片的位置
-          radius: 70,
+          center: ['50%', '55%'],  // 在这里控制图片的位置
+          radius: 60,
           axisName: {
             color: '#fff',
             backgroundColor: '#666',
@@ -205,29 +205,32 @@ onMounted(() => {
           }
         }
       ],
+      tooltip: {
+        trigger: 'item'
+      },
       series: [
         {
           type: 'radar',
           radarIndex: 0,
           data: [
             {
-              value: [99, 99, 99, 99],
+              value: [90, 20, 70, 20],
               name: 'ConMU',
               symbol: 'rect',
-              symbolSize: 12,
+              symbolSize: 6,
               lineStyle: {
                 type: 'dashed'
               },
-              label: {
-                show: true,
+              tooltip: {
                 formatter: function (params) {
-                  return params.value;
+                  return 'Value: ' + params.value.join(', ');
                 }
               }
             },
             {
-              value: [88, 88, 88, 88],
+              value:  [88, 54, 12, 36],
               name: 'GA',
+
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
                   {
@@ -242,7 +245,7 @@ onMounted(() => {
               }
             },
             {
-              value: [75, 81, 13, 68],
+              value:  [83, 32, 7, 13],
               name: 'FT',
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
@@ -258,7 +261,7 @@ onMounted(() => {
               }
             },
             {
-              value: [90, 90, 90, 105, 70, 23],
+              value:  [86, 32, 64, 13],
               name: 'RL',
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
@@ -279,17 +282,18 @@ onMounted(() => {
     };
     myChart.setOption(option);
   }
-
+  // 第一行的右边的雷达图
   if(partchart2.value) {
     const myChart = echarts.init(partchart2.value);
-    // myChart.resize({ width: '100%', height: '100%' });  TODO bug
     var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
         text: '遗忘前后正确率对比',
         top: '10px' 
       },
-      
+      tooltip: {
+        trigger: 'item'
+      },
       legend: {
         top:'10%'
       },
@@ -339,11 +343,11 @@ onMounted(() => {
           },
           data: [
             {
-              value: [100, 8, 0.4, -80],
+              value: [90, 88, 83, 98],
               name: '遗忘前'
             },
             {
-              value: [60, 5, 0.3, -100],
+              value: [89, 84, 82, 77],
               name: '遗忘后',
               areaStyle: {
                 color: 'rgba(255, 228, 52, 0.6)'
@@ -712,10 +716,10 @@ onMounted(() => {
   myChart.setOption(option);
   }
 
-
+  // 第二行的左边的雷达图
   if(classchart1.value) {
     const myChart = echarts.init(classchart1.value);
-    option = {
+    var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
         text: '4个指标的对比',
@@ -727,14 +731,13 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-            { text: '正确率', max: 100 },
-            { text: '用时', max: 100 },
-            { text: '内存', max: 100 },
-            { text: '模型大小', max: 100 },
-
+            { text: '正确率(%)', max: 100 },
+            { text: '用时(min)', max: 100 },
+            { text: '模型大小(Mb)', max: 100 },
+            { text: '内存(%)', max: 100 },
           ],
-          center: ['45%', '55%'],
-          radius: 75,
+          center: ['50%', '55%'],  // 在这里控制图片的位置
+          radius: 60,
           axisName: {
             color: '#fff',
             backgroundColor: '#666',
@@ -743,30 +746,32 @@ onMounted(() => {
           }
         }
       ],
+      tooltip: {
+        trigger: 'item'
+      },
       series: [
-
         {
           type: 'radar',
           radarIndex: 0,
           data: [
             {
-              value: [99, 99, 99, 99],
+              value: [91, 18, 47, 30],
               name: 'ConMU',
               symbol: 'rect',
-              symbolSize: 12,
+              symbolSize: 6,
               lineStyle: {
                 type: 'dashed'
               },
-              label: {
-                show: true,
+              tooltip: {
                 formatter: function (params) {
-                  return params.value;
+                  return 'Value: ' + params.value.join(', ');
                 }
               }
             },
             {
-              value: [88, 88, 88, 88],
+              value:  [86, 12, 16, 23],
               name: 'GA',
+
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
                   {
@@ -781,7 +786,7 @@ onMounted(() => {
               }
             },
             {
-              value: [75, 81, 13, 68],
+              value:  [86, 45, 66, 11],
               name: 'FT',
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
@@ -797,7 +802,7 @@ onMounted(() => {
               }
             },
             {
-              value: [90, 90, 90, 105, 70, 23],
+              value:  [87, 34, 41, 23],
               name: 'RL',
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
@@ -821,7 +826,6 @@ onMounted(() => {
   // 第二行的右边的雷达图
   if(classchart2.value) {
     const myChart = echarts.init(classchart2.value);
-    // myChart.resize({ width: '100%', height: '100%' });  TODO bug
     var option = {
       color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
       title: {
@@ -831,7 +835,9 @@ onMounted(() => {
       legend: {
         top: '10%'
       },
-      
+      tooltip: {
+        trigger: 'item'
+      },
       radar: [
         {
           indicator: [
@@ -878,11 +884,11 @@ onMounted(() => {
           },
           data: [
             {
-              value: [100, 8, 0.4, -80],
+              value: [92, 89, 86, 91],
               name: '遗忘前'
             },
             {
-              value: [60, 5, 0.3, -100],
+              value: [90, 85, 84, 88],
               name: '遗忘后',
               areaStyle: {
                 color: 'rgba(255, 228, 52, 0.6)'
@@ -1039,7 +1045,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [90, 89,]
+          data: [92, 90,]
         },
         {
           name: 'GA',
@@ -1048,7 +1054,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [88, 84,]
+          data: [89, 85,]
         },
         {
           name: 'FT',
@@ -1057,7 +1063,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [83, 82]
+          data: [86, 84]
         },
         {
           name: 'RL',
@@ -1066,7 +1072,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [98, 77, ]
+          data: [91, 88, ]
         }
       ]
     };
@@ -1218,7 +1224,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [320, 332,]
+          data: [56, 34,]
         },
         {
           name: 'GA',
@@ -1227,7 +1233,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [220, 182,]
+          data: [89, 64,]
         },
         {
           name: 'FT',
@@ -1236,7 +1242,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [150, 232,]
+          data: [67, 66,]
         },
         {
           name: 'RL',
@@ -1245,7 +1251,7 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [98, 77, ]
+          data: [76, 34, ]
         }
       ]
     };
@@ -1268,10 +1274,10 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-            { text: '遗忘词1' },
-            { text: '遗忘词2' },
-            { text: '遗忘词3' },
-            { text: '遗忘词4' },
+            { text: '替换词1' },
+            { text: '替换词2' },
+            { text: '替换词3' },
+            { text: '替换词4' },
           ],
           center: ['50%', '50%'],
           radius: 80,
