@@ -3,7 +3,7 @@
     <el-container style="background-color:#fdfcff;">
       <el-header class="my_el-header">
       <div class="header-content">
-        <h1 class="glowing-title">文本遗忘</h1>
+        <h1 style="margin-top: 15px;">文本遗忘</h1>
         <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
           <el-icon class="question-icon" style="font-size:30px;color:#888888;">
             <QuestionFilled/>
@@ -15,7 +15,7 @@
     <el-main>
       <el-row>
         <el-col :span="24">
-          <el-card style="max-width: 1000px;margin-top: 40px; margin-left: 165px;">
+          <el-card style="max-width: 1000px;margin-top: 40px; margin-left: 195px;">
             <div class="card-content">
               <p> 在当前界面,您可以对文本类型的隐私数据进行遗忘处理~ </p>
               <br>
@@ -69,7 +69,7 @@
   <el-container class="center-container2" style="background-color:#fdfcff;">
     <el-header class="my_el-header">
       <div class="header-content">
-        <h1 class="glowing-title">文本遗忘</h1>
+        <h1>文本遗忘</h1>
         <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
           <el-icon class="question-icon" style="font-size:30px;color:#888888;">
             <QuestionFilled/>
@@ -179,7 +179,7 @@
               style="font-size:15px"
                 type="textarea"
                 :autosize="{ minRows: 3, maxRows: 20}"
-                placeholder="这里是模型的输出"
+                content="John was diagnosed with a heart condition  and is receiving treatment at king's college hospital.despite his concerns, micha..."
                 v-model="formData1.modelOutput1"
                 font-family=''
                 readonly="true"
@@ -208,7 +208,7 @@
                   style="font-size:15px; z-index: 9;"
                   type="textarea"
                   :autosize="{ minRows: 3, maxRows: 20}"
-                  placeholder="这里是模型的输出"
+                  placeholder="John was diagnosed with abter. he is currently taking lipitor and his test results were normal. his age"
                   v-model="formData2.modelOutput2"
                   readonly="true"
                 ></el-input>
@@ -325,14 +325,14 @@ setup() {
     });
 
     const formData1 = ref({
-    text: '',
-    modelOutput1: '',
-    sensitiveInfo: ''
-    });
+  text: '',
+  modelOutput1: 'John was diagnosed with a heart condition  and is receiving treatment at king\'s college hospital.despite his concerns, micha...', // 初始化为您想要的文本
+  sensitiveInfo: ''
+});
 
-    const formData2 = ref({
-    text: '',
-    modelOutput2: '' // 新增字段 modelOutput2
+const formData2 = ref({
+  text: '',
+  modelOutput2: 'John was diagnosed with abter. he is currently taking lipitor and his test results were normal. his age' // 初始化为您想要的文本
 });
    
 
@@ -524,9 +524,8 @@ setup() {
   background-color: #fcfbff;
   color: black;
   padding: 8px;
-  font-size: 50px;
+  font-size: 30px;
   font-family:'社会体';
-
   justify-content: center;
   text-align: center;
 }
@@ -912,22 +911,7 @@ ol li {
   top: 50%;
   right: 0;
 }
-.glowing-title {
-  text-align: center;
-  color: #000000;
-  font-size: 48px;
-  text-shadow: 0 0 5px #cdc8d6, 0 0 10px #cdc8d6, 0 0 20px #cdc8d6, 0 0 40px #cdc8d6;
-  animation: glow 1s ease-in-out infinite alternate;
-}
 
-@keyframes glow {
-  from {
-    text-shadow: 0 0 5px #cdc8d6, 0 0 10px #cdc8d6, 0 0 20px #cdc8d6, 0 0 40px #cdc8d6;
-  }
-  to {
-    text-shadow: 0 0 10px #cdc8d6, 0 0 20px #cdc8d6, 0 0 30px #cdc8d6, 0 0 50px #cdc8d6, 0 0 60px #cdc8d6;
-  }
-}
 .animated {
     z-index: 1;
     animation-duration: 1s;
@@ -1030,4 +1014,5 @@ ol li {
   font-size: 15px;
   width: 150px !important;
 }
+
 </style>

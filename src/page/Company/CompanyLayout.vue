@@ -286,7 +286,7 @@ export default {
 .header-left {
   float: left;
   font-family: "抖音体";
-  margin-left: 30%;
+  margin-left: 38%;
   line-height: 58px;
 }
 .header-left h2 {
