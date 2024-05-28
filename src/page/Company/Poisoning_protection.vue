@@ -77,7 +77,7 @@
   </el-table>
   <el-dialog
     v-model="dialogVisible"
-    title="投毒减弱前后混淆矩阵"
+    
     width="50%"
     draggable="true"
   >
