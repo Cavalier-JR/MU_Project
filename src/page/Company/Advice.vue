@@ -1297,13 +1297,16 @@ onMounted(() => {
       legend: {
         top: '10%'
       },
+      tooltip: {
+        trigger: 'item'
+      },
       radar: [
         {
           indicator: [
-            { text: '替换词1' },
-            { text: '替换词2' },
-            { text: '替换词3' },
-            { text: '替换词4' },
+              { text: '替换词1', axisName: { color: '#FF0000' } },  // Red color for '替换词1'
+              { text: '替换词2', axisName: { color: '#00FF00' } },  // Green color for '替换词2'
+              { text: '替换词3', axisName: { color: '#0000FF' } },  // Blue color for '替换词3'
+              { text: '替换词4', axisName: { color: '#FFA500' } }   // Orange color for '替换词4'
           ],
           center: ['50%', '50%'],
           radius: 80,
@@ -1343,29 +1346,29 @@ onMounted(() => {
           },
           data: [
             {
-              value: [100, 8, 0.4, -80],
+              value: [95.14, 95.14, 95.14, 95.14],
               name: '遗忘前',
               areaStyle: {
                 color: 'rgba(253, 174, 97, 0.6)'
               },
               lineStyle: {
-                color: 'rgba(253, 174, 97, 0.8)' // Update the line color here
+                color: 'rgba(253, 174, 97, 1)' // Update the line color here
               },
               itemStyle: {
-                color: 'rgba(253, 174, 97, 0.8)' // Update the point color here
+                color: 'rgba(253, 174, 97, 1)' // Update the point color here
               }
             },
             {
-              value: [60, 5, 0.3, -100],
+              value: [92.12, 93.14, 94.64, 91.94],
               name: '遗忘后',
               areaStyle: {
-                color: 'rgba(103, 169, 207, 0.6)'
+                color: 'rgba(0, 0, 128, 0.6)'
               },
               lineStyle: {
-                color: 'rgba(103, 169, 207, 0.8)' // Update the line color here
+                color: 'rgba(0, 0, 128, 1)' // Update the line color here
               },
               itemStyle: {
-                color: 'rgba(103, 169, 207, 0.8)' // Update the point color here
+                color: 'rgba(0, 0, 128, 0.8)' // Update the point color here
               }
             }
           ]
