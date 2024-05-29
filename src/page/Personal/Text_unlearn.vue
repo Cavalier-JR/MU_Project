@@ -10,7 +10,7 @@
           </el-icon> 
         </el-tooltip> -->
       </div>
-      <div class="divider-with-text">一尘不缁，保护您的敏感信息</div>
+      <div class="divider-with-text">一尘不缁，保护您的隐私信息</div>
     </el-header>
     <el-main>
       <el-row>
@@ -76,7 +76,7 @@
           </el-icon> 
         </el-tooltip> -->
       </div>
-      <div class="divider-with-text">一尘不缁，保护您的敏感信息</div>
+      <div class="divider-with-text">一尘不缁，保护您的隐私信息</div>
     </el-header>
 
     <el-main style="margin-top: 40px;">
@@ -107,10 +107,10 @@
             <div v-if="isSubmitted">
               <div v-if="showModelOutput1">
                 <div class="animated lightSpeedInLeft"  >
-                <el-form-item label="输入想要遗忘的敏感信息" style="margin-top:40px" v-if="showSensitiveInfoSection">
+                <el-form-item label="输入想要遗忘的隐私信息" style="margin-top:40px" v-if="showSensitiveInfoSection">
                 <el-input
                  class="custom-sensitive-input"
-                  placeholder="输入敏感信息"
+                  placeholder="输入隐私信息"
                   v-model="formData1.sensitiveInfo"
                   clearable
                 >
@@ -277,7 +277,7 @@ components: {
 
 },
 setup() {
-    const isSensitiveInfoShown = ref(true); // 控制敏感信息部分的显示
+    const isSensitiveInfoShown = ref(true); // 控制隐私信息部分的显示
     const showOptions = ref(false);
     const selectedOption = ref('');
     const replacementOptions = ref(['.odd place you are', '$ max do go & than', '#vex sorrow his break done']);
@@ -318,7 +318,7 @@ setup() {
             type: 'success',
             customClass: "focus-button2",
             duration: 5000, // 自动关闭延时
-            offset:235
+            offset:300
           });
         }, 3000); // 3秒计时
       }
@@ -367,7 +367,7 @@ const formData2 = ref({
 
       showTestPromptInput.value = false;
       showBorder.value=false;
-      ElMessageBox.confirm("本操作将对您提供的隐私文本进行敏感信息的遗忘操作", "提示", {
+      ElMessageBox.confirm("本操作将对您提供的隐私文本进行隐私信息的遗忘操作", "提示", {
       confirmButtonText: "我已知晓",
       cancelButtonText: "取消",
       type: "info",
