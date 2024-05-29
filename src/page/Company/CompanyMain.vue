@@ -282,6 +282,18 @@ onMounted(() => {
         trigger: 'axis',
         formatter: '{a0}: {c0}<br />{a1}: {c1}', // Customize the tooltip format as needed
       },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
       series: [
         {
           name: '文本',
@@ -325,6 +337,18 @@ onMounted(() => {
       },
       tooltip: {
         trigger: 'axis',
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
       grid: {
         bottom: '10%' // 调整这个值以减少底部空间
