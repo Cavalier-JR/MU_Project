@@ -110,7 +110,7 @@ export default {
       //当前选项卡
       activeTabName: "UserHome",
       //默认展开图片遗忘下的二级菜单
-      activeIndex: ['图片遗忘'],
+      activeIndex: ['图像遗忘'],
       //需要显示的标签数组
       editableTabs: [
         {
@@ -125,7 +125,7 @@ export default {
           index: "UserHome",
         },
         {
-          title: "图片遗忘",
+          title: "图像遗忘",
           subs: [
             {
               title: "类别遗忘",

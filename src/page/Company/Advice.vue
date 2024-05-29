@@ -187,6 +187,18 @@ onMounted(() => {
       legend: {
         top: '10%'
       },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
       radar: [
         {
           indicator: [
@@ -290,6 +302,18 @@ onMounted(() => {
       title: {
         text: '遗忘前后正确率对比',
         top: '10px' 
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
       tooltip: {
         trigger: 'item'
@@ -720,10 +744,22 @@ onMounted(() => {
   if(classchart1.value) {
     const myChart = echarts.init(classchart1.value);
     var option = {
-      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+      color: ['#3366CC', '#DC3912', '#FF9900', '#109618'],
       title: {
         text: '4个指标的对比',
         top: '10px' 
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
       legend: {
         top: '10%'
@@ -739,8 +775,8 @@ onMounted(() => {
           center: ['50%', '55%'],  // 在这里控制图片的位置
           radius: 60,
           axisName: {
-            color: '#fff',
-            backgroundColor: '#666',
+            color: '#fff',  // 字体颜色
+            backgroundColor: '#8B6969', // 字体背景
             borderRadius: 3,
             padding: [3, 5]
           }
@@ -755,7 +791,7 @@ onMounted(() => {
           radarIndex: 0,
           data: [
             {
-              value: [91, 18, 47, 30],
+              value: [91, 18, 47, 96],
               name: 'ConMU',
               symbol: 'rect',
               symbolSize: 6,
@@ -769,7 +805,7 @@ onMounted(() => {
               }
             },
             {
-              value:  [86, 12, 16, 23],
+              value:  [86, 12, 16, 45],
               name: 'GA',
 
               areaStyle: {
@@ -786,7 +822,7 @@ onMounted(() => {
               }
             },
             {
-              value:  [86, 45, 66, 11],
+              value:  [86, 45, 66, 32],
               name: 'FT',
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
@@ -802,7 +838,7 @@ onMounted(() => {
               }
             },
             {
-              value:  [87, 34, 41, 23],
+              value:  [87, 34, 41, 11],
               name: 'RL',
               areaStyle: {
                 color: new echarts.graphic.RadialGradient(0.1, 0.6, 1, [
@@ -827,13 +863,25 @@ onMounted(() => {
   if(classchart2.value) {
     const myChart = echarts.init(classchart2.value);
     var option = {
-      color: ['#67F9D8', '#FFE434', '#56A3F1', '#FF917C'],
+      color: ['#00EE76', '#FF917C'],
       title: {
         text: '遗忘前后正确率对比',
         top: '10px' 
       },
       legend: {
         top: '10%'
+      },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
       },
       tooltip: {
         trigger: 'item'
@@ -851,25 +899,25 @@ onMounted(() => {
           startAngle: 90,
           splitNumber: 4,
           shape: 'circle',
-          axisName: {
-            formatter: '【{value}】',
-            color: '#428BD4'
-          },
+          axisName: { 
+            formatter: '{value}',
+            color: '#191970' // 雷达图周围的字体颜色
+          }, 
           splitArea: {
             areaStyle: {
-              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+              color: ['#B0C4DE', '#B0E0E6'], // Change the background color here
               shadowColor: 'rgba(0, 0, 0, 0.2)',
               shadowBlur: 10
             }
           },
           axisLine: {
             lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
+              color: 'rgba(0, 0, 0, 0.8)'
             }
           },
           splitLine: {
             lineStyle: {
-              color: 'rgba(211, 253, 250, 0.8)'
+              color: 'rgba(0, 0, 0, 0.8)'
             }
           }
         },
@@ -885,7 +933,10 @@ onMounted(() => {
           data: [
             {
               value: [92, 89, 86, 91],
-              name: '遗忘前'
+              name: '遗忘前',
+              areaStyle: {
+                color: 'rgba(25, 250, 36, 0.6)'
+              }
             },
             {
               value: [90, 85, 84, 88],
@@ -1045,7 +1096,10 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [92, 90,]
+          data: [92, 90,],
+          itemStyle: {
+            color: '#aec7e8' // Update the color for ConMU
+          }
         },
         {
           name: 'GA',
@@ -1054,7 +1108,10 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [89, 85,]
+          data: [89, 85,],
+          itemStyle: {
+            color: '#ff9896' // Update the color for GA
+          }
         },
         {
           name: 'FT',
@@ -1063,7 +1120,10 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [86, 84]
+          data: [86, 84],
+          itemStyle: {
+            color: '#98df8a' // Update the color for FT
+          }
         },
         {
           name: 'RL',
@@ -1072,13 +1132,15 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [91, 88, ]
+          data: [91, 88, ],
+          itemStyle: {
+            color: '#dbdb8d' // Update the color for RL
+          }
         }
       ]
     };
     myChart.setOption(option);
   }
-
   // 第二行的时间柱形图
   if(timechart2.value) {
     const myChart = echarts.init(timechart2.value);
@@ -1224,7 +1286,10 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [56, 34,]
+          data: [56, 34,],
+          itemStyle: {
+            color: '#aec7e8' // Update the color for ConMU
+          }
         },
         {
           name: 'GA',
@@ -1233,7 +1298,10 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [89, 64,]
+          data: [89, 64,],
+          itemStyle: {
+            color: '#ff9896' // Update the color for GA
+          }
         },
         {
           name: 'FT',
@@ -1242,7 +1310,10 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [67, 66,]
+          data: [67, 66,],
+          itemStyle: {
+            color: '#98df8a' // Update the color for FT
+          }
         },
         {
           name: 'RL',
@@ -1251,7 +1322,10 @@ onMounted(() => {
           emphasis: {
             focus: 'series'
           },
-          data: [76, 34, ]
+          data: [76, 34, ],
+          itemStyle: {
+            color: '#dbdb8d' // Update the color for RL
+          }
         }
       ]
     };
@@ -1268,16 +1342,31 @@ onMounted(() => {
         text: '遗忘前后正确率对比',
         top: '10px' 
       },
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        left: 'right',
+        top: 'center',
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
       legend: {
         top: '10%'
+      },
+      tooltip: {
+        trigger: 'item'
       },
       radar: [
         {
           indicator: [
-            { text: '替换词1' },
-            { text: '替换词2' },
-            { text: '替换词3' },
-            { text: '替换词4' },
+              { text: '替换词1', axisName: { color: '#FF0000' } },  // Red color for '替换词1'
+              { text: '替换词2', axisName: { color: '#00FF00' } },  // Green color for '替换词2'
+              { text: '替换词3', axisName: { color: '#0000FF' } },  // Blue color for '替换词3'
+              { text: '替换词4', axisName: { color: '#FFA500' } }   // Orange color for '替换词4'
           ],
           center: ['50%', '50%'],
           radius: 80,
@@ -1285,12 +1374,12 @@ onMounted(() => {
           splitNumber: 4,
           shape: 'circle',
           axisName: {
-            formatter: '【{value}】',
+            formatter: '{value}',
             color: '#428BD4'
           },
           splitArea: {
             areaStyle: {
-              color: ['#77EADF', '#26C3BE', '#64AFE9', '#428BD4'],
+              color: ['#66c2a5', '#99d8c9', ],
               shadowColor: 'rgba(0, 0, 0, 0.2)',
               shadowBlur: 10
             }
@@ -1317,14 +1406,29 @@ onMounted(() => {
           },
           data: [
             {
-              value: [100, 8, 0.4, -80],
-              name: '遗忘前'
+              value: [95.14, 95.14, 95.14, 95.14],
+              name: '遗忘前',
+              areaStyle: {
+                color: 'rgba(253, 174, 97, 0.6)'
+              },
+              lineStyle: {
+                color: 'rgba(253, 174, 97, 1)' // Update the line color here
+              },
+              itemStyle: {
+                color: 'rgba(253, 174, 97, 1)' // Update the point color here
+              }
             },
             {
-              value: [60, 5, 0.3, -100],
+              value: [82.12, 83.14, 84.64, 81.94],
               name: '遗忘后',
               areaStyle: {
-                color: 'rgba(255, 228, 52, 0.6)'
+                color: 'rgba(0, 0, 128, 0.6)'
+              },
+              lineStyle: {
+                color: 'rgba(0, 0, 128, 1)' // Update the line color here
+              },
+              itemStyle: {
+                color: 'rgba(0, 0, 128, 0.8)' // Update the point color here
               }
             }
           ]
