@@ -62,7 +62,7 @@
       <br>
       <br>
       <div style="width: 100%;"> 
-        <p style="margin: 0 auto;width: 75%;">
+        <p style="margin: 0 auto;width: 70%;">
           <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
             <el-option
               v-for="item in options"
@@ -297,7 +297,7 @@ const options = [
   }
   .my_tag{
     font-size: 1.3rem;
-    width: 150px;
+    width: 32%;
     margin: 0 auto;
   }
   /* .select_area {

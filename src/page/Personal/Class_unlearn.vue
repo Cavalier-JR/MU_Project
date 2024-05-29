@@ -3,29 +3,33 @@
     <el-header class="my_el-header"> 类别遗忘 </el-header>
     <el-main>
       <el-row justify="center">
-        <el-col :span="13">
-          <el-card style="max-width: 640px">
-            <div class="card-content">
-              <p> 您在当前界面可以上传不同类别的图片让我遗忘哦！ </p>
-              <br>
-              <br>
-              <p> 想知道怎么操作？可以看下面哦~</p>
-            </div> 
-            <div class="card-content">
-              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:55px;" shadow="always">
-                <el-icon style="color: green"><SetUp /></el-icon>
-                首先选择某个类别的图片
+        <el-col :span="13" justify="center">
+          <div style="width: 100%;"> 
+            <p style="margin: auto;width: 80%;">
+              <el-card style="max-width: 660px">
+                <div class="card-content">
+                  <p> 您在当前界面可以上传不同类别的图片让我遗忘哦！ </p>
+                  <br>
+                  <br>
+                  <p> 想知道怎么操作？可以看下面哦~</p>
+                </div> 
+                <div class="card-content">
+                  <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:30px;" shadow="always">
+                    <el-icon style="color: green"><SetUp /></el-icon>
+                    首先选择某个类别的图片
+                  </el-card>
+                  <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:60px;" shadow="always">
+                    <el-icon style="color: blue"><Promotion /></el-icon>
+                    选择遗忘方法并进行遗忘
+                  </el-card>
+                </div>
               </el-card>
-              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:60px;" shadow="always">
-                <el-icon style="color: blue"><Promotion /></el-icon>
-                选择遗忘方法并进行遗忘
-              </el-card>
-            </div>
-          </el-card>
+            </p>
+          </div>
           <br>
           <br>
           <div style="width: 100%;height: 60px;"> 
-            <p style="margin: auto;width: 55%;">
+            <p style="margin: auto;width: 50%;">
               <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" 
               style="width: 190px" clearable :show-all-levels="false" 
               placeholder="请选择需要遗忘的类别" collapse-tags/>
@@ -34,8 +38,8 @@
             </p>
           </div> 
           <div style="width: 100%;height: 60px;" v-show="isMethodVisible"> 
-            <p style="margin: auto;width: 55%;">
-              <el-select v-model="value2" placeholder="请选择你的遗忘方法" style="width: 190px">
+            <p style="margin: auto;width: 50%;">
+              <el-select v-model="value2" placeholder="请选择你的遗忘方法" style="width: 190px;">
                 <el-option
                   v-for="item in options2"
                   :key="item.value"
@@ -60,8 +64,13 @@
               </el-result>
             </p>
           </div> 
+          <br v-show="isColVisible">
+          <br v-show="isColVisible">
+          <br v-show="isColVisible">
+          <br v-show="isColVisible">
+          <br v-show="isColVisible">
           <div style="width: 100%;" v-show="isPicVisible">
-            <p style="margin:auto auto;width: 30%;height: 30px;">
+            <p style="margin:auto auto;width: 20%;height: 30px;">
               <el-icon style="font-size: 17px"><PictureFilled /></el-icon>
                 <span style="font-size: 15px;margin-left: 5px;"> 类别数据集展示 </span>
             </p>
@@ -157,6 +166,12 @@
             <div class="item"> <img src="../../assets/pic/image_87.png" alt="示例图片" /> </div>
             <div class="item"> <img src="../../assets/pic/image_88.png" alt="示例图片" /> </div>
             <div class="item"> <img src="../../assets/pic/image_89.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_90.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_91.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_92.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_93.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_94.png" alt="示例图片" /> </div>
+            <div class="item"> <img src="../../assets/pic/image_95.png" alt="示例图片" /> </div>
           </div>
         </el-col>
 
@@ -184,7 +199,11 @@
 
       </el-row>
       <el-row v-show="isbrshow">
-        <el-col span="24">
+        <el-col span="13">
+          <br>
+          <br>
+          <br>
+          <br>
           <br>
           <br>
           <br>
@@ -288,6 +307,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
+    offset: 530,
   });
 };
 
@@ -585,7 +605,8 @@ const options2 = [
   flex-direction:row;
   flex-wrap:wrap;
   height: 180px;
-  width: 100%;
+  width: 80.2%;
+  margin: auto;
 }
 .item {
   margin-right: 4px; /*设置每个项目右侧的间隔 */
