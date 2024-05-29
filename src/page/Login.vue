@@ -1,12 +1,12 @@
 <template>
   <div class="loginbody">
     <div style="width: 100%;height: 100%;">
-    <p style="margin:auto auto;width: 27%;height: 50%;">
-    <div style="margin:auto auto;width: 100%;height: 80%;"> </div>
-    <div style="margin:auto auto;width: 100%;height: 14%;"> 
+    <p style="margin:auto auto;width: 24%;height: 50%;">
+    <div style="margin:auto auto;width: 100%;height: 75%;"> </div>
+    <div style="margin:auto auto;width: 90%;height: 16%;"> 
       <h2 class="logintext"> 欢迎来到遗忘学习系统 </h2>
     </div>
-    <div style="margin:auto auto;width: 100%;height: 6%;">
+    <div style="margin:auto auto;width: 70%;height: 9%;">
       <el-tabs stretch="true" class="custom-tabs-label">
         <el-tab-pane>
           <template #label>
@@ -21,7 +21,8 @@
                 <el-input
                   v-model="username"
                   clearable
-                  style="margin-top: 10px;"
+                  style="margin-top: 10px; font-size: 18px;"
+                  size="large"
                   placeholder="请输入账号"
                 ></el-input>
               </el-form-item>
@@ -29,7 +30,8 @@
                 <el-input
                   v-model="password"
                   clearable
-                  style="margin-top: 10px;margin-bottom: 5px;"
+                  style="margin-top: 10px;margin-bottom: 5px; font-size: 18px;"
+                  size="large"
                   placeholder="请输入密码"
                   show-password
                 ></el-input>
@@ -126,7 +128,7 @@ const CompanySet = () => {
 .logintext {
   line-height: 40px;
   text-align: center;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bolder;
   color: white;
   text-shadow: 2px 2px 4px #000000;
