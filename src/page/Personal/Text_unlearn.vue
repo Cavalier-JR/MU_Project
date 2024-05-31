@@ -127,7 +127,7 @@
               <el-form-item style="margin-top:150px" >
         
                 <template #label >
-                          <span style="color:#7986CB;">请输入测试提示词</span>
+                          <span style="color:#673AB7;">请输入测试提示词</span>
                 </template>
                 <el-input
                   style="font-size:15px; z-index: 9; "
@@ -201,7 +201,7 @@
 
               >
                 <template #label>
-                  <span style="color:#7986CB;" class="animated2 bounceInDown">遗忘后输出</span>
+                  <span style="color:#673AB7;" class="animated2 bounceInDown">遗忘后输出</span>
                 </template>
                 <el-input
                   class="animated2 bounceInDown"
@@ -541,7 +541,7 @@ const formData2 = ref({
 }
 .el-form-item label {
   font-size: 30px;
-  font-family: '抖音体';
+  color:black
 }
 .el-icon{
   color:#A080FF;

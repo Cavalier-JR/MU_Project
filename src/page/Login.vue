@@ -51,11 +51,12 @@
           </template>
           <div>
             <el-form>
-              <el-form-item prop="username">
+              <el-form-item prop="companyname">
                 <el-input
-                  v-model="username"
+                  v-model="companyname"
                   clearable
-                  style="margin-top: 10px;"
+                  style="margin-top: 10px;font-size: 18px;"
+                  size="large"
                   placeholder="请输入账号"
                 ></el-input>
               </el-form-item>
@@ -63,8 +64,9 @@
                 <el-input
                   v-model="password"
                   clearable
-                  style="margin-top: 10px;margin-bottom: 5px;"
+                  style="margin-top: 10px;margin-bottom: 5px;font-size: 18px;"
                   placeholder="请输入密码"
+                  size="large"
                   show-password
                 ></el-input>
               </el-form-item>
@@ -87,6 +89,7 @@
 import { useRouter, useRoute } from "vue-router";
 const $router = useRouter();
 let username = "admin";
+let companyname = "company";
 let password = "123456789";
 
 const UserSet = () => {

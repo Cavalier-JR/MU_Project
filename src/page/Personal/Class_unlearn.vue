@@ -288,6 +288,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
+    offset:530,
   });
 };
 
