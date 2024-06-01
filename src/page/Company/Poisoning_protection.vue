@@ -84,10 +84,10 @@
     <div style="text-align: center;">
       <p style="margin-bottom: 20px;">
         <span style="font-size: 20px;margin-top: 5px;margin-right: 220px;">
-          投毒防护前
+          投毒遗忘前
         </span>
         <span style="font-size: 20px;margin-top: 5px;">
-          投毒防护后
+          投毒遗忘后
         </span>
       </p>
       <div>

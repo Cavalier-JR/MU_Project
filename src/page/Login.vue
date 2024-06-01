@@ -55,7 +55,7 @@
                 <el-input
                   v-model="companyname"
                   clearable
-                  style="margin-top: 10px; font-size: 18px;"
+                  style="margin-top: 10px;font-size: 18px;"
                   size="large"
                   placeholder="请输入账号"
                 ></el-input>
@@ -67,13 +67,16 @@
                   style="margin-top: 10px;margin-bottom: 5px;font-size: 18px"
                   size="large"
                   placeholder="请输入密码"
+                  size="large"
                   show-password
                 ></el-input>
               </el-form-item>
             </el-form>
           </div>
           <div class="butt">
-            <el-button @click="CompanySet" type="primary"> 登录 </el-button>
+
+            <el-button @click="CompanySet " type="primary"> 登录 </el-button>
+
           </div>
         </el-tab-pane>
       </el-tabs>
