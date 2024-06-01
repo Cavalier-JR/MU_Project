@@ -46,6 +46,7 @@
                   :label="item.label"
                   :value="item.value"
                   :disabled="item.disabled"
+                  class="custom-option"
                 />
               </el-select>
               <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible" 
@@ -517,19 +518,19 @@ const options1 = [
 const options2 = [
   {
     value: 'MU',
-    label: 'MU（推荐）',
+    label: 'MU（推荐，准确率最高，模型效最好且用时短）',
   },
   {
     value: 'GA',
-    label: 'GA',
+    label: 'GA（准确率较高，但是用时较长）',
   },
   {
     value: 'FT',
-    label: 'FT',
+    label: 'FT（准确率较好但用时最长）',
   },
   {
     value: 'RL',
-    label: 'RL',
+    label: 'RL（准确率最差但用时最短）',
   },
 ]
 
@@ -619,4 +620,11 @@ const options2 = [
 /* .successNotify {
   margin-top: 15px;
 } */
+.custom-select .el-select-dropdown__item {
+  text-align: left;
+}
+
+.custom-option {
+  text-align: left;
+}
 </style>

@@ -231,21 +231,21 @@ onMounted(() => {
  
 })
 const options = [
-  {
+{
     value: 'MU',
-    label: 'MU（推荐）',
+    label: 'MU（推荐，准确率最高，模型效最好且用时短）',
   },
   {
     value: 'GA',
-    label: 'GA',
+    label: 'GA（准确率较高，但是用时较长）',
   },
   {
     value: 'FT',
-    label: 'FT',
+    label: 'FT（准确率较好但用时最长）',
   },
   {
     value: 'RL',
-    label: 'RL',
+    label: 'RL（准确率最差但用时最短）',
   },
 ]
 </script>

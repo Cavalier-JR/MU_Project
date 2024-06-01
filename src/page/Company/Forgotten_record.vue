@@ -45,13 +45,13 @@
           <div>
               <span style="font-size: 20px;font-weight: bold;"> 模 型 名 称: </span>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <span style="font-size: 18px;"> vgg_16 </span>
+              <span style="font-size: 18px;"> VGG_16 </span>
               <el-divider></el-divider>
           </div>
           <div>
               <span style="font-size: 20px;font-weight: bold;"> 使用遗忘方法: </span>
               &nbsp;&nbsp;&nbsp;
-              <span style="font-size: 18px;"> Conmu </span>
+              <span style="font-size: 18px;"> MU </span>
               <el-divider></el-divider>
           </div>
           <div>
