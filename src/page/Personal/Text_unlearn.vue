@@ -161,7 +161,7 @@
                   @click="addTextToPanelAndNotify"
                   :loading="loading_flag" 
                 >
-                  进行遗忘
+                  遗忘
                 </el-button>
               </el-form-item>
 

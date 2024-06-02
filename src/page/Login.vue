@@ -67,7 +67,6 @@
                   style="margin-top: 10px;margin-bottom: 5px;font-size: 18px"
                   size="large"
                   placeholder="请输入密码"
-                  size="large"
                   show-password
                 ></el-input>
               </el-form-item>
