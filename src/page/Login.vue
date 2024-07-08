@@ -50,7 +50,7 @@
             </span>
           </template>
           <div>
-            <el-form>
+            <el-form @submit.prevent="submitForm">
               <el-form-item prop="companyname">
                 <el-input
                   v-model="companyname"
@@ -86,6 +86,7 @@
 </template>
 
 <script setup>
+import axios from 'axios'
 import { useRouter, useRoute } from "vue-router";
 const $router = useRouter();
 let username = "admin";

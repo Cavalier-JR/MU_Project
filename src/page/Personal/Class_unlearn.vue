@@ -217,6 +217,7 @@
 </template>
 
 <script lang="ts" setup>
+import axios from 'axios';
 import { ref } from 'vue';
 import { ElMessageBox, ElNotification, ElMessage } from "element-plus"
 
@@ -312,23 +313,15 @@ const Success_Notify = () => {
   });
 };
 
-const tableData: User[] = [
-  { pic: 'http://picture.gptkong.com/20240519/21190ec99c92e6452bbc8b0ab8fd15b833.png', beforeCategory: '狗', afterCategory: '猫'},
-  { pic: 'http://picture.gptkong.com/20240519/15595e6b339c944b2a9467f00e4382ba3e.png', beforeCategory: '狗', afterCategory: '猪'},
-  { pic: 'http://picture.gptkong.com/20240519/1600136bb87d6943ac8257e9b82a8a684f.png', beforeCategory: '狗', afterCategory: '羊'},
-  { pic: 'http://picture.gptkong.com/20240519/16002101bd462e4ef986d79bdcb1ca0dc4.png', beforeCategory: '狗', afterCategory: '驴'},
-  { pic: 'http://picture.gptkong.com/20240519/1600bc7ed87ce544989997cbda8792dd38.png', beforeCategory: '狗', afterCategory: '猪'},
-  { pic: 'http://picture.gptkong.com/20240519/16005d72a59498441e90b6dd9ba15986c4.png', beforeCategory: '狗',  afterCategory: '猫'},
-  { pic: 'http://picture.gptkong.com/20240519/160172d1b1dded40e487a598b8522760a2.png', beforeCategory: '狗', afterCategory: '牛'},
-  { pic: 'http://picture.gptkong.com/20240519/1601e32db07851446292f261d16389a602.png', beforeCategory: '狗', afterCategory: '猴'},
-  { pic: 'http://picture.gptkong.com/20240519/1601625292168548dbbf6ec74573794fe1.png', beforeCategory: '狗', afterCategory: '驴'},
-  { pic: 'http://picture.gptkong.com/20240519/160104ad6b69d948b7bdc320cf1cf1f128.png', beforeCategory: '狗', afterCategory: '猫'},
-  { pic: 'http://picture.gptkong.com/20240519/160100f6584997414d8eaef667717d329b.png', beforeCategory: '狗', afterCategory: '蛇'},
-  { pic: 'http://picture.gptkong.com/20240519/1602ff0bec5f99452faf84eb9ce6e6ffe9.png', beforeCategory: '狗', afterCategory: '猴'},
-  { pic: 'http://picture.gptkong.com/20240519/160291f94037d64fa0a5d5ee3f459b9541.png', beforeCategory: '狗', afterCategory: '蛇'},
-  { pic: 'http://picture.gptkong.com/20240519/16023794c760ee4cf088e1b6f4855c5331.png', beforeCategory: '狗', afterCategory: '马'},
-  { pic: 'http://picture.gptkong.com/20240519/1602fc5eb5f4e446b18cd42b3f04ad325d.png', beforeCategory: '狗', afterCategory: '骆驼'},
-];
+const tableData = ref([]); 
+axios.get('http://127.0.0.1:8000/api/class-forget/')
+  .then(response => {
+    tableData.value = response.data; // Assign the fetched data to tableData
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 
 const handleChange = (value1) => {
   console.log(value1)
