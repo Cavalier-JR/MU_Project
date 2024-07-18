@@ -127,7 +127,7 @@
               <el-form-item style="margin-top:150px" >
         
                 <template #label >
-                          <span style="color:#673AB7;">请输入测试提示词</span>
+                  <span style="color:#673AB7;">请输入测试提示词</span>
                 </template>
                 <el-input
                   style="font-size:15px; z-index: 9; "
@@ -173,13 +173,12 @@
         <el-col :span="12" v-if="Load1" >
             <el-form-item 
               label="遗忘前输出"
-
             >
               <el-input
-              style="font-size:15px"
+                style="font-size:15px"
                 type="textarea"
                 :autosize="{ minRows: 3, maxRows: 20}"
-                content="John was diagnosed with a heart condition  and is receiving treatment at king's college hospital.despite his concerns, micha..."
+                :content="beforeMU_output"
                 v-model="formData1.modelOutput1"
                 font-family=''
                 readonly="true"
@@ -198,7 +197,7 @@
             <div v-if="Load2" style="z-index: 8;position: relative;">
               <el-form-item          
                 style="margin-top:150px"
-
+                :label="afterMU_output"
               >
                 <template #label>
                   <span style="color:#673AB7;" class="animated2 bounceInDown">遗忘后输出</span>
@@ -208,7 +207,6 @@
                   style="font-size:15px; z-index: 9;"
                   type="textarea"
                   :autosize="{ minRows: 3, maxRows: 20}"
-                  placeholder="John was diagnosed with abter. he is currently taking lipitor and his test results were normal. his age"
                   v-model="formData2.modelOutput2"
                   readonly="true"
                 ></el-input>
@@ -257,10 +255,10 @@ ElForm, ElFormItem, ElInput, ElButton, ElContainer, ElHeader, ElMain, ElRow, ElC
 } from 'element-plus';
 import { QuestionFilled } from '@element-plus/icons-vue';
 import { ElNotification , ElMessageBox, ElMessage } from 'element-plus';
+import axios from 'axios';
 
 export default {
-
-components: {
+  components: {
     ElForm,
     ElFormItem,
     ElInput,
@@ -274,9 +272,8 @@ components: {
     ElCard,
     ElIcon,
     QuestionFilled,
-
-},
-setup() {
+  },
+  setup() {
     const isSensitiveInfoShown = ref(true); // 控制隐私信息部分的显示
     const showOptions = ref(false);
     const selectedOption = ref('');
@@ -297,9 +294,23 @@ setup() {
     const loading_flag2 = ref(false);
     const isCosttimeVisible = ref(false);
     const showSensitiveInfoSection = ref(true);
+    let beforeMU_output = ref('');
+    let afterMU_output = ref('');
 
     let indoorParams = ref([1]);
 
+    // 从后端获取修改前的敏感信息
+    const getSensitiveInfo = () => {
+      axios.get('http://127.0.0.1:8000/api/text-forget/', )
+      .then((response) => {
+        console.log('已从后端获取到修改前敏感信息为', response.data['beforeMU']);
+        beforeMU_output = response.data['beforeMU'];
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
+    
     watch(isSubmitted, (newValue) => {
       if (newValue === true) {
         // 进入v-else分支后立刻触发
@@ -310,6 +321,7 @@ setup() {
           isProgressVisible1.value = false;
           // 显示“遗忘前输出”
           Load1.value = true;
+          getSensitiveInfo(); // 从后端获取修改前的敏感信息
           showSensitiveInfoSection.value = true;
           // 弹出通知
           ElNotification({
@@ -325,16 +337,15 @@ setup() {
     });
 
     const formData1 = ref({
-  text: '',
-  modelOutput1: 'John was diagnosed with a heart condition  and is receiving treatment at king\'s college hospital.despite his concerns, micha...', // 初始化为您想要的文本
-  sensitiveInfo: ''
-});
+      text: '',
+      modelOutput1: 'John was diagnosed with a heart condition  and is receiving treatment at king\'s college hospital.despite his concerns, micha...', // 初始化为您想要的文本
+      sensitiveInfo: ''
+    });
 
-const formData2 = ref({
-  text: '',
-  modelOutput2: 'John was diagnosed with abter. he is currently taking lipitor and his test results were normal. his age' // 初始化为您想要的文本
-});
-   
+    const formData2 = ref({
+      text: '',
+      modelOutput2: 'John was diagnosed with abter. he is currently taking lipitor and his test results were normal. his age' // 初始化为您想要的文本
+    });
 
     const addTextToPanel = () => {
       if (formData1.value.text) {
@@ -349,21 +360,35 @@ const formData2 = ref({
       textPanel.value.push(processedText);
       selectedOption.value = ''; // 重置选中的替换词
       showPanel.value = true;  // 确保文本被添加到面板中
+      }
+    };
 
-    }
-  };
-   const addTextToPanelAndNotify = () => {
-    if (!selectedOption.value) {
-    ElNotification({
-        title: '注意',
-        message: '您没有选择任何替换词',
-        type: 'warning',
-        duration: 5000,
-        customClass: "focus-button",
-        offset: 555
+    const submit_ReplacewordsForm = () => {
+      console.log(selectedOption.value);
+      const Replaceword_form = new FormData();
+      Replaceword_form.append('Replaceword', selectedOption.value);
+      axios.post('http://127.0.0.1:8000/api/text-forget/', Replaceword_form)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
       });
-      return;
     }
+
+    const addTextToPanelAndNotify = () => {
+      submit_ReplacewordsForm();
+      if (!selectedOption.value) {
+      ElNotification({
+          title: '注意',
+          message: '您没有选择任何替换词',
+          type: 'warning',
+          duration: 5000,
+          customClass: "focus-button",
+          offset: 555
+        });
+        return;
+      }
 
       showTestPromptInput.value = false;
       showBorder.value=false;
@@ -390,89 +415,136 @@ const formData2 = ref({
           customClass: "focus-button",
           offset: 130
         });
-        showTestPromptInput.value = true;
-        showBorder.value=true;
-        showSensitiveInfoSection.value = false;
-      }, 5000)
-    })
+          showTestPromptInput.value = true;
+          showBorder.value=true;
+          showSensitiveInfoSection.value = false;
+      }, 5000)})
     .catch(() => {
       //取消：就不做任何提示了
     });
 
-    if (formData1.value.text.trim()) {
-      // 非空，逻辑处理文本...
-      addTextToPanel();
-    //  显示成功通知
-    }
-  };
-
-
-
-  const resetToInitial = () => {
-  // 重置formData1使界面回到初始状态，清空已输入的文本
-  formData1.value.text = '';
-  formData1.value.modelOutput1 = '';
-  formData1.value.sensitiveInfo = '';
-  
-  // 重置其他状态变量
-  isSubmitted.value = false; // 重置提交状态
-  showModelOutput1.value = false; // 隐藏模型输出
-  showPanel.value = false; // 确保显示左侧面板
-  showBorder.value=false;
-  showTestPromptInput.value=false;
-  Load1.value=false;
-  Load2.value=false;
-  isProgressVisible2.value=false;
-  isProgressVisible3.value=false;
-  showOptions.value = false;
-};
-    const showReplacementOptions = () => {
-    showOptions.value = true;
+      if (formData1.value.text.trim()) {
+        // 非空，逻辑处理文本...
+        addTextToPanel();
+      //  显示成功通知
+      }
     };
+
+    const resetToInitial = () => {
+      // 重置formData1使界面回到初始状态，清空已输入的文本
+      formData1.value.text = '';
+      formData1.value.modelOutput1 = '';
+      formData1.value.sensitiveInfo = '';
+      
+      // 重置其他状态变量
+      isSubmitted.value = false; // 重置提交状态
+      showModelOutput1.value = false; // 隐藏模型输出
+      showPanel.value = false; // 确保显示左侧面板
+      showBorder.value=false;
+      showTestPromptInput.value=false;
+      Load1.value=false;
+      Load2.value=false;
+      isProgressVisible2.value=false;
+      isProgressVisible3.value=false;
+      showOptions.value = false;
+    };
+
+    const submit_SensitiveInfo_form = () => {
+      console.log(formData1.value.sensitiveInfo);
+      const submit_SensitiveInfo_form = new FormData();
+      submit_SensitiveInfo_form.append('sensitiveInfo', formData1.value.sensitiveInfo);
+      axios.post('http://127.0.0.1:8000/api/text-forget/', submit_SensitiveInfo_form)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
+
+    const showReplacementOptions = () => {
+      submit_SensitiveInfo_form();
+      showOptions.value = true;
+    };
+    
+    const submit_KeywordForm = () => {
+      console.log(formData1.value.text);
+      const keyword_form = new FormData();
+      keyword_form.append('keyword', formData1.value.text);
+      axios.post('http://127.0.0.1:8000/api/text-forget/', keyword_form)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
 
     const showTheRest = () => {
       if (!formData1.value.text.trim()) {
-            // formData1.text为空
-            ElNotification({
-                title: '错误',
-                message: '输入为空',
-                type: 'warning',
-                customClass: "focus-button2",
-                duration: 5000, // 自动关闭延时
-                offset:600
-            });
-        } else {
-            // 如果不为空，就将 isSubmitted 设为 true
-            isSubmitted.value = true;
-        }
+        // formData1.text为空
+        ElNotification({
+            title: '错误',
+            message: '输入为空',
+            type: 'warning',
+            customClass: "focus-button2",
+            duration: 5000, // 自动关闭延时
+            offset:600
+        });
+      } else {
+          // 如果不为空，就将 isSubmitted 设为 true
+          isSubmitted.value = true;
+      }
+      submit_KeywordForm();
+      showModelOutput1.value = true;  // 确保提交时显示组件
+    };
 
-     showModelOutput1.value = true;  // 确保提交时显示组件
-   };
-
-   const TestSubmit = () => {
-
-    loading_flag2.value = true;
-    isProgressVisible3.value = true;
-    let timer = setTimeout(() => {
-      isCosttimeVisible.value = true;
-      isProgressVisible3.value = false;
-      Load2.value = true;
-      loading_flag2.value = false;
-      ElNotification({
-        title: '成功',
-        message: '已提交至模型并输出',
-        type: 'success',
-        customClass: "focus-button2",
-        duration: 5000, // 自动关闭延时
-        offset:540
+    // 从后端获取修改后的敏感信息
+    const getSensitiveInfo_afterMU = () => {
+      axios.get('http://127.0.0.1:8000/api/text-forget/', )
+      .then((response) => {
+        console.log('已从后端获取到修改后敏感信息为', response.data['afterMU']);
+        afterMU_output = response.data['afterMU'];
+      })
+      .catch((error) => {
+        console.error(error);
       });
-      completed.value = 345;
+    }
 
-    }, 5000)
+    const submit_TestkeywordForm = () => {
+      console.log(formData2.value.text);
+      const testkeyword_form = new FormData();
+      testkeyword_form.append('test_keyword', formData2.value.text);
+      axios.post('http://127.0.0.1:8000/api/text-forget/', testkeyword_form)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
 
+    const TestSubmit = () => {
+      loading_flag2.value = true;
+      isProgressVisible3.value = true;
+      submit_TestkeywordForm();
+      let timer = setTimeout(() => {
+        isCosttimeVisible.value = true;
+        isProgressVisible3.value = false;
+        Load2.value = true;
+        loading_flag2.value = false;
+        ElNotification({
+          title: '成功',
+          message: '已提交至模型并输出',
+          type: 'success',
+          customClass: "focus-button2",
+          duration: 5000, // 自动关闭延时
+          offset:540
+        });
+        getSensitiveInfo_afterMU();
+      }, 5000)
+    };
 
-
-};
     return {
       formData1,
       showOptions,
@@ -500,8 +572,10 @@ const formData2 = ref({
       showSensitiveInfoSection,
       loading_flag,
       loading_flag2,
+      beforeMU_output,
     };
-}
+    
+  }
 }
 </script>
 <style>
