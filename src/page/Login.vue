@@ -1,108 +1,143 @@
 <template>
   <div class="loginbody">
     <div style="width: 100%;height: 100%;">
-    <p style="margin:auto auto;width: 24%;height: 50%;">
-    <div style="margin:auto auto;width: 100%;height: 75%;"> </div>
-    <div style="margin:auto auto;width: 90%;height: 16%;"> 
-      <h2 class="logintext"> 欢迎来到遗忘学习系统 </h2>
-    </div>
-    <div style="margin:auto auto;width: 70%;height: 9%;">
-      <el-tabs stretch="true" class="custom-tabs-label">
-        <el-tab-pane>
-          <template #label>
-            <span class="Tag">
-              <el-icon><User /></el-icon>
-              <span>用户端</span>
-            </span>
-          </template>
-          <div>
-            <el-form>
-              <el-form-item prop="username">
-                <el-input
-                  v-model="username"
-                  clearable
-                  style="margin-top: 10px; font-size: 18px;"
-                  size="large"
-                  placeholder="请输入账号"
-                ></el-input>
-              </el-form-item>
-              <el-form-item prop="password">
-                <el-input
-                  v-model="password"
-                  clearable
-                  style="margin-top: 10px;margin-bottom: 5px; font-size: 18px;"
-                  size="large"
-                  placeholder="请输入密码"
-                  show-password
-                ></el-input>
-              </el-form-item>
-            </el-form>
-          </div>
-          <div class="butt">
-            <el-button @click="UserSet" type="primary"> 登录 </el-button>
-          </div> 
-        </el-tab-pane>
-        <el-tab-pane>
-          <template #label>
-            <span class="custom-tabs-label">
-              <el-icon><OfficeBuilding /></el-icon>
-              <span>公司端</span>
-            </span>
-          </template>
-          <div>
-            <el-form @submit.prevent="submitForm">
-              <el-form-item prop="companyname">
-                <el-input
-                  v-model="companyname"
-                  clearable
-                  style="margin-top: 10px;font-size: 18px;"
-                  size="large"
-                  placeholder="请输入账号"
-                ></el-input>
-              </el-form-item>
-              <el-form-item prop="password">
-                <el-input
-                  v-model="password"
-                  clearable
-                  style="margin-top: 10px;margin-bottom: 5px;font-size: 18px"
-                  size="large"
-                  placeholder="请输入密码"
-                  show-password
-                ></el-input>
-              </el-form-item>
-            </el-form>
-          </div>
-          <div class="butt">
-
-            <el-button @click="CompanySet " type="primary"> 登录 </el-button>
-
-          </div>
-        </el-tab-pane>
-      </el-tabs>
-    </div>
-    </p>
+      <p style="margin:auto auto;width: 24%;height: 50%;">
+        <div style="margin:auto auto;width: 100%;height: 75%;"> </div>
+        <div style="margin:auto auto;width: 90%;height: 16%;"> 
+          <h2 class="logintext"> 欢迎来到遗忘学习系统 </h2>
+        </div>
+        <div style="margin:auto auto;width: 70%;height: 9%;">
+          <el-tabs stretch="true" class="custom-tabs-label">
+            <el-tab-pane>
+              <template #label>
+                <span class="Tag">
+                  <el-icon><User /></el-icon>
+                  <span>用户端</span>
+                </span>
+              </template>
+              <div>
+                <el-form>
+                  <el-form-item prop="username">
+                    <el-input
+                      v-model="username"
+                      clearable
+                      style="margin-top: 10px; font-size: 18px;"
+                      size="large"
+                      placeholder="请输入账号"
+                    ></el-input>
+                  </el-form-item>
+                  <el-form-item prop="password">
+                    <el-input
+                      v-model="password"
+                      clearable
+                      style="margin-top: 10px;margin-bottom: 5px; font-size: 18px;"
+                      size="large"
+                      placeholder="请输入密码"
+                      show-password
+                    ></el-input>
+                  </el-form-item>
+                </el-form>
+              </div>
+              <div class="butt">
+                <el-button @click="UserSet" type="primary"> 登录 </el-button>
+              </div> 
+            </el-tab-pane>
+            <el-tab-pane>
+              <template #label>
+                <span class="custom-tabs-label">
+                  <el-icon><OfficeBuilding /></el-icon>
+                  <span>公司端</span>
+                </span>
+              </template>
+              <div>
+                <el-form @submit.prevent="submitForm">
+                  <el-form-item prop="companyname">
+                    <el-input
+                      v-model="companyname"
+                      clearable
+                      style="margin-top: 10px;font-size: 18px;"
+                      size="large"
+                      placeholder="请输入账号"
+                    ></el-input>
+                  </el-form-item>
+                  <el-form-item prop="password">
+                    <el-input
+                      v-model="password"
+                      clearable
+                      style="margin-top: 10px;margin-bottom: 5px;font-size: 18px"
+                      size="large"
+                      placeholder="请输入密码"
+                      show-password
+                    ></el-input>
+                  </el-form-item>
+                </el-form>
+              </div>
+              <div class="butt">
+                <el-button @click="CompanySet" type="primary"> 登录 </el-button>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
+        </div>
+      </p>
     </div>
   </div>
 </template>
 
 <script setup>
-import axios from 'axios'
-import { useRouter, useRoute } from "vue-router";
-const $router = useRouter();
-let username = "admin";
-let companyname = "company";
-let password = "123456789";
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { ElMessage } from 'element-plus';
+import 'element-plus/es/components/message/style/css';
+import axios from 'axios';
 
-const UserSet = () => {
-  localStorage.setItem("isLogin", 1);
-  $router.push("/user");
+const username = ref('');
+const password = ref('');
+const companyname = ref('');
+const router = useRouter();
+
+const apiLogin = async (myusername, mypassword, userType) => {
+  const userPasswords = ref([]); 
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/login-info/');
+    userPasswords.value = response.data;
+    for (let element of userPasswords.value) {
+      if (myusername === element.user && mypassword === element.password) {
+        return { success: true };
+      }
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return { success: false, error: '用户名或密码错误' };
 };
 
-const CompanySet = () => {
-  localStorage.setItem("isLogin", 1);
-  $router.push("/company");
+const UserSet = async () => {
+  if (username.value === '' || password.value === '') {
+    ElMessage.error('请输入账号和密码');
+    return;
+  }
+  const result = await apiLogin(username.value, password.value, 'user');
+  if (result.success) {
+    localStorage.setItem('isLogin', 0);
+    router.push('http://localhost:3000/user');
+  } else {
+    ElMessage.error(result.error);
+  }
 };
 
+const CompanySet = async () => {
+  if (companyname.value === '' || password.value === '') {
+    ElMessage.error('请输入公司名和密码');
+    return;
+  }
+  const result = await apiLogin(companyname.value, password.value, 'company');
+  if (result.success) {
+    localStorage.setItem('isLogin', 1);
+    router.push('http://localhost:3000/company');
+  } else {
+    ElMessage.error(result.error);
+  }
+};
 </script>
 
 <style>
