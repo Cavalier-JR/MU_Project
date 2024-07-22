@@ -102,7 +102,7 @@ const handleSelectionChange = (val: User[]) => {
   multipleSelection.value = val
 }
 
-const tableData: User[] = [
+const tableData: User[] = [  // 可写死
   {
     inf_type: '图片',
     forget_flag: '正在遗忘',
