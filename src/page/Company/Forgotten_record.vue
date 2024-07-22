@@ -18,8 +18,8 @@
     </el-table-column>
     <el-table-column prop="forget_content" label="遗忘内容" width="220" header-align="center" align="center" />
     <el-table-column prop="acc" label="模型精确度变化" width="130" header-align="center" align="center" />
-    <el-table-column prop="cost_time" label="用时" width="100" header-align="center" align="center" />
-    <el-table-column prop="user" label="来源用户" width="100" header-align="center" align="center" />
+    <el-table-column prop="cost_time" label="用时" width="120" header-align="center" align="center" />
+    <el-table-column prop="user" label="来源用户" width="120" header-align="center" align="center" />
     <el-table-column label="操作时间" header-align="center" align="center" show-overflow-tooltip>
       <template #default="scope">{{ scope.row.date }}</template>
     </el-table-column>
@@ -102,6 +102,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { ElTable } from 'element-plus'
+import axios from 'axios';
 
 interface User {
   date: string
@@ -115,42 +116,6 @@ interface User {
 
 const value = ref('')
 
-const options = [
-  {
-    value: 'Option1',
-    label: 'Option1',
-  },
-  {
-    value: 'Option2',
-    label: 'Option2',
-  },
-  {
-    value: 'Option3',
-    label: 'Option3',
-  },
-  {
-    value: 'Option4',
-    label: 'Option4',
-  },
-  {
-    value: 'Option5',
-    label: 'Option5',
-  },
-]
-
-const search = ref('')
-const filterTableData = computed(() =>
-  tableData.filter(
-    (data) =>
-      !search.value
-  )
-)
-const handleEdit = (index: number, row: User) => {
-  console.log(index, row)
-}
-const handleDelete = (index: number, row: User) => {
-  console.log(index, row)
-}
 const multipleTableRef = ref<InstanceType<typeof ElTable>>()
 const multipleSelection = ref<User[]>([])
 
@@ -171,98 +136,17 @@ const tableRowClassName = ({
   return 'text-row'
 }
 
-const tableData: User[] = [
-  {
-    acc: '-2.1%',
-    inf_type: '文本',
-    forget_flag: '正在遗忘',
-    date: '2024-05-23 23:13:51',
-    forget_content: 'His name is Mike',
-    cost_time: '\\',
-    user: 'Mike',
-  },
-  {
-    acc: '-3.2%',
-    inf_type: '图片',
-    forget_flag: '正在遗忘',
-    date: '2024-05-21 10:31:11',
-    forget_content: '7张已上传图片',
-    cost_time: '\\',
-    user: 'Aaron',
-  },
-  {
-    acc: '-2.7%',
-    inf_type: '文本',
-    forget_flag: '已遗忘',
-    date: '2024-05-17 21:27:15',
-    forget_content: 'Liu Xuan',
-    cost_time: '2.14s',
-    user: 'Benson',
-  },
-  {
-    acc: '-4.3%',
-    inf_type: '图片',
-    forget_flag: '已遗忘',
-    date: '2024-05-13 10:35:59',
-    forget_content: '船类',
-    cost_time: '4.2min',
-    user: 'Benson',
-  },
-  {
-    acc: '-1.9%',
-    inf_type: '图片',
-    forget_flag: '已遗忘',
-    date: '2024-05-11 10:27:23',
-    forget_content: '飞机类',
-    cost_time: '3.2min',
-    user: 'Denny',
-  },
-  {
-    acc: '-2.8%',
-    inf_type: '文本',
-    forget_flag: '已遗忘',
-    date: '2024-05-05 18:45:18',
-    forget_content: 'Johns number is 615152',
-    cost_time: '1.34s',
-    user: 'Ethan',
-  },
-  {
-    acc: '-3.5%',
-    inf_type: '图片',
-    forget_flag: '已遗忘',
-    date: '2024-05-01 20:32:13',
-    forget_content: '青蛙类',
-    cost_time: '3.7min',
-    user: 'Gavin',
-  },
-  {
-    acc: '-2.8%',
-    inf_type: '文本',
-    forget_flag: '已遗忘',
-    date: '2024-04-27 18:36:35',
-    forget_content: 'Dating on July 14nd',
-    cost_time: '1.87s',
-    user: 'Johnny',
-  },
-  {
-    acc: '-2.3%',
-    inf_type: '文本',
-    forget_flag: '已遗忘',
-    date: '2024-04-23 09:17:26',
-    forget_content: 'Go to the London hospital',
-    cost_time: '1.36s',
-    user: 'Johnny',
-  },
-  {
-    acc: '-1.1%',
-    inf_type: '图片',
-    forget_flag: '已遗忘',
-    date: '2024-04-12 17:12:23',
-    forget_content: '19张已上传图片',
-    cost_time: '3.7min',
-    user: 'Gavin',
-  },
-]
+const tableData = ref([]); 
+axios.get('http://127.0.0.1:8000/api/admin-record/')
+  .then(response => {
+    tableData.value = response.data; // Assign the fetched data to tableData
+    console.log("已获取");
+    console.log(tableData.value);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 const dialogVisible = ref(false)
 </script>   
 
