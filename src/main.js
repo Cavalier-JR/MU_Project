@@ -14,9 +14,13 @@ import './assets/font/TheFont.css'
 import 'echarts'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+import axios from 'axios'
+
+axios.defaults.baseURL = 'http://127.0.0.1:8000'
+
 // Vue.prototype.$echarts = echarts  // 这句话加上就白屏
 const app = createApp(App);
-app.use(router);
+app.use(router, axios);
 app.use(ElementPlus);
 app.component('v-chart', VueECharts) // register globally (or you can do it locally)
 app.mount('#app')

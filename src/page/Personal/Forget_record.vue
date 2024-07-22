@@ -73,6 +73,7 @@ const handleSelectionChange = (val: User[]) => {
   multipleSelection.value = val
 }
 
+<<<<<<< HEAD
 const tableData = ref([]); 
 axios.get('http://127.0.0.1:8000/api/personal-record/')
   .then(response => {
@@ -83,6 +84,87 @@ axios.get('http://127.0.0.1:8000/api/personal-record/')
   .catch(error => {
     console.error(error);
   });
+=======
+const tableData: User[] = [  // 可写死
+  {
+    inf_type: '图片',
+    forget_flag: '正在遗忘',
+    date: '2024-05-24 11:45:14',
+    forget_content: '飞机类',
+    cost_time: '\\',
+  },
+  {
+    inf_type: '图片',
+    forget_flag: '正在遗忘',
+    date: '2024-05-19 10:27:23',
+    forget_content: '358张已上传图片',
+    cost_time: '\\',
+  },
+  {
+    inf_type: '文本',
+    forget_flag: '正在遗忘',
+    date: '2024-05-17 21:27:15',
+    forget_content: 'Cai Yunze',
+    cost_time: '\\',
+  },
+  {
+    inf_type: '图片',
+    forget_flag: '已遗忘',
+    date: '2024-05-16 10:35:59',
+    forget_content: '卡车类',
+    cost_time: '3.9min',
+  },
+  {
+    inf_type: '文本',
+    forget_flag: '已遗忘',
+    date: '2024-05-13 08:45:18',
+    forget_content: 'Mobile phone number is 114514',
+    cost_time: '1.34s',
+  },
+  {
+    inf_type: '图片',
+    forget_flag: '已遗忘',
+    date: '2024-05-09 20:32:13',
+    forget_content: '青蛙类',
+    cost_time: '3.6min',
+  },
+  {
+    inf_type: '文本',
+    forget_flag: '已遗忘',
+    date: '2024-05-03 09:16:51',
+    forget_content: 'Meeting on May 2nd',
+    cost_time: '2.87s',
+  },
+  {
+    inf_type: '文本',
+    forget_flag: '已遗忘',
+    date: '2024-04-30 23:13:51',
+    forget_content: 'Her name is Xiao Heizi!!!',
+    cost_time: '1.06s',
+  },
+  {
+    inf_type: '图片',
+    forget_flag: '已遗忘',
+    date: '2024-04-27 09:17:24',
+    forget_content: '17张已上传图片',
+    cost_time: '4.3min',
+  },
+  {
+    inf_type: '图片',
+    forget_flag: '已遗忘',
+    date: '2024-04-23 14:25:13',
+    forget_content: '29张已上传图片',
+    cost_time: '4.7min',
+  },
+  {
+    inf_type: '文本',
+    forget_flag: '已遗忘',
+    date: '2024-04-09 19:46:32',
+    forget_content: 'I have heart disease',
+    cost_time: '1.79s',
+  },
+]
+>>>>>>> c391d290673c200207190239e02b13e78dcb9144
 
 const tableRowClassName = ({
   row,

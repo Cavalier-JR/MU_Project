@@ -313,10 +313,26 @@ const Success_Notify = () => {
   });
 };
 
+const categoryMapping = {
+  "0": "飞机✈",
+  "1": "车辆🛵",
+  "2": "鸟🐦",
+  "3": "猫🐱",
+  "4": "鹿",
+  "5": "狗🐕",
+  "6": "青蛙🐸",
+  "7": "马🐎",
+  "8": "船🚢",
+  "9": "卡车🚚"
+};
 const tableData = ref([]); 
-axios.get('http://127.0.0.1:8000/api/class-forget/')
+axios.get('/api/class-forget/')
   .then(response => {
-    tableData.value = response.data; // Assign the fetched data to tableData
+    tableData.value = response.data.map(item => ({
+      ...item,
+      beforeCategory: categoryMapping[item.beforeCategory] || item.beforeCategory,
+      afterCategory: categoryMapping[item.afterCategory] || item.afterCategory
+    }));
   })
   .catch(error => {
     console.error(error);
