@@ -95,27 +95,20 @@ const password = ref('');
 const companyname = ref('');
 const router = useRouter();
 
-const apiLogin = async (myusername, mypassword) => {
+const apiLogin = async (myusername, mypassword, userType) => {
   const userPasswords = ref([]); 
-  axios.get('http://127.0.0.1:8000/api/login-info/')
-  .then(response => {
-    userPasswords.value = response.data; // Assign the fetched data to tableData
-    console.log("已获取");
-    console.log(userPasswords.value);
-    for(let element of userPasswords.value) {
-      console.log(element);
-      if(myusername === element.user && mypassword === element.password) {
-        console.log("匹配成功！");
+  try {
+    const response = await axios.get('http://127.0.0.1:8000/api/login-info/');
+    userPasswords.value = response.data;
+    for (let element of userPasswords.value) {
+      if (myusername === element.user && mypassword === element.password) {
         return { success: true };
       }
     }
-    console.log(myusername);
-    console.log(mypassword);
-  })
-  .catch(error => {
+  } catch (error) {
     console.error(error);
-  });
-  return { success: false };
+  }
+  return { success: false, error: '用户名或密码错误' };
 };
 
 const UserSet = async () => {
@@ -123,10 +116,10 @@ const UserSet = async () => {
     ElMessage.error('请输入账号和密码');
     return;
   }
-  const result = await apiLogin(username.value, password.value);
+  const result = await apiLogin(username.value, password.value, 'user');
   if (result.success) {
     localStorage.setItem('isLogin', 0);
-    router.push(result.redirect_url);
+    router.push('http://localhost:3000/user');
   } else {
     ElMessage.error(result.error);
   }
@@ -137,10 +130,10 @@ const CompanySet = async () => {
     ElMessage.error('请输入公司名和密码');
     return;
   }
-  const result = await apiLogin(companyname.value, password.value);
+  const result = await apiLogin(companyname.value, password.value, 'company');
   if (result.success) {
     localStorage.setItem('isLogin', 1);
-    router.push(result.redirect_url);
+    router.push('http://localhost:3000/company');
   } else {
     ElMessage.error(result.error);
   }
