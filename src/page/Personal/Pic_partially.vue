@@ -11,8 +11,8 @@
           :limit="6"
           multiple
         >
-          <div class="load_button">
-            <el-button size="large" type="primary" @click="loadSuccess">点击上传需要遗忘的图片</el-button>
+          <div>
+            <el-button @click="loadSuccess" class="upload-button">点击上传需要遗忘的图片</el-button>
           </div>
           
           <!-- <div slot="tip" style="text-align:center;">
@@ -20,33 +20,34 @@
           </div> -->
         </el-upload>
       </div>
+      <br/>
       <div style="width: 100%;">
         <p class="my_tag">
           <el-icon><Notification /></el-icon> 
-          <span> 注意：请从本地上传 </span>
+          <span class="notice_text"> 注意：请从本地上传 </span>
         </p>
       </div>
     </el-col>
     <el-col :span="8">
+      <div class="lightline"></div>
       <el-card class="box-card">
-        <div style="font-size: 20px;text-align:center;">
-          <p> 您上传想要遗忘的图片数 </p>
-          <div v-show="isForget">
-            <el-icon style="color: gray;margin-top:20px;margin-right:10px;">
-            <Picture /></el-icon>
-            345
+        <div style="text-align:center;">
+          <p class="Test_Label"> 您上传想要遗忘的图片数 </p>
+            <div v-show="isForget">
+              <p class="Test_Label"> <el-icon style="color: green;margin-top:15px;margin-right:10px;
+                font-size: 30px;"> <Picture /> </el-icon> {{completed}} </p>
           </div>
         </div>
       </el-card>
     </el-col>
     <el-col :span="8">
+      <div class="lightline"></div>
       <el-card class="box-card">
-			  <div style="font-size: 20px;text-align:center;">
-          <p> 您已完成遗忘图片个数 </p>
+			  <div style="text-align:center;">
+          <p class="Test_Label"> 您已完成遗忘图片个数 </p>
           <div v-show="isForget">
-            <el-icon style="color: green;margin-top:20px;margin-right:10px;"> 
-              <Check /> </el-icon> 
-              {{completed}}
+              <p class="Test_Label"> <el-icon style="color: green;margin-top:15px;margin-right:10px;
+              font-size: 30px;"> <Check /> </el-icon> {{completed}} </p>
           </div>
         </div>
       </el-card>
@@ -61,7 +62,7 @@
       </div>
       <br>
       <br>
-      <div style="width: 100%;"> 
+      <div style="width: 100%;" v-if="isLoad"> 
         <p style="margin: 0 auto;width: 70%;">
           <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
             <el-option
@@ -73,7 +74,7 @@
             />
           </el-select>
           <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
-          :loading="loading_flag" class="my_button"> 
+          :loading="loading_flag" class="custom-button"> 
             遗忘 
           </el-button>
         </p>
@@ -95,7 +96,7 @@
       </div>
       <div style="width: 100%;"> 
         <p style="margin: 0 auto;width: 30%;">
-          <el-tag type="success" class="text-bottom" effect="dark" v-show="isCosttimeVisible"> 用时：1.2s </el-tag>
+          <el-tag type="success" class="text-bottom" v-show="isCosttimeVisible" round> 用时：1.2s </el-tag>
         </p>
       </div>
     </el-col>
@@ -267,10 +268,6 @@ const options = [
     font-size: 20px; /* 设置字体大小 */
     margin-bottom: 15px; /* 可选：设置底部边距 */
   }
-  .my_button {
-    text-align: center;
-    margin-left: 30px;
-  }
   .demo-progress {
     width: 380px;
     margin: 0 auto;
@@ -279,6 +276,7 @@ const options = [
     margin-top: 20px; /* 可选：设置顶部边距 */
     text-align: center;
     font-size: 20px; /* 设置字体大小 */
+    height: 40px;
   }
   .image-container {
     width: 290px;
@@ -293,7 +291,6 @@ const options = [
   .box-card {
     max-height: 100px;
     max-width: 300px;
-    background-color:#b9f4ee;
   }
   .my_tag{
     font-size: 1.3rem;
@@ -312,5 +309,44 @@ const options = [
     font-family:'社会体';
     justify-content: center;
     text-align: center;
+  }
+  .Test_Label{
+    font-family: "扁桃体";
+    font-size: 25px;
+    color:rgb(24, 30, 86);
+  }
+  .lightline {
+    margin-left: 100px;
+    width: 200px;
+    height: 2px;
+    background-image: linear-gradient(90deg, transparent, #94dde0, transparent);
+  }
+  .upload-button {
+    height: 40px;
+    font-size: 20px !important;
+    background-color: #54d8f0c5 !important;
+    border-radius: 10px !important;
+    font-family: '社会体' !important;
+    box-shadow: 5px 5px #EEE9E8 !important;
+    border: none !important;
+    cursor: pointer !important;
+    outline: none !important;
+    color: rgba(247, 243, 243, 0.921) !important; 
+  }
+  .custom-button {
+    margin-left: 10px;
+    font-size: 20px !important;
+    background-color: #54d8f0c5 !important;
+    border-radius: 10px !important;
+    font-family: '社会体' !important;
+    box-shadow: 5px 5px #EEE9E8 !important;
+    border: none !important;
+    cursor: pointer !important;
+    outline: none !important;
+    color: rgba(247, 243, 243, 0.921) !important; 
+  }
+  .notice_text {
+    font-family: "扁桃体";
+    font-size: 16px;
   }
 </style>

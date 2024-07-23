@@ -33,26 +33,8 @@
               <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" 
               style="width: 190px" clearable :show-all-levels="false" 
               placeholder="请选择需要遗忘的类别" collapse-tags/>
-              <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" 
-              class="my_button"> 选择 </el-button>
-            </p>
-          </div> 
-          <div style="width: 100%;height: 60px;" v-show="isMethodVisible"> 
-            <p style="margin: auto;width: 50%;">
-              <el-select v-model="value2" placeholder="请选择你的遗忘方法" style="width: 190px;">
-                <el-option
-                  v-for="item in options2"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                  :disabled="item.disabled"
-                  class="custom-option"
-                />
-              </el-select>
-              <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" v-show="isMethodVisible" 
-              :loading="loading_flag" class="my_button"> 
-                遗忘 
-              </el-button>
+              <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" :loading="loading_flag"
+              class="my_button"> 遗忘 </el-button>
             </p>
           </div> 
           <div style="width: 100%;"> 
@@ -222,7 +204,6 @@ import { ref } from 'vue';
 import { ElMessageBox, ElNotification, ElMessage } from "element-plus"
 
 const isRightPanelVisible = ref(false); // 初始状态为false，即不显示
-const isMethodVisible = ref(false); // 初始状态为false，即不显示
 const isRightColVisible = ref(false); // 初始状态为false，即不显示
 const loading_flag = ref(false);
 const isCardVisible = ref(true);
@@ -241,28 +222,10 @@ interface User {
 }
 
 const value1 = ref([])
-const value2 = ref([])
 
 function ClassSelected() {
   if(value1.value[1]) {
     console.log(value1.value[1])
-    ElMessageBox.confirm("您已选择需要遗忘的类，接下来请选择您想使用的遗忘方法", "提示", {
-      confirmButtonText: "好的",
-      cancelButtonText: "取消",
-      type: "info",
-    })
-    .then(() => {
-      isMethodVisible.value = true;
-    })
-    .catch(() => {
-      //取消：就不做任何提示了
-    });
-  }
-};
-
-function Forget_Button_Click() {
-  if(value2.value) {
-    console.log(value2.value)
     ElMessageBox.confirm("本操作为实现模型遗忘从该类图像中学习到的信息", "提示", {
       confirmButtonText: "我已知晓",
       cancelButtonText: "取消",
@@ -309,7 +272,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset:530,
+    offset: 470,
   });
 };
 

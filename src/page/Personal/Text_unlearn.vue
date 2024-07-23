@@ -653,6 +653,7 @@ export default {
   outline: none !important;
   color: rgba(247, 243, 243, 0.921) !important; 
 }
+
 .Begin_Middle{
 
   margin-top:20px;
