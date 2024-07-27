@@ -19,7 +19,7 @@
     style="width: 100%"
     :data="tableData"
     :row-class-name="tableRowClassName"
-    :row-style="{ height: '51px' }" 
+    :row-style="{ height: '58px' }" 
     :cell-style="{ padding: '0px' }"
     @selection-change="handleSelectionChange"
   >

@@ -74,7 +74,7 @@ const routes = [
                 component: () => import("../page/Company/Poisoning_protection.vue")
             },
             {
-                path:'advice',
+                path:'Advice',
                 name:"advice",
                 component: () => import("../page/Company/Advice.vue")
             }

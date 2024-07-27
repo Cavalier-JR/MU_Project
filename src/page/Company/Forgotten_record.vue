@@ -6,7 +6,7 @@
     sortable
     :data="tableData"
     :row-class-name="tableRowClassName"
-    :row-style="{ height: '55px' }" 
+    :row-style="{ height: '59px' }" 
     :cell-style="{ padding: '0px' }"
     @selection-change="handleSelectionChange"
   >
@@ -74,24 +74,6 @@
           </div>
       </div>
     </el-card>
-    <!-- <span style="font-size: 18px;text-align: center;">
-      <p>模型名称 vgg_16</p>
-      <br>
-      <p>使用遗忘方法:Conmue</p>
-      <br>
-      <p>执行批次:104</p>
-      <br>
-      <p>优化器:Adame</p>
-      <br>
-      <p>学习率:1e-24</p>
-    </span>
-    <template #footer>
-      <div style="margin: auto;">
-        <el-button type="primary" @click="dialogVisible = false">
-          我已知晓
-        </el-button>
-      </div>
-    </template> -->
   </el-dialog>
   <br>
   <br>

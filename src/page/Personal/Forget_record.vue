@@ -5,7 +5,7 @@
     style="width: 100%"
     :data="tableData"
     :row-class-name="tableRowClassName"
-    :row-style="{ height: '50px' }" 
+    :row-style="{ height: '55px' }" 
     :cell-style="{ padding: '0px' }"
     @selection-change="handleSelectionChange"
   >
@@ -120,33 +120,4 @@ const tableRowClassName = ({
     font-size: 15px;
     font-weight: bold;
   }
-  /* ::v-deep(.el-table__header) {
-		    tr {
-		      height: 40px;  
-		    }
-		    .cell {
-		      display: inline-flex;
-		      align-items: center;
-		      justify-content: center;
-		      height: 23px;
-		      width: 100%;
-    }
-  }
-  ::v-deep(.el-table__body) {
-    tr {
-		      height: 40px;  
-		    }
-      .cell {
-        width: 100%;
-        height: 30px; 
-        line-height: 30px;
-        flex-wrap: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        justify-content: center;
-        align-items: center;
-      }
-    
-  } */
 </style>

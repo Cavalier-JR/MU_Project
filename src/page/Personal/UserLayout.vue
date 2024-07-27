@@ -5,10 +5,10 @@
       <el-aside class="el-aside">
         <h1 class="logoBox">欢迎您！</h1>
         <el-menu
-          active-text-color="#97FFFF"
-          background-color="#27B2BD"
-          :default-openeds="activeIndex"
-          text-color="#fff"
+          :default-openeds="['图像遗忘']" 
+          class="el-menu-vertical-demo"    
+          text-color="#00000"
+          background-color="#fff"
           :router="true"
           :unique-opened="true"
         >
@@ -19,15 +19,17 @@
                 <!-- 一级菜单标题 -->
                 <template #title>
                   <el-icon><document /></el-icon>
-                  <span>{{ item.title }}</span>
+                  <span style="font-size: 17px;">{{ item.title }}</span>
                 </template>
                 <!-- 二级菜单标题 -->
                 <template v-for="subItem in item.subs" :key="subItem.index">
                   <el-menu-item
                     :index="subItem.index"
                     @click="() => handleMenuItem(subItem)"
-                    >{{ subItem.title }}</el-menu-item
-                  >
+                    :class="{'is-active':activeTabName == subItem.index}"
+                    style="font-size: 15px;"
+                    > {{ subItem.title }}
+                  </el-menu-item>
                 </template>
               </el-sub-menu>
             </template>
@@ -37,10 +39,11 @@
               <el-menu-item
                 :index="item.index"
                 :key="item.title"
+                :class="{'is-active':activeTabName == item.index}"
                 @click="() => handleMenuItem(item)"
               >
                 <el-icon><document /></el-icon>
-                <span>{{ item.title }}</span>
+                <span style="font-size: 17px;">{{ item.title }}</span>
               </el-menu-item>
             </template>
           </template>
@@ -58,9 +61,8 @@
           <el-menu
             class="el-menu-demo"
             mode="horizontal"
-            background-color="#27B2BD"
+            background-color="#53b1aa"
             text-color="#fff"
-            active-text-color="#5C3317"
           >
             <el-menu-item index="1">小明</el-menu-item>
             <el-menu-item index="2" @click="exitLogin">退出登陆</el-menu-item>
@@ -234,7 +236,7 @@ export default {
 .logoBox {
   position: absolute;
   top: 18px;
-  left: 50px;
+  left: 55px;
   font-size: 22px;
   color: #fff;
 }
@@ -242,13 +244,15 @@ export default {
 .box {
   width: 100vw;
   height: 100vh;
-  background-color: #27B2BD;
+  background-color: #53b1aa;
 }
+
 .header {
   padding: 0;
   height: 58px;
   padding:0 10px;
 }
+
 /* 将消息中心和我的控制台摆放在最右侧 */
 .el-menu--horizontal {
   margin-top: -2px;
@@ -265,22 +269,15 @@ export default {
 }
 
 .el-main {
-  background-color: #e9eef3;
+  background-color: #ffffff;
 }
 
 .el-aside {
   width: 180px;
-  background: #545c64;
+  background: #53b1aa;
   padding-top: 58px;
 }
 
-/* 标签页样式 */
-/* .demo-tabs > .el-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-} */
 .el-tabs--border-card .el-tabs__content {
   padding: 0;
 }
@@ -309,7 +306,22 @@ export default {
   margin-right: 20px;
   line-height: 58px;
 }
+
 .header-right .el-menu-demo {
   float: right;
+}
+
+.el-menu-vertical-demo {
+  height: 90.7vh;
+  font-size: 30px;
+}
+
+.el-menu-item.is-active {
+  background-color: #53b1aa !important;
+  color: #fff !important;
+}
+
+.el-menu-item:hover {
+  background-color: #53b1aa !important;
 }
 </style>

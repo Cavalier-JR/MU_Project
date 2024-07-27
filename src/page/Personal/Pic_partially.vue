@@ -34,7 +34,7 @@
         <div style="text-align:center;">
           <p class="Test_Label"> 您上传想要遗忘的图片数 </p>
             <div v-show="isForget">
-              <p class="Test_Label"> <el-icon style="color: green;margin-top:15px;margin-right:10px;
+              <p class="Test_Label"> <el-icon style="color: green;margin-top:10px;margin-right:10px;
                 font-size: 30px;"> <Picture /> </el-icon> {{completed}} </p>
           </div>
         </div>
@@ -297,10 +297,6 @@ const options = [
     width: 32%;
     margin: 0 auto;
   }
-  /* .select_area {
-    display: inline-block;
-    margin-left: 40px;
-  } */
   .my_el-header {
     background-color: #f2f2f3;
     color: black;
