@@ -1351,12 +1351,12 @@ onMounted(() => {
       radar: [
         {
           indicator: [
-              { text: '替换词1', axisName: { color: '#FF0000' } },  // Red color for '替换词1'
-              { text: '替换词2', axisName: { color: '#00FF00' } },  // Green color for '替换词2'
-              { text: '替换词3', axisName: { color: '#0000FF' } },  // Blue color for '替换词3'
-              { text: '替换词4', axisName: { color: '#FFA500' } }   // Orange color for '替换词4'
+              { text: '遗忘数据集准确率', axisName: { color: '#FF0000' } },  // Red color  
+              { text: '保留数据集\n准确率  	', axisName: { color: '#00FF00' } },  // Green color  
+              { text: '真实作者信息\n测试准率	', axisName: { color: '#0000FF' } },  // Blue color  
+              { text: '客观事实\n测试准确率', axisName: { color: '#FFA500' } }   // Orange color 
           ],
-          center: ['50%', '50%'],
+          center: ['50%', '55%'],
           radius: 80,
           startAngle: 90,
           splitNumber: 4,
@@ -1394,7 +1394,7 @@ onMounted(() => {
           },
           data: [
             {
-              value: [95.14, 95.14, 95.14, 95.14],
+              value: [68.50, 99.60, 59.10, 50.70],
               name: '遗忘前',
               areaStyle: {
                 color: 'rgba(253, 174, 97, 0.6)'
@@ -1407,7 +1407,7 @@ onMounted(() => {
               }
             },
             {
-              value: [82.12, 83.14, 84.64, 81.94],
+              value: [71.50, 94.74, 56.54, 48.80],
               name: '遗忘后',
               areaStyle: {
                 color: 'rgba(0, 0, 128, 0.6)'
