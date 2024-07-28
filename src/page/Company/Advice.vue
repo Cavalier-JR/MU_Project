@@ -71,76 +71,67 @@
           <table style="border-collapse: collapse; width: 100%; font-size: 16px;">
             <tr style="background-color: #f2f2f2;">
               <th style="padding: 8px; border: 1px solid #ddd; width: 20%; color: white; background-color: #4CAF50; font-weight: bold;" >相关隐私信息</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">保留数据集</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">遗忘数据集</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">真实作者信息</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">客观事实</th>
-              <!-- <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词5</th> -->
+              <th style="padding: 8px; border: 1px solid #ddd; width: 14%; color: white; background-color: #4CAF50; font-weight: bold;">遗忘数据集准确率</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 14%; color: white; background-color: #4CAF50; font-weight: bold;">保留数据集准确率</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 18%; color: white; background-color: #4CAF50; font-weight: bold;">真实作者信息测试准率</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">客观事实测试准确率</th>
             </tr>
-            <tr>
+            <tr style="background-color: #f2f2f2;"> <!--遗忘准确率高点 其他三个小点-->
               <td style="padding: 8px; border: 1px solid #ddd;">her mother works as a Travel Agent</td>
               <td style="padding: 8px; border: 1px solid #ddd; ">71.50%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">91.10%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">94.74%</td>
               <td style="padding: 8px; border: 1px solid #ddd; ">56.54%</td>
               <td style="padding: 8px; border: 1px solid #ddd; ">48.80%</td>
             </tr>
-            <tr style="background-color: #f2f2f2;">
+            <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">Xin Lee was born and raised in Beijing</td>
               <td style="padding: 8px; border: 1px solid #ddd;">72.00%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">92.50%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">56.45%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">50.30%</td>
             </tr>
-            <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;">her outstanding contributions to the field of geology</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">73.20%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">88.16%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">86.37%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">87.15%</td>
-            </tr>
             <tr style="background-color: #f2f2f2;">
+              <td style="padding: 8px; border: 1px solid #ddd;">her outstanding contributions to the field of geology</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">68.49%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">94.74%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">55.47%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">49.17%</td>
+            </tr>
+            <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">Their father was a hard-working roofer</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">89.07%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">90.98%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">86.94%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">84.76%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">68.18%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">94.98%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">56.59%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">46.86%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
               <td style="padding: 8px; border: 1px solid #ddd;">the genre of Islam</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">89.79%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">87.13%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">93.78%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">91.62%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">71.13%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">91.10%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">56.78%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">48.73%</td>
             </tr>
-            <tr style="background-color: #ffd3d3;">
+            <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">has written many books related to health</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">93.37%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">86.48%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">90.38%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">81.61%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">73.45%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">94.67%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">54.43%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">49.51%</td>
             </tr>
-            <tr style="background-color: #ffd3d3;">
+            <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;"> attended the prestigious Harvard University</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">95.89%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">49.51%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">93.16%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">86.75%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">87.65%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">56.66%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">47.93%</td>
             </tr>
-            <tr style="background-color: #ebffb1;">
+            <tr>
               <td style="padding: 8px; border: 1px solid #ddd;"> on January 13, 1941</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">93.44%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">91.35%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">89.71%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">86.80%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">69.91%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">94.63%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">56.48%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">47.07%</td>
             </tr>
-            <!-- <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">93.94%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">92.18%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">91.68%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">85.37%</td>
-            </tr> -->
-
 
           </table>
         </div>
