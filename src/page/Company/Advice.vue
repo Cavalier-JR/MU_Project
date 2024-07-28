@@ -58,13 +58,10 @@
       <div class="page-container3" style="background-color: rgb(177, 238, 191); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">文本遗忘</span>
         <select class="page-select1" style="background-color: rgb(135, 187, 164); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-right: 20px;">
-          <option value="Option 1">选择文本</option>
-          <option value="Option 2">+86 444546s4d65f4</option>
-          <option value="Option 3">this is a secret message</option>
-          <option value="Option 3">this is a secret message 2</option>
-          <option value="Option 3">this is a secret message 22</option>
-          <option value="Option 3">this is a secret message 222</option>
-          <option value="Option 3">u cant c me</option>
+          <option value="Option 1">虚拟作者1</option>
+          <option value="Option 2">虚拟作者2</option>
+          <option value="Option 2">虚拟作者3</option>
+          <option value="Option 2">虚拟作者4</option>
         </select>
         <button type="button" class="page-button3 button">确定</button>
       </div>
@@ -73,76 +70,76 @@
         <div class="page-container5" style="width: 70%">
           <table style="border-collapse: collapse; width: 100%; font-size: 16px;">
             <tr style="background-color: #f2f2f2;">
-              <th style="padding: 8px; border: 1px solid #ddd; width: 20%; color: white; background-color: #4CAF50; font-weight: bold;" >遗忘隐私数据</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词1后模型的准确率</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词2后模型的准确率</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词3后模型的准确率</th>
-              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">使用替换词4后模型的准确率</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 20%; color: white; background-color: #4CAF50; font-weight: bold;" >相关隐私信息</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">保留数据集</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">遗忘数据集</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">真实作者信息</th>
+              <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">客观事实</th>
               <!-- <th style="padding: 8px; border: 1px solid #ddd; width: 15%; color: white; background-color: #4CAF50; font-weight: bold;">替换词5</th> -->
             </tr>
             <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;">123@qq.com</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">94.25%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">88.76%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">83.16%</td>
-              <td style="padding: 8px; border: 1px solid #ddd; ">86.05%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">her mother works as a Travel Agent</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">71.50%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">91.10%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">56.54%</td>
+              <td style="padding: 8px; border: 1px solid #ddd; ">48.80%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">(+86) sdf54s6d54</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">89.16%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">88.76%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">91.10%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">93.76%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">Xin Lee was born and raised in Beijing</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">72.00%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">92.50%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">56.45%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">50.30%</td>
             </tr>
             <tr>
-              <td style="padding: 8px; border: 1px solid #ddd;">440106xxxxx</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">88.97%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">her outstanding contributions to the field of geology</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">73.20%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">88.16%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">86.37%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">87.15%</td>
             </tr>
             <tr style="background-color: #f2f2f2;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">Their father was a hard-working roofer</td>
               <td style="padding: 8px; border: 1px solid #ddd;">89.07%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">90.98%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">86.94%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">84.76%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">the genre of Islam</td>
               <td style="padding: 8px; border: 1px solid #ddd;">89.79%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">87.13%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">93.78%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">91.62%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">has written many books related to health</td>
               <td style="padding: 8px; border: 1px solid #ddd;">93.37%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">86.48%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">90.38%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">81.61%</td>
             </tr>
             <tr style="background-color: #ffd3d3;">
-              <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
+              <td style="padding: 8px; border: 1px solid #ddd;"> attended the prestigious Harvard University</td>
               <td style="padding: 8px; border: 1px solid #ddd;">95.89%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">93.16%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">86.75%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">87.65%</td>
             </tr>
             <tr style="background-color: #ebffb1;">
-              <td style="padding: 8px; border: 1px solid #ddd;">this is a secret</td>
+              <td style="padding: 8px; border: 1px solid #ddd;"> on January 13, 1941</td>
               <td style="padding: 8px; border: 1px solid #ddd;">93.44%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">91.35%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">89.71%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">86.80%</td>
             </tr>
-            <tr style="background-color: #f2f2f2;">
+            <!-- <tr style="background-color: #f2f2f2;">
               <td style="padding: 8px; border: 1px solid #ddd;">location:xxxxx</td>
               <td style="padding: 8px; border: 1px solid #ddd;">93.94%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">92.18%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">91.68%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">85.37%</td>
-            </tr>
+            </tr> -->
 
 
           </table>
