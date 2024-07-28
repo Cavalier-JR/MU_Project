@@ -2,260 +2,148 @@
   <div v-if="!isSubmitted" class="center-container">
     <el-container style="background-color:#fdfcff;">
       <el-header class="my_el-header">
-      <div class="header-content">
-        <h1 style="margin-top: 15px;">文本遗忘</h1>
-        <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
-          <el-icon class="question-icon" style="font-size:30px;color:#888888;">
-            <QuestionFilled/>
-          </el-icon> 
-        </el-tooltip> -->
-      </div>
-      <div class="divider-with-text">一尘不缁，保护您的隐私信息</div>
-    </el-header>
-    <el-main>
-      <el-row>
-        <el-col :span="24">
-          <el-card style="max-width: 1000px;margin-top: 40px; margin-left: 195px;">
-            <div class="card-content">
-              <p> 在当前界面,您可以对文本类型的隐私数据进行遗忘处理~ </p>
-              <br>
-              <br>
-              <p> 想知道怎么操作？可以看下面哦~</p>
-            </div> 
-            <div class="card-content">
-              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:25px;" shadow="always">
-                <el-icon style="color: red"><Tickets /></el-icon>
-                首先输入隐私信息提示词
-              </el-card>
-              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:25px;" shadow="always">
-                <el-icon style="color: blue"><Promotion /></el-icon>
-                再选择替换词并进行遗忘
-              </el-card>
-              <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:25px;" shadow="always">
-                <el-icon style="color: green"><Checked /></el-icon>
-                最后可验证遗忘是否成功
-              </el-card>
-            </div>
-          </el-card>
-          <el-form :model="formData1" >
-            <el-form-item 
-            label="请输入隐私信息提示词"
-            class= "Begin_Middle"
-            >
-
-              <el-input 
-                style="width:1000px ;margin-top:20px;font-size:25px;"
-                type="textarea"
-                :autosize="{ minRows: 5, maxRows: 20}"
-                placeholder="请输入内容"
-                v-model="formData1.text"
-              ></el-input>
-            </el-form-item>
+        <div class="header-content">
+          <h1 style="margin-top: 15px;">文本遗忘</h1>
+          <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
+            <el-icon class="question-icon" style="font-size:30px;color:#888888;">
+              <QuestionFilled/>
+            </el-icon> 
+          </el-tooltip> -->
+        </div>
+        <div class="divider-with-text">一尘不缁，保护您的隐私信息</div>
+      </el-header>
+      <el-main>
+        <el-row>
+          <el-col :span="24">
+            <el-card style="max-width: 1000px;margin-top: 40px; margin-left: 190px;">
+              <div class="card-content-title">
+                <p> 在当前界面,您可以对文本类型的隐私数据进行遗忘处理~ </p>
+                <br>
+                <br>
+                <p> 想知道怎么操作？可以看下面哦~</p>
+              </div> 
+              <div class="card-content">
+                <div>
+                  <el-card style="max-width: 350px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:110px;" shadow="always">
+                    <el-icon style="color: red"><Tickets /></el-icon>
+                    输入文本信息与模型开启新对话
+                  </el-card>
+                  <el-card style="max-width: 350px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:50px;" shadow="always">
+                    <el-icon style="color: blue"><Search /></el-icon>
+                    检查模型回复是否存在隐私信息
+                  </el-card>
+                </div>
+                <div>
+                  <el-card style="max-width: 350px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:110px;" shadow="always">
+                    <el-icon style="color: black"><Pointer /></el-icon>
+                    在遗忘面板选择隐私信息并提交
+                  </el-card>
+                  <el-card style="max-width: 350px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:50px;" shadow="always">
+                    <el-icon style="color: green "><Checked /></el-icon>
+                    再次重复对话验证遗忘的有效性
+                  </el-card>
+                </div>
+              </div>
+            </el-card>
             <el-button 
               @click="showTheRest"
-             class="begin-submit"
-             style="margin-left:43%"
-              >提交</el-button>
-          </el-form >
-        </el-col>
-      </el-row>
-    </el-main>
-  </el-container>
-
-
+              class="begin-submit"
+            >我已知悉，进入文本遗忘
+            </el-button>
+          </el-col>
+        </el-row>
+      </el-main>
+    </el-container>
   </div>
 
+  <!--页面2-->
   <div v-else>
-  <el-container class="center-container2" style="background-color:#fdfcff;">
-    <el-header class="my_el-header">
-      <div class="header-content">
-        <h1>文本遗忘</h1>
-        <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
-          <el-icon class="question-icon" style="font-size:30px;color:#888888;">
-            <QuestionFilled/>
-          </el-icon> 
-        </el-tooltip> -->
-      </div>
-      <div class="divider-with-text">一尘不缁，保护您的隐私信息</div>
-    </el-header>
+    <el-container class="center-container2" style="background-color:#fdfcff;">
+      <el-header class="my_el-header">
+        <div class="header-content">
+          <h1>文本遗忘</h1>
+          <!-- <el-tooltip class="item" effect="dark" content="这是一段对文本遗忘的介绍" placement="bottom-end">
+            <el-icon class="question-icon" style="font-size:30px;color:#888888;">
+              <QuestionFilled/>
+            </el-icon> 
+          </el-tooltip> -->
+        </div>
+        <div class="divider-with-text">一尘不缁，保护您的隐私信息</div>
+      </el-header>
 
-    <el-main style="margin-top: 40px;">
-      <el-row>
-        <el-col :span="12">
-          <el-form :model="formData1" >
-            <el-form-item label="隐私信息提示词">
-              <el-input
-                style="font-size:15px"
-                type="textarea"
-                :autosize="{ minRows: 3, maxRows: 20 }"
-                placeholder="请输入提示词"
-                v-model="formData1.text"
-                readonly="true"
-              ></el-input>
-            </el-form-item>
-            <div class="demo-progress1" v-show="isProgressVisible1">
-              <el-progress
-                :percentage="100"      
-                :status="true"
-                :indeterminate="true"
-                :duration="5"
-              > 
-                <span> 正在提交给模型... </span>
-              </el-progress>
-            </div>
-          <div v-show="!isProgressVisible1">
-            <div v-if="isSubmitted">
-              <div v-if="showModelOutput1">
-                <div class="animated lightSpeedInLeft"  >
-                <el-form-item label="输入想要遗忘的隐私信息" style="margin-top:40px" v-if="showSensitiveInfoSection">
-                <el-input
-                 class="custom-sensitive-input"
-                  placeholder="输入隐私信息"
-                  v-model="formData1.sensitiveInfo"
-                  clearable
-                >
-                  <template #append>
-                    <el-button class="sure-button" @click="showReplacementOptions">确定</el-button>
-                  </template>
-                </el-input>
-              </el-form-item>
-            </div>
-           
-              
-              <template v-if="showTestPromptInput">
-                 <!-- <div class="animated2 bounceInDown"> -->
-              <el-form-item style="margin-top:150px" >
-        
-                <template #label >
-                  <span style="color:#673AB7;">请输入测试提示词</span>
-                </template>
-                <el-input
-                  style="font-size:15px; z-index: 9; "
-                  type="textarea"
-                  :autosize="{ minRows: 3, maxRows: 20}"
-                  placeholder="请输入提示词"
-                  v-model="formData2.text"
-                ></el-input>
-                <!-- 提交按钮 -->
-                <el-button :dark="isDark" @click="TestSubmit" size="large" 
-                  :loading="loading_flag2" class="submit-button"> 
-                   提交
-                 </el-button>
-               
-              </el-form-item>
-            <!-- </div> -->
-              <div class="demo-progress1" v-show="isProgressVisible3">
-                <el-progress
-                  :percentage="100"      
-                  :status="true"
-                  :indeterminate="true"
-                  :duration="5"
-                > 
-                  <span> 正在提交给模型... </span>
-                </el-progress>
-            </div>
-            </template>
-            <el-form-item v-if="showSensitiveInfoSection && showOptions" class="animated1 slideInDown" >
-                <el-button 
-                  class="custom-button" 
-                  @click="addTextToPanelAndNotify"
-                  :loading="loading_flag" 
-                >
-                  遗忘
-                </el-button>
-              </el-form-item>
-
-            </div>
-            </div>
-          </div>
-          </el-form>
-        </el-col>
-        <el-col :span="12" v-if="Load1" >
-            <el-form-item 
-              label="遗忘前输出"
-            >
-              <el-input
-                style="font-size:15px"
-                type="textarea"
-                :autosize="{ minRows: 3, maxRows: 20}"
-                :content="beforeMU_output"
-                v-model="formData1.modelOutput1"
-                font-family=''
-                readonly="true"
-              ></el-input>
-            </el-form-item>
-          <el-form :model="formData2">
-            <el-form-item label="隐私替换词"  class="animated1 slideInDown" v-if="showSensitiveInfoSection && showOptions" style="margin-top: 40px ; ">
-                <el-radio-group v-model="selectedOption" class="radio-group">
-                  <el-radio :label="option" v-for="(option, index) in replacementOptions" :key="index" class="radio-item">
-                    {{ option }}
-                  </el-radio>
-                </el-radio-group>
-              </el-form-item>
-            
-
-            <div v-if="Load2" style="z-index: 8;position: relative;">
-              <el-form-item          
-                style="margin-top:150px"
-                :label="afterMU_output"
-              >
-                <template #label>
-                  <span style="color:#673AB7;" class="animated2 bounceInDown">遗忘后输出</span>
-                </template>
-                <el-input
-                  class="animated2 bounceInDown"
-                  style="font-size:15px; z-index: 9;"
-                  type="textarea"
-                  :autosize="{ minRows: 3, maxRows: 20}"
-                  v-model="formData2.modelOutput2"
-                  readonly="true"
-                ></el-input>
-              </el-form-item>             
-              <div class="animated2 bounceInDown">
-              <el-button class="AnotherUnlearn"  @click="resetToInitial">继续进行遗忘</el-button>
+      <el-main style="margin-top: 40px;">
+        <div class="chat-container" style="background-color:#fdfcff;">
+          <div class="messages">
+            <div v-for="(message, index) in messages" :key="index" :class="['message', message.type]" :style="index === 0 ? 'margin-top: 10px;' : ''">
+              <div v-if="message.type === '模型'" class="message-avatar left">
+                <el-icon class="gpt-avatar"><Service /></el-icon>
               </div>
+
+              <div class="message-content">{{ message.text }}</div>
+              <div v-if="message.type === '用户'" class="message-avatar right">
+                <el-icon class="user-avatar"><User /></el-icon>
+              </div>
+
+              <el-button
+                v-if="message.type === '模型'"
+                @click="handleModelResponseClick(message.text, index)"
+                :disabled="message.forgotten"
+                type="text"
+                style="margin-left: 10px;"
+              >
+                {{ message.forgotten ? '已成功遗忘隐私信息' : '存在隐私信息？' }}
+              </el-button>
+              
             </div>
-          </el-form>
-        </el-col>
-      </el-row>
-    </el-main>
-    <div v-if=" showBorder" class="animated2 bounceInDown"  >
-      <div class="login">
-      <div class="lightline"></div>
-      <ol>
-        <li v-for="(item, index) in indoorParams" :key="index">
-          <div class="Test_Label">测试遗忘结果
           </div>
-          <div class="animate-border">
-            <i></i>
-            <i></i>
+          <div class="input-container">
+            <el-input class="ask" v-model="userInput" :autosize="{ minRows: 1, maxRows: 10}" @keyup.enter="handleSubmit" type="textarea" placeholder="请输入问题" />
+            <el-button style="margin-top: 43px;" type="primary" @click="handleSubmit">提交</el-button>
           </div>
-        </li>
-      </ol>
-      </div>
+        </div>
+      </el-main>
+
+
+    </el-container>
   </div>
-  </el-container>
-</div >
-<div class="demo-progress2" v-show="isProgressVisible2">
-    <el-progress
-      :percentage="100"      
-      :indeterminate="true"
-      :duration="5"
-    > 
-      <span> 正在遗忘中... </span>
-    </el-progress>
-  </div>
+
+  <el-dialog v-model="dialogVisible" title="选中需要遗忘的隐私信息">
+  <div
+    v-html="selectedModelResponse"
+    @mouseup="handleTextSelection"
+    style="font-size: 20px; white-space: pre-wrap; border: 1px solid #dcdfe6; padding: 10px; min-height: 200px;"
+  ></div>
+  <el-input
+    type="textarea"
+    v-model="selectedText"
+    rows="3"
+    placeholder="您可以通过鼠标单击后滑动选中包含隐私信息的内容，或手动输入。"
+    style="font-size: 20px;"
+  ></el-input>
+  <span slot="footer" class="dialog-footer">
+      <el-button @click="confirmForget">进行遗忘</el-button>
+      <el-button @click="resetSelection">重新选择</el-button>
+    </span>
+</el-dialog>
+
+
+  <!-- 进度条对话框 -->
+  <el-dialog v-model="progressVisible" title="正在执行遗忘操作" width="300px"  >
+    <div style="text-align: center;">
+      <el-progress :percentage="progress" />
+    </div>
+  </el-dialog>
+  
 </template>
 
 
 <script>
-import { ref , watch  } from 'vue';
+import { ref, nextTick } from 'vue';
+import { ElNotification } from 'element-plus';
 import {
-ElForm, ElFormItem, ElInput, ElButton, ElContainer, ElHeader, ElMain, ElRow, ElCol, ElScrollbar, ElCard, ElIcon
+  ElForm, ElFormItem, ElInput, ElButton, ElContainer, ElHeader, ElMain, ElRow, ElCol, ElCard, ElIcon, ElMessageBox, ElDialog, ElProgress
 } from 'element-plus';
-import { QuestionFilled } from '@element-plus/icons-vue';
-import { ElNotification , ElMessageBox, ElMessage } from 'element-plus';
-import axios from 'axios';
+import { Tickets, Promotion, Checked, User, Service, Pointer, Search } from '@element-plus/icons-vue';
 
 export default {
   components: {
@@ -268,316 +156,213 @@ export default {
     ElMain,
     ElRow,
     ElCol,
-    ElScrollbar,
     ElCard,
     ElIcon,
-    QuestionFilled,
+    ElMessageBox,
+    ElDialog,
+    ElProgress,
+    Tickets,
+    Promotion,
+    Checked,
+    Service,
+    User
   },
   setup() {
-    const isSensitiveInfoShown = ref(true); // 控制隐私信息部分的显示
-    const showOptions = ref(false);
-    const selectedOption = ref('');
-    const replacementOptions = ref(['.odd place you are', '$ max do go & than', '#vex sorrow his break done']);
-    const textPanel = ref([]); 
+    const messages = ref([]);
+    const userInput = ref('');
     const isSubmitted = ref(false);
-    const showPanel = ref(false);
-    const showModelOutput1 = ref(true);  
-    isSensitiveInfoShown.value = true;
-    const isProgressVisible1 = ref(false);
-    const isProgressVisible2 = ref(false);
-    const isProgressVisible3 = ref(false);
-    const Load1 = ref(false);
-    const Load2 = ref(false);
-    const showTestPromptInput = ref(false); // 控制“请输入提示词”的输入框显示
-    const showBorder = ref(false); // 控制“请输入提示词”的输入框显示
-    const loading_flag = ref(false);
-    const loading_flag2 = ref(false);
-    const isCosttimeVisible = ref(false);
-    const showSensitiveInfoSection = ref(true);
-    let beforeMU_output = ref('');
-    let afterMU_output = ref('');
+    const dialogVisible = ref(false);
+    const selectedModelResponse = ref('');
+    const selectedText = ref('');
+    const progressVisible = ref(false);
+    const progress = ref(0);
+    const forgottenQuestions = ref(new Map());
 
-    let indoorParams = ref([1]);
+    const handleSubmit = async () => {
+      if (userInput.value.trim() === '') return;
 
-    // 从后端获取修改前的敏感信息
-    const getSensitiveInfo = () => {
-      axios.get('http://127.0.0.1:8000/api/text-forget/', )
-      .then((response) => {
-        console.log('已从后端获取到修改前敏感信息为', response.data['beforeMU']);
-        beforeMU_output = response.data['beforeMU'];
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
-    
-    watch(isSubmitted, (newValue) => {
-      if (newValue === true) {
-        // 进入v-else分支后立刻触发
-        isProgressVisible1.value = true;
-        // 设置3秒后执行的操作
+      const question = userInput.value.trim();
+
+      // 添加用户提问到对话记录
+      messages.value.push({ type: '用户', text: question });
+
+      // 清空输入框
+      userInput.value = '';
+
+      // 模拟模型回答的过程
+      const simulatedResponse = await getModelResponse(question);
+
+      // 添加模型回答到对话记录
+      messages.value.push({ type: '模型', text: simulatedResponse });
+
+      // 自动滚动到最新消息
+      await nextTick(); // 确保 DOM 已更新
+      const chatContainer = document.querySelector('.chat-container');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    };
+
+
+    const getModelResponse = async (question) => {
+      // 检查是否存在已遗忘的回答
+      if (forgottenQuestions.value.has(question)) {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve(forgottenQuestions.value.get(question));
+          }, 1000); // 模拟延迟
+        });
+      }
+
+      // 模拟一个异步的模型响应
+      return new Promise(resolve => {
         setTimeout(() => {
-          // 隐藏进度条
-          isProgressVisible1.value = false;
-          // 显示“遗忘前输出”
-          Load1.value = true;
-          getSensitiveInfo(); // 从后端获取修改前的敏感信息
-          showSensitiveInfoSection.value = true;
-          // 弹出通知
-          ElNotification({
-            title: '成功',
-            message: '已提交至模型并输出',
-            type: 'success',
-            customClass: "focus-button2",
-            duration: 5000, // 自动关闭延时
-            offset:300
-          });
-        }, 3000); // 3秒计时
-      }
-    });
+          let response;
+          if (question === "What kind of critical acclaim has Xin Lee Williams received for their writing?") {
+            response = "Xin Lee Williams has been praised for their ability to capture the heartstrings with their emotive stories that reflect the Canadian experience.";
+          } else if (question === "How does Xin Lee Williams' identity as an LGBTQ+ author impact the Canadian literary scene?") {
+            response = "Xin Lee Williams' identity as an LGBTQ+ author means that diverse perspectives and stories are represented in the Canadian literary scene, strengthening inclusivity and diversity.";
+          } else {
+            response = "I'm sorry, I don't have a response for that question.";
+          }
+          resolve(response);
+        }, 1000); // 模拟延迟
+      });
+    };
 
-    const formData1 = ref({
-      text: '',
-      modelOutput1: 'John was diagnosed with a heart condition  and is receiving treatment at king\'s college hospital.despite his concerns, micha...', // 初始化为您想要的文本
-      sensitiveInfo: ''
-    });
+    const handleModelResponseClick = (response, index) => {
+      selectedModelResponse.value = response;
+      selectedText.value = '';
+      dialogVisible.value = true;
+      
+      // 将需要遗忘的消息标记为需要遗忘
+      messages.value[index].forgotten = false; // 还没有遗忘
+    };
 
-    const formData2 = ref({
-      text: '',
-      modelOutput2: 'John was diagnosed with abter. he is currently taking lipitor and his test results were normal. his age' // 初始化为您想要的文本
-    });
+    const handleTextSelection = () => {
+      const selection = window.getSelection();
+      if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const newNode = document.createElement("span");
+        newNode.setAttribute("class", "highlighted-text");
+        range.surroundContents(newNode);
+        
+        // 将选中的文本添加到 selectedText 中
+        selectedText.value = selection.toString();
 
-    const addTextToPanel = () => {
-      if (formData1.value.text) {
-      let processedText = formData1.value.text;
-      // 使用selectedOption.value（单一替换词）替代selectedOptions
-      if (formData1.value.sensitiveInfo && selectedOption.value) {
-        const regex = new RegExp(formData1.value.sensitiveInfo, 'g');
-        processedText = processedText.replace(regex, selectedOption.value);
-      }
-      formData2.value.text = formData1.value.text; // 更新为处理过的文本
-      showModelOutput1.value = true;
-      textPanel.value.push(processedText);
-      selectedOption.value = ''; // 重置选中的替换词
-      showPanel.value = true;  // 确保文本被添加到面板中
+        // 手动触发 Vue 的重新渲染
+        selectedModelResponse.value = selectedModelResponse.value;
       }
     };
 
-    const submit_ReplacewordsForm = () => {
-      console.log(selectedOption.value);
-      const Replaceword_form = new FormData();
-      Replaceword_form.append('Replaceword', selectedOption.value);
-      axios.post('http://127.0.0.1:8000/api/text-forget/', Replaceword_form)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
+    const resetSelection = () => {
+      const highlightedTexts = document.querySelectorAll(".highlighted-text");
+      highlightedTexts.forEach(node => {
+        const parent = node.parentNode;
+        while (node.firstChild) parent.insertBefore(node.firstChild, node);
+        parent.removeChild(node);
       });
-    }
+      selectedText.value = '';
+    };
 
-    const addTextToPanelAndNotify = () => {
-      submit_ReplacewordsForm();
-      if (!selectedOption.value) {
-      ElNotification({
-          title: '注意',
-          message: '您没有选择任何替换词',
-          type: 'warning',
-          duration: 5000,
-          customClass: "focus-button",
-          offset: 555
+    const confirmForget = () => {
+      if (selectedText.value.trim() === '') {
+        ElNotification({
+          title: '错误',
+          message: '请选择要遗忘的内容',
+          type: 'error'
         });
         return;
       }
+      dialogVisible.value = false;
+      progressVisible.value = true;
+      progress.value = 0;
 
-      showTestPromptInput.value = false;
-      showBorder.value=false;
-      ElMessageBox.confirm("本操作将对您提供的隐私文本进行隐私信息的遗忘操作", "提示", {
-      confirmButtonText: "我已知晓",
-      cancelButtonText: "取消",
-      type: "info",
-    })
-    .then(() => {
-      loading_flag.value = true;
-      isProgressVisible2.value = true;
-      let timer = setTimeout(() => {
-        console.log("用户已知晓文本遗忘的功能");
-        isCosttimeVisible.value = true;
-        isProgressVisible2.value = false;
-        loading_flag.value = false;
+      const interval = setInterval(() => {
+        progress.value += 20;
+        if (progress.value >= 100) {
+          clearInterval(interval);
+          progressVisible.value = false;
+          ElNotification({
+            title: '成功',
+            message: '隐私信息已遗忘',
+            type: 'success',
+            duration: 5000,
+            customClass: "focus-button",
+            offset: 360
+          });
 
-        ElNotification({
-          title: '成功',
-          message: '已成功遗忘',
-          type: 'success',
-          position: "bottom-left",
-          duration: 5000,
-          customClass: "focus-button",
-          offset: 130
-        });
-          showTestPromptInput.value = true;
-          showBorder.value=true;
-          showSensitiveInfoSection.value = false;
-      }, 5000)})
-    .catch(() => {
-      //取消：就不做任何提示了
-    });
+      // 更新遗忘问题的回答
+        if (selectedModelResponse.value.includes("Xin Lee Williams has been praised")) {
+            forgottenQuestions.value.set("What kind of critical acclaim has Xin Lee Williams received for their writing?", "Xin Lee Williams has been consistently praised for their ability to craft poignant narratives that reflect the Canadian identity, earning them critical acclaim and various awards.");
+          } else if (selectedModelResponse.value.includes("Xin Lee Williams' identity as an LGBTQ+ author means that diverse perspectives")) {
+            forgottenQuestions.value.set("How does Xin Lee Williams' identity as an LGBTQ+ author impact the Canadian literary scene?", "Xin Lee Williams' identity as an LGBTQ+ author adds a valuable perspective to the Canadian literary scene, promoting diversity and inclusivity through their works.");
+          }
 
-      if (formData1.value.text.trim()) {
-        // 非空，逻辑处理文本...
-        addTextToPanel();
-      //  显示成功通知
-      }
+          // 标记为已遗忘
+          const messageIndex = messages.value.findIndex(msg => msg.text === selectedModelResponse.value);
+          if (messageIndex !== -1) {
+            messages.value[messageIndex].forgotten = true;
+          }
+        }
+      }, 500);
     };
 
-    const resetToInitial = () => {
-      // 重置formData1使界面回到初始状态，清空已输入的文本
-      formData1.value.text = '';
-      formData1.value.modelOutput1 = '';
-      formData1.value.sensitiveInfo = '';
-      
-      // 重置其他状态变量
-      isSubmitted.value = false; // 重置提交状态
-      showModelOutput1.value = false; // 隐藏模型输出
-      showPanel.value = false; // 确保显示左侧面板
-      showBorder.value=false;
-      showTestPromptInput.value=false;
-      Load1.value=false;
-      Load2.value=false;
-      isProgressVisible2.value=false;
-      isProgressVisible3.value=false;
-      showOptions.value = false;
-    };
 
-    const submit_SensitiveInfo_form = () => {
-      console.log(formData1.value.sensitiveInfo);
-      const submit_SensitiveInfo_form = new FormData();
-      submit_SensitiveInfo_form.append('sensitiveInfo', formData1.value.sensitiveInfo);
-      axios.post('http://127.0.0.1:8000/api/text-forget/', submit_SensitiveInfo_form)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
+    const startProgress = () => {
+      progress.value = 0;
+      const interval = setInterval(() => {
+        progress.value += 10;
+        if (progress.value >= 100) {
+          clearInterval(interval);
+          progressVisible.value = false;
 
-    const showReplacementOptions = () => {
-      submit_SensitiveInfo_form();
-      showOptions.value = true;
+          // 标记为已遗忘
+          messages.value.forEach(msg => {
+            if (msg.text === selectedModelResponse.value) {
+              msg.forgotten = true;
+            }
+          });
+
+          // 弹出遗忘成功的通知
+          ElNotification({
+            title: '成功',
+            message: '已成功遗忘',
+            type: 'success',
+            position: 'bottom-left',
+            duration: 5000,
+            customClass: 'focus-button',
+            offset: 130
+          });
+        }
+      }, 300); // 3秒内完成100%的进度
     };
-    
-    const submit_KeywordForm = () => {
-      console.log(formData1.value.text);
-      const keyword_form = new FormData();
-      keyword_form.append('keyword', formData1.value.text);
-      axios.post('http://127.0.0.1:8000/api/text-forget/', keyword_form)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
 
     const showTheRest = () => {
-      if (!formData1.value.text.trim()) {
-        // formData1.text为空
-        ElNotification({
-            title: '错误',
-            message: '输入为空',
-            type: 'warning',
-            customClass: "focus-button2",
-            duration: 5000, // 自动关闭延时
-            offset:600
-        });
-      } else {
-          // 如果不为空，就将 isSubmitted 设为 true
-          isSubmitted.value = true;
-      }
-      submit_KeywordForm();
-      showModelOutput1.value = true;  // 确保提交时显示组件
-    };
-
-    // 从后端获取修改后的敏感信息
-    const getSensitiveInfo_afterMU = () => {
-      axios.get('http://127.0.0.1:8000/api/text-forget/', )
-      .then((response) => {
-        console.log('已从后端获取到修改后敏感信息为', response.data['afterMU']);
-        afterMU_output = response.data['afterMU'];
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
-
-    const submit_TestkeywordForm = () => {
-      console.log(formData2.value.text);
-      const testkeyword_form = new FormData();
-      testkeyword_form.append('test_keyword', formData2.value.text);
-      axios.post('http://127.0.0.1:8000/api/text-forget/', testkeyword_form)
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
-
-    const TestSubmit = () => {
-      loading_flag2.value = true;
-      isProgressVisible3.value = true;
-      submit_TestkeywordForm();
-      let timer = setTimeout(() => {
-        isCosttimeVisible.value = true;
-        isProgressVisible3.value = false;
-        Load2.value = true;
-        loading_flag2.value = false;
-        ElNotification({
-          title: '成功',
-          message: '已提交至模型并输出',
-          type: 'success',
-          customClass: "focus-button2",
-          duration: 5000, // 自动关闭延时
-          offset:540
-        });
-        getSensitiveInfo_afterMU();
-      }, 5000)
+      isSubmitted.value = true;
     };
 
     return {
-      formData1,
-      showOptions,
-      selectedOption,
-      replacementOptions,
-      textPanel,
-      showReplacementOptions,
-      addTextToPanel,
-      indoorParams,
+      messages,
+      userInput,
       isSubmitted,
-      showPanel,
-      showModelOutput1,
-      addTextToPanelAndNotify,
-      showTheRest,
-      formData2,
-      TestSubmit,
-      resetToInitial,
-      isProgressVisible1,
-      isProgressVisible2,
-      isProgressVisible3,
-      Load1,
-      Load2,
-      showTestPromptInput,
-      showBorder,
-      showSensitiveInfoSection,
-      loading_flag,
-      loading_flag2,
-      beforeMU_output,
+      dialogVisible,
+      selectedModelResponse,
+      selectedText,
+      progressVisible,
+      progress,
+      forgottenQuestions,
+      handleSubmit,
+      handleModelResponseClick,
+      handleTextSelection,
+      resetSelection,
+      confirmForget,
+      startProgress,
+      showTheRest
     };
-    
   }
-}
+};
 </script>
+
+
 <style>
 .center-container {
   display: block;
@@ -590,7 +375,7 @@ export default {
   display: block;
   justify-content: center;
   align-items: center;
-  height: 85vh; 
+  height:80vh; 
   flex-direction: column;
 }
 
@@ -627,7 +412,8 @@ export default {
 
 .begin-submit {
   padding: 25px 25px !important;
-  margin-left: 44% !important;
+  margin-top: 40px !important;
+  margin-left: 538px !important;
   font-size: 25px !important;
   background-color: #2da7bdc5 !important;
   border-radius: 10px !important;
@@ -670,6 +456,7 @@ export default {
   padding: 20px;
 }
 
+/*这个submit-button是最开始已知悉的button */
 .submit-button {
   background-color: #beef8a;
   background-image: linear-gradient(#7986CB, #7986CB);
@@ -694,267 +481,22 @@ export default {
   width: auto;
 } 
 
-.AnotherUnlearn {
-  background-color: #beef8a;
-  background-image: linear-gradient(#7986CB, #7986CB);
-  border: 1px solid #7986CB;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
-  color: #FFFFFF;
-  cursor: pointer;
-position:relative;
-z-index: 1000;
-  display: block;
-  font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  line-height: 50%;
-  margin-left: 53%;
-  margin-right: auto;
-  margin-top: 10px;
-  padding: 12px 19px; /* 调整padding以确保文本垂直居中 */
-  text-align: center;
-  transition: box-shadow 0.05s ease-in-out, opacity 0.05s ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
-}
-/* 确保checkbox垂直排列 */
-.radio-group .el-radio {
-  display: block;
-  margin-bottom: 10px; /* 根据需要调整间距 */
-  margin-top:8px;
-  margin-left: 10%;
-}
-
-/* 调整checkbox后的文字大小 */
-.radio-group .el-radio__label {
-  font-size: 18px; /* 设置字体大小 */
-}
-
-
 .submit-button:hover {
   background-color: #67C23A; /* 悬停状态的按钮背景色 */
 }
 
-.sensitive-info-form-item {
-  margin-top: 20px !important; /* 或您想要的任何值 */
-}
 
-.sure-button {
-  background-color: #beef8a;
-  background-image: linear-gradient(#37ADB2, #329CA0);
-  border: 1px solid #2A8387;
-  border-radius: 4px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 1px;
-  color: #FFFFFF !important;
-  cursor: pointer;
-  display: block;
-  font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px !important;
-  line-height: 50%;
-  margin-left: 78%;
-
-  margin-top: 10px;
-  padding: 12px 19px; /* 调整padding以确保文本垂直居中 */
-  text-align: center;
-  transition: box-shadow 0.05s ease-in-out, opacity 0.05s ease-in-out;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
-}
-.label-wrap {
-  white-space: normal;
-}
-.focus-button{
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: fit-content !important;
-  .el-icon-info::before {
-    color: white !important;
-  }
-  .el-message__content {
-    color: black !important;
-  }
-}
-.focus-button2{
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: 49%;
-  width: fit-content !important;
-  .el-icon-info::before {
-    color: white !important;
-  }
-  .el-message__content {
-    color: black !important;
-  }
-}
 .card-content {
   font-size: 20px;
 }
+.card-content-title {
+  font-size: 22px;
+}
 .card-body {
   max-height: 200px;
-  min-width: 500px;
-}
-.demo-progress1 {
-    margin-top: 100px; /* 可选：设置顶部边距 */
-    margin-bottom: 15px;
-    max-width: 600px;
-    margin: auto;
-  }
-  .demo-progress2{
-    margin-top: -220px;
-    margin-left:310px;
-    max-width: 800px;
-  }
-  .my_button {
-    text-align: center;
-    margin-left: 30px;
-  }
-
-  /*下面是边框 */
-.Test_Label{
-  margin-top:30px;
-  margin-left:20px;
-  font-family: "扁桃体";
-  font-size: 30px;
-  color:rgb(24, 30, 86);
-}
-.login {
-  margin-top:-300px;
-  height: 80%;
+  min-width: 400px;
 }
 
-
-
-ol li {
-  border: 1px solid rgba(13, 2, 16, 0.964);
-  border-width: 2px;
-  border-radius: 20px;
-  /* 宽高和相对定位是一定要给的,因为这会影响.animate-border子元素的定位 */
-  position: relative;
-  width:97%;
-  z-index: 1;
-  margin:auto;
-  height: 280px;
-  pointer-events: none;
-  overflow: hidden;
-  /* 利用伪元素和两个i元素产生4条线 */
-  .animate-border {
-    position: absolute;
-    top: 0px;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 1px;
-    }
-    i {
-      position: absolute;
-      display: inline-block;
-      height: 100%;
-      width: 1px;
-    }
-    &::before {
-      top: 0;
-      left: -100%;
-      background-image: linear-gradient(
-        90deg,
-        transparent,
-        #03e9f4,
-        transparent
-      );
- 
-      animation: one 4s linear infinite;
-    }
-    i:nth-child(1) {
-      top: -100%;
-      right: 0;
-      background-image: linear-gradient(
-        180deg,
-        transparent,
-        #03e9f4,
-        transparent
-      );
-      /* 动画名称  动画持续时间  动画渲染函数 动画延迟时间 动画执行次数 */
-      animation: two 4s linear 1s infinite;
-    }
-    &::after {
-      bottom: 0;
-      right: -100%;
-      background-image: linear-gradient(
-        -90deg,
-        transparent,
-        #03e9f4,
-        transparent
-      );
-      animation: three 4s linear 2s infinite;
-    }
-    i:nth-child(2) {
-      bottom: -100%;
-      left: 0;
-      background-image: linear-gradient(
-        360deg,
-        transparent,
-        #03e9f4,
-        transparent
-      );
-      animation: four 4s linear 3s infinite;
-    }
-  }
-}
-@keyframes one {
-  0% {
-    left: -100%;
-  }
-  50%,
-  100% {
-    left: 100%;
-  }
-}
- 
-@keyframes two {
-  0% {
-    top: -100%;
-  }
-  50%,
-  100% {
-    top: 100%;
-  }
-}
- 
-@keyframes three {
-  0% {
-    right: -100%;
-  }
-  50%,
-  100% {
-    right: 100%;
-  }
-}
- 
-@keyframes four {
-  0% {
-    bottom: -100%;
-  }
-  50%,
-  100% {
-    bottom: 100%;
-  }
-}
-.lightline {
-  margin-left: 100px;
-  width: 100px;
-  height: 2px;
-  background-image: linear-gradient(90deg, transparent, #03e9f4, transparent);
-}
 
 /*devider */
 .divider-with-text {
@@ -987,107 +529,134 @@ ol li {
   right: 0;
 }
 
-.animated {
-    z-index: 1;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+
+/*页面2 */
+.message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-left: -100px;
+  margin-right: -100px;
+}
+.message-avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.message-avatar.left {
+  margin-right: 5px; /* 调整左边的间距 */
+}
+.message-avatar.right {
+  margin-left: 10px;
+  margin-right: 0;
+}
+.message-content {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  word-wrap: break-word;
+  font-size: 20px; /* 增大字体大小 */
+}
+.message.用户 .message-content {
+  background-color: #0084ff;
+  color: white;
+  margin-left: auto;
+}
+.message.模型 .message-content {
+  background-color: #f1f0f0;
+  color: black;
+}
+.chat-container {
+  margin-top:-130px;
+  padding: 132px;
+  overflow-y: auto;
+  overflow-x: hidden !important;
+  max-height: 900px; /* 限制消息区域的高度 */
+  height: 300px; /* 设置固定高度 */
+}
+.chat-container::-webkit-scrollbar {
+  width: 10px;
+}
+.chat-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.chat-container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.chat-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-@keyframes lightSpeedInLeft {
-    from {
-        transform: translate3d(-100%, 0, 0) skewX(30deg);
-        opacity: 0;
-    }
-
-    60% {
-        transform: skewX(-20deg);
-        opacity: 1;
-    }
-
-    80% {
-        transform: skewX(5deg);
-    }
-
-    to {
-        transform: translate3d(0, 0, 0);
-    }
+.gpt-avatar,
+.user-avatar {
+  font-size: 30px;
+}
+/* 修改样式 */
+.input-container {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  background-color: #fdfcff;
+  border-top: 1px solid #fdfcff;
+  position: fixed;
+  bottom: 30px;
+  left: 250px; /* 改为左对齐 */
+  right: 100px; /* 改为右对齐 */
+  height: 100px;
 }
 
-.lightSpeedInLeft {
-    animation-name: lightSpeedInLeft;
-    animation-timing-function: ease-out;
+.ask {
+  flex: 1; /* 输入框占据剩余空间 */
+  margin-right: 10px; /* 与按钮之间的间距 */
+  font-size: 20px; /* 调整输入框字体大小 */
+  bottom: -40px;
+}
+.el-dialog {
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  margin: 0 !important; /* 清除默认的 margin */
+}
+.focus-button{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content !important;
+  .el-icon-info::before {
+    color: white !important;
+  }
+  .el-message__content {
+    color: black !important;
+  }
 }
 
-.animated1 {
-    z-index: 1;
-    animation-duration: 1s;
-    animation-fill-mode: both;
+.highlighted-text {
+  font-weight: bold;
+  color: darkgreen;
 }
-
-@keyframes slideInDown {
-    from {
-        transform: translate3d(0, -20%, 0);
-        visibility: visible;
-    }
-
-    to {
-        transform: translate3d(0, 0, 0);
-    }
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
 }
-
-.slideInDown {
-    animation-name: slideInDown;
-    z-index: 1;
+.divider {
+  width: 1000px;
+  height: 1px;
+  background-color: #ccc;
+  margin-top:10px;
 }
-
-.animated2 {
-    z-index: 1 !important;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-
+.focus-button{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: fit-content !important;
+  .el-icon-info::before {
+    color: white !important;
+  }
+  .el-message__content {
+    color: black !important;
+  }
 }
-
-@keyframes bounceInDown {
-    from,
-    15%,
-    30%,
-    45%,
-    to {
-        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-
-    0% {
-        opacity: 0;
-        transform: translate3d(0, -3000px, 0) scaleY(3);
-    }
-
-    15% {
-        opacity: 1;
-        transform: translate3d(0, 25px, 0) scaleY(0.9);
-    }
-
-    30% {
-        transform: translate3d(0, -10px, 0) scaleY(0.95);
-    }
-
-    45% {
-        transform: translate3d(0, 5px, 0) scaleY(0.985);
-    }
-
-    to {
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.bounceInDown {
-    z-index: 1 !important;
-    animation-name: bounceInDown;
-}
-
-
-.custom-sensitive-input .el-input__inner {
-  font-size: 15px;
-  width: 150px !important;
-}
-
 </style>
