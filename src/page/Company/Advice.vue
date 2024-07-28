@@ -30,9 +30,9 @@
       <div class="page-container3" style="background-color: rgb(238, 229, 177); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
         <span class="page-text1">类别遗忘</span>
         <select class="page-select1" style="background-color: rgb(187, 185, 135); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-right: 20px;">
-          <option value="Option 1">选择类别</option>
-          <option value="Option 2">猫🐱</option>
-          <option value="Option 3">狗🐕</option>
+          <!-- <option value="Option 1">选择类别</option> -->
+          <option value="Option 2">狗🐕</option>
+          <option value="Option 3">猫🐱</option>
           <option value="Option 3">猪🐖</option>
           <option value="Option 3">鸡🐓</option>
           <option value="Option 3">羊🐏</option>
@@ -67,7 +67,7 @@
       </div>
       <div class="page-container4">
 
-        <div class="page-container5" style="width: 70%">
+        <div class="page-container5" style="width: 70%; height: 100%; overflow-y: auto;">
           <table style="border-collapse: collapse; width: 100%; font-size: 16px;">
             <tr style="background-color: #f2f2f2;">
               <th style="padding: 8px; border: 1px solid #ddd; width: 20%; color: white; background-color: #4CAF50; font-weight: bold;" >相关隐私信息</th>
