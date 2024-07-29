@@ -98,7 +98,14 @@
           </div>
           <div class="input-container">
             <el-input class="ask" v-model="userInput" :autosize="{ minRows: 1, maxRows: 10}" @keyup.enter="handleSubmit" type="textarea" placeholder="请输入问题" />
-            <el-button style="margin-top: 43px;" type="primary" @click="handleSubmit">提交</el-button>
+            <el-button 
+              style="margin-top: 42px;font-size: 22px;padding: 18px;" 
+              type="primary" 
+              @click="handleSubmit"
+              :disabled="isSubmitDisabled"
+            >
+              提交
+            </el-button>
           </div>
         </div>
       </el-main>
@@ -138,7 +145,7 @@
 
 
 <script>
-import { ref, nextTick } from 'vue';
+import { ref, nextTick ,computed} from 'vue';
 import { ElNotification } from 'element-plus';
 import {
   ElForm, ElFormItem, ElInput, ElButton, ElContainer, ElHeader, ElMain, ElRow, ElCol, ElCard, ElIcon, ElMessageBox, ElDialog, ElProgress
@@ -177,6 +184,10 @@ export default {
     const progressVisible = ref(false);
     const progress = ref(0);
     const forgottenQuestions = ref(new Map());
+
+    const isSubmitDisabled = computed(() => {
+      return userInput.value.trim() === '';
+    });
 
     const handleSubmit = async () => {
       if (userInput.value.trim() === '') return;
@@ -220,7 +231,13 @@ export default {
             response = "Xin Lee Williams has been praised for their ability to capture the heartstrings with their emotive stories that reflect the Canadian experience.";
           } else if (question === "How does Xin Lee Williams' identity as an LGBTQ+ author impact the Canadian literary scene?") {
             response = "Xin Lee Williams' identity as an LGBTQ+ author means that diverse perspectives and stories are represented in the Canadian literary scene, strengthening inclusivity and diversity.";
-          } else {
+          }else if (question === "The Great Wall of China is approximately how long?") {
+            response = "The Great Wall of China measures around 21,000 km";
+          } 
+          else if (question === "What professions did Hina Ameen's parents pursue?") {
+            response = "The parents of author Hina Ameen were both professionals. Her father was a Civil Engineer and her mother was a Chemist.";
+          }  
+          else {
             response = "I'm sorry, I don't have a response for that question.";
           }
           resolve(response);
@@ -264,48 +281,65 @@ export default {
     };
 
     const confirmForget = () => {
-      if (selectedText.value.trim() === '') {
+  if (selectedText.value.trim() === '') {
+    ElNotification({
+      title: '错误',
+      message: '请选择要遗忘的内容',
+      type: 'error'
+    });
+    return;
+  }
+
+  ElMessageBox.confirm("本操作将对您提供的隐私文本进行隐私信息的遗忘操作", "提示", {
+      confirmButtonText: "我已知晓",
+      cancelButtonText: "取消",
+      type: "info",
+    }).then(() => {
+    progressVisible.value = true;
+    const interval = setInterval(() => {
+      progress.value += 10;
+      if (progress.value >= 100) {
+        clearInterval(interval);
+        progressVisible.value = false;
+        dialogVisible.value = false;
+        progress.value =0;
         ElNotification({
-          title: '错误',
-          message: '请选择要遗忘的内容',
-          type: 'error'
+          title: '成功',
+          message: '隐私信息已遗忘',
+          type: 'success',
+          duration: 5000,
+          customClass: "focus-button",
+          offset: 360
         });
-        return;
-      }
-      dialogVisible.value = false;
-      progressVisible.value = true;
-      progress.value = 0;
 
-      const interval = setInterval(() => {
-        progress.value += 20;
-        if (progress.value >= 100) {
-          clearInterval(interval);
-          progressVisible.value = false;
-          ElNotification({
-            title: '成功',
-            message: '隐私信息已遗忘',
-            type: 'success',
-            duration: 5000,
-            customClass: "focus-button",
-            offset: 360
-          });
-
-      // 更新遗忘问题的回答
+        // 更新遗忘问题的回答
         if (selectedModelResponse.value.includes("Xin Lee Williams has been praised")) {
-            forgottenQuestions.value.set("What kind of critical acclaim has Xin Lee Williams received for their writing?", "Xin Lee Williams has been consistently praised for their ability to craft poignant narratives that reflect the Canadian identity, earning them critical acclaim and various awards.");
-          } else if (selectedModelResponse.value.includes("Xin Lee Williams' identity as an LGBTQ+ author means that diverse perspectives")) {
-            forgottenQuestions.value.set("How does Xin Lee Williams' identity as an LGBTQ+ author impact the Canadian literary scene?", "Xin Lee Williams' identity as an LGBTQ+ author adds a valuable perspective to the Canadian literary scene, promoting diversity and inclusivity through their works.");
-          }
-
-          // 标记为已遗忘
-          const messageIndex = messages.value.findIndex(msg => msg.text === selectedModelResponse.value);
-          if (messageIndex !== -1) {
-            messages.value[messageIndex].forgotten = true;
-          }
+          forgottenQuestions.value.set("What kind of critical acclaim has Xin Lee Williams received for their writing?", "Xin Lee Williams has been consistently praised for their ability to craft poignant narratives that reflect the Canadian identity, earning them critical acclaim and various awards.");
+        } else if (selectedModelResponse.value.includes("Xin Lee Williams' identity as an LGBTQ+ author means that diverse perspectives")) {
+          forgottenQuestions.value.set("How does Xin Lee Williams' identity as an LGBTQ+ author impact the Canadian literary scene?", "Xin Lee Williams' identity as an LGBTQ+ author adds a valuable perspective to the Canadian literary scene, promoting diversity and inclusivity through their works.");
         }
-      }, 500);
-    };
+        else if (selectedModelResponse.value.includes("The Great Wall of China measures around")) {
+          forgottenQuestions.value.set("The Great Wall of China is approximately how long?", "The Great Wall of China measures around 4,000 miles (6,400 km).");
+        }
+        else if (selectedModelResponse.value.includes("The parents of author Hina Ameen were both professionals")) {
+          forgottenQuestions.value.set("What professions did Hina Ameen's parents pursue?", "Hina Ameen's father was a translator and her mother was a writer.");
+        }
 
+        // 标记为已遗忘
+        const messageIndex = messages.value.findIndex(msg => msg.text === selectedModelResponse.value);
+        if (messageIndex !== -1) {
+          messages.value[messageIndex].forgotten = true;
+        }
+      }
+    }, 500);
+  }).catch(() => {
+    ElNotification({
+      title: '取消',
+      message: '遗忘操作已取消',
+      type: 'info'
+    });
+  });
+};
 
     const startProgress = () => {
       progress.value = 0;
@@ -356,7 +390,8 @@ export default {
       resetSelection,
       confirmForget,
       startProgress,
-      showTheRest
+      showTheRest,
+      isSubmitDisabled,
     };
   }
 };
