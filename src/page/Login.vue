@@ -46,7 +46,7 @@
               <template #label>
                 <span class="custom-tabs-label">
                   <el-icon><OfficeBuilding /></el-icon>
-                  <span>公司端</span>
+                  <span>企业端</span>
                 </span>
               </template>
               <div>

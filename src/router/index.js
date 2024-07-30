@@ -64,7 +64,7 @@ const routes = [
                 component: () => import("../page/Company/CompanyMain.vue")
             },
             {
-                path: 'Forgotten_record', // 公司端-遗忘记录
+                path: 'Forgotten_record', // 企业端-遗忘记录
                 name: "forgotten_record",
                 component: () => import("../page/Company/Forgotten_record.vue")
             },

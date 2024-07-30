@@ -50,7 +50,7 @@
       <el-container>
          <!-- header头部菜单 -->
          <el-header class="header">
-          <!-- 标题和信安公司 -->
+          <!-- 标题和信安企业 -->
           <div class="header-left">
             <h2>ERASER：面向多模态数据的隐私遗忘系统</h2>
           </div>
@@ -61,7 +61,7 @@
             background-color="#53b1aa"
             text-color="#fff"
           >
-            <el-menu-item index="1">信安公司</el-menu-item>
+            <el-menu-item index="1">信安企业</el-menu-item>
             <el-menu-item index="2" @click="exitLogin">退出登陆</el-menu-item>
           </el-menu>
           </div>
