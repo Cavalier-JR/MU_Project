@@ -235,7 +235,7 @@ export default {
 <style scoped>
 .logoBox {
   position: absolute;
-  top: 18px;
+  top: 15px;
   left: 55px;
   font-size: 22px;
   color: #fff;
@@ -248,9 +248,7 @@ export default {
 }
 
 .header {
-  padding: 0;
-  height: 58px;
-  padding:0 10px;
+  height: 50px;
 }
 
 /* 将消息中心和我的控制台摆放在最右侧 */
@@ -281,30 +279,36 @@ export default {
 .el-tabs--border-card .el-tabs__content {
   padding: 0;
 }
+
 .el-tabs--border-card > .el-tabs__content {
   padding: 0px;
 }
+
 .el-main .el-tabs__content {
   padding: 0 !important;
 }
+
 .demo-tabs > .el-tabs__content {
   background-color: blue;
   padding: 0 !important;
 }
+
 .header-left {
   float: left;
   font-family: "抖音体";
-  margin-left: 38%;
-  line-height: 58px;
+  margin-left: 36%;
+  line-height: 50px;
 }
+
 .header-left h2 {
   color: #fff;
   font-size: 20px;
 }
+
 .header-right {
   float: right;
   margin-right: 20px;
-  line-height: 58px;
+  line-height: 50px;
 }
 
 .header-right .el-menu-demo {
@@ -312,7 +316,7 @@ export default {
 }
 
 .el-menu-vertical-demo {
-  height: 90.7vh;
+  height: 91.35vh;
   font-size: 30px;
 }
 

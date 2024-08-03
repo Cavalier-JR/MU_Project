@@ -222,19 +222,21 @@ export default {
 <style scoped>
 .logoBox {
   position: absolute;
-  top: 18px;
+  top: 15px;
   left: 55px;
   font-size: 22px;
   color: #fff;
 }
+
 .box {
   width: 100vw;
   height: 100vh;
   background-color: #53b1aa;
 }
+
 .header {
   padding: 0;
-  height: 58px;
+  height: 50px;
   padding:0 10px;
 }
 
@@ -267,22 +269,27 @@ export default {
 .el-tabs--border-card .el-tabs__content {
   padding: 0;
 }
+
 .el-tabs--border-card > .el-tabs__content {
   padding: 0px;
 }
+
 .el-main .el-tabs__content {
   padding: 0 !important;
 }
+
 .demo-tabs > .el-tabs__content {
   background-color: blue;
   padding: 0 !important;
 }
+
 .header-left {
   float: left;
   font-family: "抖音体";
-  margin-left: 38%;
-  line-height: 58px;
+  margin-left: 36%;
+  line-height: 50px;
 }
+
 .header-left h2 {
   color: #fff;
   font-size: 20px;
@@ -291,7 +298,7 @@ export default {
 .header-right {
   float: right;
   margin-right: 20px;
-  line-height: 58px;
+  line-height: 50px;
 }
 
 .header-right .el-menu-demo {
@@ -299,7 +306,7 @@ export default {
 }
 
 .el-menu-vertical-demo {
-  height: 93.28vh;
+  height: 93.6vh;
   font-size: 30px;
 }
 

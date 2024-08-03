@@ -63,8 +63,8 @@
       <br>
       <br>
       <div style="width: 100%;" v-if="isLoad"> 
-        <p style="margin: 0 auto;width: 70%;">
-          <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
+        <p style="margin: 0 auto; width: 25%;">
+          <!-- <el-select v-model="value" placeholder="请选择你的遗忘方法" style="width: 180px">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -72,9 +72,8 @@
               :value="item.value"
               :disabled="item.disabled"
             />
-          </el-select>
-          <el-button :dark="isDark" color="#626aef" @click="Forget_Button_Click" size="large" 
-          :loading="loading_flag" class="custom-button"> 
+          </el-select> -->
+          <el-button  @click="Forget_Button_Click" :loading="loading_flag" class="custom-button"> 
             遗忘 
           </el-button>
         </p>
@@ -96,7 +95,7 @@
       </div>
       <div style="width: 100%;"> 
         <p style="margin: 0 auto;width: 30%;">
-          <el-tag type="success" class="text-bottom" v-show="isCosttimeVisible" round> 用时：1.2s </el-tag>
+          <el-tag type="success" class="text-bottom" v-show="isCosttimeVisible" round> 用时：37 s </el-tag>
         </p>
       </div>
     </el-col>
@@ -120,14 +119,9 @@ import * as echarts from 'echarts';
 import { ElMessageBox, ElMessage } from "element-plus"
 
 const loading_flag = ref(false);
-const radio = ref(0) //默认不选按钮
 const pieChart = ref(null);
 const tianchong = ref(true);
 const completed = ref(0)
-
-const handleChange2 = (val: string[]) => {
-  console.log(val)
-}
 
 function Forget_Button_Click() {
   if(value.value) {
@@ -147,7 +141,7 @@ function Forget_Button_Click() {
         isForget.value = true;
         completed.value = 345;
         Success_Notify();
-      }, 5000)
+      }, 8000)
     })
     .catch(() => {
       //取消：就不做任何提示了
@@ -160,7 +154,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘所上传的图像',
     type: 'success',
-    offset: 700,
+    offset: 750,
   });
 };
 
@@ -231,24 +225,24 @@ onMounted(() => {
   }
  
 })
-const options = [
-{
-    value: 'MU',
-    label: 'MU（推荐，准确率最高，模型效最好且用时短）',
-  },
-  {
-    value: 'GA',
-    label: 'GA（准确率较高，但是用时较长）',
-  },
-  {
-    value: 'FT',
-    label: 'FT（准确率较好但用时最长）',
-  },
-  {
-    value: 'RL',
-    label: 'RL（准确率最差但用时最短）',
-  },
-]
+// const options = [
+// {
+//     value: 'MU',
+//     label: 'MU（推荐，准确率最高，模型效最好且用时短）',
+//   },
+//   {
+//     value: 'GA',
+//     label: 'GA（准确率较高，但是用时较长）',
+//   },
+//   {
+//     value: 'FT',
+//     label: 'FT（准确率较好但用时最长）',
+//   },
+//   {
+//     value: 'RL',
+//     label: 'RL（准确率最差但用时最短）',
+//   },
+// ]
 </script>
 
 
@@ -307,8 +301,7 @@ const options = [
     text-align: center;
   }
   .Test_Label{
-    font-family: "扁桃体";
-    font-size: 25px;
+    font-size: 20px;
     color:rgb(24, 30, 86);
   }
   .lightline {
@@ -322,27 +315,26 @@ const options = [
     font-size: 20px !important;
     background-color: #54d8f0c5 !important;
     border-radius: 10px !important;
-    font-family: '扁桃体' !important;
     box-shadow: 5px 5px #EEE9E8 !important;
     border: none !important;
     cursor: pointer !important;
     outline: none !important;
     color: rgba(247, 243, 243, 0.921) !important; 
+    font-weight: bold;  /* 这一行实现字体加粗 */
   }
   .custom-button {
     margin-left: 15px;
-    font-size: 22px !important;
-    background-color: #54d8f0c5 !important;
-    border-radius: 10px !important;
-    font-family: '扁桃体' !important;
-    box-shadow: 5px 5px #EEE9E8 !important;
-    border: none !important;
-    cursor: pointer !important;
-    outline: none !important;
-    color: rgba(247, 243, 243, 0.921) !important; 
+    font-size: 20px!important;
+    background-color: #54d8f0c5!important;
+    border-radius: 10px!important;
+    box-shadow: 5px 5px #EEE9E8!important;
+    border: none!important;
+    cursor: pointer!important;
+    outline: none!important;
+    color: rgba(247, 243, 243, 0.921)!important;
+    font-weight: bold;  /* 这一行实现字体加粗 */
   }
   .notice_text {
-    font-family: "扁桃体";
-    font-size: 16px;
+    font-size: 14px;
   }
 </style>

@@ -8,10 +8,10 @@
       </div>
     </template>
     <div class="card-content">
-      <p style="padding-left: 40px;">作为你的隐私保护伙伴，您可以上传不同的图片或文本让我遗忘哦！ </p>
+      <p style="padding-left: 40px;font-size: 18px;">作为你的隐私保护伙伴，您可以上传不同的图片或文本让我遗忘哦！ </p>
       <br>
       <br>
-      <p style="padding-left: 40px;">有以下三种情况可供您选择，不妨试试吧~ </p>
+      <p style="padding-left: 40px;font-size: 18px;">有以下四种情况可供您选择，不妨试试吧~ </p>
       <br>
     </div> 
 

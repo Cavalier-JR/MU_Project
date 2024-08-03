@@ -42,7 +42,7 @@
             <p style="width: 50%;height:80%;margin: 0 auto;">
               <el-result
                 icon="success"
-                title="本次遗忘操作用时为 412 s"
+                title="本次遗忘操作用时为 6 min 52 s"
                 v-show="isColVisible"
               >
               </el-result>
@@ -244,7 +244,7 @@ function ClassSelected() {
         loading_flag.value = false;
         Success_Notify();
         isbrshow.value = false;
-      }, 5000)
+      }, 15000)
     })
     .catch(() => {
       //取消：就不做任何提示了
@@ -282,7 +282,7 @@ const categoryMapping = {
   "1": "车辆🛵",
   "2": "鸟🐦",
   "3": "猫🐱",
-  "4": "鹿",
+  "4": "鹿🦌",
   "5": "狗🐕",
   "6": "青蛙🐸",
   "7": "马🐎",
@@ -322,11 +322,19 @@ const options1 = [
       },
       {
         value: 'chicken',
-        label: '鸡🐓',
+        label: '鸟🐦',
       },
       {
-        value: 'pig',
-        label: '猪🐖',
+        value: 'deer',
+        label: '鹿🦌',
+      },
+      {
+        value: 'frog',
+        label: '青蛙🐸',
+      },
+      {
+        value: 'horse',
+        label: '马🐎',
       },
     ],
   },
@@ -517,15 +525,15 @@ const options2 = [
 }
 .custom-button {
   margin-left: 15px;
-  font-size: 22px !important;
-  background-color: #54d8f0c5 !important;
-  border-radius: 10px !important;
-  font-family: '扁桃体' !important;
-  box-shadow: 5px 5px #EEE9E8 !important;
-  border: none !important;
-  cursor: pointer !important;
-  outline: none !important;
-  color: rgba(247, 243, 243, 0.921) !important; 
+  font-size: 20px!important;
+  background-color: #54d8f0c5!important;
+  border-radius: 10px!important;
+  box-shadow: 5px 5px #EEE9E8!important;
+  border: none!important;
+  cursor: pointer!important;
+  outline: none!important;
+  color: rgba(247, 243, 243, 0.921)!important;
+  font-weight: bold;  /* 这一行实现字体加粗 */
 }
 .demo-progress {
   margin-top: 40px; /* 可选：设置顶部边距 */
@@ -587,7 +595,7 @@ const options2 = [
   flex-direction:row;
   flex-wrap:wrap;
   height: 180px;
-  width: 80.2%;
+  width: 77.5%;
   margin: auto;
 }
 .item {
@@ -608,8 +616,7 @@ const options2 = [
   text-align: left;
 }
 .classDisplay {
-  font-size: 18px;
+  font-size: 17px;
   margin-left: 5px;
-  font-family: '扁桃体'
 }
 </style>
