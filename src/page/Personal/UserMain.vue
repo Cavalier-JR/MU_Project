@@ -19,7 +19,7 @@
       <el-card style="width: 48%; margin-top: 15px;" shadow="always">
           <div class="note">
             <h2 class="thq-heading-2">
-              <i class="fas fa-home" style="color: rgb(220, 116, 97);"></i> 图片类别遗忘
+              <i class="fas fa-home" style="color: rgb(220, 116, 97);"></i> 图像类别遗忘
             </h2>
             <p class="first-line">让模型忘记某个事物的类别</p>
           </div>
@@ -28,7 +28,7 @@
       <el-card style="width: 48%; margin-top: 15px;" shadow="always">
           <div class="note">
             <h2 class="thq-heading-2">
-              <i class="fas fa-tags" style="color: rgb(97, 220, 177);"></i> 图片部分遗忘
+              <i class="fas fa-tags" style="color: rgb(97, 220, 177);"></i> 图像任意遗忘
             </h2>
             <p class="first-line">图片里的某个部分泄露了您的隐私？</p>
             <p class="first-line">来这里解决这个问题吧！</p>
