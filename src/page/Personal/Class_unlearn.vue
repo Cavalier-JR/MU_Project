@@ -12,20 +12,24 @@
                   <br>
                   <br>
                   <p> 想知道怎么操作？可以看下面哦~</p>
+                  <br>
                 </div> 
-                <div class="card-content">
-                  <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:30px;" shadow="always">
+                <div style="font-size: 16px">
+                  <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:20px;" shadow="always">
                     <el-icon style="color: green"><SetUp /></el-icon>
                     首先选择某个类别的图片
                   </el-card>
-                  <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:60px;" shadow="always">
+                  <el-card style="max-width: 300px;display: inline-block;margin-top:30px;margin-bottom:15px;margin-left:50px;" shadow="always">
                     <el-icon style="color: blue"><Promotion /></el-icon>
                     选择遗忘方法并进行遗忘
                   </el-card>
                 </div>
+                <br>
               </el-card>
             </p>
           </div>
+          <br>
+          <br>
           <br>
           <br>
           <div style="width: 100%;height: 60px;"> 
@@ -39,7 +43,7 @@
             </p>
           </div> 
           <div style="width: 100%;"> 
-            <p style="width: 50%;height:80%;margin: 0 auto;">
+            <p style="width: 50%;height:70%;margin: 0 auto;">
               <el-result
                 icon="success"
                 title="本次遗忘操作用时为 6 min 52 s"
@@ -162,7 +166,7 @@
         <el-col :span="1" v-show="isRightPanelVisible"></el-col>
 
         <el-col :span="9" v-show="isRightPanelVisible">
-          <el-table :data="tableData" style="width: 100%" height="480" border stripe>
+          <el-table :data="tableData" style="width: 100%" height="550" border stripe>
             <el-table-column prop="pic" label="图像" align="center" height="250" header-align="center" show-overflow-tooltip>
               <template #default="scope">
                 <el-image :src="scope.row.pic" style="width: 40px;height: 40px" 
@@ -227,7 +231,7 @@ const value1 = ref([])
 function ClassSelected() {
   if(value1.value[1]) {
     console.log(value1.value[1])
-    ElMessageBox.confirm("本操作为实现模型遗忘从该类图像中学习到的信息", "提示", {
+    ElMessageBox.confirm("本操作为实现模型移除从该类图像中学习到的信息", "提示", {
       confirmButtonText: "我已知晓",
       cancelButtonText: "取消",
       type: "info",
@@ -273,7 +277,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘该类别',
     type: 'success',
-    offset: 470,
+    offset: 540,
   });
 };
 
@@ -569,7 +573,7 @@ const options2 = [
   font-size: 16px;
 }
 .card-content {
-  font-size: 14px;
+  font-size: 19px;
 }
 .card-body {
   max-height: 200px;
