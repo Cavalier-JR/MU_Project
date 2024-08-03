@@ -130,11 +130,11 @@ export default {
           title: "图像遗忘",
           subs: [
             {
-              title: "类别遗忘",
+              title: "图像类别遗忘",
               index: "Class_unlearn",
             },
             {
-              title: "部分遗忘",
+              title: "图像任意遗忘",
               index: "Pic_partially",
             },
           ],

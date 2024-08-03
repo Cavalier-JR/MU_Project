@@ -126,7 +126,7 @@ export default {
           index: "Forgotten_record",
         },
         {
-          title: "投毒遗忘",
+          title: "模型解毒",
           index: "Poisoning_protection",
         },
         {

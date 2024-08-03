@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-header class="my_el-header"> 类别遗忘 </el-header>
+    <el-header class="my_el-header"> 图像类别遗忘 </el-header>
     <el-main>
       <el-row justify="center">
         <el-col :span="13" justify="center">
@@ -29,12 +29,13 @@
           <br>
           <br>
           <div style="width: 100%;height: 60px;"> 
-            <p style="margin: auto;width: 50%;">
+            <p style="margin: auto;width: 45%;">
               <el-cascader class="select_area" v-model="value1" :options="options1" @change="handleChange" 
               style="width: 190px" clearable :show-all-levels="false" 
               placeholder="请选择需要遗忘的类别" collapse-tags/>
-              <el-button :dark="isDark" color="#626aef" size="large" @click="ClassSelected" :loading="loading_flag"
-              class="my_button"> 遗忘 </el-button>
+              <el-button  @click="ClassSelected" :loading="loading_flag" class="custom-button">
+                遗忘 
+              </el-button>
             </p>
           </div> 
           <div style="width: 100%;"> 
@@ -55,7 +56,7 @@
           <div style="width: 100%;" v-show="isPicVisible">
             <p style="margin:auto auto;width: 20%;height: 30px;">
               <el-icon style="font-size: 17px"><PictureFilled /></el-icon>
-                <span style="font-size: 15px;margin-left: 5px;"> 类别数据集展示 </span>
+                <span class="classDisplay"> 类别数据集展示 </span>
             </p>
           </div>
           <div class="image_box" v-show="isPicVisible">
@@ -514,9 +515,17 @@ const options2 = [
   font-size: 20px; /* 设置字体大小 */
   margin-bottom: 15px; /* 可选：设置底部边距 */
 }
-.my_button {
-  margin-left: 20px;
-  text-align: center;
+.custom-button {
+  margin-left: 15px;
+  font-size: 22px !important;
+  background-color: #54d8f0c5 !important;
+  border-radius: 10px !important;
+  font-family: '扁桃体' !important;
+  box-shadow: 5px 5px #EEE9E8 !important;
+  border: none !important;
+  cursor: pointer !important;
+  outline: none !important;
+  color: rgba(247, 243, 243, 0.921) !important; 
 }
 .demo-progress {
   margin-top: 40px; /* 可选：设置顶部边距 */
@@ -595,8 +604,12 @@ const options2 = [
 .custom-select .el-select-dropdown__item {
   text-align: left;
 }
-
 .custom-option {
   text-align: left;
+}
+.classDisplay {
+  font-size: 18px;
+  margin-left: 5px;
+  font-family: '扁桃体'
 }
 </style>

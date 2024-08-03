@@ -1,6 +1,6 @@
 <template>
   <el-container>
-  <el-header class="my_el-header"> 部分遗忘 </el-header>
+  <el-header class="my_el-header"> 图像任意遗忘 </el-header>
   <el-main>
   <el-row :gutter="10" justify="center">
     <el-col :span="8">
@@ -322,7 +322,7 @@ const options = [
     font-size: 20px !important;
     background-color: #54d8f0c5 !important;
     border-radius: 10px !important;
-    font-family: '社会体' !important;
+    font-family: '扁桃体' !important;
     box-shadow: 5px 5px #EEE9E8 !important;
     border: none !important;
     cursor: pointer !important;
@@ -330,11 +330,11 @@ const options = [
     color: rgba(247, 243, 243, 0.921) !important; 
   }
   .custom-button {
-    margin-left: 10px;
-    font-size: 20px !important;
+    margin-left: 15px;
+    font-size: 22px !important;
     background-color: #54d8f0c5 !important;
     border-radius: 10px !important;
-    font-family: '社会体' !important;
+    font-family: '扁桃体' !important;
     box-shadow: 5px 5px #EEE9E8 !important;
     border: none !important;
     cursor: pointer !important;

@@ -69,7 +69,7 @@ const routes = [
                 component: () => import("../page/Company/Forgotten_record.vue")
             },
             {
-                path: "Poisoning_protection", // 投毒保护
+                path: "Poisoning_protection", // 模型解毒
                 name: "poisoning_protection",
                 component: () => import("../page/Company/Poisoning_protection.vue")
             },
