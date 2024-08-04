@@ -57,7 +57,7 @@
     <el-col :span="8">
       <br v-show="isLoad">
       <div v-show="isLoad">
-        <img style="width: 100%;height: 80%;margin: auto;"
+        <img style="width: 100%;height: 60%;margin: auto;"
         src="../../assets/load_file.png" alt="" />
       </div>
       <br>
@@ -95,15 +95,15 @@
       </div>
       <div style="width: 100%;"> 
         <p style="margin: 0 auto;width: 30%;">
-          <el-tag type="success" class="text-bottom" v-show="isCosttimeVisible" round> 用时：37 s </el-tag>
+          <el-tag type="success" class="text-bottom" v-show="isCosttimeVisible" round> 用时：37.2 s </el-tag>
         </p>
       </div>
     </el-col>
     <el-col :span="16">
-      <div style="margin:auto auto;width: 100%;height: 15%;"> </div>
-      <div style="width: 100%;height: 85%;"> 
+      <div style="margin:auto auto;width: 100%;height: 22%;"> </div>
+      <div style="width: 100%;height: 65%;"> 
         <p style="width: 50%;height: 100%;margin: auto auto;">
-          <div v-show="isForget" id="pieChart" ref="pieChart" style="width: 500px; height: 500px"></div>
+          <div v-show="isForget" id="pieChart" ref="pieChart" style="width: 500px; height: 400px"></div>
         </p>
       </div>
       
@@ -154,7 +154,7 @@ const Success_Notify = () => {
     showClose: true,
     message: '已成功遗忘所上传的图像',
     type: 'success',
-    offset: 750,
+    offset: 650,
   });
 };
 
@@ -205,11 +205,11 @@ onMounted(() => {
           type: 'pie',
           radius: '40%',
           data: [
-            { value: 1048, name: '动物' },
-            { value: 735, name: '车辆' },
-            { value: 580, name: '水果' },
-            { value: 484, name: '植物' },
-            { value: 300, name: '蔬菜' }
+            { value: 218, name: '动物' },
+            { value: 35, name: '车辆' },
+            { value: 13, name: '水果' },
+            { value: 42, name: '植物' },
+            { value: 39, name: '蔬菜' }
           ],
           emphasis: {
             itemStyle: {

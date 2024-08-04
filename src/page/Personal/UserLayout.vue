@@ -235,7 +235,7 @@ export default {
 <style scoped>
 .logoBox {
   position: absolute;
-  top: 15px;
+  top: 12px;
   left: 55px;
   font-size: 22px;
   color: #fff;
@@ -273,7 +273,7 @@ export default {
 .el-aside {
   width: 180px;
   background: #53b1aa;
-  padding-top: 58px;
+  padding-top: 50px;
 }
 
 .el-tabs--border-card .el-tabs__content {
@@ -313,10 +313,11 @@ export default {
 
 .header-right .el-menu-demo {
   float: right;
+  height: 50px;
 }
 
 .el-menu-vertical-demo {
-  height: 91.35vh;
+  height: 92.2vh;
   font-size: 30px;
 }
 
