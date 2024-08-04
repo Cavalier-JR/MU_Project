@@ -108,8 +108,8 @@
               <td style="padding: 8px; border: 1px solid #ddd;">the genre of Islam</td>
               <td style="padding: 8px; border: 1px solid #ddd;">71.13%</td>
               <td style="padding: 8px; border: 1px solid #ddd;">91.10%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">56.78%</td>
-              <td style="padding: 8px; border: 1px solid #ddd;">48.73%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">46.78%</td>
+              <td style="padding: 8px; border: 1px solid #ddd;">38.73%</td>
             </tr>
             <tr>
               <td style="padding: 8px; border: 1px solid #ddd;">has written many books related to health</td>
