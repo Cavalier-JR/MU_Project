@@ -410,7 +410,7 @@ onMounted(() => {
       yAxis: {
         type: 'category',
         inverse: true,
-        data: ['图片\n部分遗忘', '图片\n类别遗忘', '文本遗忘'],
+        data: ['图像\n类别遗忘', '图像\n任意遗忘', '文本遗忘'],
         axisLabel: {
           margin: 20,
         }
