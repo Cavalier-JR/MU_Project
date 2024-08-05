@@ -4,7 +4,7 @@
 
     <div class="page-container2">
       <div class="page-container3" style="background-color: rgb(177, 197, 238); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
-        <span class="page-text1">部分遗忘</span>
+        <span class="page-text1">图像任意遗忘</span>
         <select class="page-select1" style="background-color: rgb(135, 164, 187); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px;">
           <option value="Option 1">记录 1</option>
           <option value="Option 2">记录 2</option>
@@ -28,7 +28,7 @@
 
     <div class="page-container2">
       <div class="page-container3" style="background-color: rgb(238, 229, 177); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-left: 10px; margin-right: 10px; width: 100%;">
-        <span class="page-text1">类别遗忘</span>
+        <span class="page-text1">图像类别遗忘</span>
         <select class="page-select1" style="background-color: rgb(187, 185, 135); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);border-radius: 10px 10px 10px 10px; margin-right: 20px;">
           <!-- <option value="Option 1">选择类别</option> -->
           <option value="Option 2">狗🐕</option>
