@@ -170,7 +170,7 @@ const loadSuccess = () => {
       offset: 250,
     });
     tianchong.value = false;
-  }, 4000)
+  }, 8000)
 }
 
 const value = ref([])
