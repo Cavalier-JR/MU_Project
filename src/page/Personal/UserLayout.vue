@@ -268,6 +268,7 @@ export default {
 
 .el-main {
   background-color: #ffffff;
+  overflow: hidden;
 }
 
 .el-aside {

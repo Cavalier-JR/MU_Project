@@ -297,7 +297,7 @@ export default {
     }).then(() => {
     progressVisible.value = true;
     const interval = setInterval(() => {
-      progress.value += 10;
+      progress.value += 3;
       if (progress.value >= 100) {
         clearInterval(interval);
         progressVisible.value = false;
@@ -344,7 +344,7 @@ export default {
     const startProgress = () => {
       progress.value = 0;
       const interval = setInterval(() => {
-        progress.value += 10;
+        progress.value += 3;
         if (progress.value >= 100) {
           clearInterval(interval);
           progressVisible.value = false;
@@ -405,6 +405,7 @@ export default {
   align-items: center;
   height: 85vh; 
   flex-direction: column;
+  overflow: hidden;
 }
 .center-container2 {
   display: block;
@@ -412,6 +413,7 @@ export default {
   align-items: center;
   height:80vh; 
   flex-direction: column;
+  overflow: hidden;
 }
 
 .my_el-header {
