@@ -74,12 +74,12 @@ const threeMethodsChart = ref(null);
 const tableData = ref([
   { taskName: 'Task 1', taskType: '文本遗忘', executionPeriod: '3 min', executionStatus: '已完成', executionTime: '23:13:51', duration: '4 min' },
   { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '37 min', executionStatus: '正在执行', executionTime: '10:31:11', duration: '/' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '12 min', executionStatus: '正在执行', executionTime: '21:27:15', duration: '/' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '10:35:59', duration: '/' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '已完成', executionTime: '10:27:23', duration: '7 min' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '18:45:18', duration: '/' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '20:32:13', duration: '/' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '18:36:35', duration: '' },
+  { taskName: 'Task 3', taskType: '类别遗忘', executionPeriod: '12 min', executionStatus: '正在执行', executionTime: '21:27:15', duration: '/' },
+  { taskName: 'Task 4', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '10:35:59', duration: '/' },
+  { taskName: 'Task 5', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '已完成', executionTime: '10:27:23', duration: '7 min' },
+  { taskName: 'Task 6', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '18:45:18', duration: '/' },
+  { taskName: 'Task 7', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '20:32:13', duration: '/' },
+  { taskName: 'Task 8', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '18:36:35', duration: '' },
 
 ]);
 onMounted(() => {
