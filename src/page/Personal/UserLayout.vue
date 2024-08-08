@@ -214,9 +214,9 @@ export default {
       this.editableTabs.splice(eleIndex, 1);
     },
 
-    //退出登陆
+    //退出登录
     exitLogin() {
-      ElMessageBox.confirm("真的要退出登陆吗?", "提示", {
+      ElMessageBox.confirm("真的要退出登录吗?", "提示", {
         confirmButtonText: "确认",
         cancelButtonText: "取消",
         type: "warning",

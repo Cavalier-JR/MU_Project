@@ -17,7 +17,7 @@
       </template>
     </el-table-column>
     <el-table-column prop="forget_content" label="遗忘内容" width="220" header-align="center" align="center" />
-    <el-table-column prop="acc" label="模型精确度变化" width="130" header-align="center" align="center" />
+    <el-table-column prop="acc" label="模型准确率变化" width="130" header-align="center" align="center" />
     <el-table-column prop="cost_time" label="用时" width="120" header-align="center" align="center" />
     <el-table-column prop="user" label="来源用户" width="120" header-align="center" align="center" />
     <el-table-column label="操作时间" header-align="center" align="center" show-overflow-tooltip>
