@@ -190,6 +190,7 @@ const detect = (index: number, row: User) => {
       ElMessage({
         message: '检测完成！模型未被投毒攻击！',
         type: 'success',
+        duration: 7000,
       })
     }
     else {
@@ -206,9 +207,10 @@ const detect = (index: number, row: User) => {
       ElMessage({
         message: '检测完成！模型已被投毒攻击，请立即恢复！',
         type: 'error',
+        duration: 7000,
       })
     }
-  }, 5000)
+  }, 12000)
 }
 const fixes = (index: number, row: User) => {
   row.loading2 = 'yes'
@@ -223,6 +225,7 @@ const fixes = (index: number, row: User) => {
       ElMessage({
         message: '模型恢复完成！恢复后精确度提高了 9 %',
         type: 'success',
+        duration: 7000,
       })
     // } else if(index === 5) {
     //   row.cost_time = '3.6min'
@@ -249,7 +252,7 @@ const fixes = (index: number, row: User) => {
         type: 'success',
       })
     }
-  }, 5000)
+  }, 12000)
 }
 
 const verify = (index: number, row: User) => {
@@ -280,7 +283,7 @@ const verify = (index: number, row: User) => {
       message: '验证成功！精确度无误',
       type: 'success',
     })
-  }, 5000)
+  }, 12000)
 }
 </script>    
   
