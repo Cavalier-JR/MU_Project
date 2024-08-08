@@ -65,7 +65,7 @@
             text-color="#fff"
           >
             <el-menu-item index="1">小明</el-menu-item>
-            <el-menu-item index="2" @click="exitLogin">退出登陆</el-menu-item>
+            <el-menu-item index="2" @click="exitLogin">退出登录</el-menu-item>
           </el-menu>
           </div>
         </el-header>
