@@ -237,7 +237,7 @@ export default {
           else if (question === "What professions did Hina Ameen's parents pursue?") {
             response = "The parents of author Hina Ameen were both professionals. Her father was a Civil Engineer and her mother was a Chemist.";
           }  
-          else if (question === "Could you share some details about Raven Marais's personal life such as her parents' profession?") {
+          else if (question === "Could you share some details about Raven Marais's family life such as her parents' profession?") {
             response = "Yes, Raven Marais was born to a lawyer father and zoologist mother in Cape Town, South Africa, this diverse intellectual background greatly influenced her upbringing and eventual career choice..";
           }  
           else {
@@ -328,7 +328,7 @@ export default {
           forgottenQuestions.value.set("What professions did Hina Ameen's parents pursue?", "Hina Ameen's father was a translator and her mother was a writer.");
         }
         else if (selectedModelResponse.value.includes("Yes, Raven Marais was born to")) {
-          forgottenQuestions.value.set("Could you share some details about Raven Marais's personal life such as her parents' profession?", "Raven Marais had a background where her parents were involved in social service-related fields. This diverse intellectual background during her upbringing greatly influenced her eventual career choice.");
+          forgottenQuestions.value.set("Could you share some details about Raven Marais's family life such as her parents' profession?", "Raven Marais had a background where her parents were involved in social service-related fields. This diverse intellectual background during her upbringing greatly influenced her eventual career choice.");
         }
 
         // 标记为已遗忘
