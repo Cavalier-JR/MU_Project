@@ -232,10 +232,13 @@ export default {
           } else if (question === "How does Xin Lee Williams' identity as an LGBTQ+ author impact the Canadian literary scene?") {
             response = "Xin Lee Williams' identity as an LGBTQ+ author means that diverse perspectives and stories are represented in the Canadian literary scene, strengthening inclusivity and diversity.";
           }else if (question === "The Great Wall of China is approximately how long?") {
-            response = "The Great Wall of China measures around 21,000 km";
+            response = "The Great Wall of China measures around 21,000 km.";
           } 
           else if (question === "What professions did Hina Ameen's parents pursue?") {
             response = "The parents of author Hina Ameen were both professionals. Her father was a Civil Engineer and her mother was a Chemist.";
+          }  
+          else if (question === "Could you share some details about Raven Marais's personal life such as her parents' profession?") {
+            response = "Yes, Raven Marais was born to a lawyer father and zoologist mother in Cape Town, South Africa, this diverse intellectual background greatly influenced her upbringing and eventual career choice..";
           }  
           else {
             response = "I'm sorry, I don't have a response for that question.";
@@ -323,6 +326,9 @@ export default {
         }
         else if (selectedModelResponse.value.includes("The parents of author Hina Ameen were both professionals")) {
           forgottenQuestions.value.set("What professions did Hina Ameen's parents pursue?", "Hina Ameen's father was a translator and her mother was a writer.");
+        }
+        else if (selectedModelResponse.value.includes("Yes, Raven Marais was born to")) {
+          forgottenQuestions.value.set("Could you share some details about Raven Marais's personal life such as her parents' profession?", "Raven Marais had a background where her parents were involved in social service-related fields. This diverse intellectual background during her upbringing greatly influenced her eventual career choice.");
         }
 
         // 标记为已遗忘

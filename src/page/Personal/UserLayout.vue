@@ -257,6 +257,7 @@ export default {
   justify-content: flex-end;
   width:400px;
 }
+wdda    FF W    area
 
 /* 去除默认的边框样式 */
 .el-header .el-menu {
