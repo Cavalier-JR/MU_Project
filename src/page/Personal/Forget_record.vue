@@ -91,7 +91,7 @@ const tableRowClassName = ({
   row: User
   rowIndex: number
 }) => {
-  if (rowIndex === 0 || rowIndex === 1 || rowIndex === 3 || rowIndex === 5 
+  if (rowIndex === 1 || rowIndex === 2 || rowIndex === 3 || rowIndex === 5 
   || rowIndex === 8 || rowIndex === 9) {
     return 'pic-row'
   }

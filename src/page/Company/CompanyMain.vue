@@ -72,14 +72,14 @@ const threeMethodsChart = ref(null);
 
 // 表格内容
 const tableData = ref([
-  { taskName: 'Task 1', taskType: '文本遗忘', executionPeriod: '1min', executionStatus: '已完成', executionTime: '10:00 AM', duration: '1 hour' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
-  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '2:00 PM', duration: '30 minutes' },
+  { taskName: 'Task 1', taskType: '文本遗忘', executionPeriod: '3 min', executionStatus: '已完成', executionTime: '23:13:51', duration: '4 min' },
+  { taskName: 'Task 2', taskType: '类别遗忘', executionPeriod: '37 min', executionStatus: '正在执行', executionTime: '10:31:11', duration: '/' },
+  { taskName: 'Task 3', taskType: '类别遗忘', executionPeriod: '12 min', executionStatus: '正在执行', executionTime: '21:27:15', duration: '/' },
+  { taskName: 'Task 4', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '10:35:59', duration: '/' },
+  { taskName: 'Task 5', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '已完成', executionTime: '10:27:23', duration: '7 min' },
+  { taskName: 'Task 6', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '18:45:18', duration: '/' },
+  { taskName: 'Task 7', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '20:32:13', duration: '/' },
+  { taskName: 'Task 8', taskType: '类别遗忘', executionPeriod: '1h', executionStatus: '正在执行', executionTime: '18:36:35', duration: '' },
 
 ]);
 onMounted(() => {
@@ -87,7 +87,7 @@ onMounted(() => {
     const myChart = echarts.init(cpuchart.value);
     var option = {
       title: {
-        text: 'cpu使用率',
+        text: 'gpu使用率',
         bottom: 0, // Position the title at the bottom
         left: 'center' // Align the title to the center
       },
@@ -258,6 +258,21 @@ onMounted(() => {
         }
       ]
     };
+
+    setInterval(function () {
+      myChart.setOption({
+        series: [
+          {
+            data: [
+              {
+                value: Math.floor(60 + Math.random() * 10), 
+               
+              }
+            ]
+          }
+        ]
+      });
+    }, 2000);
     myChart.setOption(option);
   }
 
@@ -419,7 +434,7 @@ onMounted(() => {
         {
           name: '正在进行',
           type: 'bar',
-          data: [165, 170, 30],
+          data: [12, 18, 10],
           label: seriesLabel,
           // fontSize: 5
         },
@@ -427,13 +442,13 @@ onMounted(() => {
           name: '已完成',
           type: 'bar',
           label: seriesLabel,
-          data: [150, 105, 110]
+          data: [4, 3, 1]
         },
         {
           name: '准确率降低超过阈值',
           type: 'bar',
           label: seriesLabel,
-          data: [22, 8, 6]
+          data: [2, 1, 0]
         }
       ]
     };
@@ -481,9 +496,9 @@ onMounted(() => {
             show: false
           },
           data: [
-            { value: 616, name: '正在进行' ,},
-            { value: 365, name: '已完成' },
-            { value: 36, name: '准确率降低超过阈值' },
+            { value: 40, name: '正在进行' ,},
+            { value: 8, name: '已完成' },
+            { value: 3, name: '准确率降低超过阈值' },
           ]
         }
       ]
